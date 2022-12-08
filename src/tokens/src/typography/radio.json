@@ -1,0 +1,16 @@
+{
+  "radio": {
+    "label": {
+      "font-family": { "value": "{text.body-03.font-family.value}" },
+      "font-weight": { "value": "{text.body-03.font-weight.value}" },
+      "font-size": {
+        "standard": { "value": "{text.body-03.font-size.value}" },
+        "small": { "value": "{text.body-04.font-size.value}" }
+      },
+      "line-height": {
+        "standard": { "value": "{text.body-03.line-height.value}" },
+        "small": { "value": "{text.body-04.line-height.value}" }
+      }
+    }
+  }
+}

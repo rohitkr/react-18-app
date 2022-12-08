@@ -1,0 +1,57 @@
+{
+  "checkbox": {
+    "color": {
+      "shadow": {
+        "unchecked": { "value": "{color.secondary.800.value}" },
+        "indeterminate": { "value": "{color.info.400.value}" },
+        "checked": { "value": "{color.info.400.value}" }
+      },
+      "border": {
+        "unchecked": {
+          "default": { "value": "{color.secondary.400.value}" },
+          "hover": { "value": "{color.secondary.500.value}" },
+          "focus": { "value": "{color.secondary.400.value}" },
+          "disabled": { "value": "{color.secondary.300.value}" }
+        },
+        "indeterminate": {
+          "default": { "value": "{color.info.400.value}" },
+          "hover": { "value": "{color.info.500.value}" },
+          "focus": { "value": "{color.info.400.value}" },
+          "disabled": { "value": "{color.secondary.500.value}" }
+        },
+        "checked": {
+          "default": { "value": "{color.info.400.value}" },
+          "hover": { "value": "{color.info.500.value}" },
+          "focus": { "value": "{color.info.400.value}" },
+          "disabled": { "value": "{color.secondary.500.value}" }
+        }
+      },
+      "background": {
+        "unchecked": {
+          "default": { "value": "{color.primitive.white.value}" },
+          "hover": { "value": "{color.primitive.white.value}" },
+          "focus": { "value": "{color.primitive.white.value}" },
+          "disabled": { "value": "{color.secondary.50.value}" }
+        },
+        "indeterminate": {
+          "default": { "value": "{color.info.400.value}" },
+          "hover": { "value": "{color.info.500.value}" },
+          "focus": { "value": "{color.info.400.value}" },
+          "disabled": { "value": "{color.secondary.500.value}" }
+        },
+        "checked": {
+          "default": { "value": "{color.info.400.value}" },
+          "hover": { "value": "{color.info.500.value}" },
+          "focus": { "value": "{color.info.400.value}" },
+          "disabled": { "value": "{color.secondary.500.value}" }
+        }
+      },
+      "label": {
+        "default": { "value": "{color.secondary.800.value}" },
+        "hover": { "value": "{color.secondary.900.value}" },
+        "focus": { "value": "{color.secondary.800.value}" },
+        "disabled": { "value": "{color.secondary.500.value}" }
+      }
+    }
+  }
+}

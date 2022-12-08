@@ -1,0 +1,30 @@
+.container {
+    color: "#666666";
+    font-family: "Inter";
+  }
+  
+  table {
+    width: 100%;
+    text-align: "center";
+  
+    tbody {
+      width: 100%;
+  
+      tr {
+        width: 100%;
+  
+        td {
+          width: 25%;
+        }
+      }
+    }
+  }
+  
+  .cellContent {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 80px;
+  }

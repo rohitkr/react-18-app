@@ -1,0 +1,14 @@
+{
+    "link": {
+      "color": {
+        "shadow": { "value": "{color.info.400.value}" },
+        "label": {
+          "default": { "value": "{color.info.400.value}" },
+          "hover": { "value": "{color.info.500.value}" },
+          "pressed": { "value": "{color.info.600.value}" },
+          "disabled": { "value": "{color.secondary.500.value}" }
+      }
+    }
+  }
+}
+  

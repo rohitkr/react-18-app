@@ -1,0 +1,106 @@
+@import "../../tokens/build/scss/variables.scss";
+
+// Parent class for progress bar
+.navi-progressbar-root {
+  // Typography css
+  .progressbar-label {
+    color: $progressbar-root-label-color;
+    font-family: $progressbar-root-label-font-family;
+    font-size: $progressbar-root-label-font-size;
+    font-weight: $progressbar-root-label-font-weight;
+    line-height: $progressbar-root-label-line-height;
+    min-width: $progressbar-root-label-min-width;
+  }
+
+  .progressbar-container-main {
+    background: $progressbar-root-container-main-background;
+    border-radius: $progressbar-root-container-main-border-radius;
+    margin: $progressbar-root-container-main-margin;
+    overflow: $progressbar-root-container-main-overflow;
+    width: $progressbar-root-container-main-width;
+  }
+
+  .progressbar-fill {
+    background: $progressbar-root-fill-background;
+    border-radius: $progressbar-root-fill-border-radius;
+    height: $progressbar-root-fill-height;
+    transform-origin: $progressbar-root-fill-transform-origin;
+    transition: $progressbar-root-fill-transition;
+    width: $progressbar-root-fill-width;
+  }
+
+  .info {
+    background: $progressbar-root-info-background;
+  }
+  .critical {
+    background: $progressbar-root-critical-background;
+  }
+  .success {
+    background: $progressbar-root-success-background;
+  }
+  .warning {
+    background: $progressbar-root-warning-background;
+  }
+  .info-gradient {
+    background: $progressbar-root-info-gradient-background;
+  }
+  .critical-gradient {
+    background: $progressbar-root-critical-gradient-background;
+  }
+  .success-gradient {
+    background: $progressbar-root-success-gradient-background;
+  }
+  .warning-gradient {
+    background: $progressbar-root-warning-gradient-background;
+  }
+
+  .size-small {
+    height: $progressbar-root-size-small-height;
+  }
+
+  .size-large {
+    height: $progressbar-root-size-large-height;
+  }
+
+  // Animation for loading progressbar
+  @keyframes loadingAnimation {
+    0% {
+      transform: translateX(0) scaleX(0.5);
+    }
+    40% {
+      transform: translateX(0) scaleX(0.5);
+    }
+    100% {
+      transform: translateX(150%) scaleX(0.5);
+    }
+  }
+
+  .loading-progress-bar-animation {
+    width: $progressbar-root-loading-progress-bar-animation-width;
+    height: $progressbar-root-loading-progress-bar-animation-height;
+    animation: $progressbar-root-loading-progress-bar-animation-animation;
+    transform-origin: $progressbar-root-loading-progress-bar-animation-transform-origin;
+  }
+
+  // Animation for step progressbar last element
+  @keyframes loadingStepAnimation {
+    0% {
+      width: 0px;
+      opacity: 1;
+    }
+    75% {
+      width: 100%;
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+
+  .step-progress-bar-animation {
+    animation: $progressbar-root-step-progress-bar-animation-animation;
+    transform-box: $progressbar-root-step-progress-bar-animation-transform-box;
+    transform-origin: $progressbar-root-step-progress-bar-animation-transform-origin;
+    animation-delay: $progressbar-root-step-progress-bar-animation-animation-delay;
+  }
+}
