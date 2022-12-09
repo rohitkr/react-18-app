@@ -5,12 +5,14 @@ import { createStyles, makeStyles, Theme } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import Select from '../Select/Select';
 import Menu from '../Menu/Menu';
+// import SelectButton from '../Menu/SelectButton';
 import Button from '../Button/Button';
 import { ClickAwayListener } from "@material-ui/core";
 import { Tag } from 'navi-design-system';
 import { Photo, BellRinging, Pencil } from 'tabler-icons-react';
 import { MenuDataProps } from "../Menu/Menu.types";
 import { Pencil as Edit, Movie } from 'tabler-icons-react';
+import TextInput from '../Input/Input';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -43,8 +45,9 @@ let data = [
   },
   { divider: true },
   {
-    title: "The Shawshank Redemption", description: "1994",
-    checked: true,
+    title: "The Shawshank Redemption",
+    description: "1994",
+    // checked: true,
     trallingIcon: <Pencil />,
     leadingIcon: <Movie />,
     avatar: "data:image/jpeg;base64,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"
@@ -59,11 +62,13 @@ let data = [
     title: "The Godfather: Part II", description: "1974",
     trallingIcon: <Pencil />,
     leadingIcon: <Movie />,
+    disabled: true,
+    // checked: true,
     avatar: "data:image/jpeg;base64,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"
   },
   {
     title: "The Dark Knight", description: "2008",
-    checked: true,
+    // checked: true,
     trallingIcon: <Pencil />,
     leadingIcon: <Movie />,
     avatar: "data:image/jpeg;base64,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"
@@ -138,6 +143,7 @@ export default function AutocompleteControlled() {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     setAnchorEl(event.currentTarget);
+    setOpen(true);
   };
   const handleClose = () => {
     setAnchorEl(null);
@@ -145,22 +151,59 @@ export default function AutocompleteControlled() {
   const [open, setOpen] = React.useState(false);
 
   return (
-    <div className={classes.root}>
-      <div style={{ height: '200px' }}>
-        <Button aria-controls="fade-menu" aria-haspopup="true" onClick={(e) => {
-          handleClick(e)
-        }}>
-          Open Menu
-        </Button>
+    <div className={classes.root} style={{ textAlign: 'left', margin: 'auto', paddingTop: "50px" }}>
+      <div style={{ height: '100px' }}>
+        <TextInput
+          errorMessage="Please enter your Name"
+          helperText="Enter your Name"
+          inputType="default"
+          label="Full Name"
+          maxCharacters={100}
+          // minWidth={320}
+          moreInfo="Please enther your full name here"
+          required
+          size="large"
+          // successMessage="Success message"
+          tooltipPlacement="top"
+          type="default"
+        />
       </div>
 
-      <Menu open={Boolean(anchorEl)}
-        anchorEl={anchorEl}
-        onClose={handleClose}
-        onMenuChange={(event, data) => { console.log("onMenuChange: ", event, data) }}
-        data={data}
-        multiSelect={true}
-      />
+      <div style={{ height: '100px' }}>
+
+        <Menu
+          open={open}
+          anchorEl={anchorEl}
+          onClose={handleClose}
+          onMenuChange={(event, data) => { console.log("onMenuChange: ", event, data) }}
+          data={data}
+          multiSelect={true}
+          
+
+          // errorMessage="Please enter your Name"
+          // helperText="Enter your Name"
+          // inputType="default"
+          // label="Full Name"
+          // maxCharacters={100}
+          // // minWidth={320}
+          // moreInfo="Please enther your full name here"
+          // required
+          // size="large"
+          // // successMessage="Success message"
+          // tooltipPlacement="top"
+          // type="default"
+
+
+        >
+          {/* <Button aria-controls="fade-menu" aria-haspopup="true" onClick={(e) => {
+          console.log("setyopen")
+          setOpen(true);
+          // handleClick(e);
+        }}>
+          Open Menu
+        </Button> */}
+        </Menu>
+      </div>
 
     </div>
   );

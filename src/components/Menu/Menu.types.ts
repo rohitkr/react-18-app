@@ -11,6 +11,7 @@ export interface MenuDataProps {
   checked?: boolean;
   type?: "divider" | "select";
   divider?: boolean;
+  disabled?: boolean;
   // checked?: boolean;
 }
 export interface MenuProps extends MuiMenuProps {
@@ -23,7 +24,7 @@ export interface MenuProps extends MuiMenuProps {
     // event: React.ChangeEvent<{ name?: string; value: unknown }>,
     child: React.ReactNode
   ) => void;
-  data?: MenuDataProps[];
+  data: MenuDataProps[];
 }
 export interface MenuItemCardProps {
   title?: string;
@@ -35,6 +36,7 @@ export interface MenuItemCardProps {
   selected?: boolean;
   value?: string;
   checked?: boolean;
+  disabled?: boolean;
   _onchange?: (
     event: React.MouseEvent<{ name?: string; value?: unknown }>,
     child: string,

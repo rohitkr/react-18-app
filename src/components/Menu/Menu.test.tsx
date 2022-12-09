@@ -10,7 +10,10 @@ describe("Test Component", () => {
 
   beforeEach(() => {
     props = {
-      open: true
+      open: true,
+      data: [{
+        title: ""
+      }]
     };
   });
 
