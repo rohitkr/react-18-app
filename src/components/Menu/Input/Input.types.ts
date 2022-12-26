@@ -1,4 +1,4 @@
-import { TooltipPositionTypes } from "./../Tooltip/Tooltip.types";
+import { TooltipPositionTypes } from "../../Tooltip/Tooltip.types";
 import { InputBaseProps as MuiInputBaseProps } from "@material-ui/core/InputBase";
 import { CSSProperties } from "react";
 

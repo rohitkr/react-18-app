@@ -2,7 +2,6 @@ import React from "react";
 import { MenuProps } from "./Menu.types";
 import {
   Select,
-  Input,
   withStyles
 } from '@material-ui/core';
 import MenuItem from '@material-ui/core/MenuItem';
@@ -14,7 +13,9 @@ import tokenObj from '../../tokens/build/json/tokens.json';
 import Avatar from '@material-ui/core/Avatar';
 import { MenuDataProps } from './Menu.types'
 // import { TextInput } from "navi-design-system";
-import TextInput from "../Input/Input";
+// import TextInput from "../Input/Input";
+import TextInput from "./Input/Input";
+// import Input from "@material-ui/core/Input"
 
 const TitleTypography = withStyles((theme) => ({
   root: {
@@ -90,23 +91,23 @@ const Menu: React.FC<MenuProps> = ({ onClose, data, multiSelect, selectAll, onMe
         renderValue={(selected) => {
           return ((selected) as string[]).join(', ')
         }}
-        input={<Input style={{ width: "600px" }} />}
-        // input={
-        //   <TextInput
-        //     errorMessage="Error message"
-        //     helperText="Helper text"
-        //     inputType="default"
-        //     label="Sample label"
-        //     maxCharacters={100}
-        //     minWidth={280}
-        //     moreInfo="More information text"
-        //     required
-        //     size="large"
-        //     successMessage="Success message"
-        //     tooltipPlacement="top"
-        //     type="default"
-        //   />
-        // }
+        input={
+          <TextInput
+            className="navi-select-input-container"
+            errorMessage="Error message"
+            helperText="Helper text"
+            inputType="default"
+            label="Sample label"
+            maxCharacters={100}
+            minWidth={600}
+            moreInfo="More information text"
+            required
+            size="large"
+            successMessage="Success message"
+            tooltipPlacement="top"
+            type="default"
+          />
+        }
         // style={{ visibility: "hidden", width: 0, height: 0 }}
         // open={open}
         onClose={() => {

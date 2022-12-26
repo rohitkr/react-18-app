@@ -1,12 +1,12 @@
 import React, { useState } from "react";
-import baseTokens from "../../tokens/build/json/tokens.json";
+import baseTokens from "../../../tokens/build/json/tokens.json";
 import Input from "@material-ui/core/Input";
-import Box from "../Box/Box";
+import Box from "../../Box/Box";
 import InputLabel from "@material-ui/core/InputLabel";
 import { NaviInputProps } from "./Input.types";
-import Tooltip from "../Tooltip/Tooltip";
+import Tooltip from "../../Tooltip/Tooltip";
 import { InfoCircle, CircleCheck, AlertCircle } from "tabler-icons-react";
-import tokens from "../../tokens/build/json/tokens.json";
+import tokens from "../../../tokens/build/json/tokens.json";
 import "./Input.scss";
 
 const tokenObj: { [key: string]: any } = tokens;

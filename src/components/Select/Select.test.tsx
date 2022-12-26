@@ -10,13 +10,15 @@ describe("Test Component", () => {
 
   beforeEach(() => {
     props = {
-      // foo: "bar"
+      open: true,
+      data: [{}]
     };
   });
 
   const renderComponent = () => render(<Select {...props} />);
 
   it("should render foo text correctly", () => {
+    props.data = [{}];
     const { getByTestId } = renderComponent();
 
     const component = getByTestId("Select");
