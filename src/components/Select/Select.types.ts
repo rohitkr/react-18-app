@@ -1,5 +1,5 @@
 import { MenuProps as MuiMenuProps } from "@material-ui/core/Menu";
-
+import { NaviInputProps } from "../Input/Input.types";
 export interface SelectDataProps {
   title?: string;
   description?: string;
@@ -12,21 +12,21 @@ export interface SelectDataProps {
   type?: "divider" | "select";
   divider?: boolean;
   disabled?: boolean;
-  // checked?: boolean;
 }
 export interface SelectProps extends MuiMenuProps {
   open: boolean;
   anchorEl?: HTMLElement | null;
   multiSelect?: boolean;
   selectAll?: boolean;
+  inputProps?: NaviInputProps;
   onMenuChange?: (
     event: React.MouseEvent<{ name?: string; value?: unknown }>,
-    // event: React.ChangeEvent<{ name?: string; value: unknown }>,
     child: React.ReactNode
   ) => void;
   data: SelectDataProps[];
 }
 export interface SelectItemCardProps {
+  selectValue: string[];
   title?: string;
   description?: string;
   trallingIcon?: React.ReactNode;
@@ -42,8 +42,4 @@ export interface SelectItemCardProps {
     child: string,
     checked?: boolean,
   ) => void;
-  // _onchange?: (
-  //   event: React.ChangeEvent<{ name?: string; value: unknown }>,
-  //   child: React.ReactNode
-  // ) => void;
 }

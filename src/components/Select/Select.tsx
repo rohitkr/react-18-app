@@ -1,5 +1,5 @@
 import React from "react";
-import { SelectProps, SelectDataProps } from "./Select.types";
+import { SelectProps, SelectDataProps, SelectItemCardProps } from "./Select.types";
 import {
   Select,
   withStyles
@@ -12,45 +12,40 @@ import Typography from '@material-ui/core/Typography'
 import tokenObj from '../../tokens/build/json/tokens.json';
 import Avatar from '@material-ui/core/Avatar';
 import TextInput from "../Input/Input";
+import Divider from "../Divider/Divider";
+import ClearIcon from "@material-ui/icons/Clear";
+import IconButton from "../IconButton/IconButton";
+import MenuItemComp from "./MenuItem";
 
-const TitleTypography = withStyles((theme) => ({
-  root: {
-    color: tokenObj['color-secondary-800'],
-    fontFamily: tokenObj['text-body-03-font-family'],
-    fontSize: tokenObj['text-body-03-font-size'],
-    fontWeight: Number(tokenObj['text-body-03-font-weight']),
-    lineHeight: tokenObj['text-body-03-line-height'],
-  }
-}))(Typography);
-
-const DescriptionTypography = withStyles((theme) => ({
-  root: {
-    color: tokenObj['color-secondary-600'],
-    fontFamily: tokenObj['text-body-04-font-family'],
-    fontSize: tokenObj['text-body-04-font-size'],
-    fontWeight: Number(tokenObj['text-body-04-font-weight']),
-    lineHeight: tokenObj['text-body-04-line-height'],
-    marginTop: tokenObj['spacing-2']
-  }
-}))(Typography);
-
-
-const Menu: React.FC<SelectProps> = ({ onClose, data, multiSelect, selectAll, onMenuChange, ...props }) => {
-  const [open, setOpen] = React.useState(props.open);
+const Menu: React.FC<SelectProps> = ({
+  onClose,
+  data,
+  multiSelect,
+  selectAll,
+  onMenuChange,
+  inputProps,
+  ...props }) => {
+  // const [open, setOpen] = React.useState(props.open);
   const array: string[] = [];
-  const [selecteData, setSelecteData] = React.useState(array);
+  // const [selecteData, setSelecteData] = React.useState(array);
 
-  const [personName, setPersonName] = React.useState<string[]>([]);
+  const [selectValue, setSelectValue] = React.useState<string[]>([]);
   const [menuData, setMenuData] = React.useState<SelectDataProps[]>(data);
 
-  const handleChange = (event: React.ChangeEvent<{ value: unknown }>) => {
-    const { value } = event.target;
+  const handleChange = (value: unknown, selectAll: boolean) => {
     const data = [...menuData];
+
+    if (selectAll) {
+      selectAllOptions(true);
+      return;
+    }
+
     if (value instanceof Array) {
       if (value.length) {
         value.forEach((selectedValue) => {
+          console.log("value: ", value)
           data.map((obj) => {
-            obj.checked = obj.title === selectedValue;
+            obj.checked = (obj.title === selectedValue) || selectAll;
             return obj;
           });
         });
@@ -63,49 +58,56 @@ const Menu: React.FC<SelectProps> = ({ onClose, data, multiSelect, selectAll, on
       setMenuData([...data]);
     }
 
-    setPersonName(value as string[]);
+    setSelectValue(value as string[]);
   };
+
+  const selectAllOptions = (select: boolean) => {
+    const data = [...menuData];
+    const value: string[] = [];
+    if (select) {
+      data.map((obj) => {
+        obj.checked = true;
+        obj.title && value.push(obj.title);
+        return obj;
+      });
+    }
+    // setMenuData([...data]);
+    setSelectValue(value as string[]);
+  }
 
   React.useEffect(() => {
     setMenuData(data);
   }, [data]);
 
-  React.useEffect(() => {
-    setOpen(props.open);
-  }, [props.open]);
+  // React.useEffect(() => {
+  //   setOpen(props.open);
+  // }, [props.open]);
 
+  console.log("selectValue: ", selectValue);
   return (
     <Box className="navi-menu-component">
       {props.children}
       <Select
         multiple={multiSelect}
-        value={personName}
-        onChange={handleChange}
+        value={selectValue}
+        onChange={(event: React.ChangeEvent<{ value: unknown }>) => {
+          const { value } = event.target;
+          const selectAllOption = value instanceof Array && (value[0] === "select-all");
+          handleChange(value, selectAllOption);
+        }}
         renderValue={(selected) => {
           return typeof selected === 'string' ? selected : ((selected) as string[]).join(', ')
         }}
         input={
           <TextInput
             className="navi-select-input-container"
-            errorMessage="Error message"
-            helperText="Helper text"
-            inputType="default"
-            label="Sample label"
-            maxCharacters={100}
-            minWidth={600}
-            moreInfo="More information text"
-            required
-            size="large"
-            successMessage="Success message"
-            tooltipPlacement="top"
-            type="default"
+            {...inputProps}
+            inputType={"default"}
           />
         }
-        // style={{ visibility: "hidden", width: 0, height: 0 }}
-        // open={open}
-        onClose={() => {
-          setOpen(false);
-        }}
+        // onClose={() => {
+        //   setOpen(false);
+        // }}
         MenuProps={{
           anchorOrigin: {
             vertical: "bottom",
@@ -117,45 +119,70 @@ const Menu: React.FC<SelectProps> = ({ onClose, data, multiSelect, selectAll, on
           },
           getContentAnchorEl: null
         }}
+        // startAdornment={
+        //   <ClearIcon />
+        // }
+        endAdornment={
+          <IconButton
+            size="small"
+            variant="tertiary"
+            intent="muted"
+            style={{ display: selectValue.length ? "block" : "none" }}
+            title={"Clear"}
+            onClick={() => {
+              setSelectValue([]);
+            }}
+          >
+            <ClearIcon />
+          </IconButton>
+        }
       >
+        {selectAll ?
+          <MenuItem
+            value={"select-all"}
+            // onClick={(e)={}}
+            disabled={menuData.length === 0}>
+            <MenuItemComp
+              // avatar={avatar}
+              // leadingIcon={leadingIcon}
+              // trallingIcon={trallingIcon}
+              // description={description}
+              selectValue={selectValue}
+              title={"Select All"}
+              // checked={checked}
+              multiSelect={multiSelect}
+            />
+          </MenuItem> : null}
 
         {menuData && menuData.map(({ avatar, leadingIcon, trallingIcon, title = "", description, checked, ...val }, i) => {
 
-          if (checked && personName.indexOf(title) === -1) {
-            setPersonName([...personName, title])
+          if (checked && selectValue.indexOf(title) === -1) {
+            setSelectValue([...selectValue, title])
           }
 
           return val.divider ?
             <Box
               key={i}
               style={{ width: "100%", height: "2px", margin: "12px 0", background: tokenObj['color-secondary-100'] }} />
+
+            // <Divider orientation={"horizontal"} color="dark" />
             :
-            <MenuItem key={title} value={title}
-              disabled={val.disabled}
-            >
-              {multiSelect && <Box className="navi-menu-item-checkbox-container">
-                {/* <CheckBox label={""} value="checked" checked={isChecked} size="small" /> */}
-                <CheckBox checked={personName.indexOf(title) > -1} label={undefined} value={""} />
-              </Box>}
-              {leadingIcon && <Box className="navi-menu-item-left-icon-container">
-                {leadingIcon}
-              </Box>}
-              {avatar && <Box className="navi-menu-item-avatar-container">
-                {typeof avatar === 'string' ?
-                  <Avatar className="avatar-component" src={avatar} /> :
-                  <Avatar className="avatar-component" >{avatar}</Avatar>}
-              </Box>}
-              <Box className="navi-menu-item-text-container">
-                <TitleTypography>
-                  {title}
-                </TitleTypography>
-                {description && <DescriptionTypography>
-                  {description}
-                </DescriptionTypography>}
-              </Box>
-              {trallingIcon && <Box className="navi-menu-item-right-icon-container">
-                {trallingIcon}
-              </Box>}
+
+            <MenuItem
+              key={title}
+              value={title}
+              disabled={val.disabled}>
+              <MenuItemComp
+                avatar={avatar}
+                leadingIcon={leadingIcon}
+                trallingIcon={trallingIcon}
+                description={description}
+                selectValue={selectValue}
+                title={title}
+                checked={checked}
+                multiSelect={multiSelect}
+                {...val}
+              />
             </MenuItem>
         }
         )}
@@ -163,4 +190,5 @@ const Menu: React.FC<SelectProps> = ({ onClose, data, multiSelect, selectAll, on
     </Box>
   );
 }
+
 export default Menu;

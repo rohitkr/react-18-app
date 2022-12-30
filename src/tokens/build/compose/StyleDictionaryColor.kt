@@ -1,7 +1,7 @@
 
 
 // Do not edit directly
-// Generated on Fri, 25 Nov 2022 06:36:02 GMT
+// Generated on Thu, 15 Dec 2022 12:14:19 GMT
 
 
 
@@ -62,6 +62,7 @@ object StyleDictionaryColor {
   val colorPrimary50 = Color(0xfffff8f5)
   val colorPrimary500 = Color(0xff9e4100)
   val colorPrimary600 = Color(0xff873b00)
+  val colorPrimitiveBlack = Color(0xff000000)
   val colorPrimitiveWhite = Color(0xffffffff)
   val colorSecondary0 = Color(0xfffcfcfd)
   val colorSecondary100 = Color(0xfff2f2f8)

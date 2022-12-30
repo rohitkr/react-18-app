@@ -2,11 +2,12 @@
 
 <!--
   Do not edit directly
-  Generated on Fri, 25 Nov 2022 06:36:02 GMT
+  Generated on Thu, 15 Dec 2022 12:14:19 GMT
 -->
 <resources>
   <color name="color_none">#ff000000</color>
   <color name="color_primitive_white">#ffffffff</color>
+  <color name="color_primitive_black">#ff000000</color>
   <color name="color_primary_50">#fffff8f5</color>
   <color name="color_primary_100">#fffee2d6</color>
   <color name="color_primary_200">#fff58857</color>

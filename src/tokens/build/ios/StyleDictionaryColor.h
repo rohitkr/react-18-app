@@ -4,7 +4,7 @@
 //
 
 // Do not edit directly
-// Generated on Fri, 25 Nov 2022 06:36:02 GMT
+// Generated on Thu, 15 Dec 2022 12:14:19 GMT
 
 
 #import <UIKit/UIKit.h>
@@ -12,6 +12,7 @@
 typedef NS_ENUM(NSInteger, StyleDictionaryColorName) {
 ColorNone,
 ColorPrimitiveWhite,
+ColorPrimitiveBlack,
 ColorPrimary50,
 ColorPrimary100,
 ColorPrimary200,

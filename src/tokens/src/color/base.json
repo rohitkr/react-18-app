@@ -1,8 +1,9 @@
 {
   "color": {
-    "none": {"value": ""},
+    "none": { "value": "" },
     "primitive": {
-      "white": { "value": "#ffffff" }
+      "white": { "value": "#ffffff" },
+      "black": { "value": "#000000" }
     },
     "primary": {
       "400": { "value": "#c74900" },

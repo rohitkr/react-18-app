@@ -1,0 +1,38 @@
+{
+    "divider": {
+        "color": {
+            "light": {
+                "value": "{color.primitive.black}"
+            },
+            "muted": {
+                "value": "{color.secondary.100}"
+            },
+            "dark": {
+                "value": "{color.primitive.white}"
+            }
+        },
+        "opacity": {
+            "light": {
+                "value": "0.05"
+            },
+            "muted": {
+                "value": "1"
+            },
+            "dark": {
+                "value": "0.16"
+            }
+        },
+        "weight": {
+            "1": {
+                "size": {
+                    "value": "0.063rem"
+                }
+            },
+            "2": {
+                "size": {
+                    "value": "0.125rem"
+                }
+            }
+        }
+    }
+}

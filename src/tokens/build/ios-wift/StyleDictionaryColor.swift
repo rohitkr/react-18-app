@@ -4,7 +4,7 @@
 //
 
 // Do not edit directly
-// Generated on Fri, 25 Nov 2022 06:36:02 GMT
+// Generated on Thu, 15 Dec 2022 12:14:19 GMT
 
 
 import UIKit
@@ -60,6 +60,7 @@ public enum StyleDictionaryColor {
     public static let primary50 = UIColor(red: 1.000, green: 0.973, blue: 0.961, alpha: 1)
     public static let primary500 = UIColor(red: 0.620, green: 0.255, blue: 0.000, alpha: 1)
     public static let primary600 = UIColor(red: 0.529, green: 0.231, blue: 0.000, alpha: 1)
+    public static let primitiveBlack = UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 1)
     public static let primitiveWhite = UIColor(red: 1.000, green: 1.000, blue: 1.000, alpha: 1)
     public static let secondary0 = UIColor(red: 0.988, green: 0.988, blue: 0.992, alpha: 1)
     public static let secondary100 = UIColor(red: 0.949, green: 0.949, blue: 0.973, alpha: 1)

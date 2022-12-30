@@ -1,0 +1,220 @@
+{
+  "text": {
+    "heading-01": {
+      "font-family": { "value": "Inter" },
+      "font-weight": { "value": "700" },
+      "font-size": { "value": "2.125rem" },
+      "line-height": { "value": "2.625rem" }
+    },
+    "heading-02": {
+      "font-family": { "value": "Inter" },
+      "font-weight": { "value": "700" },
+      "font-size": { "value": "1.875rem" },
+      "line-height": { "value": "2.375rem" }
+    },
+    "heading-03": {
+      "font-family": { "value": "Inter" },
+      "font-weight": { "value": "700" },
+      "font-size": { "value": "1.625rem" },
+      "line-height": { "value": "2.125rem" }
+    },
+    "heading-04": {
+      "font-family": { "value": "Inter" },
+      "font-weight": { "value": "700" },
+      "font-size": { "value": "1.5rem" },
+      "line-height": { "value": "2rem" }
+    },
+    "heading-05": {
+      "font-family": { "value": "Inter" },
+      "font-weight": { "value": "700" },
+      "font-size": { "value": "1.375rem" },
+      "line-height": { "value": "1.875rem" }
+    },
+    "subheading-01": {
+      "font-family": { "value": "Inter" },
+      "font-weight": { "value": "600" },
+      "font-size": { "value": "1.5rem" },
+      "line-height": { "value": "2rem" }
+    },
+    "subheading-02": {
+      "font-family": { "value": "Inter" },
+      "font-weight": { "value": "600" },
+      "font-size": { "value": "1.375rem" },
+      "line-height": { "value": "1.875rem" }
+    },
+    "subheading-03": {
+      "font-family": { "value": "Inter" },
+      "font-weight": { "value": "600" },
+      "font-size": { "value": "1.25rem" },
+      "line-height": { "value": "1.75rem" }
+    },
+    "subheading-04": {
+      "font-family": { "value": "Inter" },
+      "font-weight": { "value": "600" },
+      "font-size": { "value": "1.125rem" },
+      "line-height": { "value": "1.5rem" }
+    },
+    "subheading-05": {
+      "font-family": { "value": "Inter" },
+      "font-weight": { "value": "600" },
+      "font-size": { "value": "1rem" },
+      "line-height": { "value": "1.5rem" }
+    },
+    "subheading-06": {
+      "font-family": { "value": "Inter" },
+      "font-weight": { "value": "600" },
+      "font-size": { "value": "0.875rem" },
+      "line-height": { "value": "1.25rem" }
+    },
+    "body-01": {
+      "font-family": { "value": "Inter" },
+      "font-weight": { "value": "400" },
+      "font-size": { "value": "1.125rem" },
+      "line-height": { "value": "1.75rem" }
+    },
+    "body-02": {
+      "font-family": { "value": "Inter" },
+      "font-weight": { "value": "400" },
+      "font-size": { "value": "1rem" },
+      "line-height": { "value": "1.5rem" }
+    },
+    "body-03": {
+      "font-family": { "value": "Inter" },
+      "font-weight": { "value": "400" },
+      "font-size": { "value": "0.875rem" },
+      "line-height": { "value": "1.25rem" }
+    },
+    "body-04": {
+      "font-family": { "value": "Inter" },
+      "font-weight": { "value": "400" },
+      "font-size": { "value": "0.75rem" },
+      "line-height": { "value": "1rem" }
+    },
+    "paragraph-large": {
+      "font-family": { "value": "Inter" },
+      "font-weight": { "value": "400" },
+      "font-size": { "value": "1rem" },
+      "line-height": { "value": "1.5rem" }
+    },
+    "paragraph-large-strong": {
+      "font-family": { "value": "Inter" },
+      "font-weight": { "value": "700" },
+      "font-size": { "value": "1rem" },
+      "line-height": { "value": "1.5rem" }
+    },
+    "paragraph-medium": {
+      "font-family": { "value": "Inter" },
+      "font-weight": { "value": "400" },
+      "font-size": { "value": "0.875rem" },
+      "line-height": { "value": "21.375rem" }
+    },
+    "paragraph-medium-strong": {
+      "font-family": { "value": "Inter" },
+      "font-weight": { "value": "700" },
+      "font-size": { "value": "0.875rem" },
+      "line-height": { "value": "1.375rem" }
+    },
+    "paragraph-small": {
+      "font-family": { "value": "Inter" },
+      "font-weight": { "value": "400" },
+      "font-size": { "value": "0.75rem" },
+      "line-height": { "value": "1.25rem" }
+    },
+    "paragraph-small-strong": {
+      "font-family": { "value": "Inter" },
+      "font-weight": { "value": "700" },
+      "font-size": { "value": "0.75rem" },
+      "line-height": { "value": "1.25rem" }
+    },
+    "label-large": {
+      "font-family": { "value": "Inter" },
+      "font-weight": { "value": "500" },
+      "font-size": { "value": "1rem" },
+      "line-height": { "value": "1.5rem" }
+    },
+    "label-large-moderate": {
+      "font-family": { "value": "Inter" },
+      "font-weight": { "value": "600" },
+      "font-size": { "value": "1rem" },
+      "line-height": { "value": "1.5rem" }
+    },
+    "label-medium": {
+      "font-family": { "value": "Inter" },
+      "font-weight": { "value": "500" },
+      "font-size": { "value": "0.875rem" },
+      "line-height": { "value": "1.25rem" }
+    },
+    "label-medium-moderate": {
+      "font-family": { "value": "Inter" },
+      "font-weight": { "value": "600" },
+      "font-size": { "value": "0.875rem" },
+      "line-height": { "value": "1.25rem" }
+    },
+    "label-small": {
+      "font-family": { "value": "Inter" },
+      "font-weight": { "value": "500" },
+      "font-size": { "value": "0.75rem" },
+      "line-height": { "value": "1rem" }
+    },
+    "label-small-moderate": {
+      "font-family": { "value": "Inter" },
+      "font-weight": { "value": "600" },
+      "font-size": { "value": "0.75rem" },
+      "line-height": { "value": "1rem" }
+    },
+    "button-large": {
+      "font-family": { "value": "Inter" },
+      "font-weight": { "value": "500" },
+      "font-size": { "value": "0.875rem" },
+      "line-height": { "value": "1.25rem" }
+    },
+    "button-small": {
+      "font-family": { "value": "Inter" },
+      "font-weight": { "value": "500" },
+      "font-size": { "value": "0.75rem" },
+      "line-height": { "value": "1rem" }
+    },
+    "link-large": {
+      "font-family": { "value": "Inter" },
+      "font-weight": { "value": "500" },
+      "font-size": { "value": "1.125rem" },
+      "line-height": { "value": "1.625rem" },
+      "text-decoration": { "value": "underline" }
+    },
+    "link-medium": {
+      "font-family": { "value": "Inter" },
+      "font-weight": { "value": "500" },
+      "font-size": { "value": "1rem" },
+      "line-height": { "value": "1.5rem" },
+      "text-decoration": { "value": "underline" }
+    },
+    "link-small": {
+      "font-family": { "value": "Inter" },
+      "font-weight": { "value": "500" },
+      "font-size": { "value": "0.875rem" },
+      "line-height": { "value": "1.25rem" },
+      "text-decoration": { "value": "underline" }
+    },
+    "link-xsmall": {
+      "font-family": { "value": "Inter" },
+      "font-weight": { "value": "500" },
+      "font-size": { "value": "0.75rem" },
+      "line-height": { "value": "1rem" },
+      "text-decoration": { "value": "underline" }
+    },
+    "text-input-field-italics": {
+      "font-family": { "value": "Inter" },
+      "font-weight": { "value": "400" },
+      "font-size": { "value": "0.875rem" },
+      "line-height": { "value": "1.25rem" },
+      "font-style": { "value": "italic" }
+    },
+    "text-input-field-character-count": {
+      "font-family": { "value": "Inter" },
+      "font-weight": { "value": "400" },
+      "font-size": { "value": "0.875rem" },
+      "line-height": { "value": "1.25rem" },
+      "font-style": { "value": "italic" }
+    }
+  }
+}
