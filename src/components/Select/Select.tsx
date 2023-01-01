@@ -1,21 +1,16 @@
 import React from "react";
-import { SelectProps, SelectDataProps, SelectItemCardProps } from "./Select.types";
-import {
-  Select,
-  withStyles
-} from '@material-ui/core';
+import { SelectProps, SelectDataProps } from "./Select.types";
+import { Select } from '@material-ui/core';
 import MenuItem from '@material-ui/core/MenuItem';
 import "./Select.scss";
-import CheckBox from "../Checkbox/Checkbox";
 import Box from "../Box/Box";
-import Typography from '@material-ui/core/Typography'
 import tokenObj from '../../tokens/build/json/tokens.json';
-import Avatar from '@material-ui/core/Avatar';
 import TextInput from "../Input/Input";
-import Divider from "../Divider/Divider";
 import ClearIcon from "@material-ui/icons/Clear";
 import IconButton from "../IconButton/IconButton";
 import MenuItemComp from "./MenuItem";
+import ArrowDropDown from "@material-ui/icons/ArrowDropDown";
+import { InputAdornment } from '@material-ui/core';
 
 const Menu: React.FC<SelectProps> = ({
   onClose,
@@ -25,12 +20,9 @@ const Menu: React.FC<SelectProps> = ({
   onMenuChange,
   inputProps,
   ...props }) => {
-  // const [open, setOpen] = React.useState(props.open);
-  const array: string[] = [];
-  // const [selecteData, setSelecteData] = React.useState(array);
-
   const [selectValue, setSelectValue] = React.useState<string[]>([]);
   const [menuData, setMenuData] = React.useState<SelectDataProps[]>(data);
+  const [open, setOpen] = React.useState(false);
 
   const handleChange = (value: unknown, selectAll: boolean) => {
     const data = [...menuData];
@@ -71,7 +63,6 @@ const Menu: React.FC<SelectProps> = ({
         return obj;
       });
     }
-    // setMenuData([...data]);
     setSelectValue(value as string[]);
   }
 
@@ -79,11 +70,6 @@ const Menu: React.FC<SelectProps> = ({
     setMenuData(data);
   }, [data]);
 
-  // React.useEffect(() => {
-  //   setOpen(props.open);
-  // }, [props.open]);
-
-  console.log("selectValue: ", selectValue);
   return (
     <Box className="navi-menu-component">
       {props.children}
@@ -105,10 +91,56 @@ const Menu: React.FC<SelectProps> = ({
             inputType={"default"}
           />
         }
-        // onClose={() => {
-        //   setOpen(false);
-        // }}
+        open={open}
+        // Hide the actual dropdown select icon
+        inputProps={{ IconComponent: () => null }}
+        onClose={() => {
+          setOpen(false);
+        }}
+        onOpen={() => {
+          setOpen(true);
+        }}
+        // Placement of custom clear and dropdown icon button
+        endAdornment={
+          <InputAdornment position="start" style={{ marginRight: "0px" }}>
+            <IconButton
+              // position="start"
+              // style={{ marginRight: "20px" }}
+              size="small"
+              variant="tertiary"
+              intent="muted"
+              style={{ display: selectValue.length ? "block" : "none", marginRight: "0px" }}
+              title={"Clear"}
+              onClick={() => {
+                setSelectValue([]);
+                setMenuData((oldData) => {
+                  return oldData.map(v => {
+                    v.checked = false;
+                    return v;
+                  });
+                });
+              }}
+            >
+              <ClearIcon />
+            </IconButton>
+            <IconButton
+              size="small"
+              variant="tertiary"
+              intent="muted"
+              style={{ marginRight: "0px", transform: `${open ? "rotate(180deg)" : "rotate(0deg)"}` }}
+              title={"Open"}
+              onClick={() => {
+                setOpen(true);
+              }}
+            >
+              <ArrowDropDown />
+            </IconButton>
+          </InputAdornment>
+        }
+
         MenuProps={{
+          // Height of the menu dropdown
+          PaperProps: { style: { maxHeight: 'calc(100% - 400px)' } },
           anchorOrigin: {
             vertical: "bottom",
             horizontal: "left"
@@ -119,38 +151,14 @@ const Menu: React.FC<SelectProps> = ({
           },
           getContentAnchorEl: null
         }}
-        // startAdornment={
-        //   <ClearIcon />
-        // }
-        endAdornment={
-          <IconButton
-            size="small"
-            variant="tertiary"
-            intent="muted"
-            style={{ display: selectValue.length ? "block" : "none" }}
-            title={"Clear"}
-            onClick={() => {
-              // window.update = setSelectValue;
-              setSelectValue([]);
-            }}
-          >
-            <ClearIcon />
-          </IconButton>
-        }
       >
         {selectAll ?
           <MenuItem
             value={"select-all"}
-            // onClick={(e)={}}
             disabled={menuData.length === 0}>
             <MenuItemComp
-              // avatar={avatar}
-              // leadingIcon={leadingIcon}
-              // trallingIcon={trallingIcon}
-              // description={description}
               selectValue={selectValue}
               title={"Select All"}
-              // checked={checked}
               multiSelect={multiSelect}
             />
           </MenuItem> : null}

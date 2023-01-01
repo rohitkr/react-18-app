@@ -14,7 +14,7 @@ import { MenuDataProps } from "../Menu/Menu.types";
 import { Pencil as Edit, Movie } from 'tabler-icons-react';
 import TextInput from '../Input/Input';
 import SelectDemo from './SelectDemo';
-import ClearAll from "./ClearAll";
+// import ClearAll from "./ClearAll";
 import SelectClearAll from "./SelectClearAll";
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -368,7 +368,7 @@ export default function AutocompleteControlled() {
         >
         </Select>
 
-        <ClearAll />
+        {/* <ClearAll /> */}
 
         <SelectClearAll />
 

@@ -72,6 +72,7 @@ export default function MultipleSelect() {
   const classes = useStyles();
   const theme = useTheme();
   const [personName, setPersonName] = React.useState<string[]>([]);
+  const [open, setOpen] = React.useState(false);
 
   const handleChange = (event: React.ChangeEvent<{ value: unknown }>) => {
     setPersonName(event.target.value as string[]);
@@ -87,30 +88,48 @@ export default function MultipleSelect() {
           labelId="demo-mutiple-chip-label"
           id="demo-mutiple-chip"
           multiple
+          open={open}
           value={personName}
           onChange={handleChange}
-          style={{ minWidth: "200px" }}
+          style={{ minWidth: "300px" }}
           input={<Input id="select-multiple-chip" />}
-          IconComponent={ArrowBackOutlined}
-
+          // IconComponent={ArrowBackOutlined}
+          inputProps={{ IconComponent: () => null }} // this part
+          onClose={() => {
+            setOpen(false);
+          }}
+          onOpen={() => {
+            setOpen(true);
+          }}
           endAdornment={
-            // <InputAdornment position="start" style={{ marginRight: "20px" }}>
-            <IconButton
-              // position="start"
-              // style={{ marginRight: "20px" }}
-              size="small"
-              variant="tertiary"
-              intent="muted"
-              style={{ display: personName.length ? "block" : "none", marginRight: "20px" }}
-              title={"Clear"}
-              onClick={() => {
-                // window.update = setSelectValue;
-                setPersonName([]);
-              }}
-            >
-              <ClearIcon />
-            </IconButton>
-            // </InputAdornment>
+            <InputAdornment position="start" style={{ marginRight: "0px" }}>
+              <IconButton
+                // position="start"
+                // style={{ marginRight: "20px" }}
+                size="small"
+                variant="tertiary"
+                intent="muted"
+                style={{ display: personName.length ? "block" : "none", marginRight: "0px" }}
+                title={"Clear"}
+                onClick={() => {
+                  setPersonName([]);
+                }}
+              >
+                <ClearIcon />
+              </IconButton>
+              <IconButton
+                size="small"
+                variant="tertiary"
+                intent="muted"
+                style={{ marginRight: "0px", transform: `${open ? "rotate(180deg)" : "rotate(0deg)"}` }}
+                title={"Open"}
+                onClick={() => {
+                  setOpen(true);
+                }}
+              >
+                <ArrowDropDown />
+              </IconButton>
+            </InputAdornment>
           }
 
           // endAdornment={
