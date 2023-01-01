@@ -14,7 +14,8 @@ import { MenuDataProps } from "../Menu/Menu.types";
 import { Pencil as Edit, Movie } from 'tabler-icons-react';
 import TextInput from '../Input/Input';
 import SelectDemo from './SelectDemo';
-
+import ClearAll from "./ClearAll";
+import SelectClearAll from "./SelectClearAll";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -156,7 +157,7 @@ export default function AutocompleteControlled() {
   return (
     <div className={classes.root} style={{ textAlign: 'left', margin: 'auto', paddingTop: "50px", height: "1500px" }}>
 
-      <SelectDemo/>
+      <SelectDemo />
 
       <div style={{ height: '80px' }}>
         <TextInput
@@ -366,6 +367,11 @@ export default function AutocompleteControlled() {
           }}
         >
         </Select>
+
+        <ClearAll />
+
+        <SelectClearAll />
+
       </div>
 
     </div>

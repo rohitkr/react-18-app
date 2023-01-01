@@ -130,6 +130,7 @@ const Menu: React.FC<SelectProps> = ({
             style={{ display: selectValue.length ? "block" : "none" }}
             title={"Clear"}
             onClick={() => {
+              // window.update = setSelectValue;
               setSelectValue([]);
             }}
           >

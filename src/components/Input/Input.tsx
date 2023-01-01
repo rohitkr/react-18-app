@@ -11,7 +11,8 @@ import "./Input.scss";
 
 const tokenObj: { [key: string]: any } = tokens;
 
-const inputMinWidth = 280;
+const INPUT_MIN_WIDTH = 280;
+const INPUT_MAX_WIDTH = 280;
 
 const TextInput = ({
   inputType = "default",
@@ -23,14 +24,19 @@ const TextInput = ({
   required,
   moreInfo,
   minWidth,
+  maxWidth,
   tooltipPlacement,
   size = 'large',
   ...props
 }: NaviInputProps) => {
 
   const inputWidth = minWidth
-    ? Math.max(minWidth, inputMinWidth)
-    : inputMinWidth;
+    ? Math.max(minWidth, INPUT_MIN_WIDTH)
+    : INPUT_MIN_WIDTH;
+
+  const inputMaxWidth = maxWidth
+    ? Math.max(maxWidth, INPUT_MAX_WIDTH)
+    : INPUT_MAX_WIDTH;
 
   const [inputValue, setInputValue] = React.useState(props.value || "");
   const [internalError, setInternalError] = useState("");
@@ -158,7 +164,10 @@ const TextInput = ({
         ${errorClass}
         ${props.className}
       `}
-      style={{ minWidth: inputWidth }}
+      style={{
+        minWidth: inputWidth,
+        maxWidth: inputMaxWidth
+      }}
       inputProps={inputProps}
       onBlur={handleBlur}
       onChange={handleInputChange}
