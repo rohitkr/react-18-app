@@ -1,8 +1,7 @@
 import React from "react";
 import Chip from "@material-ui/core/Chip";
-import Autocomplete from "@material-ui/lab/Autocomplete";
 import { createStyles, makeStyles, Theme } from "@material-ui/core/styles";
-import TextField from "@material-ui/core/TextField";
+import TextField, { TextFieldProps } from "@material-ui/core/TextField";
 import Select from '../Select/Select';
 import Menu from '../Menu/Menu';
 import SelectButton from '../Menu/SelectButton';
@@ -15,6 +14,7 @@ import { Pencil as Edit, Movie } from 'tabler-icons-react';
 import TextInput from '../Input/Input';
 import SelectDemo from './SelectDemo';
 // import ClearAll from "./ClearAll";
+import Autocomplete from "./Autocomplete";
 import SelectClearAll from "./SelectClearAll";
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -142,7 +142,6 @@ export default function AutocompleteControlled() {
   const classes = useStyles();
 
   const [value, setValue] = React.useState<any>([userList[0].name]);
-
 
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
@@ -371,6 +370,8 @@ export default function AutocompleteControlled() {
         {/* <ClearAll /> */}
 
         <SelectClearAll />
+
+        <Autocomplete />
 
       </div>
 

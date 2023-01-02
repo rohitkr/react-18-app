@@ -2,7 +2,6 @@ import React from "react";
 import { SelectProps, SelectDataProps } from "./Select.types";
 import { Select } from '@material-ui/core';
 import MenuItem from '@material-ui/core/MenuItem';
-import "./Select.scss";
 import Box from "../Box/Box";
 import tokenObj from '../../tokens/build/json/tokens.json';
 import TextInput from "../Input/Input";
@@ -11,6 +10,7 @@ import IconButton from "../IconButton/IconButton";
 import MenuItemComp from "./MenuItem";
 import ArrowDropDown from "@material-ui/icons/ArrowDropDown";
 import { InputAdornment } from '@material-ui/core';
+import "./Select.scss";
 
 const Menu: React.FC<SelectProps> = ({
   onClose,
@@ -56,6 +56,7 @@ const Menu: React.FC<SelectProps> = ({
   const selectAllOptions = (select: boolean) => {
     const data = [...menuData];
     const value: string[] = [];
+
     if (select) {
       data.map((obj) => {
         obj.checked = true;
@@ -70,8 +71,12 @@ const Menu: React.FC<SelectProps> = ({
     setMenuData(data);
   }, [data]);
 
+  const inputRef = React.useRef<HTMLInputElement>(null);
+
   return (
-    <Box className="navi-menu-component">
+    <Box className="navi-menu-component"
+      ref={inputRef}
+    >
       {props.children}
       <Select
         multiple={multiSelect}
@@ -79,6 +84,7 @@ const Menu: React.FC<SelectProps> = ({
         onChange={(event: React.ChangeEvent<{ value: unknown }>) => {
           const { value } = event.target;
           const selectAllOption = value instanceof Array && (value[0] === "select-all");
+          console.log(inputRef.current);
           handleChange(value, selectAllOption);
         }}
         renderValue={(selected) => {
@@ -92,6 +98,7 @@ const Menu: React.FC<SelectProps> = ({
           />
         }
         open={open}
+
         // Hide the actual dropdown select icon
         inputProps={{ IconComponent: () => null }}
         onClose={() => {
@@ -140,7 +147,12 @@ const Menu: React.FC<SelectProps> = ({
 
         MenuProps={{
           // Height of the menu dropdown
-          PaperProps: { style: { maxHeight: 'calc(100% - 400px)' } },
+          PaperProps: {
+            style: {
+              maxHeight: 'calc(100% - 200px)', minWidth: `calc(${inputRef.current?.offsetWidth}px + 100px`
+            },
+            className: "navi-menu-item-container",
+          },
           anchorOrigin: {
             vertical: "bottom",
             horizontal: "left"
@@ -149,12 +161,16 @@ const Menu: React.FC<SelectProps> = ({
             vertical: "top",
             horizontal: "left"
           },
+          className: "navi-menu-item-container",
+          // anchorEl: inputRef.current,
+          // getContentAnchorEl: () => inputRef.current,
           getContentAnchorEl: null
         }}
       >
         {selectAll ?
           <MenuItem
             value={"select-all"}
+            className="navi-menu-item-list-item"
             disabled={menuData.length === 0}>
             <MenuItemComp
               selectValue={selectValue}
@@ -180,6 +196,9 @@ const Menu: React.FC<SelectProps> = ({
             <MenuItem
               key={title}
               value={title}
+              className={`navi-menu-item-list-item ${checked ? 'navi-item-selected' : ''} `}
+              disableRipple
+
               disabled={val.disabled}>
               <MenuItemComp
                 avatar={avatar}

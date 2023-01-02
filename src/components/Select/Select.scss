@@ -1,27 +1,33 @@
 @import "../../tokens/build/scss/variables.scss";
 
-// .navi-menu-component {
-  .navi-menu-item-list-item {
-    padding: 4px 8px;
-  }
+.navi-menu-item-container {
+
+  // .navi-menu-item-list-item {
+  // padding: 4px 8px;
+  // }
+
   .navi-menu-item-list-item:hover {
     background-color: $color-secondary-50;
+    // background-color: #f00;
   }
+
   .navi-item-selected {
-    background-color: $color-info-50;
+    // background-color: $color-info-50;
+    background-color: #f00;
   }
+
   .navi-item-selected:hover {
     background-color: $color-info-50;
   }
 
-  .navi-menu-item-list-item-content {
-    padding: 4px 8px;
-    display: flex;
-    width: 100%;
-    align-items: stretch;
-    // Color for the SVG
-    color: $color-secondary-600;
-  }
+  // .navi-menu-item-list-item-content {
+  //   padding: 4px 8px;
+  //   display: flex;
+  //   width: 100%;
+  //   align-items: stretch;
+  //   // Color for the SVG
+  //   color: $color-secondary-600;
+  // }
 
   .navi-menu-item-checkbox-container {
     display: flex;
@@ -36,12 +42,14 @@
     justify-content: center;
     margin-right: 12px;
   }
+
   .navi-menu-item-right-icon-container {
     display: flex;
     flex-direction: column;
     justify-content: center;
     margin-left: 12px;
   }
+
   .navi-menu-item-left-icon-container {
     display: flex;
     flex-direction: column;
@@ -63,3 +71,5 @@
     background: $color-secondary-50;
     color: $color-secondary-600;
   }
+
+}

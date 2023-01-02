@@ -28,11 +28,11 @@
   .navi-select-input-container {
     padding: 0;
     outline: none;
+    outline: $input-type-default-outline;
+    border-radius: $input-type-root-border-radius;
 
     .MuiSelect-root {
       padding: $input-type-root-padding;
-      outline: $input-type-default-outline;
-      border-radius: $input-type-root-border-radius;
     }
   }
 
@@ -88,14 +88,17 @@
     font-family: $input-label-base-font-family;
     font-style: $input-type-root-font-style;
     font-weight: $input-type-root-font-weight;
+
     &:hover {
       outline: $input-type-hover-outline;
     }
   }
+
   .large {
     height: $input-size-large-height;
     font-size: $input-size-large-font-size;
     line-height: $input-size-large-line-height;
+
     ::-webkit-input-placeholder {
       font-family: $input-placeholder-font-family;
       font-style: $input-placeholder-font-style;
@@ -105,10 +108,12 @@
       color: $input-placeholder-color;
     }
   }
+
   .small {
     height: $input-size-small-height;
     font-size: $input-size-small-font-size;
     line-height: $input-size-small-line-height;
+
     ::-webkit-input-placeholder {
       font-family: $input-placeholder-font-family;
       font-style: $input-placeholder-font-style;
@@ -118,28 +123,34 @@
       color: $input-placeholder-color;
     }
   }
+
   .disabled {
     outline: $input-type-disabled-outline;
     background-color: $input-type-disabled-background-color;
     font-family: $input-type-disabled-font-family;
     font-style: $input-type-disabled-font-style;
+
     &:hover {
       outline: $input-type-disabled-outline;
     }
   }
+
   .empty-field {
     &:hover {
       background-color: $input-type-root-background-color;
     }
   }
+
   .filled-field {
     &:hover {
       background-color: $input-type-hover-background-color;
     }
   }
+
   .default {
     // outline: $input-type-default-outline;
   }
+
   .success {
     outline: $input-type-success-outline;
 
@@ -147,12 +158,15 @@
       outline: $input-type-success-outline;
     }
   }
+
   .critical {
     outline: $input-type-error-outline;
+
     &:hover {
       outline: $input-type-error-outline;
     }
   }
+
   .read-only {
     background-color: $input-type-read-only-background-color;
     color: $input-type-read-only-color;
