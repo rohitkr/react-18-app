@@ -19,23 +19,23 @@ const Menu: React.FC<SelectProps> = ({
   selectAll,
   onMenuChange,
   inputProps,
+  checkboxes = true,
   ...props }) => {
   const [selectValue, setSelectValue] = React.useState<string[]>([]);
   const [menuData, setMenuData] = React.useState<SelectDataProps[]>(data);
   const [open, setOpen] = React.useState(false);
+  const [selectAllItems, setSelectAllItems] = React.useState(selectAll);
 
-  const handleChange = (value: unknown, selectAll: boolean) => {
+  const handleChange = (value: unknown) => {
     const data = [...menuData];
 
     if (selectAll) {
-      selectAllOptions(true);
       return;
     }
 
     if (value instanceof Array) {
       if (value.length) {
         value.forEach((selectedValue) => {
-          console.log("value: ", value)
           data.map((obj) => {
             obj.checked = (obj.title === selectedValue) || selectAll;
             return obj;
@@ -55,7 +55,7 @@ const Menu: React.FC<SelectProps> = ({
 
   const selectAllOptions = (select: boolean) => {
     const data = [...menuData];
-    const value: string[] = [];
+    const value: string[] = [""];
 
     if (select) {
       data.map((obj) => {
@@ -63,13 +63,24 @@ const Menu: React.FC<SelectProps> = ({
         obj.title && value.push(obj.title);
         return obj;
       });
+      value.push('select-all');
+      setSelectValue(value);
+    } else {
+      setSelectValue(['']);
+      setMenuData((val) => {
+        val.map((obj) => {
+          obj.checked = false;
+          return obj;
+        });
+        return val
+      });
     }
-    setSelectValue(value as string[]);
   }
 
   React.useEffect(() => {
     setMenuData(data);
-  }, [data]);
+    setSelectAllItems(selectAll);
+  }, [data, selectAll]);
 
   const inputRef = React.useRef<HTMLInputElement>(null);
 
@@ -81,11 +92,12 @@ const Menu: React.FC<SelectProps> = ({
       <Select
         multiple={multiSelect}
         value={selectValue}
+        defaultValue=""
         onChange={(event: React.ChangeEvent<{ value: unknown }>) => {
           const { value } = event.target;
-          const selectAllOption = value instanceof Array && (value[0] === "select-all");
-          console.log(inputRef.current);
-          handleChange(value, selectAllOption);
+          const selectAllOption = value instanceof Array && (value.indexOf("select-all") !== -1);
+          const input = event.nativeEvent.target as HTMLElement;
+          input.innerText !== 'Select All' && handleChange(value);
         }}
         renderValue={(selected) => {
           return typeof selected === 'string' ? selected : ((selected) as string[]).join(', ')
@@ -111,8 +123,6 @@ const Menu: React.FC<SelectProps> = ({
         endAdornment={
           <InputAdornment position="start" style={{ marginRight: "0px" }}>
             <IconButton
-              // position="start"
-              // style={{ marginRight: "20px" }}
               size="small"
               variant="tertiary"
               intent="muted"
@@ -161,18 +171,25 @@ const Menu: React.FC<SelectProps> = ({
             vertical: "top",
             horizontal: "left"
           },
-          className: "navi-menu-item-container",
+          // className: "navi-menu-item-container",
           // anchorEl: inputRef.current,
           // getContentAnchorEl: () => inputRef.current,
           getContentAnchorEl: null
         }}
       >
-        {selectAll ?
+        {multiSelect ?
           <MenuItem
             value={"select-all"}
-            className="navi-menu-item-list-item"
+            // className="navi-menu-item-list-item"
+            disableRipple
+            className={`navi-menu-item-list-item ${(selectValue.indexOf("select-all") > -1) ? 'navi-item-selected' : ''} `}
+            onClick={(e) => {
+              selectAllOptions(!(selectValue.indexOf("select-all") > -1))
+            }}
             disabled={menuData.length === 0}>
             <MenuItemComp
+              checkboxes={checkboxes}
+              checked={selectValue.indexOf("select-all") > -1}
               selectValue={selectValue}
               title={"Select All"}
               multiSelect={multiSelect}
@@ -196,7 +213,7 @@ const Menu: React.FC<SelectProps> = ({
             <MenuItem
               key={title}
               value={title}
-              className={`navi-menu-item-list-item ${checked ? 'navi-item-selected' : ''} `}
+              className={`navi-menu-item-list-item ${(selectValue.indexOf(title) > -1) ? 'navi-item-selected' : ''} `}
               disableRipple
 
               disabled={val.disabled}>
@@ -207,7 +224,8 @@ const Menu: React.FC<SelectProps> = ({
                 description={description}
                 selectValue={selectValue}
                 title={title}
-                checked={checked}
+                checked={selectValue.indexOf(title) > -1 || selectAllItems}
+                checkboxes={checkboxes}
                 multiSelect={multiSelect}
                 {...val}
               />

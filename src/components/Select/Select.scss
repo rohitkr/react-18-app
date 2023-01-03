@@ -5,19 +5,18 @@
   // .navi-menu-item-list-item {
   // padding: 4px 8px;
   // }
+  ul {
+    .navi-menu-item-list-item:hover {
+      background-color: $color-secondary-50;
+    }
 
-  .navi-menu-item-list-item:hover {
-    background-color: $color-secondary-50;
-    // background-color: #f00;
-  }
+    .navi-item-selected {
+      background-color: $color-info-50;
+    }
 
-  .navi-item-selected {
-    // background-color: $color-info-50;
-    background-color: #f00;
-  }
-
-  .navi-item-selected:hover {
-    background-color: $color-info-50;
+    .navi-item-selected:hover {
+      background-color: $color-info-50;
+    }
   }
 
   // .navi-menu-item-list-item-content {

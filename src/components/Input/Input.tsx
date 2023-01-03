@@ -94,8 +94,6 @@ const TextInput = ({
     }
   }
 
-  console.log("size: ", size)
-
   return (<Box
     style={{ display: "inline-block" }}
     className={`navi-input-container ${props.className}`}

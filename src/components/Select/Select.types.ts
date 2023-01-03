@@ -18,6 +18,7 @@ export interface SelectProps extends MuiMenuProps {
   anchorEl?: HTMLElement | null;
   multiSelect?: boolean;
   selectAll?: boolean;
+  checkboxes?: boolean;
   inputProps?: NaviInputProps;
   onMenuChange?: (
     event: React.MouseEvent<{ name?: string; value?: unknown }>,
@@ -34,6 +35,7 @@ export interface SelectItemCardProps {
   avatar?: React.ReactNode;
   multiSelect?: boolean;
   selected?: boolean;
+  checkboxes?: boolean;
   value?: string;
   checked?: boolean;
   disabled?: boolean;

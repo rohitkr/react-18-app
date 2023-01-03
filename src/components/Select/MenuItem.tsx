@@ -40,11 +40,13 @@ const MenuItemComp = ({
   avatar,
   description,
   trallingIcon,
+  checked,
+  checkboxes = true,
   ...val }: SelectItemCardProps) => {
 
   return (<>
-    {multiSelect && <Box className="navi-menu-item-checkbox-container">
-      <CheckBox checked={selectValue.indexOf(title) > -1} label={undefined} value={""} />
+    {multiSelect && checkboxes && <Box className="navi-menu-item-checkbox-container">
+      <CheckBox checked={checked} label={undefined} value={""} />
     </Box>}
     {leadingIcon && <Box className="navi-menu-item-left-icon-container">
       {leadingIcon}

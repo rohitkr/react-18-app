@@ -350,7 +350,7 @@ export default function AutocompleteControlled() {
           onClose={handleClose}
           data={data}
           multiSelect={true}
-          selectAll={true}
+          selectAll={false}
           inputProps={{
             errorMessage: "Error message",
             helperText: "Helper text",
