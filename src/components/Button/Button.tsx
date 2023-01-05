@@ -25,6 +25,7 @@ interface PaletteTypes {
   primary: any;
   secondary: any;
   tertiary: any;
+  selected: any;
 }
 interface Palette {
   muted: PaletteTypes;
@@ -79,6 +80,19 @@ const palette: Palette = {
       backgroundPressed: colorObj['button-color-muted-tertiary-background-pressed'],
       disabledText: colorObj['button-color-muted-tertiary-disabled-label']
     },
+    selected: {
+      shadow: colorObj['button-color-muted-selected-shadow'],
+      text: colorObj['button-color-muted-selected-label'],
+      textHover: colorObj['button-color-muted-selected-label-hover'],
+      textPressed: colorObj['button-color-muted-selected-label-pressed'],
+      border: "",
+      borderHover: "",
+      borderPressed: "",
+      background: colorObj['button-color-muted-selected-background'],
+      backgroundHover: colorObj['button-color-muted-selected-background-hover'],
+      backgroundPressed: colorObj['button-color-muted-selected-background-pressed'],
+      disabledText: colorObj['button-color-muted-selected-disabled-label']
+    }
   },
   mutedLight: {
     primary: {
@@ -126,6 +140,19 @@ const palette: Palette = {
         colorObj['button-color-muted-light-tertiary-background-pressed-opacity']),
       disabledText: colorObj['button-color-muted-light-tertiary-disabled-label']
     },
+    selected: {
+      shadow: colorObj['button-color-muted-light-selected-shadow'],
+      text: colorObj['button-color-muted-light-selected-label'],
+      textHover: colorObj['button-color-muted-light-selected-label-hover'],
+      textPressed: colorObj['button-color-muted-light-selected-label-pressed'],
+      border: "",
+      borderHover: "",
+      borderPressed: "",
+      background: colorObj['button-color-muted-light-selected-background'],
+      backgroundHover: colorObj['button-color-muted-light-selected-background-hover'],
+      backgroundPressed: colorObj['button-color-muted-light-selected-background-pressed'],
+      disabledText: colorObj['button-color-muted-light-selected-disabled-label']
+    }
   },
   prime: {
     primary: {
@@ -169,6 +196,19 @@ const palette: Palette = {
       backgroundPressed: colorObj['button-color-prime-tertiary-background-pressed'],
       disabledText: colorObj['button-color-prime-tertiary-disabled-label']
     },
+    selected: {
+      shadow: colorObj['button-color-prime-selected-shadow'],
+      text: colorObj['button-color-prime-selected-label'],
+      textHover: colorObj['button-color-prime-selected-label-hover'],
+      textPressed: colorObj['button-color-prime-selected-label-pressed'],
+      border: "",
+      borderHover: "",
+      borderPressed: "",
+      background: colorObj['button-color-prime-selected-background'],
+      backgroundHover: colorObj['button-color-prime-selected-background-hover'],
+      backgroundPressed: colorObj['button-color-prime-selected-background-pressed'],
+      disabledText: colorObj['button-color-prime-selected-disabled-label']
+    }
   },
   critical: {
     primary: {
@@ -212,6 +252,19 @@ const palette: Palette = {
       backgroundPressed: colorObj['button-color-critical-tertiary-background-pressed'],
       disabledText: colorObj['button-color-critical-tertiary-disabled-label']
     },
+    selected: {
+      shadow: colorObj['button-color-critical-selected-shadow'],
+      text: colorObj['button-color-critical-selected-label'],
+      textHover: colorObj['button-color-critical-selected-label-hover'],
+      textPressed: colorObj['button-color-critical-selected-label-pressed'],
+      border: "",
+      borderHover: "",
+      borderPressed: "",
+      background: colorObj['button-color-critical-selected-background'],
+      backgroundHover: colorObj['button-color-critical-selected-background-hover'],
+      backgroundPressed: colorObj['button-color-critical-selected-background-pressed'],
+      disabledText: colorObj['button-color-critical-selected-disabled-label']
+    }
   },
   info: {
     primary: {
@@ -255,6 +308,19 @@ const palette: Palette = {
       backgroundPressed: colorObj['button-color-info-tertiary-background-pressed'],
       disabledText: colorObj['button-color-info-tertiary-disabled-label']
     },
+    selected: {
+      shadow: colorObj['button-color-info-selected-shadow'],
+      text: colorObj['button-color-info-selected-label'],
+      textHover: colorObj['button-color-info-selected-label-hover'],
+      textPressed: colorObj['button-color-info-selected-label-pressed'],
+      border: "",
+      borderHover: "",
+      borderPressed: "",
+      background: colorObj['button-color-info-selected-background'],
+      backgroundHover: colorObj['button-color-info-selected-background-hover'],
+      backgroundPressed: colorObj['button-color-info-selected-background-pressed'],
+      disabledText: colorObj['button-color-info-selected-disabled-label']
+    }
   },
   success: {
     primary: {
@@ -298,6 +364,19 @@ const palette: Palette = {
       backgroundPressed: colorObj['button-color-success-tertiary-background-pressed'],
       disabledText: colorObj['button-color-success-tertiary-disabled-label']
     },
+    selected: {
+      shadow: colorObj['button-color-success-selected-shadow'],
+      text: colorObj['button-color-success-selected-label'],
+      textHover: colorObj['button-color-success-selected-label-hover'],
+      textPressed: colorObj['button-color-success-selected-label-pressed'],
+      border: "",
+      borderHover: "",
+      borderPressed: "",
+      background: colorObj['button-color-success-selected-background'],
+      backgroundHover: colorObj['button-color-success-selected-background-hover'],
+      backgroundPressed: colorObj['button-color-success-selected-background-pressed'],
+      disabledText: colorObj['button-color-success-selected-disabled-label']
+    }
   },
   warning: {
     primary: {
@@ -341,6 +420,19 @@ const palette: Palette = {
       backgroundPressed: colorObj['button-color-warning-tertiary-background-pressed'],
       disabledText: colorObj['button-color-warning-tertiary-disabled-label']
     },
+    selected: {
+      shadow: colorObj['button-color-warning-selected-shadow'],
+      text: colorObj['button-color-warning-selected-label'],
+      textHover: colorObj['button-color-warning-selected-label-hover'],
+      textPressed: colorObj['button-color-warning-selected-label-pressed'],
+      border: "",
+      borderHover: "",
+      borderPressed: "",
+      background: colorObj['button-color-warning-selected-background'],
+      backgroundHover: colorObj['button-color-warning-selected-background-hover'],
+      backgroundPressed: colorObj['button-color-warning-selected-background-pressed'],
+      disabledText: colorObj['button-color-warning-selected-disabled-label']
+    }
   },
 };
 
@@ -382,7 +474,7 @@ const getStyles = (
             // backgroundColor: palette[keys].primary.light
           }
         },
-        '&:focus': {
+        '&:focus-visible': {
           boxShadow: "0px 0px 0px 4px " + getFocusColor(palette[keys].primary.shadow),
         },
         '&:active': {
@@ -411,7 +503,7 @@ const getStyles = (
           color: palette[keys].secondary.textHover,
           backgroundColor: palette[keys].secondary.backgroundHover,
         },
-        '&:focus': {
+        '&:focus-visible': {
           boxShadow: "0px 0px 0px 4px " + getFocusColor(palette[keys].secondary.shadow),
         },
         '&:active': {
@@ -440,15 +532,39 @@ const getStyles = (
           backgroundColor: palette[keys].tertiary.backgroundHover,
           color: palette[keys].tertiary.textHover,
         },
-        '&:focus': {
+        '&:focus-visible': {
           boxShadow: "0px 0px 0px 4px " + getFocusColor(palette[keys].tertiary.shadow),
         },
         "&:disabled": {
           color: palette[keys].tertiary.disabledText,
         }
       }
-    }
 
+      resultObj['selected' + captilizeFirstLetter(keys)] = {
+        color: palette[keys].selected.text,
+        fontSize: fontSize,
+        lineHeight: lineHeight,
+        padding: padding,
+        boxShadow: "none",
+        borderRadius: borderRadius,
+        backgroundColor: palette[keys].selected.background,
+        "& svg": {
+          width: size === 'large' ? "20px" : "16px",
+          height: size === 'large' ? "20px" : "16px",
+        },
+        "&:hover": {
+          boxShadow: "none",
+          backgroundColor: palette[keys].selected.background,
+          color: palette[keys].selected.text,
+        },
+        '&:focus': {
+          boxShadow: "0px 0px 0px 4px " + getFocusColor(palette[keys].selected.shadow),
+        },
+        "&:disabled": {
+          color: palette[keys].selected.disabledText,
+        }
+      }
+    }
     return resultObj;
   };
 

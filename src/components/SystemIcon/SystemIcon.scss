@@ -1,0 +1,170 @@
+@import "../../tokens/build/scss/variables.scss";
+
+.navi-system-icon-container {
+  display: $systemicon-root-display;
+  border-radius: $systemicon-root-border-radius;
+
+  .small {
+    height: $systemicon-root-size-small-height;
+    width: $systemicon-root-size-small-width;
+    svg {
+      height: $systemicon-icon-size-small;
+      width: $systemicon-icon-size-small;
+      stroke-width: 3;
+    }
+  }
+
+  .medium {
+    height: $systemicon-root-size-standard-height;
+    width: $systemicon-root-size-standard-width;
+    svg {
+      height: $systemicon-icon-size-standard;
+      width: $systemicon-icon-size-standard;
+    }
+  }
+
+  .large {
+    height: $systemicon-root-size-large-height;
+    width: $systemicon-root-size-large-width;
+    svg {
+      height: $systemicon-icon-size-large;
+      width: $systemicon-icon-size-large;
+    }
+  }
+
+  .info {
+    color: $systemicon-intent-info-color;
+    &:hover {
+      color: $systemicon-intent-info-hover-color;
+      background-color: $systemicon-intent-info-hover-background-color;
+      transition: background-color 500ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+    }
+    &:focus {
+      outline: $systemicon-intent-info-focus-outline;
+    }
+    &:focus-visible {
+      outline: $systemicon-intent-info-focus-outline;
+    }
+    &:active {
+      background-color: $systemicon-intent-info-pressed-background-color;
+    }
+  }
+
+  .critical {
+    color: $systemicon-intent-critical-color;
+    &:hover {
+      color: $systemicon-intent-critical-hover-color;
+      background-color: $systemicon-intent-critical-hover-background-color;
+      transition: background-color 500ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+    }
+    &:focus {
+      outline: $systemicon-intent-critical-focus-outline;
+    }
+    &:focus-visible {
+      outline: $systemicon-intent-critical-focus-outline;
+    }
+    &:active {
+      background-color: $systemicon-intent-critical-pressed-background-color;
+    }
+  }
+
+  .success {
+    color: $systemicon-intent-success-color;
+
+    &:hover {
+      color: $systemicon-intent-success-hover-color;
+      background-color: $systemicon-intent-success-hover-background-color;
+      transition: background-color 500ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+    }
+    &:focus {
+      outline: $systemicon-intent-success-focus-outline;
+    }
+    &:focus-visible {
+      outline: $systemicon-intent-success-focus-outline;
+    }
+    &:active {
+      background-color: $systemicon-intent-success-pressed-background-color;
+    }
+  }
+
+  .muted-dark {
+    color: $systemicon-intent-muted-dark-color;
+
+    &:hover {
+      color: $systemicon-intent-muted-dark-hover-color;
+      background-color: $systemicon-intent-muted-dark-hover-background-color;
+      transition: background-color 500ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+    }
+    &:focus {
+      outline: $systemicon-intent-muted-dark-focus-outline;
+    }
+    &:focus-visible {
+      outline: $systemicon-intent-muted-dark-focus-outline;
+    }
+    &:active {
+      background-color: $systemicon-intent-muted-dark-pressed-background-color;
+    }
+  }
+
+  .warning {
+    color: $systemicon-intent-warning-color;
+
+    &:hover {
+      color: $systemicon-intent-warning-hover-color;
+      background-color: $systemicon-intent-warning-hover-background-color;
+      transition: background-color 500ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+    }
+    &:focus {
+      outline: $systemicon-intent-warning-focus-outline;
+    }
+    &:focus-visible {
+      outline: $systemicon-intent-warning-focus-outline;
+    }
+    &:active {
+      background-color: $systemicon-intent-warning-pressed-background-color;
+    }
+  }
+
+  .muted-light {
+    color: $systemicon-intent-muted-light-color;
+
+    &:hover {
+      color: $systemicon-intent-muted-light-hover-color;
+      background-color: $systemicon-intent-muted-light-hover-background-color;
+      transition: background-color 500ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+    }
+    &:focus {
+      outline: $systemicon-intent-muted-light-focus-outline;
+    }
+    &:focus-visible {
+      outline: $systemicon-intent-muted-light-focus-outline;
+    }
+    &:active {
+      background-color: $systemicon-intent-muted-light-pressed-background-color;
+    }
+  }
+}
+
+.navi-systemicon-flex {
+  display: $systemicon-icon-display;
+  align-items: $systemicon-icon-align-items;
+  justify-content: $systemicon-icon-justify-content;
+  border-radius: $systemicon-root-border-radius;
+  padding: $systemicon-root-padding;
+}
+
+.navi-systemicon-default-bg {
+  background-color: $systemicon-root-background-color;
+}
+
+.navi-systemicon-transparent {
+  background-color: $systemicon-intent-transparent-background-color;
+}
+
+.navi-systemicon-disabled {
+  color: $systemicon-intent-disabled-color;
+  pointer-events: none;
+  &:focus {
+    outline: none;
+  }
+}

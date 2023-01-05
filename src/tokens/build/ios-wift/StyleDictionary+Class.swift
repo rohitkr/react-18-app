@@ -4,7 +4,7 @@
 //
 
 // Do not edit directly
-// Generated on Thu, 15 Dec 2022 12:14:19 GMT
+// Generated on Wed, 21 Dec 2022 11:19:35 GMT
 
 
 import UIKit
@@ -183,6 +183,16 @@ public class StyleDictionaryClass {
     public static let buttonColorCriticalSecondaryLabelHover = UIColor(red: 0.557, green: 0.063, blue: 0.078, alpha: 1)
     public static let buttonColorCriticalSecondaryLabelPressed = UIColor(red: 0.459, green: 0.039, blue: 0.039, alpha: 1)
     public static let buttonColorCriticalSecondaryShadow = UIColor(red: 0.702, green: 0.078, blue: 0.114, alpha: 1)
+    public static let buttonColorCriticalSelectedBackground = UIColor(red: 0.996, green: 0.839, blue: 0.867, alpha: 1)
+    public static let buttonColorCriticalSelectedBackgroundHover = UIColor(red: 0.965, green: 0.337, blue: 0.420, alpha: 1)
+    public static let buttonColorCriticalSelectedBackgroundHoverOpacity = 0
+    public static let buttonColorCriticalSelectedBackgroundPressed = UIColor(red: 0.890, green: 0.078, blue: 0.161, alpha: 1)
+    public static let buttonColorCriticalSelectedBackgroundPressedOpacity = 0
+    public static let buttonColorCriticalSelectedDisabledLabel = UIColor(red: 0.600, green: 0.592, blue: 0.667, alpha: 1)
+    public static let buttonColorCriticalSelectedLabel = UIColor(red: 0.459, green: 0.039, blue: 0.039, alpha: 1)
+    public static let buttonColorCriticalSelectedLabelHover = UIColor(red: 0.459, green: 0.039, blue: 0.039, alpha: 1)
+    public static let buttonColorCriticalSelectedLabelPressed = UIColor(red: 0.459, green: 0.039, blue: 0.039, alpha: 1)
+    public static let buttonColorCriticalSelectedShadow = UIColor(red: 0.702, green: 0.078, blue: 0.114, alpha: 1)
     public static let buttonColorCriticalTertiaryBackgroundHover = UIColor(red: 1.000, green: 0.941, blue: 0.953, alpha: 1)
     public static let buttonColorCriticalTertiaryBackgroundPressed = UIColor(red: 0.996, green: 0.839, blue: 0.867, alpha: 1)
     public static let buttonColorCriticalTertiaryDisabledLabel = UIColor(red: 0.600, green: 0.592, blue: 0.667, alpha: 1)
@@ -210,6 +220,16 @@ public class StyleDictionaryClass {
     public static let buttonColorInfoSecondaryLabelHover = UIColor(red: 0.051, green: 0.349, blue: 0.671, alpha: 1)
     public static let buttonColorInfoSecondaryLabelPressed = UIColor(red: 0.012, green: 0.239, blue: 0.518, alpha: 1)
     public static let buttonColorInfoSecondaryShadow = UIColor(red: 0.035, green: 0.459, blue: 0.843, alpha: 1)
+    public static let buttonColorInfoSelectedBackground = UIColor(red: 0.843, green: 0.937, blue: 0.996, alpha: 1)
+    public static let buttonColorInfoSelectedBackgroundHover = UIColor(red: 0.494, green: 0.780, blue: 0.988, alpha: 1)
+    public static let buttonColorInfoSelectedBackgroundHoverOpacity = 0
+    public static let buttonColorInfoSelectedBackgroundPressed = UIColor(red: 0.180, green: 0.620, blue: 0.980, alpha: 1)
+    public static let buttonColorInfoSelectedBackgroundPressedOpacity = 0
+    public static let buttonColorInfoSelectedDisabledLabel = UIColor(red: 0.600, green: 0.592, blue: 0.667, alpha: 1)
+    public static let buttonColorInfoSelectedLabel = UIColor(red: 0.012, green: 0.239, blue: 0.518, alpha: 1)
+    public static let buttonColorInfoSelectedLabelHover = UIColor(red: 0.012, green: 0.239, blue: 0.518, alpha: 1)
+    public static let buttonColorInfoSelectedLabelPressed = UIColor(red: 0.012, green: 0.239, blue: 0.518, alpha: 1)
+    public static let buttonColorInfoSelectedShadow = UIColor(red: 0.035, green: 0.459, blue: 0.843, alpha: 1)
     public static let buttonColorInfoTertiaryBackgroundHover = UIColor(red: 0.941, green: 0.976, blue: 1.000, alpha: 1)
     public static let buttonColorInfoTertiaryBackgroundPressed = UIColor(red: 0.843, green: 0.937, blue: 0.996, alpha: 1)
     public static let buttonColorInfoTertiaryDisabledLabel = UIColor(red: 0.600, green: 0.592, blue: 0.667, alpha: 1)
@@ -239,6 +259,16 @@ public class StyleDictionaryClass {
     public static let buttonColorMutedLightSecondaryLabelHover = UIColor(red: 1.000, green: 1.000, blue: 1.000, alpha: 1)
     public static let buttonColorMutedLightSecondaryLabelPressed = UIColor(red: 0.875, green: 0.867, blue: 0.906, alpha: 1)
     public static let buttonColorMutedLightSecondaryShadow = UIColor(red: 1.000, green: 1.000, blue: 1.000, alpha: 1)
+    public static let buttonColorMutedLightSelectedBackground = UIColor(red: 1.000, green: 1.000, blue: 1.000, alpha: 1)
+    public static let buttonColorMutedLightSelectedBackgroundHover = UIColor(red: 1.000, green: 1.000, blue: 1.000, alpha: 1)
+    public static let buttonColorMutedLightSelectedBackgroundHoverOpacity = 0
+    public static let buttonColorMutedLightSelectedBackgroundPressed = UIColor(red: 1.000, green: 1.000, blue: 1.000, alpha: 1)
+    public static let buttonColorMutedLightSelectedBackgroundPressedOpacity = 0
+    public static let buttonColorMutedLightSelectedDisabledLabel = UIColor(red: 0.600, green: 0.592, blue: 0.667, alpha: 1)
+    public static let buttonColorMutedLightSelectedLabel = UIColor(red: 0.875, green: 0.867, blue: 0.906, alpha: 1)
+    public static let buttonColorMutedLightSelectedLabelHover = UIColor(red: 0.875, green: 0.867, blue: 0.906, alpha: 1)
+    public static let buttonColorMutedLightSelectedLabelPressed = UIColor(red: 0.875, green: 0.867, blue: 0.906, alpha: 1)
+    public static let buttonColorMutedLightSelectedShadow = UIColor(red: 1.000, green: 1.000, blue: 1.000, alpha: 1)
     public static let buttonColorMutedLightTertiaryBackgroundHover = UIColor(red: 1.000, green: 1.000, blue: 1.000, alpha: 1)
     public static let buttonColorMutedLightTertiaryBackgroundHoverOpacity = 0.08
     public static let buttonColorMutedLightTertiaryBackgroundPressed = UIColor(red: 1.000, green: 1.000, blue: 1.000, alpha: 1)
@@ -272,6 +302,16 @@ public class StyleDictionaryClass {
     public static let buttonColorMutedSecondaryLabelHover = UIColor(red: 0.169, green: 0.169, blue: 0.251, alpha: 1)
     public static let buttonColorMutedSecondaryLabelPressed = UIColor(red: 0.122, green: 0.122, blue: 0.196, alpha: 1)
     public static let buttonColorMutedSecondaryShadow = UIColor(red: 0.239, green: 0.235, blue: 0.322, alpha: 1)
+    public static let buttonColorMutedSelectedBackground = UIColor(red: 0.949, green: 0.949, blue: 0.973, alpha: 1)
+    public static let buttonColorMutedSelectedBackgroundHover = UIColor(red: 0.925, green: 0.925, blue: 0.953, alpha: 1)
+    public static let buttonColorMutedSelectedBackgroundHoverOpacity = 0
+    public static let buttonColorMutedSelectedBackgroundPressed = UIColor(red: 0.875, green: 0.867, blue: 0.906, alpha: 1)
+    public static let buttonColorMutedSelectedBackgroundPressedOpacity = 0
+    public static let buttonColorMutedSelectedDisabledLabel = UIColor(red: 0.600, green: 0.592, blue: 0.667, alpha: 1)
+    public static let buttonColorMutedSelectedLabel = UIColor(red: 0.122, green: 0.122, blue: 0.196, alpha: 1)
+    public static let buttonColorMutedSelectedLabelHover = UIColor(red: 0.122, green: 0.122, blue: 0.196, alpha: 1)
+    public static let buttonColorMutedSelectedLabelPressed = UIColor(red: 0.122, green: 0.122, blue: 0.196, alpha: 1)
+    public static let buttonColorMutedSelectedShadow = UIColor(red: 0.753, green: 0.745, blue: 0.800, alpha: 1)
     public static let buttonColorMutedTertiaryBackgroundHover = UIColor(red: 0.965, green: 0.965, blue: 0.976, alpha: 1)
     public static let buttonColorMutedTertiaryBackgroundPressed = UIColor(red: 0.949, green: 0.949, blue: 0.973, alpha: 1)
     public static let buttonColorMutedTertiaryDisabledLabel = UIColor(red: 0.600, green: 0.592, blue: 0.667, alpha: 1)
@@ -303,6 +343,16 @@ public class StyleDictionaryClass {
     public static let buttonColorPrimeSecondaryLabelHover = UIColor(red: 0.620, green: 0.255, blue: 0.000, alpha: 1)
     public static let buttonColorPrimeSecondaryLabelPressed = UIColor(red: 0.529, green: 0.231, blue: 0.000, alpha: 1)
     public static let buttonColorPrimeSecondaryShadow = UIColor(red: 0.780, green: 0.286, blue: 0.000, alpha: 1)
+    public static let buttonColorPrimeSelectedBackground = UIColor(red: 0.996, green: 0.886, blue: 0.839, alpha: 1)
+    public static let buttonColorPrimeSelectedBackgroundHover = UIColor(red: 1.000, green: 0.973, blue: 0.961, alpha: 1)
+    public static let buttonColorPrimeSelectedBackgroundHoverOpacity = 0
+    public static let buttonColorPrimeSelectedBackgroundPressed = UIColor(red: 0.894, green: 0.349, blue: 0.075, alpha: 1)
+    public static let buttonColorPrimeSelectedBackgroundPressedOpacity = 0
+    public static let buttonColorPrimeSelectedDisabledLabel = UIColor(red: 0.600, green: 0.592, blue: 0.667, alpha: 1)
+    public static let buttonColorPrimeSelectedLabel = UIColor(red: 0.620, green: 0.255, blue: 0.000, alpha: 1)
+    public static let buttonColorPrimeSelectedLabelHover = UIColor(red: 0.529, green: 0.231, blue: 0.000, alpha: 1)
+    public static let buttonColorPrimeSelectedLabelPressed = UIColor(red: 0.529, green: 0.231, blue: 0.000, alpha: 1)
+    public static let buttonColorPrimeSelectedShadow = none
     public static let buttonColorPrimeTertiaryBackgroundHover = UIColor(red: 1.000, green: 0.973, blue: 0.961, alpha: 1)
     public static let buttonColorPrimeTertiaryBackgroundHoverOpacity = 0
     public static let buttonColorPrimeTertiaryBackgroundPressed = UIColor(red: 0.996, green: 0.886, blue: 0.839, alpha: 1)
@@ -332,6 +382,16 @@ public class StyleDictionaryClass {
     public static let buttonColorSuccessSecondaryLabelHover = UIColor(red: 0.063, green: 0.416, blue: 0.251, alpha: 1)
     public static let buttonColorSuccessSecondaryLabelPressed = UIColor(red: 0.047, green: 0.333, blue: 0.196, alpha: 1)
     public static let buttonColorSuccessSecondaryShadow = UIColor(red: 0.098, green: 0.522, blue: 0.345, alpha: 1)
+    public static let buttonColorSuccessSelectedBackground = UIColor(red: 0.851, green: 0.984, blue: 0.933, alpha: 1)
+    public static let buttonColorSuccessSelectedBackgroundHover = UIColor(red: 0.424, green: 0.918, blue: 0.729, alpha: 1)
+    public static let buttonColorSuccessSelectedBackgroundHoverOpacity = 0
+    public static let buttonColorSuccessSelectedBackgroundPressed = UIColor(red: 0.141, green: 0.859, blue: 0.573, alpha: 1)
+    public static let buttonColorSuccessSelectedBackgroundPressedOpacity = 0
+    public static let buttonColorSuccessSelectedDisabledLabel = UIColor(red: 0.600, green: 0.592, blue: 0.667, alpha: 1)
+    public static let buttonColorSuccessSelectedLabel = UIColor(red: 0.047, green: 0.333, blue: 0.196, alpha: 1)
+    public static let buttonColorSuccessSelectedLabelHover = UIColor(red: 0.047, green: 0.333, blue: 0.196, alpha: 1)
+    public static let buttonColorSuccessSelectedLabelPressed = UIColor(red: 0.047, green: 0.333, blue: 0.196, alpha: 1)
+    public static let buttonColorSuccessSelectedShadow = UIColor(red: 0.129, green: 0.678, blue: 0.451, alpha: 1)
     public static let buttonColorSuccessTertiaryBackgroundHover = UIColor(red: 0.945, green: 0.996, blue: 0.976, alpha: 1)
     public static let buttonColorSuccessTertiaryBackgroundPressed = UIColor(red: 0.851, green: 0.984, blue: 0.933, alpha: 1)
     public static let buttonColorSuccessTertiaryDisabledLabel = UIColor(red: 0.600, green: 0.592, blue: 0.667, alpha: 1)
@@ -359,6 +419,16 @@ public class StyleDictionaryClass {
     public static let buttonColorWarningSecondaryLabelHover = UIColor(red: 0.447, green: 0.310, blue: 0.016, alpha: 1)
     public static let buttonColorWarningSecondaryLabelPressed = UIColor(red: 0.447, green: 0.310, blue: 0.016, alpha: 1)
     public static let buttonColorWarningSecondaryShadow = UIColor(red: 0.957, green: 0.702, blue: 0.102, alpha: 1)
+    public static let buttonColorWarningSelectedBackground = UIColor(red: 0.996, green: 0.969, blue: 0.839, alpha: 1)
+    public static let buttonColorWarningSelectedBackgroundHover = UIColor(red: 0.965, green: 0.847, blue: 0.376, alpha: 1)
+    public static let buttonColorWarningSelectedBackgroundHoverOpacity = 0
+    public static let buttonColorWarningSelectedBackgroundPressed = UIColor(red: 0.957, green: 0.702, blue: 0.102, alpha: 1)
+    public static let buttonColorWarningSelectedBackgroundPressedOpacity = 0
+    public static let buttonColorWarningSelectedDisabledLabel = UIColor(red: 0.600, green: 0.592, blue: 0.667, alpha: 1)
+    public static let buttonColorWarningSelectedLabel = UIColor(red: 0.447, green: 0.310, blue: 0.016, alpha: 1)
+    public static let buttonColorWarningSelectedLabelHover = UIColor(red: 0.447, green: 0.310, blue: 0.016, alpha: 1)
+    public static let buttonColorWarningSelectedLabelPressed = UIColor(red: 0.447, green: 0.310, blue: 0.016, alpha: 1)
+    public static let buttonColorWarningSelectedShadow = UIColor(red: 0.878, green: 0.643, blue: 0.000, alpha: 1)
     public static let buttonColorWarningTertiaryBackgroundHover = UIColor(red: 0.996, green: 0.984, blue: 0.922, alpha: 1)
     public static let buttonColorWarningTertiaryBackgroundPressed = UIColor(red: 0.996, green: 0.969, blue: 0.839, alpha: 1)
     public static let buttonColorWarningTertiaryDisabledLabel = UIColor(red: 0.600, green: 0.592, blue: 0.667, alpha: 1)

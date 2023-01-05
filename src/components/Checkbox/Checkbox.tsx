@@ -191,7 +191,7 @@ const Checkbox = ({
   }
 
   const checkboxLabel =
-    (typeof label === "string" && label !== "") ? (
+    typeof label === "string" ? (
       <Typography style={labelStyle}>{label}</Typography>
     ) : (
       label

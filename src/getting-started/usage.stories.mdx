@@ -1,0 +1,56 @@
+<Meta title="Getting Started/Usage" />
+
+# Usage
+
+After installation you can import the available component from `navi-design-system` and use in your porject.
+```javascript
+import React from 'react';
+import './App.css';
+import {Button} from 'navi-design-system';
+
+function App() {
+  return (
+    <div className="App">
+      <Button></Button>
+    </div>
+  );
+}
+
+export default App;
+```
+
+## Tokens
+All the tokens are available in `dist/tokens` folder of navi-design-system package
+
+```
+dist/tokens/
+├── android
+│   ├── colors.xml
+│   └── font_dimens.xml
+├── compose
+│   ├── StyleDictionaryColor.kt
+│   └── StyleDictionarySize.kt
+├── ios
+│   ├── StyleDictionaryColor.h
+│   ├── StyleDictionaryColor.m
+│   ├── StyleDictionarySize.h
+│   └── StyleDictionarySize.m
+├── ios-wift
+│   ├── StyleDictionary+Class.swift
+│   ├── StyleDictionaryColor.swift
+│   ├── StyleDictionary+Enum.swift
+│   ├── StyleDictionarySize.swift
+│   └── StyleDictionary+Struct.swift
+├── json
+│   └── tokens.json
+└── scss
+    └── variables.scss
+```
+Using JSON
+```
+import tokensObj from 'navi-design-system/dist/tokens/json/tokens.json'
+```
+Using SCSS
+```
+import 'navi-design-system/dist/tokens/scss/variables.scss'
+```

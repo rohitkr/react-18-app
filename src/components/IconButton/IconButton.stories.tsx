@@ -1,12 +1,10 @@
 import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 import IconButton from "./IconButton";
-// import { PhotoAdd } from 'tab'
+import { PhotoAdd } from '../../Icons/Icons'
 
 const size = 'large';
 const variant = 'primary';
-
-const PhotoAdd = () => <div>x</div> 
 
 export default {
   title: `Components/IconButton`,

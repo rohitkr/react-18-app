@@ -25,9 +25,8 @@ function SlideTransition(props: TransitionProps) {
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
-      minWidth: tokenObj['banner-alert-snackbar-root-desktop-min-width'],
-      maxWidth: tokenObj['banner-alert-snackbar-root-desktop-max-width'],
-      textAlign: 'left'
+      textAlign: "left",
+      width: tokenObj['banner-alert-snackbar-root-width'],
     },
     message: {
       textOverflow: tokenObj['banner-alert-snackbar-message-text-overflow'],

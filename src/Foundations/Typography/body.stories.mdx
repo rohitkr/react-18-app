@@ -1,0 +1,60 @@
+import { Meta, Story, Canvas, Typeset } from '@storybook/addon-docs';
+import typographyToken from '../../TokensOld/base-tokens/typography-token.json'
+import TypographyComponent from "../../utility/Storybook-Components/TypographyComponent/TypographyComponent"
+
+
+<Meta title="Foundations/Typography/Body" />
+
+export const SampleText = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.';
+
+# Typography
+###### Typography represents the font and set type styling we use to create clear, consistent, and accessible hierarchy throughout the Whatfix product.
+### BodyText
+### Usage
+---
+<br/>
+
+<TypographyComponent 
+  name="BodyText 01"
+  styleObj={typographyToken.attributes['$text-bodytext-01']}
+  fontFamily={typographyToken.attributes['$text-bodytext-01']['font-family']}
+  fontWeight={typographyToken.attributes['$text-bodytext-01']['font-weight']}
+  lineHeight={typographyToken.attributes['$text-bodytext-01']['line-height']}
+  fontSize={typographyToken.attributes['$text-bodytext-01']['font-size']}
+  tokenName={'$text-bodytext-01'}>
+The quick brown fox jumps over the lazy dog
+</TypographyComponent> 
+
+<TypographyComponent 
+  name="BodyText 02"
+  styleObj={typographyToken.attributes['$text-bodytext-02']}
+  fontFamily={typographyToken.attributes['$text-bodytext-02']['font-family']}
+  fontWeight={typographyToken.attributes['$text-bodytext-02']['font-weight']}
+  lineHeight={typographyToken.attributes['$text-bodytext-02']['line-height']}
+  fontSize={typographyToken.attributes['$text-bodytext-02']['font-size']}
+  tokenName={'$text-bodytext-02'}>
+Grumpy wizards make a toxic brew for the jovial queen
+</TypographyComponent> 
+
+<TypographyComponent 
+  name="BodyText 03"
+  styleObj={typographyToken.attributes['$text-bodytext-03']}
+  fontFamily={typographyToken.attributes['$text-bodytext-03']['font-family']}
+  fontWeight={typographyToken.attributes['$text-bodytext-03']['font-weight']}
+  lineHeight={typographyToken.attributes['$text-bodytext-03']['line-height']}
+  fontSize={typographyToken.attributes['$text-bodytext-03']['font-size']}
+  tokenName={'$text-bodytext-03'}>
+The quick brown fox jumps over the lazy dog
+</TypographyComponent> 
+
+
+<TypographyComponent 
+  name="BodyText 04"
+  styleObj={typographyToken.attributes['$text-bodytext-04']}
+  fontFamily={typographyToken.attributes['$text-bodytext-04']['font-family']}
+  fontWeight={typographyToken.attributes['$text-bodytext-04']['font-weight']}
+  lineHeight={typographyToken.attributes['$text-bodytext-04']['line-height']}
+  fontSize={typographyToken.attributes['$text-bodytext-04']['font-size']}
+  tokenName={'$text-bodytext-04'}>
+Grumpy wizards make a toxic brew for the jovial queen
+</TypographyComponent> 

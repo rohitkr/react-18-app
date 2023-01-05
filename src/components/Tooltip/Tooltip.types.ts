@@ -22,4 +22,5 @@ export interface NaviTooltipProps extends MuiTooltipProps {
   title: string;
   forwardedRef?: ForwardedRef<HTMLDivElement>;
   maxWidth?: number;
+  open?: boolean
 }

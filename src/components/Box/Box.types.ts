@@ -2,6 +2,7 @@ import { ForwardedRef } from "react";
 export interface BoxProps
   extends React.HTMLAttributes<HTMLDivElement & HTMLSpanElement> {
   className?: string;
+  tabIndex?: number;
   "data-testid"?: string;
   component?: "div" | "span";
   children?: React.ReactNode;

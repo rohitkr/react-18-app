@@ -1,18 +1,19 @@
 import React from "react";
 import { SelectProps, SelectDataProps } from "./Select.types";
-import { Select } from '@material-ui/core';
+import MuiSelect from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 import Box from "../Box/Box";
 import tokenObj from '../../tokens/build/json/tokens.json';
 import TextInput from "../Input/Input";
-import ClearIcon from "@material-ui/icons/Clear";
+import Divider from "../Divider/Divider";
+// import ClearIcon from "tabler-icons-react";
 import IconButton from "../IconButton/IconButton";
 import MenuItemComp from "./MenuItem";
-import ArrowDropDown from "@material-ui/icons/ArrowDropDown";
+import { ArrowDown, X, CaretDown } from "tabler-icons-react";
 import { InputAdornment } from '@material-ui/core';
 import "./Select.scss";
 
-const Menu: React.FC<SelectProps> = ({
+const Select: React.FC<SelectProps> = ({
   onClose,
   data,
   multiSelect,
@@ -20,11 +21,14 @@ const Menu: React.FC<SelectProps> = ({
   onMenuChange,
   inputProps,
   checkboxes = true,
+  size = 'large',
   ...props }) => {
   const [selectValue, setSelectValue] = React.useState<string[]>([]);
   const [menuData, setMenuData] = React.useState<SelectDataProps[]>(data);
   const [open, setOpen] = React.useState(false);
+  const [menuWidth, setMenuWidth] = React.useState(0);
   const [selectAllItems, setSelectAllItems] = React.useState(selectAll);
+  const inputRef = React.useRef<HTMLInputElement>(null);
 
   const handleChange = (value: unknown) => {
     const data = [...menuData];
@@ -82,14 +86,12 @@ const Menu: React.FC<SelectProps> = ({
     setSelectAllItems(selectAll);
   }, [data, selectAll]);
 
-  const inputRef = React.useRef<HTMLInputElement>(null);
 
   return (
     <Box className="navi-menu-component"
-      ref={inputRef}
     >
       {props.children}
-      <Select
+      <MuiSelect
         multiple={multiSelect}
         value={selectValue}
         defaultValue=""
@@ -105,7 +107,9 @@ const Menu: React.FC<SelectProps> = ({
         input={
           <TextInput
             className="navi-select-input-container"
+            ref={inputRef}
             {...inputProps}
+            size={size}
             inputType={"default"}
           />
         }
@@ -116,7 +120,9 @@ const Menu: React.FC<SelectProps> = ({
         onClose={() => {
           setOpen(false);
         }}
-        onOpen={() => {
+        onOpen={(e) => {
+          const targetEle = e.target as HTMLElement;
+          setMenuWidth(targetEle.parentElement?.clientWidth || 0);
           setOpen(true);
         }}
         // Placement of custom clear and dropdown icon button
@@ -138,19 +144,20 @@ const Menu: React.FC<SelectProps> = ({
                 });
               }}
             >
-              <ClearIcon />
+              <X />
             </IconButton>
             <IconButton
               size="small"
               variant="tertiary"
               intent="muted"
-              style={{ marginRight: "0px", transform: `${open ? "rotate(180deg)" : "rotate(0deg)"}` }}
+              style={{ marginRight: "5px", transform: `${open ? "rotate(180deg)" : "rotate(0deg)"}` }}
               title={"Open"}
-              onClick={() => {
+              onClick={(e) => {
+                console.log(inputRef);
                 setOpen(true);
               }}
             >
-              <ArrowDropDown />
+              <CaretDown />
             </IconButton>
           </InputAdornment>
         }
@@ -159,7 +166,9 @@ const Menu: React.FC<SelectProps> = ({
           // Height of the menu dropdown
           PaperProps: {
             style: {
-              maxHeight: 'calc(100% - 200px)', minWidth: `calc(${inputRef.current?.offsetWidth}px + 100px`
+              maxHeight: 'calc(100% - 200px)',
+              // minWidth: `calc(${inputRef.current?.offsetWidth}px + 100px`
+              minWidth: `${menuWidth}px`
             },
             className: "navi-menu-item-container",
           },
@@ -203,11 +212,11 @@ const Menu: React.FC<SelectProps> = ({
           }
 
           return val.divider ?
-            <Box
-              key={i}
-              style={{ width: "100%", height: "2px", margin: "12px 0", background: tokenObj['color-secondary-100'] }} />
+            // <Box
+            //   key={i}
+            //   style={{ width: "100%", height: "2px", margin: "12px 0", background: tokenObj['color-secondary-100'] }} />
 
-            // <Divider orientation={"horizontal"} color="dark" />
+            <Divider orientation={"horizontal"} />
             :
 
             <MenuItem
@@ -232,9 +241,9 @@ const Menu: React.FC<SelectProps> = ({
             </MenuItem>
         }
         )}
-      </Select>
+      </MuiSelect>
     </Box>
   );
 }
 
-export default Menu;
+export default Select;

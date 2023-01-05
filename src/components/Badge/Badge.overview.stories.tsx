@@ -54,7 +54,7 @@ const Template: ComponentStory<typeof Badge> = (args) => {
           setTrailingIcon("");
         }}
       >
-        <Badge type="status" label="Sample Badge"/>
+        <Badge type="status" label="Sample Badge" />
       </Box>
       <Box >Badge Size</Box>
       <Box >Standard</Box>

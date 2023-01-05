@@ -1,6 +1,5 @@
-
 // Do not edit directly
-// Generated on Thu, 15 Dec 2022 12:14:19 GMT
+// Generated on Wed, 21 Dec 2022 11:19:35 GMT
 
 $border-radius-radius-none: none;
 $border-radius-radius-small: 4px;
@@ -124,6 +123,16 @@ $button-color-prime-tertiary-label: #c74900;
 $button-color-prime-tertiary-label-hover: #9e4100;
 $button-color-prime-tertiary-label-pressed: #873b00;
 $button-color-prime-tertiary-disabled-label: #9997aa;
+$button-color-prime-selected-shadow: none;
+$button-color-prime-selected-background: #fee2d6;
+$button-color-prime-selected-background-hover: #fff8f5;
+$button-color-prime-selected-background-pressed: #e45913;
+$button-color-prime-selected-background-hover-opacity: 0;
+$button-color-prime-selected-background-pressed-opacity: 0;
+$button-color-prime-selected-label: #9e4100;
+$button-color-prime-selected-label-hover: #873b00;
+$button-color-prime-selected-label-pressed: #873b00;
+$button-color-prime-selected-disabled-label: #9997aa;
 $button-color-muted-primary-shadow: #3d3c52;
 $button-color-muted-primary-background: #3d3c52;
 $button-color-muted-primary-background-hover: #2b2b40;
@@ -151,6 +160,16 @@ $button-color-muted-tertiary-label: #3d3c52;
 $button-color-muted-tertiary-label-hover: #2b2b40;
 $button-color-muted-tertiary-label-pressed: #1f1f32;
 $button-color-muted-tertiary-disabled-label: #9997aa;
+$button-color-muted-selected-shadow: #c0becc;
+$button-color-muted-selected-background: #f2f2f8;
+$button-color-muted-selected-background-hover: #ececf3;
+$button-color-muted-selected-background-pressed: #dfdde7;
+$button-color-muted-selected-background-hover-opacity: 0;
+$button-color-muted-selected-background-pressed-opacity: 0;
+$button-color-muted-selected-label: #1f1f32;
+$button-color-muted-selected-label-hover: #1f1f32;
+$button-color-muted-selected-label-pressed: #1f1f32;
+$button-color-muted-selected-disabled-label: #9997aa;
 $button-color-muted-light-primary-shadow: #ffffff;
 $button-color-muted-light-primary-background: #ffffff;
 $button-color-muted-light-primary-background-hover: #fcfcfd;
@@ -186,6 +205,16 @@ $button-color-muted-light-tertiary-label-hover: #ffffff;
 $button-color-muted-light-tertiary-label-pressed: #dfdde7;
 $button-color-muted-light-tertiary-disabled-label: #9997aa;
 $button-color-muted-light-tertiary-disabled-border: #ececf3;
+$button-color-muted-light-selected-shadow: #ffffff;
+$button-color-muted-light-selected-background: #ffffff;
+$button-color-muted-light-selected-background-hover: #ffffff;
+$button-color-muted-light-selected-background-pressed: #ffffff;
+$button-color-muted-light-selected-background-hover-opacity: 0;
+$button-color-muted-light-selected-background-pressed-opacity: 0;
+$button-color-muted-light-selected-label: #dfdde7;
+$button-color-muted-light-selected-label-hover: #dfdde7;
+$button-color-muted-light-selected-label-pressed: #dfdde7;
+$button-color-muted-light-selected-disabled-label: #9997aa;
 $button-color-success-primary-shadow: #198558;
 $button-color-success-primary-background: #198558;
 $button-color-success-primary-background-hover: #106a40;
@@ -213,6 +242,16 @@ $button-color-success-tertiary-label: #198558;
 $button-color-success-tertiary-label-hover: #106a40;
 $button-color-success-tertiary-label-pressed: #0c5532;
 $button-color-success-tertiary-disabled-label: #9997aa;
+$button-color-success-selected-shadow: #21ad73;
+$button-color-success-selected-background: #d9fbee;
+$button-color-success-selected-background-hover: #6ceaba;
+$button-color-success-selected-background-pressed: #24db92;
+$button-color-success-selected-background-hover-opacity: 0;
+$button-color-success-selected-background-pressed-opacity: 0;
+$button-color-success-selected-label: #0c5532;
+$button-color-success-selected-label-hover: #0c5532;
+$button-color-success-selected-label-pressed: #0c5532;
+$button-color-success-selected-disabled-label: #9997aa;
 $button-color-warning-primary-shadow: #f4b31a;
 $button-color-warning-primary-background: #f4b31a;
 $button-color-warning-primary-background-hover: #e0a400;
@@ -240,6 +279,16 @@ $button-color-warning-tertiary-label: #976c07;
 $button-color-warning-tertiary-label-hover: #724f04;
 $button-color-warning-tertiary-label-pressed: #724f04;
 $button-color-warning-tertiary-disabled-label: #9997aa;
+$button-color-warning-selected-shadow: #e0a400;
+$button-color-warning-selected-background: #fef7d6;
+$button-color-warning-selected-background-hover: #f6d860;
+$button-color-warning-selected-background-pressed: #f4b31a;
+$button-color-warning-selected-background-hover-opacity: 0;
+$button-color-warning-selected-background-pressed-opacity: 0;
+$button-color-warning-selected-label: #724f04;
+$button-color-warning-selected-label-hover: #724f04;
+$button-color-warning-selected-label-pressed: #724f04;
+$button-color-warning-selected-disabled-label: #9997aa;
 $button-color-critical-primary-shadow: #b3141d;
 $button-color-critical-primary-background: #b3141d;
 $button-color-critical-primary-background-hover: #8e1014;
@@ -267,6 +316,16 @@ $button-color-critical-tertiary-label: #b3141d;
 $button-color-critical-tertiary-label-hover: #8e1014;
 $button-color-critical-tertiary-label-pressed: #750a0a;
 $button-color-critical-tertiary-disabled-label: #9997aa;
+$button-color-critical-selected-shadow: #b3141d;
+$button-color-critical-selected-background: #fed6dd;
+$button-color-critical-selected-background-hover: #f6566b;
+$button-color-critical-selected-background-pressed: #e31429;
+$button-color-critical-selected-background-hover-opacity: 0;
+$button-color-critical-selected-background-pressed-opacity: 0;
+$button-color-critical-selected-label: #750a0a;
+$button-color-critical-selected-label-hover: #750a0a;
+$button-color-critical-selected-label-pressed: #750a0a;
+$button-color-critical-selected-disabled-label: #9997aa;
 $button-color-info-primary-shadow: #0975d7;
 $button-color-info-primary-background: #0975d7;
 $button-color-info-primary-background-hover: #0d59ab;
@@ -294,6 +353,16 @@ $button-color-info-tertiary-label: #0975d7;
 $button-color-info-tertiary-label-hover: #0d59ab;
 $button-color-info-tertiary-label-pressed: #033d84;
 $button-color-info-tertiary-disabled-label: #9997aa;
+$button-color-info-selected-shadow: #0975d7;
+$button-color-info-selected-background: #d7effe;
+$button-color-info-selected-background-hover: #7ec7fc;
+$button-color-info-selected-background-pressed: #2e9efa;
+$button-color-info-selected-background-hover-opacity: 0;
+$button-color-info-selected-background-pressed-opacity: 0;
+$button-color-info-selected-label: #033d84;
+$button-color-info-selected-label-hover: #033d84;
+$button-color-info-selected-label-pressed: #033d84;
+$button-color-info-selected-disabled-label: #9997aa;
 $checkbox-color-shadow-unchecked: #3d3c52;
 $checkbox-color-shadow-indeterminate: #0975d7;
 $checkbox-color-shadow-checked: #0975d7;
@@ -551,7 +620,7 @@ $input-size-small-line-height: 1rem;
 $input-size-large-height: 2.75rem;
 $input-size-large-font-size: 0.875rem;
 $input-size-large-line-height: 1.25rem;
-$input-label-base-margin-bottom: .25rem;
+$input-label-base-margin-bottom: 0.25rem;
 $input-label-base-display: flex;
 $input-label-base-color: #1f1f32;
 $input-label-base-font-weight: 500;
@@ -560,7 +629,7 @@ $input-label-base-font-family: Inter;
 $input-label-base-line-height: 1.25rem;
 $input-label-base-justify-content: space-between;
 $input-label-helper-line-height: 1rem;
-$input-label-helper-margin-top: .25rem;
+$input-label-helper-margin-top: 0.25rem;
 $input-label-helper-color: #525066;
 $input-label-helper-word-break: break-word;
 $input-label-helper-font-size: 0.75rem;
@@ -593,7 +662,7 @@ $progressbar-root-label-line-height: 1.25rem;
 $progressbar-root-label-min-width: 2.5rem;
 $progressbar-root-container-main-background: #ececf3;
 $progressbar-root-container-main-border-radius: 4px;
-$progressbar-root-container-main-margin: .5rem .5rem .5rem 0;
+$progressbar-root-container-main-margin: 0.5rem 0.5rem 0.5rem 0;
 $progressbar-root-container-main-overflow: hidden;
 $progressbar-root-container-main-width: 100%;
 $progressbar-root-fill-background: #0975d7;
@@ -606,17 +675,43 @@ $progressbar-root-info-background: #0975d7;
 $progressbar-root-critical-background: #b3141d;
 $progressbar-root-success-background: #21ad73;
 $progressbar-root-warning-background: #e0a400;
-$progressbar-root-info-gradient-background: linear-gradient(270deg, rgba(0,0,0,0) 0%, #0975d7 43.81%, #0975d7 54.76%, rgba(0,0,0,0) 91.43%);
-$progressbar-root-critical-gradient-background: linear-gradient(270deg, rgba(0,0,0,0) 0%, #b3141d 43.81%, #b3141d 54.76%, rgba(0,0,0,0) 91.43%);
-$progressbar-root-success-gradient-background: linear-gradient(270deg, rgba(0,0,0,0) 0%, #21ad73 43.81%, #21ad73 54.76%, rgba(0,0,0,0) 91.43%);
-$progressbar-root-warning-gradient-background: linear-gradient(270deg, rgba(0,0,0,0) 0%, #e0a400 43.81%, #e0a400 54.76%, rgba(0,0,0,0) 91.43%);
-$progressbar-root-size-small-height: .25rem;
-$progressbar-root-size-large-height: .5rem;
+$progressbar-root-info-gradient-background: linear-gradient(
+  270deg,
+  rgba(0, 0, 0, 0) 0%,
+  #0975d7 43.81%,
+  #0975d7 54.76%,
+  rgba(0, 0, 0, 0) 91.43%
+);
+$progressbar-root-critical-gradient-background: linear-gradient(
+  270deg,
+  rgba(0, 0, 0, 0) 0%,
+  #b3141d 43.81%,
+  #b3141d 54.76%,
+  rgba(0, 0, 0, 0) 91.43%
+);
+$progressbar-root-success-gradient-background: linear-gradient(
+  270deg,
+  rgba(0, 0, 0, 0) 0%,
+  #21ad73 43.81%,
+  #21ad73 54.76%,
+  rgba(0, 0, 0, 0) 91.43%
+);
+$progressbar-root-warning-gradient-background: linear-gradient(
+  270deg,
+  rgba(0, 0, 0, 0) 0%,
+  #e0a400 43.81%,
+  #e0a400 54.76%,
+  rgba(0, 0, 0, 0) 91.43%
+);
+$progressbar-root-size-small-height: 0.25rem;
+$progressbar-root-size-large-height: 0.5rem;
 $progressbar-root-loading-progress-bar-animation-width: 100%;
 $progressbar-root-loading-progress-bar-animation-height: 100%;
-$progressbar-root-loading-progress-bar-animation-animation: loadingAnimation 2s infinite linear;
+$progressbar-root-loading-progress-bar-animation-animation: loadingAnimation 2s
+  infinite linear;
 $progressbar-root-loading-progress-bar-animation-transform-origin: -100%;
-$progressbar-root-step-progress-bar-animation-animation: 2s linear 0s infinite normal forwards loadingStepAnimation;
+$progressbar-root-step-progress-bar-animation-animation: 2s linear 0s infinite
+  normal forwards loadingStepAnimation;
 $progressbar-root-step-progress-bar-animation-transform-box: fill-box;
 $progressbar-root-step-progress-bar-animation-transform-origin: 50% 50%;
 $progressbar-root-step-progress-bar-animation-animation-delay: 1s;
@@ -691,7 +786,12 @@ $systemicon-intent-muted-dark-focus-outline: 0.25rem solid #ececf3;
 $systemicon-intent-muted-light-pressed-background-color: transparent;
 $systemicon-intent-muted-light-color: white;
 $systemicon-intent-muted-light-hover-color: white;
-$systemicon-intent-muted-light-hover-background-color: rgba(255, 255, 255, 0.08);
+$systemicon-intent-muted-light-hover-background-color: rgba(
+  255,
+  255,
+  255,
+  0.08
+);
 $systemicon-intent-muted-light-focus-outline: 0.25rem solid white;
 $systemicon-intent-disabled-color: #9997aa;
 $systemicon-intent-disabled-background-color: transparent;
@@ -876,10 +976,10 @@ $tag-type-icon-small-size: 1rem;
 $tag-type-icon-small-leading-icon-margin-right: 0.25rem;
 $tag-type-icon-small-trailing-icon-margin-left: 0.25rem;
 $spacing-0: 0rem;
-$spacing-2: .125rem;
-$spacing-4: .25rem;
-$spacing-8: .5rem;
-$spacing-12: .75rem;
+$spacing-2: 0.125rem;
+$spacing-4: 0.25rem;
+$spacing-8: 0.5rem;
+$spacing-12: 0.75rem;
 $spacing-16: 1rem;
 $spacing-24: 1.5rem;
 $spacing-32: 2rem;
@@ -887,12 +987,18 @@ $spacing-40: 2.5rem;
 $spacing-48: 3rem;
 $spacing-64: 4rem;
 $spacing-72: 4.5rem;
-$elevation-01: 0.0px 2.0px 4.0px 0px rgba(0, 0, 0, 0.12),0.0px 1.0px 4.0px 0px rgba(0, 0, 0, 0.16);
-$elevation-02: 0.0px 2.0px 6.0px 0px rgba(0, 0, 0, 0.18),0.0px 3.0px 8.0px 0px rgba(0, 0, 0, 0.14);
-$elevation-03: 0.0px 4.0px 12.0px 0px rgba(0, 0, 0, 0.18),0.0px 6.0px 20.0px 0px rgba(0, 0, 0, 0.14);
-$elevation-04: 0.0px 6.0px 20.0px 0px rgba(0, 0, 0, 0.14),0.0px 8.0px 26.0px 0px rgba(0, 0, 0, 0.12);
-$elevation-05: 0.0px 6.0px 18.0px 0px rgba(0, 0, 0, 0.1),0.0px 8.0px 24.0px 0px rgba(0, 0, 0, 0.1),0.0px 4.0px 24.0px 8.0px rgba(0, 0, 0, 0.08);
-$elevation-06: 0.0px 6.0px 22.0px 4.0px rgba(0, 0, 0, 0.12),0.0px 8.0px 28.0px 4.0px rgba(0, 0, 0, 0.1),0.0px 4.0px 30.0px 10.0px rgba(0, 0, 0, 0.08);
+$elevation-01: 0px 2px 4px 0px rgba(0, 0, 0, 0.12),
+  0px 1px 4px 0px rgba(0, 0, 0, 0.16);
+$elevation-02: 0px 2px 6px 0px rgba(0, 0, 0, 0.18),
+  0px 3px 8px 0px rgba(0, 0, 0, 0.14);
+$elevation-03: 0px 4px 12px 0px rgba(0, 0, 0, 0.18),
+  0px 6px 20px 0px rgba(0, 0, 0, 0.14);
+$elevation-04: 0px 6px 20px 0px rgba(0, 0, 0, 0.14),
+  0px 8px 26px 0px rgba(0, 0, 0, 0.12);
+$elevation-05: 0px 6px 18px 0px rgba(0, 0, 0, 0.1),
+  0px 8px 24px 0px rgba(0, 0, 0, 0.1), 0px 4px 24px 8px rgba(0, 0, 0, 0.08);
+$elevation-06: 0px 6px 22px 4px rgba(0, 0, 0, 0.12),
+  0px 8px 28px 4px rgba(0, 0, 0, 0.1), 0px 4px 30px 10px rgba(0, 0, 0, 0.08);
 $size-font-small: 0.75rem; // the small size of the font
 $size-font-medium: 1rem; // the medium size of the font
 $size-font-large: 2rem; // the large size of the font

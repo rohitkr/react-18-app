@@ -3,8 +3,7 @@ import { ComponentStory, ComponentMeta } from "@storybook/react";
 import Button from "./Button";
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import { docco } from 'react-syntax-highlighter/dist/esm/styles/hljs';
-// import { PhotoAdd } from '../../Icons/Icons'
-const PhotoAdd = () => <div>x</div> 
+import { PhotoAdd } from '../../Icons/Icons'
 
 export default {
   title: `Components/Button`,
@@ -150,7 +149,6 @@ const Template: ComponentStory<typeof Button> = (args) => {
             </Button>
           </td>
         </tr>
-
         <tr style={{ height: '70px' }}>
           <td>
             <Button buttonType="icon" intent="prime" size="large" variant="primary" onClick={() => { setButtonType(`buttonType="icon" intent="prime" size="large" variant="primary"`) }} >

@@ -68,16 +68,23 @@ let data = [
 ]
 
 export const Default: ComponentStory<typeof Select> = ({ ...args }) => (
-  <div>
-    <Select {...args} open data={data}></Select>
-    <br />
-    <Select {...args} open data={[
-      { title: "Oliver Hansen" },
-      { title: "Van Henry" },
-      { title: "April Tucker" },
-      { title: "Ralph Hubbard" },
-      { title: "Omar Alexander" },
-      { title: "Carlos Abbott" },
-    ]}></Select>
-  </div>
+  <Select
+    {...args}
+    open
+    data={data}
+    multiSelect
+    inputProps={{
+      errorMessage: "Error message",
+      helperText: "Helper text",
+      label: "Sample label",
+      maxCharacters: 100,
+      minWidth: 600,
+      moreInfo: "More information text",
+      required: true,
+      size: "large",
+      successMessage: "Success message",
+      tooltipPlacement: "top",
+      inputType: "default"
+    }}
+  ></Select>
 );

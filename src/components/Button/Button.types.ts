@@ -5,7 +5,7 @@ export interface ButtonProps extends Pick<MuiButtonProps, Exclude<keyof MuiButto
     buttonType?: 'button' | 'icon';
     rounded?: boolean;
     "data-testid"?: string;
-    variant?: 'primary' | 'secondary' | 'tertiary';
+    variant?: 'primary' | 'secondary' | 'tertiary' | 'selected';
     intent?: 'muted' | 'prime' | 'info' | 'critical' | 'warning' | 'success';
     size?: 'large' | 'small';
     leadingIcon?: React.ReactNode | MuiButtonProps["startIcon"];

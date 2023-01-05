@@ -32,10 +32,10 @@ const NaviTooltip = (props: NaviTooltipProps) => {
     showArrow = true,
     size = "relaxed",
     children,
-    "data-testid": string,
+    "data-testid": dataTestId,
     forwardedRef,
     maxWidth = "280",
-    ...rest
+    open,
   } = props;
 
   const getArrowStyle = () => {
@@ -93,13 +93,13 @@ const NaviTooltip = (props: NaviTooltipProps) => {
 
   const StyledTooltip = withStyles(tooltipStyles)(MuiTooltip);
   return (
-    <div ref={forwardedRef}>
+    <div ref={forwardedRef} data-testid={dataTestId}>
       <ThemeProvider theme={getThemeObj(size || "small")}>
         <StyledTooltip
           title={title}
           arrow={showArrow}
           placement={position}
-          {...rest}
+          open={open}
         >
           <div style={{ display: "flex", width: "fit-content" }}>
             {children}
@@ -116,4 +116,4 @@ const Tooltip = React.forwardRef<HTMLDivElement, NaviTooltipProps>(
   }
 );
 
-export default Tooltip;
+export default React.memo(Tooltip);

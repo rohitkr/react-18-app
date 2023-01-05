@@ -15,6 +15,7 @@ export interface SelectDataProps {
 }
 export interface SelectProps extends MuiMenuProps {
   open: boolean;
+  size?: 'small' | 'large';
   anchorEl?: HTMLElement | null;
   multiSelect?: boolean;
   selectAll?: boolean;
