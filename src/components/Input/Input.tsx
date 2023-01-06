@@ -14,7 +14,7 @@ const tokenObj: { [key: string]: any } = tokens;
 const INPUT_MIN_WIDTH = 280;
 const INPUT_MAX_WIDTH = 280;
 
-const TextInput = ({
+const TextInputElement = ({
   inputType = "default",
   label,
   maxCharacters,
@@ -27,6 +27,7 @@ const TextInput = ({
   maxWidth,
   tooltipPlacement,
   size = 'large',
+  innerRef,
   ...props
 }: NaviInputProps) => {
 
@@ -95,6 +96,7 @@ const TextInput = ({
   }
 
   return (<Box
+    ref={innerRef}
     style={{ display: "inline-block" }}
     className={`navi-input-container ${props.className}`}
   >
@@ -205,4 +207,9 @@ const TextInput = ({
   </Box>)
 };
 
-export default TextInput;
+const InputText = React.forwardRef<HTMLInputElement, NaviInputProps>(
+  (props, ref) => {
+    return <TextInputElement {...props} innerRef={ref} />;
+  }
+);
+export default InputText;

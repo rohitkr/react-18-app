@@ -3,13 +3,12 @@ import { SelectProps, SelectDataProps } from "./Select.types";
 import MuiSelect from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 import Box from "../Box/Box";
-import tokenObj from '../../tokens/build/json/tokens.json';
 import TextInput from "../Input/Input";
 import Divider from "../Divider/Divider";
 // import ClearIcon from "tabler-icons-react";
 import IconButton from "../IconButton/IconButton";
 import MenuItemComp from "./MenuItem";
-import { ArrowDown, X, CaretDown } from "tabler-icons-react";
+import { X, CaretDown } from "tabler-icons-react";
 import { InputAdornment } from '@material-ui/core';
 import "./Select.scss";
 
@@ -26,9 +25,8 @@ const Select: React.FC<SelectProps> = ({
   const [selectValue, setSelectValue] = React.useState<string[]>([]);
   const [menuData, setMenuData] = React.useState<SelectDataProps[]>(data);
   const [open, setOpen] = React.useState(false);
-  const [menuWidth, setMenuWidth] = React.useState(0);
   const [selectAllItems, setSelectAllItems] = React.useState(selectAll);
-  const inputRef = React.useRef<HTMLInputElement>(null);
+  const inputRef = React.useRef<any>(null);
 
   const handleChange = (value: unknown) => {
     const data = [...menuData];
@@ -104,10 +102,10 @@ const Select: React.FC<SelectProps> = ({
         renderValue={(selected) => {
           return typeof selected === 'string' ? selected : ((selected) as string[]).join(', ')
         }}
+        inputRef={inputRef}
         input={
           <TextInput
             className="navi-select-input-container"
-            ref={inputRef}
             {...inputProps}
             size={size}
             inputType={"default"}
@@ -116,13 +114,13 @@ const Select: React.FC<SelectProps> = ({
         open={open}
 
         // Hide the actual dropdown select icon
-        inputProps={{ IconComponent: () => null }}
+        inputProps={{
+          IconComponent: () => null
+        }}
         onClose={() => {
           setOpen(false);
         }}
-        onOpen={(e) => {
-          const targetEle = e.target as HTMLElement;
-          setMenuWidth(targetEle.parentElement?.clientWidth || 0);
+        onOpen={() => {
           setOpen(true);
         }}
         // Placement of custom clear and dropdown icon button
@@ -153,7 +151,6 @@ const Select: React.FC<SelectProps> = ({
               style={{ marginRight: "5px", transform: `${open ? "rotate(180deg)" : "rotate(0deg)"}` }}
               title={"Open"}
               onClick={(e) => {
-                console.log(inputRef);
                 setOpen(true);
               }}
             >
@@ -167,8 +164,7 @@ const Select: React.FC<SelectProps> = ({
           PaperProps: {
             style: {
               maxHeight: 'calc(100% - 200px)',
-              // minWidth: `calc(${inputRef.current?.offsetWidth}px + 100px`
-              minWidth: `${menuWidth}px`
+              minWidth: `calc(${inputRef?.current?.node.offsetWidth}px - 8px)`
             },
             className: "navi-menu-item-container",
           },
