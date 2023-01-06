@@ -1,4 +1,5 @@
 import { MenuProps as MuiMenuProps } from "@material-ui/core/Menu";
+import { MenuItemProps as MuiMenuItemProps } from "@material-ui/core/MenuItem";
 import { NaviInputProps } from "../Input/Input.types";
 export interface SelectDataProps {
   title?: string;
@@ -27,7 +28,7 @@ export interface SelectProps extends MuiMenuProps {
   ) => void;
   data: SelectDataProps[];
 }
-export interface SelectItemCardProps {
+export interface MenuItemProps {
   selectValue: string[];
   title?: string;
   description?: string;
@@ -40,9 +41,4 @@ export interface SelectItemCardProps {
   value?: string;
   checked?: boolean;
   disabled?: boolean;
-  _onchange?: (
-    event: React.MouseEvent<{ name?: string; value?: unknown }>,
-    child: string,
-    checked?: boolean,
-  ) => void;
 }

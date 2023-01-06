@@ -1,5 +1,5 @@
 import React from "react";
-import { SelectItemCardProps } from "./Select.types";
+import { MenuItemProps } from "./Select.types";
 import {
   withStyles
 } from '@material-ui/core';
@@ -9,6 +9,7 @@ import Box from "../Box/Box";
 import Typography from '@material-ui/core/Typography'
 import tokenObj from '../../tokens/build/json/tokens.json';
 import Avatar from '@material-ui/core/Avatar';
+import MenuItem from "@material-ui/core/MenuItem";
 
 
 const TitleTypography = withStyles((theme) => ({
@@ -42,9 +43,24 @@ const MenuItemComp = ({
   trallingIcon,
   checked,
   checkboxes = true,
-  ...val }: SelectItemCardProps) => {
 
-  return (<>
+  // selectValue: string[];
+  // title?: string;
+  // description?: string;
+  // trallingIcon?: React.ReactNode;
+  // leadingIcon?: React.ReactNode;
+  // avatar?: React.ReactNode;
+  // multiSelect?: boolean;
+  selected = false,
+  // checkboxes?: boolean;
+  value,
+  // checked?: boolean;
+  disabled = false,
+
+
+  ...val }: MenuItemProps) => {
+
+  return (<MenuItem {...val}>
     {multiSelect && checkboxes && <Box className="navi-menu-item-checkbox-container">
       <CheckBox checked={checked} label={undefined} value={""} />
     </Box>}
@@ -67,7 +83,7 @@ const MenuItemComp = ({
     {trallingIcon && <Box className="navi-menu-item-right-icon-container">
       {trallingIcon}
     </Box>}
-  </>)
+  </MenuItem>)
 }
 
 export default MenuItemComp

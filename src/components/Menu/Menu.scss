@@ -1,0 +1,94 @@
+@import "../../TokensOld/base-tokens/typography-token.scss";
+
+.navi-menu-list-item {
+  &:hover {
+    background-color: transparent;
+  }
+  .no-hover {
+    background-color: transparent;
+  }
+  .MuiListItem-button:hover {
+    background-color: transparent;
+  }
+}
+
+.navi-menu-container {
+  .text-only-small {
+    height: 32px;
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 16px;
+    color: #3d3c52;
+  }
+
+  .text-only-large {
+    height: 44px;
+    color: #3d3c52;
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+  }
+
+  .bulk-action-small {
+    height: 32px;
+    min-height: 32px;
+  }
+
+  .bulk-action-large {
+    height: 44px;
+    min-height: 32px;
+  }
+
+  .group-heading-small {
+    height: 36px;
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 16px;
+  }
+
+  .group-heading-large {
+    height: 48px;
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 20px;
+  }
+
+  .divider-small {
+    height: 18px;
+    min-height: 18px;
+  }
+
+  .divider-large {
+    height: 26px;
+    min-height: 26px;
+  }
+
+  .empty-large {
+    height: "44px";
+    min-height: "44px";
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    color: #6b697b;
+  }
+  .empty-small {
+    height: "32px";
+    min-height: "32px";
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 16px;
+    color: #6b697b;
+  }
+}

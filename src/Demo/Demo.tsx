@@ -152,6 +152,8 @@ export default function AutocompleteControlled() {
     setAnchorEl(null);
   };
   const [open, setOpen] = React.useState(false);
+  // const inputRef = React.useRef();
+  const inputRef = React.useRef<HTMLInputElement>(null);
 
   return (
     <div className={classes.root} style={{ textAlign: 'left', margin: 'auto', paddingTop: "50px", height: "1500px" }}>
@@ -172,6 +174,10 @@ export default function AutocompleteControlled() {
           // successMessage="Success message"
           tooltipPlacement="top"
           type="default"
+          ref={inputRef}
+          onClick={() => {
+            console.log("on click: ", inputRef);
+          }}
         />
       </div>
 

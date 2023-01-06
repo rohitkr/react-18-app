@@ -215,26 +215,45 @@ const Select: React.FC<SelectProps> = ({
             <Divider orientation={"horizontal"} />
             :
 
-            <MenuItem
+            // <MenuItem
+            //   key={title}
+            //   value={title}
+            //   className={`navi-menu-item-list-item ${(selectValue.indexOf(title) > -1) ? 'navi-item-selected' : ''} `}
+            //   disableRipple
+
+            //   disabled={val.disabled}>
+            //   <MenuItemComp
+            //     avatar={avatar}
+            //     leadingIcon={leadingIcon}
+            //     trallingIcon={trallingIcon}
+            //     description={description}
+            //     selectValue={selectValue}
+            //     title={title}
+            //     checked={selectValue.indexOf(title) > -1 || selectAllItems}
+            //     checkboxes={checkboxes}
+            //     multiSelect={multiSelect}
+            //     {...val}
+            //   />
+            // </MenuItem>
+
+
+            <MenuItemComp
               key={title}
               value={title}
-              className={`navi-menu-item-list-item ${(selectValue.indexOf(title) > -1) ? 'navi-item-selected' : ''} `}
-              disableRipple
-
-              disabled={val.disabled}>
-              <MenuItemComp
-                avatar={avatar}
-                leadingIcon={leadingIcon}
-                trallingIcon={trallingIcon}
-                description={description}
-                selectValue={selectValue}
-                title={title}
-                checked={selectValue.indexOf(title) > -1 || selectAllItems}
-                checkboxes={checkboxes}
-                multiSelect={multiSelect}
-                {...val}
-              />
-            </MenuItem>
+              // className={`navi-menu-item-list-item ${(selectValue.indexOf(title) > -1) ? 'navi-item-selected' : ''} `}
+              // disableRipple
+              // divider
+              avatar={avatar}
+              leadingIcon={leadingIcon}
+              trallingIcon={trallingIcon}
+              description={description}
+              selectValue={selectValue}
+              title={title}
+              checked={selectValue.indexOf(title) > -1 || selectAllItems}
+              checkboxes={checkboxes}
+              multiSelect={multiSelect}
+              {...val}
+            />
         }
         )}
       </MuiSelect>
