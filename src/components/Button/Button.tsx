@@ -599,7 +599,7 @@ const getThemeObj = (size: string) => {
   });
 }
 
-const Button = ({
+const ButtonComponent = ({
   buttonType = 'button',
   variant = 'primary',
   intent = 'prime',
@@ -664,5 +664,12 @@ const Button = ({
 
   return <StyledButton></StyledButton>
 }
+
+const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
+  (props, ref) => {
+    return <ButtonComponent {...props} innerRef={ref} />;
+  }
+);
+
 
 export default Button;

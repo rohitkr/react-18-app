@@ -4,6 +4,8 @@ import Avatar from "@material-ui/core/Avatar";
 import tokenObj from "../../tokens/build/json/tokens.json";
 import { withStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
+import { MenuItemTypeEnum } from "./MenuItem.types";
+import Checkbox from "../Checkbox/Checkbox";
 
 const TitleTypography = withStyles((theme) => ({
   root: {
@@ -26,30 +28,43 @@ const DescriptionTypography = withStyles((theme) => ({
   },
 }))(Typography);
 
-const PersonaMenuItem: React.FC<any> = ({
+const DescriptiveMenuItem: React.FC<any> = ({
   avatarSrc,
-  avatarText,
+  avatar,
   title,
   description,
   leadingIcon,
+  selectable = false,
+  type,
+  ...props
 }) => {
   return (
     <Box display="flex" width="100%" alignItems="center">
+      {selectable && type === MenuItemTypeEnum.DESCRIPTIVE && (
+        <Box marginLeft="8px">
+          <Checkbox
+            label={""}
+            value={props.checked}
+            checked={props.checked}
+            size="small"
+          />
+        </Box>
+      )}
       {leadingIcon && (
-        <Box className="navi-menu-item-left-icon-container" margin="0 8px">
+        <Box display="flex" marginLeft="8px">
           {leadingIcon}
         </Box>
       )}
-      {(avatarSrc || avatarText) && (
-        <Box className="navi-menu-item-avatar-container" margin="0 8px">
+      {(avatarSrc || avatar) && (
+        <Box className="navi-menu-item-avatar-container" marginLeft="8px">
           {avatarSrc ? (
             <Avatar className="avatar-component" src={avatarSrc} />
           ) : (
-            <Avatar className="avatar-component">{avatarText}</Avatar>
+            <Avatar className="avatar-component">{avatar}</Avatar>
           )}
         </Box>
       )}
-      <Box className="navi-menu-item-text-container">
+      <Box className="navi-menu-item-text-container" marginLeft="8px">
         <TitleTypography>{title}</TitleTypography>
         {description && (
           <DescriptionTypography>{description}</DescriptionTypography>
@@ -59,4 +74,4 @@ const PersonaMenuItem: React.FC<any> = ({
   );
 };
 
-export default PersonaMenuItem;
+export default DescriptiveMenuItem;

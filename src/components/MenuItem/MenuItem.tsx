@@ -1,60 +1,33 @@
 import React from "react";
 import Box from "../Box/Box";
-import { MenuItemProps, MenuItemTypeEnum } from "./Menu.types";
+import { MenuItemProps, MenuItemTypeEnum } from "./MenuItem.types";
 import MenuItem from "@material-ui/core/MenuItem";
-import CheckBox from "../Checkbox/Checkbox";
 import { withStyles } from "@material-ui/core/styles";
-import Typography from "@material-ui/core/Typography";
-import tokenObj from "../../tokens/build/json/tokens.json";
 import GroupHeadingMenuItem from "./GroupHeadingMenuItem";
 import Divider from "../Divider/Divider";
 import EmptyStateMenuItem from "./EmptyStateMenuItem";
-import PersonaMenuItem from "./PersonaMenuItem";
-// import DescriptiveMenuItem from "./DescriptiveMenuItem";
-import "./Menu.scss";
-import BulkActionMenuItem from "./BulkActionMenuItem";
-
-const TitleTypography = withStyles((theme) => ({
-  root: {
-    color: tokenObj["color-secondary-800"],
-    fontFamily: tokenObj["text-body-03-font-family"],
-    fontSize: tokenObj["text-body-03-font-size"],
-    fontWeight: Number(tokenObj["text-body-03-font-weight"]),
-    lineHeight: tokenObj["text-body-03-line-height"],
-  },
-}))(Typography);
-
-const DescriptionTypography = withStyles((theme) => ({
-  root: {
-    color: tokenObj["color-secondary-600"],
-    fontFamily: tokenObj["text-body-04-font-family"],
-    fontSize: tokenObj["text-body-04-font-size"],
-    fontWeight: Number(tokenObj["text-body-04-font-weight"]),
-    lineHeight: tokenObj["text-body-04-line-height"],
-    marginTop: tokenObj["spacing-2"],
-  },
-}))(Typography);
+import "./MenuItem.scss";
+import DescriptiveMenuItem from "./DescriptiveMenuItem";
 
 const MenuItemCard = ({
   title,
   size = "large",
   description,
   avatarSrc,
-  avatarText,
+  avatar,
   trallingIcon,
   leadingIcon,
   checked = false,
   value,
-  type,
+  type = MenuItemTypeEnum.DESCRIPTIVE,
   disableHoverStyle = false,
   disableItemClick = false,
-  selectable = false,
   ...props
 }: MenuItemProps) => {
-  const [isChecked, setCheck] = React.useState(checked);
+  const [isChecked, setChecked] = React.useState(checked);
 
   React.useEffect(() => {
-    setCheck(checked);
+    setChecked(checked);
   }, [checked]);
 
   const MenuItemStyles = () => ({
@@ -78,8 +51,6 @@ const MenuItemCard = ({
     switch (type) {
       case MenuItemTypeEnum.GROUP_HEADING:
         return <GroupHeadingMenuItem heading={title} />;
-      case MenuItemTypeEnum.BULK_ACTION:
-        return <BulkActionMenuItem title={title} size={size} />;
       case MenuItemTypeEnum.DIVIDER:
         return (
           <Box
@@ -95,51 +66,67 @@ const MenuItemCard = ({
         return <EmptyStateMenuItem />;
       default:
         return (
-          <PersonaMenuItem
+          <DescriptiveMenuItem
+            {...props}
             title={title}
             description={description}
             leadingIcon={leadingIcon}
             avatarSrc={avatarSrc}
-            avatarText={avatarText}
-            {...props}
+            avatar={avatar}
+            type={type}
+            checked={isChecked}
           />
         );
     }
-  }, [type]);
+  }, [type, isChecked]);
 
   const onMenuItemClick = (e: React.MouseEvent<HTMLLIElement, MouseEvent>) => {
     if (!disableItemClick) {
+      // TODO: Check the callback function arguments
       props.onMenuItemClick && props.onMenuItemClick(e);
     }
   };
 
+  const handleTrailingIconClick = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    e.preventDefault();
+    props.onBulkActionClick && props.onBulkActionClick(e);
+  };
+
   return (
-    <StyledMenuItem
+    <MenuItem
       {...props}
       disableRipple
-      className={`navi-menu-list-item ${type}-${size} ${isChecked ? "navi-item-selected" : ""
+      className={`navi-menu-list-item ${type || "descriptive"}-${size} ${isChecked ? "navi-item-selected" : ""
         } `}
-      onClick={onMenuItemClick}
+      disableGutters
+      onClick={(e) => {
+        props.onClick && props.onClick(e);
+        onMenuItemClick(e)
+      }}
     >
-      <Box width="100%" display="flex" alignItems="center" height="inherit">
-        {selectable && !type && (
-          <Box margin="0 8px">
-            <CheckBox
-              label={""}
-              value={value}
-              checked={isChecked}
-              size="small"
-            />
-          </Box>
-        )}
+      <Box
+        width="100%"
+        display="flex"
+        alignItems="center"
+        justifyContent="space-between"
+        height="inherit"
+        padding="4px 8px"
+      >
         {menuItemContent}
         {trallingIcon && (
-          <Box className="navi-menu-item-right-icon-container">
+          <Box
+            className={`navi-menu-item-action-icon-${size} ${isChecked ? "navi-icon-selected" : ""
+              }`}
+            display="flex"
+            onClick={handleTrailingIconClick}
+            margin="0px 8px"
+          >
             {trallingIcon}
           </Box>
         )}
       </Box>
-    </StyledMenuItem>
+    </MenuItem>
   );
 };
 

@@ -1,20 +1,22 @@
 import React from "react";
 import { SelectProps, SelectDataProps } from "./Select.types";
 import MuiSelect from '@material-ui/core/Select';
-import MenuItem from '@material-ui/core/MenuItem';
+// import MenuItem from '@material-ui/core/MenuItem';
+import MenuItem from "../MenuItem/MenuItem";
+import MenuItemComp from "./MenuItem";
+
 import Box from "../Box/Box";
 import TextInput from "../Input/Input";
 import Divider from "../Divider/Divider";
 // import ClearIcon from "tabler-icons-react";
 import IconButton from "../IconButton/IconButton";
-import MenuItemComp from "./MenuItem";
 import { X, CaretDown } from "tabler-icons-react";
 import { InputAdornment } from '@material-ui/core';
 import "./Select.scss";
 
 const Select: React.FC<SelectProps> = ({
   onClose,
-  data,
+  data = [],
   multiSelect,
   selectAll,
   onMenuChange,
@@ -88,7 +90,6 @@ const Select: React.FC<SelectProps> = ({
   return (
     <Box className="navi-menu-component"
     >
-      {props.children}
       <MuiSelect
         multiple={multiSelect}
         value={selectValue}
@@ -182,7 +183,7 @@ const Select: React.FC<SelectProps> = ({
           getContentAnchorEl: null
         }}
       >
-        {multiSelect ?
+        {/* {multiSelect ?
           <MenuItem
             value={"select-all"}
             // className="navi-menu-item-list-item"
@@ -215,47 +216,32 @@ const Select: React.FC<SelectProps> = ({
             <Divider orientation={"horizontal"} />
             :
 
-            // <MenuItem
-            //   key={title}
-            //   value={title}
-            //   className={`navi-menu-item-list-item ${(selectValue.indexOf(title) > -1) ? 'navi-item-selected' : ''} `}
-            //   disableRipple
-
-            //   disabled={val.disabled}>
-            //   <MenuItemComp
-            //     avatar={avatar}
-            //     leadingIcon={leadingIcon}
-            //     trallingIcon={trallingIcon}
-            //     description={description}
-            //     selectValue={selectValue}
-            //     title={title}
-            //     checked={selectValue.indexOf(title) > -1 || selectAllItems}
-            //     checkboxes={checkboxes}
-            //     multiSelect={multiSelect}
-            //     {...val}
-            //   />
-            // </MenuItem>
-
-
-            <MenuItemComp
+            <MenuItem
               key={title}
               value={title}
-              // className={`navi-menu-item-list-item ${(selectValue.indexOf(title) > -1) ? 'navi-item-selected' : ''} `}
-              // disableRipple
-              // divider
-              avatar={avatar}
-              leadingIcon={leadingIcon}
-              trallingIcon={trallingIcon}
-              description={description}
-              selectValue={selectValue}
-              title={title}
-              checked={selectValue.indexOf(title) > -1 || selectAllItems}
-              checkboxes={checkboxes}
-              multiSelect={multiSelect}
-              {...val}
-            />
+              className={`navi-menu-item-list-item ${(selectValue.indexOf(title) > -1) ? 'navi-item-selected' : ''} `}
+              disableRipple
+
+              disabled={val.disabled}>
+              <MenuItemComp
+                avatar={avatar}
+                leadingIcon={leadingIcon}
+                trallingIcon={trallingIcon}
+                description={description}
+                selectValue={selectValue}
+                title={title}
+                checked={selectValue.indexOf(title) > -1 || selectAllItems}
+                checkboxes={checkboxes}
+                multiSelect={multiSelect}
+                {...val}
+              />
+            </MenuItem>
         }
         )}
+        */}
+
+
+        {props.children}
       </MuiSelect>
     </Box>
   );
