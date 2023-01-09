@@ -82,8 +82,9 @@ const MenuItemCard = ({
 
   const onMenuItemClick = (e: React.MouseEvent<HTMLLIElement, MouseEvent>) => {
     if (!disableItemClick) {
+      props.onClick && props.onClick(e);
       // TODO: Check the callback function arguments
-      props.onMenuItemClick && props.onMenuItemClick(e);
+      props.onMenuItemClick && props.onMenuItemClick(e, value);
     }
   };
 
@@ -93,6 +94,7 @@ const MenuItemCard = ({
     props.onBulkActionClick && props.onBulkActionClick(e);
   };
 
+  // console.log("props: ", props);
   return (
     <MenuItem
       {...props}
@@ -100,10 +102,7 @@ const MenuItemCard = ({
       className={`navi-menu-list-item ${type || "descriptive"}-${size} ${isChecked ? "navi-item-selected" : ""
         } `}
       disableGutters
-      onClick={(e) => {
-        props.onClick && props.onClick(e);
-        onMenuItemClick(e)
-      }}
+      onClick={onMenuItemClick}
     >
       <Box
         width="100%"

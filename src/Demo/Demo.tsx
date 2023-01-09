@@ -247,7 +247,7 @@ export default function AutocompleteControlled() {
   return (
     <div className={classes.root} style={{ textAlign: 'left', margin: 'auto', paddingTop: "50px", height: "1500px" }}>
 
-      <SelectDemo />
+      {/* <SelectDemo />
 
       <div style={{ height: '80px' }}>
         <TextInput
@@ -381,7 +381,7 @@ export default function AutocompleteControlled() {
             )
           })}
         </Select>
-      </div>
+      </div> */}
 
       <div style={{ height: '100px' }}>
         <Select
@@ -393,9 +393,9 @@ export default function AutocompleteControlled() {
           selectAll={false}
           size="small"
           inputProps={{
+            label: "Select Movies",
             errorMessage: "Error message",
             helperText: "Helper text",
-            label: "Select Movies",
             maxCharacters: 100,
             minWidth: 600,
             moreInfo: "More information text",
@@ -419,6 +419,7 @@ export default function AutocompleteControlled() {
                 value={title}
                 // className={`navi-menu-item-list-item ${(selectValue.indexOf(title) > -1) ? 'navi-item-selected' : ''} `}
                 title={title}
+                selectable={true}
                 {...val}
               />
             )
@@ -427,9 +428,9 @@ export default function AutocompleteControlled() {
 
         {/* <ClearAll /> */}
 
-        <SelectClearAll />
+        {/* <SelectClearAll />
 
-        <Autocomplete />
+        <Autocomplete /> */}
 
       </div>
 
