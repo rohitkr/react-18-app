@@ -1,13 +1,15 @@
+import { MenuItemProps as MuiMenuItemProps } from "@material-ui/core/MenuItem";
+
 export enum MenuItemTypeEnum {
   GROUP_HEADING = "group-heading",
   BULK_ACTION = "bulk-action",
-  TEXT_ONLY = 'text-only',
+  TEXT_ONLY = "text-only",
   DIVIDER = "divider",
   EMPTY = "empty",
   DESCRIPTIVE = "descriptive",
 }
 
-export interface MenuItemProps {
+export interface MenuItemProps extends MuiMenuItemProps {
   title?: string;
   size?: "large" | "small";
   description?: string;
@@ -18,12 +20,13 @@ export interface MenuItemProps {
   checked?: boolean;
   value: string | number;
   type?: MenuItemTypeEnum;
-  onClick?: React.MouseEventHandler<HTMLLIElement>;
-  onMenuItemClick?: React.MouseEventHandler<HTMLLIElement>;
+  onMenuItemClick?: Function;
   onCheckboxChange?: Function;
   selectable?: boolean;
   disableHoverStyle?: boolean;
   disableItemClick?: boolean;
-  onBulkActionClick?: Function
+  onBulkActionClick?: Function;
   bulkActionTooltip?: string;
+  isSelected?: boolean;
+  children?: React.ReactNode;
 }

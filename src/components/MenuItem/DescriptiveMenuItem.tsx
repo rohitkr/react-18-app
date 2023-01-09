@@ -4,8 +4,9 @@ import Avatar from "@material-ui/core/Avatar";
 import tokenObj from "../../tokens/build/json/tokens.json";
 import { withStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
-import { MenuItemTypeEnum } from "./MenuItem.types";
 import Checkbox from "../Checkbox/Checkbox";
+import MenuItem from "@material-ui/core/MenuItem";
+import "./DescriptiveMenuItem.scss";
 
 const TitleTypography = withStyles((theme) => ({
   root: {
@@ -35,42 +36,106 @@ const DescriptiveMenuItem: React.FC<any> = ({
   description,
   leadingIcon,
   selectable = false,
-  type,
+  onMenuItemClick,
+  checked,
+  trallingIcon,
+  onBulkActionClick,
+  disableHoverStyle,
+  size,
+  disableItemClick,
+  value,
   ...props
 }) => {
+  const MenuItemStyles = () => ({
+    root: {
+      "&:hover": {
+        backgroundColor: disableHoverStyle ? "transparent" : "#F6F6F9",
+      },
+    },
+  });
+
+  const handleMenuItemClick = (
+    e: React.MouseEvent<HTMLLIElement, MouseEvent>
+  ) => {
+    if (!disableItemClick) {
+      onMenuItemClick && onMenuItemClick(value);
+      console.log(props);
+      props.onClick && props.onClick(e);
+    }
+  };
+
+  const handleTrailingIconClick = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    e.preventDefault();
+    onBulkActionClick && onBulkActionClick(e);
+  };
+
+  const StyledMenuItem = withStyles(MenuItemStyles)(MenuItem);
   return (
-    <Box display="flex" width="100%" alignItems="center">
-      {selectable && type === MenuItemTypeEnum.DESCRIPTIVE && (
-        <Box marginLeft="8px">
-          <Checkbox
-            label={""}
-            value={props.checked}
-            checked={props.checked}
-            size="small"
-          />
-        </Box>
-      )}
-      {leadingIcon && (
-        <Box display="flex" marginLeft="8px">
-          {leadingIcon}
-        </Box>
-      )}
-      {(avatarSrc || avatar) && (
-        <Box className="navi-menu-item-avatar-container" marginLeft="8px">
-          {avatarSrc ? (
-            <Avatar className="avatar-component" src={avatarSrc} />
-          ) : (
-            <Avatar className="avatar-component">{avatar}</Avatar>
+    <StyledMenuItem
+      {...props}
+      disableRipple
+      className={`navi-menu-list-item descriptive-${size} ${
+        checked ? "navi-item-selected" : ""
+      } `}
+      disableGutters
+      onClick={handleMenuItemClick}
+    >
+      <Box
+        width="100%"
+        display="flex"
+        alignItems="center"
+        justifyContent="space-between"
+        height="inherit"
+        padding="4px 8px"
+      >
+        <Box display="flex" width="100%" alignItems="center">
+          {selectable && (
+            <Box marginLeft="8px">
+              <Checkbox
+                label={""}
+                value={checked}
+                checked={checked}
+                size="small"
+              />
+            </Box>
           )}
+          {leadingIcon && (
+            <Box display="flex" marginLeft="8px">
+              {leadingIcon}
+            </Box>
+          )}
+          {(avatarSrc || avatar) && (
+            <Box marginLeft="8px">
+              {avatarSrc ? (
+                <Avatar src={avatarSrc} />
+              ) : (
+                <Avatar>{avatar}</Avatar>
+              )}
+            </Box>
+          )}
+          <Box marginLeft="8px">
+            <TitleTypography>{title}</TitleTypography>
+            {description && (
+              <DescriptionTypography>{description}</DescriptionTypography>
+            )}
+          </Box>
         </Box>
-      )}
-      <Box className="navi-menu-item-text-container" marginLeft="8px">
-        <TitleTypography>{title}</TitleTypography>
-        {description && (
-          <DescriptionTypography>{description}</DescriptionTypography>
+
+        {trallingIcon && (
+          <Box
+            className={`${
+              checked ? "navi-icon-selected" : ""
+            } navi-menu-item-action-icon-${size}`}
+            display="flex"
+            onClick={handleTrailingIconClick}
+            margin="0px 8px"
+          >
+            {trallingIcon}
+          </Box>
         )}
       </Box>
-    </Box>
+    </StyledMenuItem>
   );
 };
 

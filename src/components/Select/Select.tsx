@@ -15,6 +15,10 @@ import { InputAdornment } from '@material-ui/core';
 import "./Select.scss";
 import { MenuItemProps } from "../MenuItem/MenuItem.types";
 
+interface checkObj {
+  string: boolean
+}
+
 const Select: React.FC<SelectProps> = ({
   onClose,
   data = [],
@@ -33,32 +37,18 @@ const Select: React.FC<SelectProps> = ({
   const inputRef = React.useRef<any>(null);
   const [selectionMap, setSelectionMap] = React.useState(() => {
     if (multiSelect) {
-      // if (children?.length) {
       if (React.Children.count(children)) {
-        // const map = children.reduce((acc, child) => {
-
-        const map = React.Children.toArray(children).reduce((acc, child) => {
+        const map = React.Children.toArray(children).reduce((acc: any, child) => {
           if (!React.isValidElement(child)) {
             return {};
           }
 
           if (!child.props.type) {
-            // acc.props.checked = true;
             acc[child.props.value] = child.props.checked ? true : false;
           }
           return acc;
         }, {});
-        
-        // const map = React.Children.map(children, (child) => {
-        //   if (!React.isValidElement(child)) {
-        //     return null;
-        //   }
-      
-        //   if (!child.props.type) {
-        //     child.props.checked = child.props.checked ? true : false;
-        //   }
-        //   return child;
-        // });
+
         return map;
       }
     }
@@ -66,26 +56,26 @@ const Select: React.FC<SelectProps> = ({
   });
 
 
-  const onMenuItemClick = React.useCallback(
-    // (event: React.MouseEventHandler<HTMLLIElement> | undefined) => {
-    (event: React.MouseEventHandler<HTMLLIElement>) => {
+  // const onMenuItemClick = React.useCallback(
+  //   // (event: React.MouseEventHandler<HTMLLIElement> | undefined) => {
+  //   (event: React.MouseEventHandler<HTMLLIElement>) => {
 
-      console.log(event);
-      // if (!multiSelect) {
-      //   props.onChange && props.onChange({ value, title });
-      //   handleClose();
-      // } else {
-      //   let updatedMap = { ...selectionMap, [value]: !selectionMap[value] };
-      //   setSelectionMap(updatedMap);
-      //   props.onChange && props.onChange(updatedMap);
-      // }
-    },
-    [selectionMap]
-  );
+  //     console.log(event);
+  //     // if (!multiSelect) {
+  //     //   props.onChange && props.onChange({ value, title });
+  //     //   handleClose();
+  //     // } else {
+  //     //   let updatedMap = { ...selectionMap, [value]: !selectionMap[value] };
+  //     //   setSelectionMap(updatedMap);
+  //     //   props.onChange && props.onChange(updatedMap);
+  //     // }
+  //   },
+  //   [selectionMap]
+  // );
 
-  // const onMenuItemClick = (event: any) => {
-  //   console.log(event.value);
-  // };
+  const onMenuItemClick = (value: any, title: any) => {
+    console.log(value, title);
+  };
 
 
   const handleChange = (value: unknown) => {
@@ -145,21 +135,22 @@ const Select: React.FC<SelectProps> = ({
   }, [data, selectAll]);
 
   // console.log("React.Children: ", React.Children);
-  
+
   const items = React.Children.map(children, (child) => {
     if (!React.isValidElement(child)) {
       return null;
     }
     const item = child as React.ReactElement<React.PropsWithChildren<MenuItemProps>>;
+    const value = child.props.value;
 
     return React.cloneElement(item, {
-      key: child.props.value,
-      onMenuItemClick: (e: React.MouseEventHandler<HTMLLIElement>) => {onMenuItemClick(e)},
+      key: value,
+      onMenuItemClick: onMenuItemClick,
       size: size,
-      selectable: true,
-      checked: true,
+      selectable: multiSelect,
+      checked: child.props.checked || selectValue.indexOf(value) !== -1,
     });
-});
+  });
 
   return (
     <Box className="navi-menu-component"
@@ -170,9 +161,14 @@ const Select: React.FC<SelectProps> = ({
         defaultValue=""
         onChange={(event: React.ChangeEvent<{ value: unknown }>) => {
           const { value } = event.target;
-          const selectAllOption = value instanceof Array && (value.indexOf("select-all") !== -1);
-          const input = event.nativeEvent.target as HTMLElement;
-          input.innerText !== 'Select All' && handleChange(value);
+          if (Array.isArray(value)) {
+            const selectAllOption = value instanceof Array && (value.indexOf("select-all") !== -1);
+            const input = event.nativeEvent.target as HTMLElement;
+            input.innerText !== 'Select All' && handleChange(value);
+            setSelectValue(value);
+          } else if (typeof value === 'string') {
+            setSelectValue([value]);
+          }
         }}
         renderValue={(selected) => {
           return typeof selected === 'string' ? selected : ((selected) as string[]).join(', ')
@@ -254,7 +250,8 @@ const Select: React.FC<SelectProps> = ({
           // className: "navi-menu-item-container",
           // anchorEl: inputRef.current,
           // getContentAnchorEl: () => inputRef.current,
-          getContentAnchorEl: null
+          getContentAnchorEl: null,
+          disableAutoFocusItem: true,
         }}
       >
         {/* {multiSelect ?
@@ -314,7 +311,7 @@ const Select: React.FC<SelectProps> = ({
         )}
         */}
 
-        {/* {props.children} */}
+        {/* {children} */}
         {items}
       </MuiSelect>
     </Box>

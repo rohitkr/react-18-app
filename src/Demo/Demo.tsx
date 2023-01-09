@@ -9,7 +9,7 @@ import Select from '../components/Select/Select';
 // import Button from '../components/Button/Button';
 import { ClickAwayListener } from "@material-ui/core";
 import { Tag } from 'navi-design-system';
-import { Photo, BellRinging, Pencil } from 'tabler-icons-react';
+import { Photo, BellRinging, Pencil, MoodHappy } from 'tabler-icons-react';
 import { Pencil as Edit, Movie } from 'tabler-icons-react';
 import TextInput from '../components/Input/Input';
 import SelectDemo from './SelectDemo';
@@ -18,6 +18,11 @@ import Autocomplete from "./Autocomplete";
 import SelectClearAll from "./SelectClearAll";
 import { SelectDataProps } from "../components/Select/Select.types";
 import MenuItem from "../components/MenuItem/MenuItem";
+import DescriptiveMenuItem from "../components/MenuItem/DescriptiveMenuItem";
+import GroupHeadingMenuItem from "../components/MenuItem/GroupHeadingMenuItem";
+import DividerMenuItem from "../components/MenuItem/DividerMenuItem";
+import { MenuItemTypeEnum } from "../components/MenuItem/MenuItem.types";
+import EmptyStateMenuItem from "../components/MenuItem/EmptyStateMenuItem";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -414,11 +419,12 @@ export default function AutocompleteControlled() {
           }: SelectDataProps, i) => {
 
             return (
-              <MenuItem
+              <DescriptiveMenuItem
                 key={i}
                 value={title}
                 // className={`navi-menu-item-list-item ${(selectValue.indexOf(title) > -1) ? 'navi-item-selected' : ''} `}
                 title={title}
+                checked={false}
                 selectable={true}
                 {...val}
               />
@@ -426,14 +432,129 @@ export default function AutocompleteControlled() {
           })}
         </Select>
 
-        {/* <ClearAll /> */}
+        <div style={{ height: '100px' }}>
+          <Select
+            open={open}
+            anchorEl={anchorEl}
+            onClose={handleClose}
+            // data={data}
+            multiSelect={false}
+            selectAll={false}
+            size="small"
+            inputProps={{
+              label: "Select Movies",
+              errorMessage: "Error message",
+              helperText: "Helper text",
+              maxCharacters: 100,
+              minWidth: 600,
+              moreInfo: "More information text",
+              required: true,
+              size: "large",
+              successMessage: "Success message",
+              tooltipPlacement: "top",
+              inputType: "default"
+            }}
+          >
+            <DescriptiveMenuItem
+              value="descriptive_item_1"
+              avatar="A"
+              title="Sample menu item"
+              description="With description"
+              trallingIcon={<Pencil />}
+              onClick={() => { alert("test...") }}
+            />
+            <GroupHeadingMenuItem value="group_heading" title="Group heading" />
+            <DividerMenuItem />
+            <EmptyStateMenuItem
+              value="empty_card"
+              description="No results found"
+              trailingIcon={<Pencil />}
+              leadingIcon={<Pencil />}
+            />
+            <DescriptiveMenuItem value="text_only" title="Text only" />
+            <DescriptiveMenuItem
+              value="descriptive_menu-_item"
+              title="Descriptive menu item"
+              description="Description text"
+              leadingIcon={<MoodHappy />}
+            />            <DescriptiveMenuItem
+              value="descriptive_item_1"
+              avatar="A"
+              title="Sample menu item"
+              description="With description"
+              trallingIcon={<Pencil />}
+              onClick={() => { alert("test...") }}
+            />
+            <GroupHeadingMenuItem value="group_heading" title="Group heading" />
+            <DividerMenuItem />
+            <EmptyStateMenuItem
+              value="empty_card"
+              description="No results found"
+              trailingIcon={<Pencil />}
+              leadingIcon={<Pencil />}
+            />
+            <DescriptiveMenuItem value="text_only" title="Text only" />
+            <DescriptiveMenuItem
+              value="descriptive_menu-_item"
+              title="Descriptive menu item"
+              description="Description text"
+              leadingIcon={<MoodHappy />}
+            />            <DescriptiveMenuItem
+              value="descriptive_item_1"
+              avatar="A"
+              title="Sample menu item"
+              description="With description"
+              trallingIcon={<Pencil />}
+              onClick={() => { alert("test...") }}
+            />
+            <GroupHeadingMenuItem value="group_heading" title="Group heading" />
+            <DividerMenuItem />
+            <EmptyStateMenuItem
+              value="empty_card"
+              description="No results found"
+              trailingIcon={<Pencil />}
+              leadingIcon={<Pencil />}
+            />
+            <DescriptiveMenuItem value="text_only" title="Text only" />
+            <DescriptiveMenuItem
+              value="descriptive_menu-_item"
+              title="Descriptive menu item"
+              description="Description text"
+              leadingIcon={<MoodHappy />}
+            />            <DescriptiveMenuItem
+              value="descriptive_item_1"
+              avatar="A"
+              title="Sample menu item"
+              description="With description"
+              trallingIcon={<Pencil />}
+              onClick={() => { alert("test...") }}
+            />
+            <GroupHeadingMenuItem value="group_heading" title="Group heading" />
+            <DividerMenuItem />
+            <EmptyStateMenuItem
+              value="empty_card"
+              description="No results found"
+              trailingIcon={<Pencil />}
+              leadingIcon={<Pencil />}
+            />
+            <DescriptiveMenuItem value="text_only" title="Text only" />
+            <DescriptiveMenuItem
+              value="descriptive_menu-_item"
+              title="Descriptive menu item"
+              description="Description text"
+              leadingIcon={<MoodHappy />}
+            />
+          </Select>
 
-        {/* <SelectClearAll />
+          {/* <ClearAll /> */}
+
+          {/* <SelectClearAll />
 
         <Autocomplete /> */}
 
-      </div>
+        </div>
 
+      </div>
     </div>
   );
 }

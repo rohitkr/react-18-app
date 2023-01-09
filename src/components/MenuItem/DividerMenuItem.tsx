@@ -1,8 +1,9 @@
 import React from "react";
 import Box from "../Box/Box";
-import { MoodSad } from "tabler-icons-react";
 import MenuItem from "@material-ui/core/MenuItem";
+import Divider from "../Divider/Divider";
 import { withStyles } from "@material-ui/core/styles";
+import './DividerMenuItem.scss'
 
 const MenuItemStyles = () => ({
   root: {
@@ -14,27 +15,26 @@ const MenuItemStyles = () => ({
 
 const StyledMenuItem = withStyles(MenuItemStyles)(MenuItem);
 
-const EmptyStateMenuItem: React.FC<any> = (props) => {
-  const { size, description, leadingIcon, trailingIcon } = props;
+const DividerMenuItem: React.FC<any> = (props) => {
+  const { size } = props;
   return (
     <StyledMenuItem
       {...props}
       disableRipple
-      className={`navi-menu-list-item empty-${size}`}
+      className={`navi-menu-list-item divider-${size}`}
       disableGutters
     >
       <Box
         display="flex"
         alignItems="center"
-        justifyContent="center"
         width="100%"
+        className={`divider-${size}`}
+        padding="0px 8px"
       >
-        {leadingIcon}
-        <Box component="span" padding="0px 8px">{description}</Box>
-        {trailingIcon}
+        <Divider orientation="horizontal" />
       </Box>
     </StyledMenuItem>
   );
 };
 
-export default EmptyStateMenuItem;
+export default DividerMenuItem;
