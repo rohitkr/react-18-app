@@ -1,5 +1,5 @@
 import React from "react";
-import { MenuItemProps, MenuItemTypeEnum } from "./MenuItem.types";
+import { MenuItemProps } from "./MenuItem.types";
 import MenuItem from "@material-ui/core/MenuItem";
 import { withStyles } from "@material-ui/core/styles";
 import "./MenuItem.scss";
@@ -13,7 +13,6 @@ const MenuItemCard = ({
   trallingIcon,
   leadingIcon,
   value,
-  type = MenuItemTypeEnum.DESCRIPTIVE,
   disableHoverStyle = false,
   disableItemClick = false,
   isSelected,
@@ -31,7 +30,6 @@ const MenuItemCard = ({
   const StyledMenuItem = withStyles(MenuItemStyles)(MenuItem);
 
   const onMenuItemClick = (e: React.MouseEvent<HTMLLIElement, MouseEvent>) => {
-    console.log("on click: ")
     if (!disableItemClick) {
       props.onMenuItemClick && props.onMenuItemClick(e, value);
       props.onClick && props.onClick(e);
@@ -42,8 +40,9 @@ const MenuItemCard = ({
     <StyledMenuItem
       {...props}
       disableRipple
-      className={`navi-menu-list-item ${size} ${isSelected ? "navi-item-selected" : ""
-        } `}
+      className={`navi-menu-list-item ${size} ${
+        isSelected ? "navi-item-selected" : ""
+      } `}
       disableGutters
       onClick={onMenuItemClick}
     >

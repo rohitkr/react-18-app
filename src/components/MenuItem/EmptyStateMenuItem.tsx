@@ -1,8 +1,9 @@
 import React from "react";
 import Box from "../Box/Box";
-import { MoodSad } from "tabler-icons-react";
 import MenuItem from "@material-ui/core/MenuItem";
 import { withStyles } from "@material-ui/core/styles";
+import './EmptyStateMenuItem.scss'
+import { EmptyStateMenuItemProps } from "./MenuItem.types";
 
 const MenuItemStyles = () => ({
   root: {
@@ -14,8 +15,8 @@ const MenuItemStyles = () => ({
 
 const StyledMenuItem = withStyles(MenuItemStyles)(MenuItem);
 
-const EmptyStateMenuItem: React.FC<any> = (props) => {
-  const { size, description, leadingIcon, trailingIcon } = props;
+const EmptyStateMenuItem: React.FC<EmptyStateMenuItemProps> = (props) => {
+  const { size, title, leadingIcon, trailingIcon } = props;
   return (
     <StyledMenuItem
       {...props}
@@ -30,7 +31,9 @@ const EmptyStateMenuItem: React.FC<any> = (props) => {
         width="100%"
       >
         {leadingIcon}
-        <Box component="span" padding="0px 8px">{description}</Box>
+          <Box component="span" padding="0px 8px">
+            {title}
+          </Box>
         {trailingIcon}
       </Box>
     </StyledMenuItem>

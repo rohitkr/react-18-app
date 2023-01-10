@@ -7,6 +7,7 @@ import Typography from "@material-ui/core/Typography";
 import Checkbox from "../Checkbox/Checkbox";
 import MenuItem from "@material-ui/core/MenuItem";
 import "./DescriptiveMenuItem.scss";
+import { DescriptiveMenuItemProps } from "./MenuItem.types";
 
 const TitleTypography = withStyles((theme) => ({
   root: {
@@ -29,7 +30,7 @@ const DescriptionTypography = withStyles((theme) => ({
   },
 }))(Typography);
 
-const DescriptiveMenuItem: React.FC<any> = ({
+const DescriptiveMenuItem: React.FC<DescriptiveMenuItemProps> = ({
   avatarSrc,
   avatar,
   title,
@@ -38,12 +39,13 @@ const DescriptiveMenuItem: React.FC<any> = ({
   selectable = false,
   onMenuItemClick,
   checked,
-  trallingIcon,
+  trailingIcon,
   onBulkActionClick,
   disableHoverStyle,
   size,
   disableItemClick,
   value,
+  button,
   ...props
 }) => {
   const MenuItemStyles = () => ({
@@ -58,8 +60,9 @@ const DescriptiveMenuItem: React.FC<any> = ({
     e: React.MouseEvent<HTMLLIElement, MouseEvent>
   ) => {
     if (!disableItemClick) {
-      onMenuItemClick && onMenuItemClick(value);
-      console.log(props);
+      onMenuItemClick && onMenuItemClick(e, value);
+      const ele  = e.nativeEvent.target as HTMLLIElement;
+      console.log(ele);
       props.onClick && props.onClick(e);
     }
   };
@@ -80,6 +83,8 @@ const DescriptiveMenuItem: React.FC<any> = ({
       } `}
       disableGutters
       onClick={handleMenuItemClick}
+      onSelectCapture={(e)=> {console.log("on change called...", e)}}
+      
     >
       <Box
         width="100%"
@@ -94,7 +99,7 @@ const DescriptiveMenuItem: React.FC<any> = ({
             <Box marginLeft="8px">
               <Checkbox
                 label={""}
-                value={checked}
+                value={value}
                 checked={checked}
                 size="small"
               />
@@ -122,7 +127,7 @@ const DescriptiveMenuItem: React.FC<any> = ({
           </Box>
         </Box>
 
-        {trallingIcon && (
+        {trailingIcon && (
           <Box
             className={`${
               checked ? "navi-icon-selected" : ""
@@ -131,7 +136,7 @@ const DescriptiveMenuItem: React.FC<any> = ({
             onClick={handleTrailingIconClick}
             margin="0px 8px"
           >
-            {trallingIcon}
+            {trailingIcon}
           </Box>
         )}
       </Box>

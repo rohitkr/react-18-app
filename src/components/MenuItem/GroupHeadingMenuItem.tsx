@@ -6,6 +6,7 @@ import "./GroupHeadingMenuItem.scss";
 import { withStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import tokenObj from "../../tokens/build/json/tokens.json";
+import { GroupHeadingMenuItemProps } from "./MenuItem.types";
 
 const TitleTypography = withStyles((theme) => ({
   root: {
@@ -17,7 +18,7 @@ const TitleTypography = withStyles((theme) => ({
   },
 }))(Typography);
 
-const GroupHeadingMenuItem: React.FC<any> = (props) => {
+const GroupHeadingMenuItem: React.FC<GroupHeadingMenuItemProps> = (props) => {
   const MenuItemStyles = () => ({
     root: {
       "&:hover": {

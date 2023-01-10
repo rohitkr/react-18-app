@@ -3,7 +3,8 @@ import Box from "../Box/Box";
 import MenuItem from "@material-ui/core/MenuItem";
 import Divider from "../Divider/Divider";
 import { withStyles } from "@material-ui/core/styles";
-import './DividerMenuItem.scss'
+import "./DividerMenuItem.scss";
+import { DividerMenuItemProps } from "./MenuItem.types";
 
 const MenuItemStyles = () => ({
   root: {
@@ -15,7 +16,7 @@ const MenuItemStyles = () => ({
 
 const StyledMenuItem = withStyles(MenuItemStyles)(MenuItem);
 
-const DividerMenuItem: React.FC<any> = (props) => {
+const DividerMenuItem: React.FC<DividerMenuItemProps> = (props) => {
   const { size } = props;
   return (
     <StyledMenuItem

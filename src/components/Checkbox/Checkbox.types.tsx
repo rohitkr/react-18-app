@@ -17,7 +17,7 @@ export interface CheckboxProps
 export interface CheckboxOptionProps
   extends Pick<CheckboxProps, Exclude<keyof CheckboxProps, "size">> {
   label: React.ReactNode | string;
-  value: string;
+  value: string | number;
   labelPlacement?: labelPlacementOptions;
   spacing?: "sm" | "md" | "lg";
   justify?: boolean;

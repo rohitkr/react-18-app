@@ -1,0 +1,32 @@
+@import "../../TokensOld/base-tokens/typography-token.scss";
+
+.navi-menu-list-item {
+  &:hover {
+    background-color: transparent;
+  }
+  .no-hover {
+    background-color: transparent;
+  }
+  .MuiListItem-button:hover {
+    background-color: transparent;
+  }
+}
+
+.navi-menu-container {
+  .navi-menu-list-item {
+    padding: 0px;
+  }
+
+  .navi-item-selected {
+    background-color: #f0f9ff;
+    &:hover {
+      background-color: #f0f9ff;
+    }
+
+    .navi-icon-selected {
+      svg {
+        color: #0975d7;
+      }
+    }
+  }
+}
