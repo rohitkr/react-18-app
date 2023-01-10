@@ -39,7 +39,7 @@ const MenuItemComp = ({
   leadingIcon,
   avatar,
   description,
-  trallingIcon,
+  trailingIcon,
   checked,
   checkboxes = true,
   ...val }: SelectItemCardProps) => {
@@ -64,8 +64,8 @@ const MenuItemComp = ({
         {description}
       </DescriptionTypography>}
     </Box>
-    {trallingIcon && <Box className="navi-menu-item-right-icon-container">
-      {trallingIcon}
+    {trailingIcon && <Box className="navi-menu-item-right-icon-container">
+      {trailingIcon}
     </Box>}
   </>)
 }

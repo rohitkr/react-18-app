@@ -257,7 +257,7 @@ const TagComponent: React.FC<TagProps> = ({
                 : tokenObj[`tag-type-icon-${size}-leading-icon-margin-right`]
             }
             alignItems={tokenObj["tag-type-icon-align-items"]}
-            className={size}
+            className={`${size}-tag`}
           >
             {LeadingIcon}
           </Box>
@@ -273,7 +273,7 @@ const TagComponent: React.FC<TagProps> = ({
               display: tokenObj["tag-type-icon-display"],
               alignItems: tokenObj["tag-type-icon-align-items"],
             }}
-            className={size}
+            className={`${size}-tag`}
           >
             {TrailingIcon}
           </Box>

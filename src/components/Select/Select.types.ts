@@ -1,9 +1,10 @@
 import { MenuProps as MuiMenuProps } from "@material-ui/core/Menu";
+import { SelectProps as MuiSelectProps } from "@material-ui/core/Select";
 import { NaviInputProps } from "../Input/Input.types";
 export interface SelectDataProps {
   title?: string;
   description?: string;
-  trallingIcon?: React.ReactNode;
+  trailingIcon?: React.ReactNode;
   leadingIcon?: React.ReactNode;
   avatar?: React.ReactNode;
   multiSelect?: boolean;
@@ -13,25 +14,25 @@ export interface SelectDataProps {
   divider?: boolean;
   disabled?: boolean;
 }
-export interface SelectProps extends MuiMenuProps {
+
+// export interface SelectProps extends MuiSelectProps {
+export interface SelectProps extends Pick<MuiSelectProps, Exclude<keyof MuiSelectProps, "inputProps" | "onChange">> {
   open: boolean;
-  size?: 'small' | 'large';
+  size?: "small" | "large";
   anchorEl?: HTMLElement | null;
   multiSelect?: boolean;
   selectAll?: boolean;
   checkboxes?: boolean;
   inputProps?: NaviInputProps;
-  onMenuChange?: (
-    event: React.MouseEvent<{ name?: string; value?: unknown }>,
-    child: React.ReactNode
+  onChange?: (
+    data: string[] | string
   ) => void;
-  data?: SelectDataProps[];
 }
 export interface SelectItemCardProps {
   selectValue: string[];
   title?: string;
   description?: string;
-  trallingIcon?: React.ReactNode;
+  trailingIcon?: React.ReactNode;
   leadingIcon?: React.ReactNode;
   avatar?: React.ReactNode;
   multiSelect?: boolean;
@@ -43,6 +44,6 @@ export interface SelectItemCardProps {
   _onchange?: (
     event: React.MouseEvent<{ name?: string; value?: unknown }>,
     child: string,
-    checked?: boolean,
+    checked?: boolean
   ) => void;
 }

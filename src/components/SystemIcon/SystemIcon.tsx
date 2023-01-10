@@ -20,7 +20,7 @@ const SystemIconComponent: React.FC<SystemIconProps> = ({
     >
       <Box
         tabIndex={props.tabIndex || 1}
-        className={`${size} navi-systemicon-flex ${intent} ${
+        className={`${size}-system-icon navi-systemicon-flex ${intent} ${
           transparent && !disabled
             ? "navi-systemicon-transparent "
             : "navi-systemicon-default-bg"

@@ -55,14 +55,14 @@
 }
 
 .navi-tag-icons-container {
-  .small {
+  .small-tag {
     & svg {
       width: $tag-type-icon-small-size;
       height: $tag-type-icon-small-size;
     }
   }
 
-  .large {
+  .large-tag {
     & svg {
       width: $tag-type-icon-large-size;
       height: $tag-type-icon-large-size;

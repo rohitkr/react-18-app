@@ -13,10 +13,9 @@ import { MenuItemProps } from "../MenuItem/MenuItem.types";
 
 const Select: React.FC<SelectProps> = ({
   onClose,
-  data = [],
   multiSelect,
   selectAll = false,
-  onMenuChange,
+  // onMenuChange,
   inputProps,
   checkboxes = true,
   size = 'large',
@@ -74,23 +73,25 @@ const Select: React.FC<SelectProps> = ({
     <Box className="navi-menu-component"
     >
       <MuiSelect
-        multiple={multiSelect}
-        value={selectValue}
-        defaultValue=""
-        onChange={(event: React.ChangeEvent<{ value: unknown }>) => {
-          const { value } = event.target;
-          if (Array.isArray(value)) {
-            const selectAllOption = value instanceof Array && (value.indexOf("select-all") !== -1);
-            const input = event.nativeEvent.target as HTMLElement;
-            // input.innerText !== 'Select All' && handleChange(value);
-            setSelectValue(value);
-          } else if (typeof value === 'string') {
-            setSelectValue([value]);
-          }
-        }}
         renderValue={(selected) => {
           return typeof selected === 'string' ? selected : ((selected) as string[]).join(', ')
         }}
+        {...props}
+        onChange={(event: React.ChangeEvent<{ value: unknown }>, ele) => {
+          const { value } = event.target;
+          let valueArr: string[] | string = [];
+          if (Array.isArray(value)) {
+            setSelectValue(value);
+            valueArr = value;
+          } else if (typeof value === 'string') {
+            setSelectValue([value]);
+            valueArr = value;
+          }
+          props.onChange && props.onChange(valueArr);
+        }}
+        multiple={multiSelect}
+        value={selectValue}
+        defaultValue=""
         inputRef={inputRef}
         input={
           <TextInput

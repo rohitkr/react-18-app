@@ -4,7 +4,7 @@
   display: $systemicon-root-display;
   border-radius: $systemicon-root-border-radius;
 
-  .small {
+  .small-system-icon {
     height: $systemicon-root-size-small-height;
     width: $systemicon-root-size-small-width;
     svg {
@@ -14,7 +14,7 @@
     }
   }
 
-  .medium {
+  .medium-system-icon {
     height: $systemicon-root-size-standard-height;
     width: $systemicon-root-size-standard-width;
     svg {
@@ -23,7 +23,7 @@
     }
   }
 
-  .large {
+  .large-system-icon {
     height: $systemicon-root-size-large-height;
     width: $systemicon-root-size-large-width;
     svg {

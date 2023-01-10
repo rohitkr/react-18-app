@@ -9,27 +9,6 @@ import MenuItem from "@material-ui/core/MenuItem";
 import "./DescriptiveMenuItem.scss";
 import { DescriptiveMenuItemProps } from "./MenuItem.types";
 
-const TitleTypography = withStyles((theme) => ({
-  root: {
-    color: tokenObj["color-secondary-800"],
-    fontFamily: tokenObj["text-body-03-font-family"],
-    fontSize: tokenObj["text-body-03-font-size"],
-    fontWeight: Number(tokenObj["text-body-03-font-weight"]),
-    lineHeight: tokenObj["text-body-03-line-height"],
-  },
-}))(Typography);
-
-const DescriptionTypography = withStyles((theme) => ({
-  root: {
-    color: tokenObj["color-secondary-600"],
-    fontFamily: tokenObj["text-body-04-font-family"],
-    fontSize: tokenObj["text-body-04-font-size"],
-    fontWeight: Number(tokenObj["text-body-04-font-weight"]),
-    lineHeight: tokenObj["text-body-04-line-height"],
-    marginTop: tokenObj["spacing-2"],
-  },
-}))(Typography);
-
 const DescriptiveMenuItem: React.FC<DescriptiveMenuItemProps> = ({
   avatarSrc,
   avatar,
@@ -46,12 +25,38 @@ const DescriptiveMenuItem: React.FC<DescriptiveMenuItemProps> = ({
   disableItemClick,
   value,
   button,
+  disabled = false,
   ...props
 }) => {
+  const TitleTypography = withStyles((theme) => ({
+    root: {
+      color: disabled
+        ? tokenObj["color-secondary-500"]
+        : tokenObj["color-secondary-800"],
+      fontFamily: tokenObj["text-body-03-font-family"],
+      fontSize: tokenObj["text-body-03-font-size"],
+      fontWeight: Number(tokenObj["text-body-03-font-weight"]),
+      lineHeight: tokenObj["text-body-03-line-height"],
+    },
+  }))(Typography);
+
+  const DescriptionTypography = withStyles((theme) => ({
+    root: {
+      color: disabled
+        ? tokenObj["color-secondary-500"]
+        : tokenObj["color-secondary-600"],
+      fontFamily: tokenObj["text-body-04-font-family"],
+      fontSize: tokenObj["text-body-04-font-size"],
+      fontWeight: Number(tokenObj["text-body-04-font-weight"]),
+      lineHeight: tokenObj["text-body-04-line-height"],
+      marginTop: tokenObj["spacing-2"],
+    },
+  }))(Typography);
+
   const MenuItemStyles = () => ({
     root: {
       "&:hover": {
-        backgroundColor: disableHoverStyle ? "transparent" : "#F6F6F9",
+        backgroundColor: disableHoverStyle || disabled ? "transparent" : "#F6F6F9",
       },
     },
   });
@@ -59,10 +64,8 @@ const DescriptiveMenuItem: React.FC<DescriptiveMenuItemProps> = ({
   const handleMenuItemClick = (
     e: React.MouseEvent<HTMLLIElement, MouseEvent>
   ) => {
-    if (!disableItemClick) {
+    if (!disableItemClick && !disabled) {
       onMenuItemClick && onMenuItemClick(e, value);
-      const ele  = e.nativeEvent.target as HTMLLIElement;
-      console.log(ele);
       props.onClick && props.onClick(e);
     }
   };
@@ -83,8 +86,6 @@ const DescriptiveMenuItem: React.FC<DescriptiveMenuItemProps> = ({
       } `}
       disableGutters
       onClick={handleMenuItemClick}
-      onSelectCapture={(e)=> {console.log("on change called...", e)}}
-      
     >
       <Box
         width="100%"
@@ -144,4 +145,5 @@ const DescriptiveMenuItem: React.FC<DescriptiveMenuItemProps> = ({
   );
 };
 
-export default DescriptiveMenuItem;
+export default React.memo(DescriptiveMenuItem);
+

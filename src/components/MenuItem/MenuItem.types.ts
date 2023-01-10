@@ -42,7 +42,7 @@ export interface MenuItemProps extends MuiMenuItemProps {
   title?: string;
   size?: "large" | "small";
   description?: string;
-  trallingIcon?: React.ReactNode;
+  trailingIcon?: React.ReactNode;
   leadingIcon?: React.ReactNode;
   avatarSrc?: string;
   avatar?: string;
