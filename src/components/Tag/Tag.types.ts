@@ -16,7 +16,7 @@ export interface TagProps extends React.HTMLAttributes<HTMLDivElement> {
   TrailingIcon?: React.ReactElement;
   dataTestId?: string;
   dismissible?: boolean;
-  onDismiss?: (e: React.MouseEvent) => void;
+  onDismiss?: (e: React.MouseEvent, v?: string) => void;
   onClick?: (e: React.MouseEvent) => void;
   onHover?: (e: React.MouseEvent) => void;
   onFocus?: (e: React.FocusEvent<HTMLElement, Element>) => void;
@@ -24,6 +24,7 @@ export interface TagProps extends React.HTMLAttributes<HTMLDivElement> {
   tabIndex?: number;
   disabled?: boolean;
   forwardedRef?: ForwardedRef<HTMLDivElement>;
+  value?: string;
   "data-testid"?: string
 }
 
@@ -32,13 +33,13 @@ export interface DismissibleCloseIconProps {
   size: "small" | "large";
   handleDismiss: (e: React.MouseEvent) => void;
   intent:
-    | "info"
-    | "success"
-    | "warning"
-    | "critical"
-    | "muted"
-    | "muted-light"
-    | "muted-dark";
+  | "info"
+  | "success"
+  | "warning"
+  | "critical"
+  | "muted"
+  | "muted-light"
+  | "muted-dark";
   variant: string;
   disabled: boolean;
 }

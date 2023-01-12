@@ -199,7 +199,7 @@ const TagComponent: React.FC<TagProps> = ({
   const handleDismiss = React.useCallback((e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
-    dismissible && onDismiss && onDismiss(e);
+    dismissible && onDismiss && onDismiss(e, props.value);
   }, []);
 
   const handleOnClick = React.useCallback((e: React.MouseEvent) => {
@@ -236,7 +236,6 @@ const TagComponent: React.FC<TagProps> = ({
   return (
     <Box
       tabIndex={tabIndex || 1}
-      style={{ display: "inline-block", width: "max-content", outline: "none" }}
       onMouseEnter={handleHover}
       onMouseLeave={handleHoverOut}
       onClick={handleOnClick}
@@ -244,8 +243,10 @@ const TagComponent: React.FC<TagProps> = ({
       onBlur={handleBlur}
       ref={forwardedRef}
       data-testid={dataTestId}
-      className={"navi-tag-icons-container"}
+      data-value={props.value}
       {...props}
+      className={`navi-tag-icons-container ${props.className}`}
+      style={{ display: "inline-block", width: "max-content", outline: "none", ...props.style }}
     >
       <Box style={{ ...styles.root }}>
         {LeadingIcon && (

@@ -1,5 +1,6 @@
 import { MenuProps as MuiMenuProps } from "@material-ui/core/Menu";
 import { SelectProps as MuiSelectProps } from "@material-ui/core/Select";
+import React from "react";
 import { NaviInputProps } from "../Input/Input.types";
 export interface SelectDataProps {
   title?: string;
@@ -24,6 +25,7 @@ export interface SelectProps extends Pick<MuiSelectProps, Exclude<keyof MuiSelec
   selectAll?: boolean;
   checkboxes?: boolean;
   inputProps?: NaviInputProps;
+  dropdownIcon?: React.ReactNode;
   onChange?: (
     data: string[] | string
   ) => void;

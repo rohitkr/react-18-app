@@ -4,7 +4,7 @@ import MuiSelect from '@material-ui/core/Select';
 import Box from "../Box/Box";
 import TextInput from "../Input/Input";
 import IconButton from "../IconButton/IconButton";
-import { X, CaretDown } from "tabler-icons-react";
+import { X, ChevronDown } from "tabler-icons-react";
 import { InputAdornment } from '@material-ui/core';
 import "./Select.scss";
 import { MenuItemProps } from "../MenuItem/MenuItem.types";
@@ -20,9 +20,11 @@ const Select: React.FC<SelectProps> = ({
   checkboxes = true,
   size = 'large',
   children,
+  dropdownIcon,
+  value = [],
   ...props }) => {
-  const [selectValue, setSelectValue] = React.useState<string[]>([]);
-  const [open, setOpen] = React.useState(false);
+  const [selectValue, setSelectValue] = React.useState<string[]>(value as string[]);
+  const [open, setOpen] = React.useState(props.open);
   const inputRef = React.useRef<any>(null);
 
   React.useEffect(() => {
@@ -36,7 +38,8 @@ const Select: React.FC<SelectProps> = ({
       });
       setSelectValue(getSelectedValue());
     }
-  }, [selectAll]);
+    setOpen(open);
+  }, [selectAll, open]);
 
   const getSelectedValue = () => {
     const valueArr: string[] = [];
@@ -110,9 +113,21 @@ const Select: React.FC<SelectProps> = ({
         onClose={() => {
           setOpen(false);
         }}
-        onOpen={() => {
-          setOpen(true);
+        onOpen={(e) => {
+          let ele = e.target as HTMLElement;
+          let preventMenuOpen = false;
+          while (ele.nodeName !== 'BODY' && !preventMenuOpen) {
+            ele = ele.parentNode as HTMLElement;
+            preventMenuOpen = ele.classList.contains('navi-prevent-menu-open');
+          }
+          if (!preventMenuOpen) {
+            setOpen(true);
+          }
         }}
+        onClick={(e) => {
+          console.log("click called...", e);
+        }}
+
         // Placement of custom clear and dropdown icon button
         endAdornment={
           <InputAdornment position="start" style={{ marginRight: "0px" }}>
@@ -138,7 +153,7 @@ const Select: React.FC<SelectProps> = ({
                 setOpen(true);
               }}
             >
-              <CaretDown />
+              {dropdownIcon || <ChevronDown />}
             </IconButton>
           </InputAdornment>
         }
