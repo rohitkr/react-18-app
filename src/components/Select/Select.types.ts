@@ -26,8 +26,9 @@ export interface SelectProps extends Pick<MuiSelectProps, Exclude<keyof MuiSelec
   checkboxes?: boolean;
   inputProps?: NaviInputProps;
   dropdownIcon?: React.ReactNode;
+  value?: string[];
   onChange?: (
-    data: string[] | string
+    data: string[]
   ) => void;
 }
 export interface SelectItemCardProps {

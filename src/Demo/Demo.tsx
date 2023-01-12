@@ -221,7 +221,7 @@ let menuData2 = [{
 
 export default function AutocompleteControlled() {
   const classes = useStyles();
-  const [value, setValue] = React.useState<string[] | string>(['The Shawshank Redemption']);
+  const [value, setValue] = React.useState<string[]>(['The Shawshank Redemption']);
   const [selectAllMovies, setSelectAllMovies] = React.useState<boolean>(false);
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
@@ -246,7 +246,7 @@ export default function AutocompleteControlled() {
           selectAll={selectAllMovies}
           size="small"
           onChange={(value) => {
-            // setValue(value);
+            setValue(value);
           }}
           value={value}
           renderValue={(selected) => {

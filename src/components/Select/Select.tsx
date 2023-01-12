@@ -36,10 +36,10 @@ const Select: React.FC<SelectProps> = ({
           valueArr.push(value);
         }
       });
-      setSelectValue(getSelectedValue());
+      setSelectValue([...getSelectedValue(), ...value]);
     }
     setOpen(open);
-  }, [selectAll, open]);
+  }, [selectAll, open, value]);
 
   const getSelectedValue = () => {
     const valueArr: string[] = [];
@@ -82,13 +82,13 @@ const Select: React.FC<SelectProps> = ({
         {...props}
         onChange={(event: React.ChangeEvent<{ value: unknown }>, ele) => {
           const { value } = event.target;
-          let valueArr: string[] | string = [];
+          let valueArr: string[] = [];
           if (Array.isArray(value)) {
             setSelectValue(value);
             valueArr = value;
           } else if (typeof value === 'string') {
             setSelectValue([value]);
-            valueArr = value;
+            valueArr = [value];
           }
           props.onChange && props.onChange(valueArr);
         }}
