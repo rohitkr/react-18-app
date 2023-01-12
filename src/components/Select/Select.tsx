@@ -23,7 +23,7 @@ const Select: React.FC<SelectProps> = ({
   dropdownIcon,
   value = [],
   ...props }) => {
-  const [selectValue, setSelectValue] = React.useState<string[]>(value as string[]);
+  const [selectValue, setSelectValue] = React.useState<string[]>([]);
   const [open, setOpen] = React.useState(props.open);
   const inputRef = React.useRef<any>(null);
 
@@ -36,7 +36,9 @@ const Select: React.FC<SelectProps> = ({
           valueArr.push(value);
         }
       });
-      setSelectValue([...getSelectedValue(), ...value]);
+      setSelectValue([...getSelectedValue()]);
+    } else {
+      setSelectValue(value);
     }
     setOpen(open);
   }, [selectAll, open, value]);
