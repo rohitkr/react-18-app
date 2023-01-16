@@ -1,11 +1,11 @@
 import React from "react";
-import { SelectProps, SelectDataProps } from "./Select.types";
-import MuiSelect from '@material-ui/core/Select';
+import { SelectProps } from "./Select.types";
+import MuiSelect from "@material-ui/core/Select";
 import Box from "../Box/Box";
 import TextInput from "../Input/Input";
 import IconButton from "../IconButton/IconButton";
 import { X, ChevronDown } from "tabler-icons-react";
-import { InputAdornment } from '@material-ui/core';
+import { InputAdornment } from "@material-ui/core";
 import "./Select.scss";
 import { MenuItemProps } from "../MenuItem/MenuItem.types";
 
@@ -13,21 +13,17 @@ const Select: React.FC<SelectProps> = ({
   onClose,
   multiSelect,
   selectAll = false,
-  anchorEl,
   inputProps,
   checkboxes = true,
-  size = 'large',
+  size = "large",
   children,
   dropdownIcon,
   value = [],
-  ...props }) => {
+  ...props
+}) => {
   const [selectValue, setSelectValue] = React.useState<string[]>([]);
   const [open, setOpen] = React.useState(props.open);
   const inputRef = React.useRef<any>(null);
-
-  React.useEffect(() => {
-    setSelectValue(value);
-  }, [value])
 
   React.useEffect(() => {
     if (selectAll) {
@@ -43,23 +39,28 @@ const Select: React.FC<SelectProps> = ({
   }, [selectAll]);
 
   React.useEffect(() => {
+    setSelectValue(value);
+  }, [value]);
+
+  React.useEffect(() => {
     setOpen(open);
-  }, [open])
+  }, [open]);
 
   const getSelectedValue = () => {
     const valueArr: string[] = [];
-    React.Children.toArray(children).forEach(child => {
+    React.Children.toArray(children).forEach((child) => {
       if (React.isValidElement(child)) {
         valueArr.push(child.props.value);
       }
     });
     return valueArr;
-  }
-
+  };
 
   const items = React.Children.map(children, (child) => {
     if (React.isValidElement(child)) {
-      const item = child as React.ReactElement<React.PropsWithChildren<MenuItemProps>>;
+      const item = child as React.ReactElement<
+        React.PropsWithChildren<MenuItemProps>
+      >;
       const value = child.props.value;
       let checked = selectAll || child.props.checked;
 
@@ -78,11 +79,12 @@ const Select: React.FC<SelectProps> = ({
   });
 
   return (
-    <Box className="navi-menu-component"
-    >
+    <Box className="navi-menu-component">
       <MuiSelect
         renderValue={(selected) => {
-          return typeof selected === 'string' ? selected : ((selected) as string[]).join(', ')
+          return typeof selected === "string"
+            ? selected
+            : (selected as string[]).join(", ");
         }}
         {...props}
         onChange={(event: React.ChangeEvent<{ value: unknown }>, ele) => {
@@ -91,7 +93,7 @@ const Select: React.FC<SelectProps> = ({
           if (Array.isArray(value)) {
             setSelectValue(value);
             valueArr = value;
-          } else if (typeof value === 'string') {
+          } else if (typeof value === "string") {
             setSelectValue([value]);
             valueArr = [value];
           }
@@ -110,10 +112,9 @@ const Select: React.FC<SelectProps> = ({
           />
         }
         open={open}
-
         // Hide the actual dropdown select icon
         inputProps={{
-          IconComponent: () => null
+          IconComponent: () => null,
         }}
         onClose={() => {
           setOpen(false);
@@ -121,16 +122,13 @@ const Select: React.FC<SelectProps> = ({
         onOpen={(e) => {
           let ele = e.target as HTMLElement;
           let preventMenuOpen = false;
-          while (ele.nodeName !== 'BODY' && !preventMenuOpen) {
+          while (ele.nodeName !== "BODY" && !preventMenuOpen) {
             ele = ele.parentNode as HTMLElement;
-            preventMenuOpen = ele.classList.contains('navi-prevent-menu-open');
+            preventMenuOpen = ele.classList.contains("navi-prevent-menu-open");
           }
           if (!preventMenuOpen) {
             setOpen(true);
           }
-        }}
-        onClick={(e) => {
-          console.log("click called...", e);
         }}
         // Placement of custom clear and dropdown icon button
         endAdornment={
@@ -139,7 +137,10 @@ const Select: React.FC<SelectProps> = ({
               size="small"
               variant="tertiary"
               intent="muted"
-              style={{ display: selectValue.length ? "block" : "none", marginRight: "0px" }}
+              style={{
+                display: selectValue.length ? "block" : "none",
+                marginRight: "0px",
+              }}
               title={"Clear"}
               onClick={() => {
                 setSelectValue([]);
@@ -151,7 +152,10 @@ const Select: React.FC<SelectProps> = ({
               size="small"
               variant="tertiary"
               intent="muted"
-              style={{ marginRight: "5px", transform: `${open ? "rotate(180deg)" : "rotate(0deg)"}` }}
+              style={{
+                marginRight: "5px",
+                transform: `${open ? "rotate(180deg)" : "rotate(0deg)"}`,
+              }}
               title={"Open"}
               onClick={(e) => {
                 setOpen(true);
@@ -161,23 +165,22 @@ const Select: React.FC<SelectProps> = ({
             </IconButton>
           </InputAdornment>
         }
-
         MenuProps={{
           // Height of the menu dropdown
           PaperProps: {
             style: {
-              maxHeight: 'calc(100% - 200px)',
-              minWidth: `calc(${inputRef?.current?.node.offsetWidth}px - 8px)`
+              maxHeight: "calc(100% - 200px)",
+              minWidth: `calc(${inputRef?.current?.node.offsetWidth}px - 8px)`,
             },
             className: "navi-menu-item-container",
           },
           anchorOrigin: {
             vertical: "bottom",
-            horizontal: "left"
+            horizontal: "left",
           },
           transformOrigin: {
             vertical: "top",
-            horizontal: "left"
+            horizontal: "left",
           },
           getContentAnchorEl: null,
           disableAutoFocusItem: true,
@@ -187,6 +190,6 @@ const Select: React.FC<SelectProps> = ({
       </MuiSelect>
     </Box>
   );
-}
+};
 
 export default Select;

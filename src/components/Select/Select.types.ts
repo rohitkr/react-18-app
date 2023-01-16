@@ -20,7 +20,7 @@ export interface SelectDataProps {
 export interface SelectProps extends Pick<MuiSelectProps, Exclude<keyof MuiSelectProps, "inputProps" | "onChange">> {
   open: boolean;
   size?: "small" | "large";
-  anchorEl?: HTMLElement | null;
+  // anchorEl?: HTMLElement | null;
   multiSelect?: boolean;
   selectAll?: boolean;
   checkboxes?: boolean;
