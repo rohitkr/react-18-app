@@ -29,6 +29,7 @@ const BoxComponent: React.FC<BoxProps> = ({
   bgColor,
   style,
   forwardedRef,
+  "data-value": dataValue,
   "data-testid": dataTestId,
   ...props
 }) => {
@@ -132,11 +133,23 @@ const BoxComponent: React.FC<BoxProps> = ({
   };
 
   return component === "span" ? (
-    <span ref={forwardedRef} {...props} style={{ ...finalStyles }} data-testid={dataTestId}>
+    <span
+      ref={forwardedRef}
+      {...props}
+      style={{ ...finalStyles }}
+      data-testid={dataTestId}
+      data-value={dataValue}
+    >
       {children}
     </span>
   ) : (
-    <div ref={forwardedRef} {...props} style={{ ...finalStyles }}  data-testid={dataTestId}>
+    <div
+      ref={forwardedRef}
+      {...props}
+      style={{ ...finalStyles }}
+      data-testid={dataTestId}
+      data-value={dataValue}
+    >
       {children}
     </div>
   );

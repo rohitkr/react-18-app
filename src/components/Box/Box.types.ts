@@ -4,6 +4,7 @@ export interface BoxProps
   className?: string;
   tabIndex?: number;
   "data-testid"?: string;
+  "data-value"?: string;
   component?: "div" | "span";
   children?: React.ReactNode;
   forwardedRef?: ForwardedRef<HTMLDivElement>;

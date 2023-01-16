@@ -243,7 +243,7 @@ export default function AutocompleteControlled() {
           anchorEl={anchorEl}
           onClose={handleClose}
           multiSelect={true}
-          selectAll={selectAllMovies}
+          selectAll={true}
           size="small"
           onChange={(updatedValue) => {
             setValue(updatedValue);
@@ -302,7 +302,7 @@ export default function AutocompleteControlled() {
             ...val
           }: SelectDataProps, i) => {
 
-            return (val.divider ? <DividerMenuItem /> :
+            return (val.divider ? <DividerMenuItem key={i} /> :
               <DescriptiveMenuItem
                 key={i}
                 value={title}
@@ -316,7 +316,7 @@ export default function AutocompleteControlled() {
         </Select>
 
         <div style={{ height: '100px' }}>
-          <Select
+          {/* <Select
             open={false}
             anchorEl={anchorEl}
             onClose={handleClose}
@@ -353,10 +353,10 @@ export default function AutocompleteControlled() {
             />
             )
             }
-          </Select>
+          </Select> */}
 
 
-          <Tag
+          {/* <Tag
             // LeadingIcon={<ArrowLeft />}
             // TrailingIcon={<ArrowRight />}
             dismissible
@@ -369,10 +369,10 @@ export default function AutocompleteControlled() {
             onHover={function noRefCheck() { }}
             size="large"
             variant="neutral"
-          />
-          <MenuSample />
+          /> */}
+          {/* <MenuSample /> */}
 
-          <SelectSample />
+          {/* <SelectSample /> */}
 
           {/* <ClearAll /> */}
 

@@ -9,13 +9,11 @@ import { InputAdornment } from '@material-ui/core';
 import "./Select.scss";
 import { MenuItemProps } from "../MenuItem/MenuItem.types";
 
-// interface SelectionMapInterface: string[];
-
 const Select: React.FC<SelectProps> = ({
   onClose,
   multiSelect,
   selectAll = false,
-  // onMenuChange,
+  anchorEl,
   inputProps,
   checkboxes = true,
   size = 'large',
@@ -28,6 +26,10 @@ const Select: React.FC<SelectProps> = ({
   const inputRef = React.useRef<any>(null);
 
   React.useEffect(() => {
+    setSelectValue(value);
+  }, [value])
+
+  React.useEffect(() => {
     if (selectAll) {
       const valueArr: string[] = [];
       React.Children.map(children, (child) => {
@@ -37,11 +39,12 @@ const Select: React.FC<SelectProps> = ({
         }
       });
       setSelectValue([...getSelectedValue()]);
-    } else {
-      setSelectValue(value);
     }
+  }, [selectAll]);
+
+  React.useEffect(() => {
     setOpen(open);
-  }, [selectAll, open, value]);
+  }, [open])
 
   const getSelectedValue = () => {
     const valueArr: string[] = [];
@@ -129,7 +132,6 @@ const Select: React.FC<SelectProps> = ({
         onClick={(e) => {
           console.log("click called...", e);
         }}
-
         // Placement of custom clear and dropdown icon button
         endAdornment={
           <InputAdornment position="start" style={{ marginRight: "0px" }}>
