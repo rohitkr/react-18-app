@@ -25,15 +25,19 @@
     border-radius: $input-type-root-border-radius;
   }
 
+  // Input style when used for Select component
   .navi-select-input-container {
     padding: 0;
     outline: none;
     outline: $input-type-default-outline;
     border-radius: $input-type-root-border-radius;
-    display: flex;
-    // flex-wrap: wrap;
     height: unset!important;
-
+    &.large {
+      padding: 12px 0;
+    }
+    &.small {
+      padding: 8px 0;
+    }
     .MuiSelect-root {
       padding: $input-type-root-select-padding;
     }

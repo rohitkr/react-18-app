@@ -404,7 +404,7 @@ export default function AutocompleteControlled() {
           }}
           minWidth={800}
           // maxWidth={100}
-          minHeight={50}
+          // minHeight={50}
           maxHeight={300}
           value={value}
           renderValue={(selected) => {
