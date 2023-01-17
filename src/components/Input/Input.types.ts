@@ -21,5 +21,7 @@ export interface NaviInputProps extends MuiInputBaseProps {
   tooltipPlacement?: TooltipPositionTypes;
   minWidth?: number;
   maxWidth?: number;
+  minHeight?: number;
+  maxHeight?: number;
   ref?: ForwardedRef<HTMLInputElement> | null | undefined;
 }

@@ -1,5 +1,6 @@
+
 // Do not edit directly
-// Generated on Wed, 21 Dec 2022 11:19:35 GMT
+// Generated on Mon, 16 Jan 2023 18:19:42 GMT
 
 $border-radius-radius-none: none;
 $border-radius-radius-small: 4px;
@@ -596,6 +597,7 @@ $input-type-root-text-overflow: ellipsis;
 $input-type-root-justify-content: space-between;
 $input-type-root-min-width: 17.5rem;
 $input-type-root-padding: 0.75rem 1rem;
+$input-type-root-select-padding: 0 1rem;
 $input-type-root-font-style: normal;
 $input-type-root-font-weight: 400;
 $input-type-focus-border-radius: 4px;
@@ -620,7 +622,7 @@ $input-size-small-line-height: 1rem;
 $input-size-large-height: 2.75rem;
 $input-size-large-font-size: 0.875rem;
 $input-size-large-line-height: 1.25rem;
-$input-label-base-margin-bottom: 0.25rem;
+$input-label-base-margin-bottom: .25rem;
 $input-label-base-display: flex;
 $input-label-base-color: #1f1f32;
 $input-label-base-font-weight: 500;
@@ -629,7 +631,7 @@ $input-label-base-font-family: Inter;
 $input-label-base-line-height: 1.25rem;
 $input-label-base-justify-content: space-between;
 $input-label-helper-line-height: 1rem;
-$input-label-helper-margin-top: 0.25rem;
+$input-label-helper-margin-top: .25rem;
 $input-label-helper-color: #525066;
 $input-label-helper-word-break: break-word;
 $input-label-helper-font-size: 0.75rem;
@@ -654,6 +656,8 @@ $input-placeholder-large-line-height: 1.25rem;
 $input-placeholder-large-font-size: 0.875rem;
 $input-placeholder-small-line-height: 1rem;
 $input-placeholder-small-font-size: 0.75rem;
+$menuitem-divider-small-height: 1.125rem;
+$menuitem-divider-large-height: 1.625rem;
 $progressbar-root-label-color: #3d3c52;
 $progressbar-root-label-font-family: Inter;
 $progressbar-root-label-font-size: 0.875rem;
@@ -662,7 +666,7 @@ $progressbar-root-label-line-height: 1.25rem;
 $progressbar-root-label-min-width: 2.5rem;
 $progressbar-root-container-main-background: #ececf3;
 $progressbar-root-container-main-border-radius: 4px;
-$progressbar-root-container-main-margin: 0.5rem 0.5rem 0.5rem 0;
+$progressbar-root-container-main-margin: .5rem .5rem .5rem 0;
 $progressbar-root-container-main-overflow: hidden;
 $progressbar-root-container-main-width: 100%;
 $progressbar-root-fill-background: #0975d7;
@@ -675,43 +679,17 @@ $progressbar-root-info-background: #0975d7;
 $progressbar-root-critical-background: #b3141d;
 $progressbar-root-success-background: #21ad73;
 $progressbar-root-warning-background: #e0a400;
-$progressbar-root-info-gradient-background: linear-gradient(
-  270deg,
-  rgba(0, 0, 0, 0) 0%,
-  #0975d7 43.81%,
-  #0975d7 54.76%,
-  rgba(0, 0, 0, 0) 91.43%
-);
-$progressbar-root-critical-gradient-background: linear-gradient(
-  270deg,
-  rgba(0, 0, 0, 0) 0%,
-  #b3141d 43.81%,
-  #b3141d 54.76%,
-  rgba(0, 0, 0, 0) 91.43%
-);
-$progressbar-root-success-gradient-background: linear-gradient(
-  270deg,
-  rgba(0, 0, 0, 0) 0%,
-  #21ad73 43.81%,
-  #21ad73 54.76%,
-  rgba(0, 0, 0, 0) 91.43%
-);
-$progressbar-root-warning-gradient-background: linear-gradient(
-  270deg,
-  rgba(0, 0, 0, 0) 0%,
-  #e0a400 43.81%,
-  #e0a400 54.76%,
-  rgba(0, 0, 0, 0) 91.43%
-);
-$progressbar-root-size-small-height: 0.25rem;
-$progressbar-root-size-large-height: 0.5rem;
+$progressbar-root-info-gradient-background: linear-gradient(270deg, rgba(0,0,0,0) 0%, #0975d7 43.81%, #0975d7 54.76%, rgba(0,0,0,0) 91.43%);
+$progressbar-root-critical-gradient-background: linear-gradient(270deg, rgba(0,0,0,0) 0%, #b3141d 43.81%, #b3141d 54.76%, rgba(0,0,0,0) 91.43%);
+$progressbar-root-success-gradient-background: linear-gradient(270deg, rgba(0,0,0,0) 0%, #21ad73 43.81%, #21ad73 54.76%, rgba(0,0,0,0) 91.43%);
+$progressbar-root-warning-gradient-background: linear-gradient(270deg, rgba(0,0,0,0) 0%, #e0a400 43.81%, #e0a400 54.76%, rgba(0,0,0,0) 91.43%);
+$progressbar-root-size-small-height: .25rem;
+$progressbar-root-size-large-height: .5rem;
 $progressbar-root-loading-progress-bar-animation-width: 100%;
 $progressbar-root-loading-progress-bar-animation-height: 100%;
-$progressbar-root-loading-progress-bar-animation-animation: loadingAnimation 2s
-  infinite linear;
+$progressbar-root-loading-progress-bar-animation-animation: loadingAnimation 2s infinite linear;
 $progressbar-root-loading-progress-bar-animation-transform-origin: -100%;
-$progressbar-root-step-progress-bar-animation-animation: 2s linear 0s infinite
-  normal forwards loadingStepAnimation;
+$progressbar-root-step-progress-bar-animation-animation: 2s linear 0s infinite normal forwards loadingStepAnimation;
 $progressbar-root-step-progress-bar-animation-transform-box: fill-box;
 $progressbar-root-step-progress-bar-animation-transform-origin: 50% 50%;
 $progressbar-root-step-progress-bar-animation-animation-delay: 1s;
@@ -786,15 +764,38 @@ $systemicon-intent-muted-dark-focus-outline: 0.25rem solid #ececf3;
 $systemicon-intent-muted-light-pressed-background-color: transparent;
 $systemicon-intent-muted-light-color: white;
 $systemicon-intent-muted-light-hover-color: white;
-$systemicon-intent-muted-light-hover-background-color: rgba(
-  255,
-  255,
-  255,
-  0.08
-);
+$systemicon-intent-muted-light-hover-background-color: rgba(255, 255, 255, 0.08);
 $systemicon-intent-muted-light-focus-outline: 0.25rem solid white;
 $systemicon-intent-disabled-color: #9997aa;
 $systemicon-intent-disabled-background-color: transparent;
+$tab-color-icon-unselected-muted-dark-default: #6b697b;
+$tab-color-icon-unselected-muted-dark-hover: #3d3c52;
+$tab-color-icon-unselected-muted-light-default: #ffffff;
+$tab-color-icon-unselected-muted-light-hover: #ffffff;
+$tab-color-icon-selected-prime: #c74900;
+$tab-color-icon-selected-info: #0975d7;
+$tab-color-icon-selected-muted-light: #ffffff;
+$tab-color-label-unselected-muted-dark-default: #3d3c52;
+$tab-color-label-unselected-muted-dark-hover: #1f1f32;
+$tab-color-label-unselected-muted-light-default: #ffffff;
+$tab-color-label-unselected-muted-light-hover: #ffffff;
+$tab-color-label-selected-prime: #c74900;
+$tab-color-label-selected-info: #0975d7;
+$tab-color-background-muted-dark-default: none;
+$tab-color-background-muted-dark-hover: #f6f6f9;
+$tab-color-background-muted-light-default: none;
+$tab-color-background-muted-light-hover: #3d3c52;
+$tab-color-indicator-prime: #c74900;
+$tab-color-indicator-info: #0975d7;
+$tab-color-indicator-muted-light: #ffffff;
+$tab-font-label-unselected: 500 100%/150% Inter;
+$tab-font-label-selected: 600 100%/150% Inter;
+$tab-padding-large: .75rem .5rem 1rem .5rem;
+$tab-padding-small: .5rem .25rem .75rem .25rem;
+$tab-gap: .5rem;
+$tab-shadow-prime: 0 0 0 .25rem #f58857 inset;
+$tab-shadow-info: 0 0 0 .25rem #7ec7fc inset;
+$tab-shadow-muted-light: 0 0 0 .25rem #6b697b inset;
 $tag-type-root-label-margin: 0px 4px;
 $tag-type-root-label-large-font-family: Inter;
 $tag-type-root-label-large-font-size: 14px;
@@ -976,10 +977,10 @@ $tag-type-icon-small-size: 1rem;
 $tag-type-icon-small-leading-icon-margin-right: 0.25rem;
 $tag-type-icon-small-trailing-icon-margin-left: 0.25rem;
 $spacing-0: 0rem;
-$spacing-2: 0.125rem;
-$spacing-4: 0.25rem;
-$spacing-8: 0.5rem;
-$spacing-12: 0.75rem;
+$spacing-2: .125rem;
+$spacing-4: .25rem;
+$spacing-8: .5rem;
+$spacing-12: .75rem;
 $spacing-16: 1rem;
 $spacing-24: 1.5rem;
 $spacing-32: 2rem;
@@ -987,18 +988,12 @@ $spacing-40: 2.5rem;
 $spacing-48: 3rem;
 $spacing-64: 4rem;
 $spacing-72: 4.5rem;
-$elevation-01: 0px 2px 4px 0px rgba(0, 0, 0, 0.12),
-  0px 1px 4px 0px rgba(0, 0, 0, 0.16);
-$elevation-02: 0px 2px 6px 0px rgba(0, 0, 0, 0.18),
-  0px 3px 8px 0px rgba(0, 0, 0, 0.14);
-$elevation-03: 0px 4px 12px 0px rgba(0, 0, 0, 0.18),
-  0px 6px 20px 0px rgba(0, 0, 0, 0.14);
-$elevation-04: 0px 6px 20px 0px rgba(0, 0, 0, 0.14),
-  0px 8px 26px 0px rgba(0, 0, 0, 0.12);
-$elevation-05: 0px 6px 18px 0px rgba(0, 0, 0, 0.1),
-  0px 8px 24px 0px rgba(0, 0, 0, 0.1), 0px 4px 24px 8px rgba(0, 0, 0, 0.08);
-$elevation-06: 0px 6px 22px 4px rgba(0, 0, 0, 0.12),
-  0px 8px 28px 4px rgba(0, 0, 0, 0.1), 0px 4px 30px 10px rgba(0, 0, 0, 0.08);
+$elevation-01: 0.0px 2.0px 4.0px 0px rgba(0, 0, 0, 0.12),0.0px 1.0px 4.0px 0px rgba(0, 0, 0, 0.16);
+$elevation-02: 0.0px 2.0px 6.0px 0px rgba(0, 0, 0, 0.18),0.0px 3.0px 8.0px 0px rgba(0, 0, 0, 0.14);
+$elevation-03: 0.0px 4.0px 12.0px 0px rgba(0, 0, 0, 0.18),0.0px 6.0px 20.0px 0px rgba(0, 0, 0, 0.14);
+$elevation-04: 0.0px 6.0px 20.0px 0px rgba(0, 0, 0, 0.14),0.0px 8.0px 26.0px 0px rgba(0, 0, 0, 0.12);
+$elevation-05: 0.0px 6.0px 18.0px 0px rgba(0, 0, 0, 0.1),0.0px 8.0px 24.0px 0px rgba(0, 0, 0, 0.1),0.0px 4.0px 24.0px 8.0px rgba(0, 0, 0, 0.08);
+$elevation-06: 0.0px 6.0px 22.0px 4.0px rgba(0, 0, 0, 0.12),0.0px 8.0px 28.0px 4.0px rgba(0, 0, 0, 0.1),0.0px 4.0px 30.0px 10.0px rgba(0, 0, 0, 0.08);
 $size-font-small: 0.75rem; // the small size of the font
 $size-font-medium: 1rem; // the medium size of the font
 $size-font-large: 2rem; // the large size of the font
@@ -1087,14 +1082,8 @@ $text-paragraph-small-strong-font-family: Inter;
 $text-paragraph-small-strong-font-weight: 700;
 $text-paragraph-small-strong-font-size: 0.75rem;
 $text-paragraph-small-strong-line-height: 1.25rem;
-$text-label-large-font-family: Inter;
-$text-label-large-font-weight: 500;
-$text-label-large-font-size: 1rem;
-$text-label-large-line-height: 1.5rem;
-$text-label-large-moderate-font-family: Inter;
-$text-label-large-moderate-font-weight: 600;
-$text-label-large-moderate-font-size: 1rem;
-$text-label-large-moderate-line-height: 1.5rem;
+$text-label-large: 500 100%/150% Inter;
+$text-label-large-moderate: 600 100%/150% Inter;
 $text-label-medium-font-family: Inter;
 $text-label-medium-font-weight: 500;
 $text-label-medium-font-size: 0.875rem;

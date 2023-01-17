@@ -105,15 +105,23 @@ const Select: React.FC<SelectProps> = ({
         inputRef={inputRef}
         input={
           <TextInput
-            className="navi-select-input-container"
-            {...inputProps}
+            // navi-select-input-container class name is being used to prevent menu to be opened
+            // while clicking on the batch icon
+            className={`navi-select-input-container ${inputProps?.className}`}
+            {...{
+              minWidth: props.minWidth,
+              maxWidth: props.maxWidth,
+              minHeight: props.minHeight,
+              maxHeight: props.maxHeight,
+              ...inputProps,
+            }}
             size={size}
             inputType={"default"}
           />
         }
         open={open}
-        // Hide the actual dropdown select icon
         inputProps={{
+          // Hide the actual select component dropdown icon
           IconComponent: () => null,
         }}
         onClose={() => {
@@ -170,7 +178,7 @@ const Select: React.FC<SelectProps> = ({
           PaperProps: {
             style: {
               maxHeight: "calc(100% - 200px)",
-              minWidth: `calc(${inputRef?.current?.node.offsetWidth}px - 8px)`,
+              minWidth: `calc(${inputRef?.current?.node?.offsetWidth}px - 8px)`,
             },
             className: "navi-menu-item-container",
           },

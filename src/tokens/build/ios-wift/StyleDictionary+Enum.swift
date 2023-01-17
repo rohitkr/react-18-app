@@ -4,7 +4,7 @@
 //
 
 // Do not edit directly
-// Generated on Wed, 21 Dec 2022 11:19:35 GMT
+// Generated on Mon, 16 Jan 2023 18:19:42 GMT
 
 
 import UIKit
@@ -634,6 +634,7 @@ public enum StyleDictionaryEnum {
     public static let inputTypeRootLineHeight = 1.25rem
     public static let inputTypeRootMinWidth = 17.5rem
     public static let inputTypeRootPadding = 0.75rem 1rem
+    public static let inputTypeRootSelectPadding = 0 1rem
     public static let inputTypeRootTextOverflow = ellipsis
     public static let inputTypeSuccessOutline = 2px solid UIColor(red: 0.098, green: 0.522, blue: 0.345, alpha: 1)
     public static let linkColorLabelDefault = UIColor(red: 0.035, green: 0.459, blue: 0.843, alpha: 1)
@@ -641,6 +642,8 @@ public enum StyleDictionaryEnum {
     public static let linkColorLabelHover = UIColor(red: 0.051, green: 0.349, blue: 0.671, alpha: 1)
     public static let linkColorLabelPressed = UIColor(red: 0.012, green: 0.239, blue: 0.518, alpha: 1)
     public static let linkColorShadow = UIColor(red: 0.035, green: 0.459, blue: 0.843, alpha: 1)
+    public static let menuitemDividerLargeHeight = 1.625rem
+    public static let menuitemDividerSmallHeight = 1.125rem
     public static let progressbarRootContainerMainBackground = UIColor(red: 0.925, green: 0.925, blue: 0.953, alpha: 1)
     public static let progressbarRootContainerMainBorderRadius = 4px
     public static let progressbarRootContainerMainMargin = .5rem .5rem .5rem 0
@@ -795,6 +798,34 @@ public enum StyleDictionaryEnum {
     public static let systemiconRootSizeSmallWidth = 0.75rem
     public static let systemiconRootSizeStandardHeight = 1rem
     public static let systemiconRootSizeStandardWidth = 1rem
+    public static let tabColorBackgroundMutedDarkDefault = none
+    public static let tabColorBackgroundMutedDarkHover = UIColor(red: 0.965, green: 0.965, blue: 0.976, alpha: 1)
+    public static let tabColorBackgroundMutedLightDefault = none
+    public static let tabColorBackgroundMutedLightHover = UIColor(red: 0.239, green: 0.235, blue: 0.322, alpha: 1)
+    public static let tabColorIconSelectedInfo = UIColor(red: 0.035, green: 0.459, blue: 0.843, alpha: 1)
+    public static let tabColorIconSelectedMutedLight = UIColor(red: 1.000, green: 1.000, blue: 1.000, alpha: 1)
+    public static let tabColorIconSelectedPrime = UIColor(red: 0.780, green: 0.286, blue: 0.000, alpha: 1)
+    public static let tabColorIconUnselectedMutedDarkDefault = UIColor(red: 0.420, green: 0.412, blue: 0.482, alpha: 1)
+    public static let tabColorIconUnselectedMutedDarkHover = UIColor(red: 0.239, green: 0.235, blue: 0.322, alpha: 1)
+    public static let tabColorIconUnselectedMutedLightDefault = UIColor(red: 1.000, green: 1.000, blue: 1.000, alpha: 1)
+    public static let tabColorIconUnselectedMutedLightHover = UIColor(red: 1.000, green: 1.000, blue: 1.000, alpha: 1)
+    public static let tabColorIndicatorInfo = UIColor(red: 0.035, green: 0.459, blue: 0.843, alpha: 1)
+    public static let tabColorIndicatorMutedLight = UIColor(red: 1.000, green: 1.000, blue: 1.000, alpha: 1)
+    public static let tabColorIndicatorPrime = UIColor(red: 0.780, green: 0.286, blue: 0.000, alpha: 1)
+    public static let tabColorLabelSelectedInfo = UIColor(red: 0.035, green: 0.459, blue: 0.843, alpha: 1)
+    public static let tabColorLabelSelectedPrime = UIColor(red: 0.780, green: 0.286, blue: 0.000, alpha: 1)
+    public static let tabColorLabelUnselectedMutedDarkDefault = UIColor(red: 0.239, green: 0.235, blue: 0.322, alpha: 1)
+    public static let tabColorLabelUnselectedMutedDarkHover = UIColor(red: 0.122, green: 0.122, blue: 0.196, alpha: 1)
+    public static let tabColorLabelUnselectedMutedLightDefault = UIColor(red: 1.000, green: 1.000, blue: 1.000, alpha: 1)
+    public static let tabColorLabelUnselectedMutedLightHover = UIColor(red: 1.000, green: 1.000, blue: 1.000, alpha: 1)
+    public static let tabFontLabelSelected = 600 100%/150% Inter
+    public static let tabFontLabelUnselected = 500 100%/150% Inter
+    public static let tabGap = .5rem
+    public static let tabPaddingLarge = .75rem .5rem 1rem .5rem
+    public static let tabPaddingSmall = .5rem .25rem .75rem .25rem
+    public static let tabShadowInfo = 0 0 0 .25rem UIColor(red: 0.494, green: 0.780, blue: 0.988, alpha: 1) inset
+    public static let tabShadowMutedLight = 0 0 0 .25rem UIColor(red: 0.420, green: 0.412, blue: 0.482, alpha: 1) inset
+    public static let tabShadowPrime = 0 0 0 .25rem UIColor(red: 0.961, green: 0.533, blue: 0.341, alpha: 1) inset
     public static let tagTypeBoldCriticalBackgroundColor = UIColor(red: 0.702, green: 0.078, blue: 0.114, alpha: 1)
     public static let tagTypeBoldCriticalColor = white
     public static let tagTypeBoldCriticalFocussedOutline = 4px solid UIColor(red: 0.965, green: 0.337, blue: 0.420, alpha: 1)
@@ -1019,14 +1050,8 @@ public enum StyleDictionaryEnum {
     public static let textHeading05FontSize = 1.375rem
     public static let textHeading05FontWeight = 700
     public static let textHeading05LineHeight = 1.875rem
-    public static let textLabelLargeFontFamily = Inter
-    public static let textLabelLargeFontSize = 1rem
-    public static let textLabelLargeFontWeight = 500
-    public static let textLabelLargeLineHeight = 1.5rem
-    public static let textLabelLargeModerateFontFamily = Inter
-    public static let textLabelLargeModerateFontSize = 1rem
-    public static let textLabelLargeModerateFontWeight = 600
-    public static let textLabelLargeModerateLineHeight = 1.5rem
+    public static let textLabelLarge = 500 100%/150% Inter
+    public static let textLabelLargeModerate = 600 100%/150% Inter
     public static let textLabelMediumFontFamily = Inter
     public static let textLabelMediumFontSize = 0.875rem
     public static let textLabelMediumFontWeight = 500

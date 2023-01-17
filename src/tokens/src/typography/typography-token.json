@@ -127,12 +127,14 @@
       "line-height": { "value": "1.25rem" }
     },
     "label-large": {
+      "value": "500 100%/150% Inter",
       "font-family": { "value": "Inter" },
       "font-weight": { "value": "500" },
       "font-size": { "value": "1rem" },
       "line-height": { "value": "1.5rem" }
     },
     "label-large-moderate": {
+      "value": "600 100%/150% Inter",
       "font-family": { "value": "Inter" },
       "font-weight": { "value": "600" },
       "font-size": { "value": "1rem" },

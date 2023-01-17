@@ -4,7 +4,7 @@
 //
 
 // Do not edit directly
-// Generated on Wed, 21 Dec 2022 11:19:35 GMT
+// Generated on Mon, 16 Jan 2023 18:19:42 GMT
 
 
 import UIKit
@@ -634,6 +634,7 @@ internal struct StyleDictionaryStruct {
     internal static let inputTypeRootLineHeight = 1.25rem
     internal static let inputTypeRootMinWidth = 17.5rem
     internal static let inputTypeRootPadding = 0.75rem 1rem
+    internal static let inputTypeRootSelectPadding = 0 1rem
     internal static let inputTypeRootTextOverflow = ellipsis
     internal static let inputTypeSuccessOutline = 2px solid UIColor(red: 0.098, green: 0.522, blue: 0.345, alpha: 1)
     internal static let linkColorLabelDefault = UIColor(red: 0.035, green: 0.459, blue: 0.843, alpha: 1)
@@ -641,6 +642,8 @@ internal struct StyleDictionaryStruct {
     internal static let linkColorLabelHover = UIColor(red: 0.051, green: 0.349, blue: 0.671, alpha: 1)
     internal static let linkColorLabelPressed = UIColor(red: 0.012, green: 0.239, blue: 0.518, alpha: 1)
     internal static let linkColorShadow = UIColor(red: 0.035, green: 0.459, blue: 0.843, alpha: 1)
+    internal static let menuitemDividerLargeHeight = 1.625rem
+    internal static let menuitemDividerSmallHeight = 1.125rem
     internal static let progressbarRootContainerMainBackground = UIColor(red: 0.925, green: 0.925, blue: 0.953, alpha: 1)
     internal static let progressbarRootContainerMainBorderRadius = 4px
     internal static let progressbarRootContainerMainMargin = .5rem .5rem .5rem 0
@@ -795,6 +798,34 @@ internal struct StyleDictionaryStruct {
     internal static let systemiconRootSizeSmallWidth = 0.75rem
     internal static let systemiconRootSizeStandardHeight = 1rem
     internal static let systemiconRootSizeStandardWidth = 1rem
+    internal static let tabColorBackgroundMutedDarkDefault = none
+    internal static let tabColorBackgroundMutedDarkHover = UIColor(red: 0.965, green: 0.965, blue: 0.976, alpha: 1)
+    internal static let tabColorBackgroundMutedLightDefault = none
+    internal static let tabColorBackgroundMutedLightHover = UIColor(red: 0.239, green: 0.235, blue: 0.322, alpha: 1)
+    internal static let tabColorIconSelectedInfo = UIColor(red: 0.035, green: 0.459, blue: 0.843, alpha: 1)
+    internal static let tabColorIconSelectedMutedLight = UIColor(red: 1.000, green: 1.000, blue: 1.000, alpha: 1)
+    internal static let tabColorIconSelectedPrime = UIColor(red: 0.780, green: 0.286, blue: 0.000, alpha: 1)
+    internal static let tabColorIconUnselectedMutedDarkDefault = UIColor(red: 0.420, green: 0.412, blue: 0.482, alpha: 1)
+    internal static let tabColorIconUnselectedMutedDarkHover = UIColor(red: 0.239, green: 0.235, blue: 0.322, alpha: 1)
+    internal static let tabColorIconUnselectedMutedLightDefault = UIColor(red: 1.000, green: 1.000, blue: 1.000, alpha: 1)
+    internal static let tabColorIconUnselectedMutedLightHover = UIColor(red: 1.000, green: 1.000, blue: 1.000, alpha: 1)
+    internal static let tabColorIndicatorInfo = UIColor(red: 0.035, green: 0.459, blue: 0.843, alpha: 1)
+    internal static let tabColorIndicatorMutedLight = UIColor(red: 1.000, green: 1.000, blue: 1.000, alpha: 1)
+    internal static let tabColorIndicatorPrime = UIColor(red: 0.780, green: 0.286, blue: 0.000, alpha: 1)
+    internal static let tabColorLabelSelectedInfo = UIColor(red: 0.035, green: 0.459, blue: 0.843, alpha: 1)
+    internal static let tabColorLabelSelectedPrime = UIColor(red: 0.780, green: 0.286, blue: 0.000, alpha: 1)
+    internal static let tabColorLabelUnselectedMutedDarkDefault = UIColor(red: 0.239, green: 0.235, blue: 0.322, alpha: 1)
+    internal static let tabColorLabelUnselectedMutedDarkHover = UIColor(red: 0.122, green: 0.122, blue: 0.196, alpha: 1)
+    internal static let tabColorLabelUnselectedMutedLightDefault = UIColor(red: 1.000, green: 1.000, blue: 1.000, alpha: 1)
+    internal static let tabColorLabelUnselectedMutedLightHover = UIColor(red: 1.000, green: 1.000, blue: 1.000, alpha: 1)
+    internal static let tabFontLabelSelected = 600 100%/150% Inter
+    internal static let tabFontLabelUnselected = 500 100%/150% Inter
+    internal static let tabGap = .5rem
+    internal static let tabPaddingLarge = .75rem .5rem 1rem .5rem
+    internal static let tabPaddingSmall = .5rem .25rem .75rem .25rem
+    internal static let tabShadowInfo = 0 0 0 .25rem UIColor(red: 0.494, green: 0.780, blue: 0.988, alpha: 1) inset
+    internal static let tabShadowMutedLight = 0 0 0 .25rem UIColor(red: 0.420, green: 0.412, blue: 0.482, alpha: 1) inset
+    internal static let tabShadowPrime = 0 0 0 .25rem UIColor(red: 0.961, green: 0.533, blue: 0.341, alpha: 1) inset
     internal static let tagTypeBoldCriticalBackgroundColor = UIColor(red: 0.702, green: 0.078, blue: 0.114, alpha: 1)
     internal static let tagTypeBoldCriticalColor = white
     internal static let tagTypeBoldCriticalFocussedOutline = 4px solid UIColor(red: 0.965, green: 0.337, blue: 0.420, alpha: 1)
@@ -1019,14 +1050,8 @@ internal struct StyleDictionaryStruct {
     internal static let textHeading05FontSize = 1.375rem
     internal static let textHeading05FontWeight = 700
     internal static let textHeading05LineHeight = 1.875rem
-    internal static let textLabelLargeFontFamily = Inter
-    internal static let textLabelLargeFontSize = 1rem
-    internal static let textLabelLargeFontWeight = 500
-    internal static let textLabelLargeLineHeight = 1.5rem
-    internal static let textLabelLargeModerateFontFamily = Inter
-    internal static let textLabelLargeModerateFontSize = 1rem
-    internal static let textLabelLargeModerateFontWeight = 600
-    internal static let textLabelLargeModerateLineHeight = 1.5rem
+    internal static let textLabelLarge = 500 100%/150% Inter
+    internal static let textLabelLargeModerate = 600 100%/150% Inter
     internal static let textLabelMediumFontFamily = Inter
     internal static let textLabelMediumFontSize = 0.875rem
     internal static let textLabelMediumFontWeight = 500

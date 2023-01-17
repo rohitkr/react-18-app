@@ -35,6 +35,9 @@
                 "padding": {
                     "value": "0.75rem 1rem"
                 },
+                "selectPadding": {
+                    "value": "0 1rem"
+                },
                 "fontStyle": {
                     "value": "normal"
                 },

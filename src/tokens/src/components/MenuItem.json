@@ -1,0 +1,16 @@
+{
+    "menuitem": {
+        "divider": {
+            "small": {
+                "height": {
+                    "value": "1.125rem"
+                }
+            },
+            "large": {
+                "height": {
+                    "value": "1.625rem"
+                }
+            }
+        }
+    }
+}

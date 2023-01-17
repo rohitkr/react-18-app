@@ -402,13 +402,17 @@ export default function AutocompleteControlled() {
           onChange={(updatedValue) => {
             setValue(updatedValue);
           }}
+          minWidth={800}
+          // maxWidth={100}
+          minHeight={50}
+          maxHeight={300}
           value={value}
           renderValue={(selected) => {
             return (
-              <Box>
+              <Box style={{ flexWrap: "wrap", display: "flex" }}>
                 {(selected as string[]).map((value) => (
                   <Chip
-                    size="small"
+                    size="large"
                     intent="muted"
                     className={`${classes.chip} navi-prevent-menu-open`}
                     dismissible
@@ -429,7 +433,11 @@ export default function AutocompleteControlled() {
                         return _data;
                       });
                     }}
-                    style={{ marginLeft: "5px" }}
+                    style={{
+                      marginLeft: "5px",
+                      display: "flex",
+                      // flexWrap: "wrap",
+                    }}
                   />
                 ))}
               </Box>
@@ -440,7 +448,9 @@ export default function AutocompleteControlled() {
             errorMessage: "Error message",
             helperText: "Helper text",
             maxCharacters: 100,
-            minWidth: 600,
+            minWidth: 300,
+            maxWidth: 800,
+            fullWidth: true,
             moreInfo: "More information text",
             required: true,
             size: "large",
@@ -512,6 +522,127 @@ export default function AutocompleteControlled() {
               )}
           </Select>
 
+          <Select
+            open={open}
+            onClose={handleClose}
+            multiSelect={true}
+            selectAll={selectAllMovies}
+            size="small"
+            onChange={(updatedValue) => {
+              setValue(updatedValue);
+            }}
+            value={value}
+            renderValue={(selected) => {
+              return (
+                <Box display="flex">
+                  {(selected as string[]).map((value) => (
+                    <Box display="flex">
+                      <Chip
+                        size="small"
+                        intent="muted"
+                        className={`${classes.chip} navi-prevent-menu-open`}
+                        dismissible
+                        LeadingIcon={<TagIcon size={8} />}
+                        key={value}
+                        label={value}
+                        value={value}
+                        onDismiss={(e, val?: string) => {
+                          console.log("on dismiss called...");
+                          setValue((oldData) => {
+                            let _data = Array.isArray(oldData)
+                              ? [...oldData]
+                              : [oldData];
+                            if (typeof val === "string") {
+                              const index = _data.indexOf(val);
+                              _data.splice(index, 1);
+                            }
+                            return _data;
+                          });
+                        }}
+                        style={{ marginLeft: "5px", display: "flex" }}
+                      />
+                    </Box>
+                  ))}
+                </Box>
+              );
+            }}
+            inputProps={{
+              label: "Select Movies",
+              errorMessage: "Error message",
+              helperText: "Helper text",
+              maxCharacters: 100,
+              minWidth: 300,
+              maxWidth: 800,
+              fullWidth: true,
+              moreInfo: "More information text",
+              required: true,
+              size: "small",
+              successMessage: "Success message",
+              tooltipPlacement: "top",
+              inputType: "default",
+            }}
+          >
+            {data &&
+              data.map(
+                ({ title = "", avatar, type, ...val }: SelectDataProps, i) => {
+                  return val.divider ? (
+                    <DividerMenuItem key={i} />
+                  ) : (
+                    <DescriptiveMenuItem
+                      key={i}
+                      value={title}
+                      title={title}
+                      checked={false}
+                      selectable={true}
+                      {...val}
+                    />
+                  );
+                }
+              )}
+          </Select>
+
+          <Select
+            open={false}
+            onClose={handleClose}
+            multiSelect={true}
+            selectAll={false}
+            value={personaVal}
+            size="small"
+            onChange={(value) => {
+              console.log("value: ", value);
+              setPersonaVal(value);
+            }}
+            inputProps={{
+              label: "Select Movies",
+              errorMessage: "Error message",
+              helperText: "Helper text",
+              maxCharacters: 100,
+              minWidth: 600,
+              moreInfo: "More information text",
+              required: true,
+              size: "large",
+              successMessage: "Success message",
+              tooltipPlacement: "top",
+              inputType: "default",
+            }}
+          >
+            {menuData &&
+              menuData.map(
+                ({ title = "", avatar, type, ...val }: SelectDataProps, i) =>
+                  val.divider ? (
+                    <DividerMenuItem key={i} />
+                  ) : (
+                    <DescriptiveMenuItem
+                      key={i}
+                      value={title}
+                      title={title}
+                      checked={false}
+                      selectable={true}
+                      {...val}
+                    />
+                  )
+              )}
+          </Select>
           {/* <Tag
             // LeadingIcon={<ArrowLeft />}
             // TrailingIcon={<ArrowRight />}
