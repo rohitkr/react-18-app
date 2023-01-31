@@ -1,7 +1,7 @@
-import { MenuProps as MuiMenuProps } from "@material-ui/core/Menu";
 import { SelectProps as MuiSelectProps } from "@material-ui/core/Select";
 import React from "react";
 import { NaviInputProps } from "../Input/Input.types";
+import { TagProps } from "../Tag/Tag.types";
 export interface SelectDataProps {
   title?: string;
   description?: string;
@@ -13,6 +13,7 @@ export interface SelectDataProps {
   checked?: boolean;
   type?: "divider" | "select";
   divider?: boolean;
+  groupHeading?: boolean;
   disabled?: boolean;
 }
 
@@ -23,14 +24,17 @@ export interface SelectProps extends Pick<MuiSelectProps, Exclude<keyof MuiSelec
   // anchorEl?: HTMLElement | null;
   multiSelect?: boolean;
   selectAll?: boolean;
+  allowSelectAll?: boolean;
   checkboxes?: boolean;
   inputProps?: NaviInputProps;
+  tagProps?: TagProps;
   dropdownIcon?: React.ReactNode;
   minWidth?: number;
   maxWidth?: number;
   minHeight?: number;
   maxHeight?: number;
   value?: string[];
+  renderValueAs?: 'tag' | 'default';
   onChange?: (
     data: string[]
   ) => void;

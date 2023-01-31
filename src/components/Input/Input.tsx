@@ -14,7 +14,6 @@ const tokenObj: { [key: string]: any } = tokens;
 const INPUT_MIN_WIDTH = 280;
 const INPUT_MAX_WIDTH = 280;
 const INPUT_MIN_HEIGHT = 32;
-const INPUT_MAX_HEIGHT = 44;
 
 const TextInputElement = ({
   inputType = "default",
@@ -46,9 +45,7 @@ const TextInputElement = ({
     ? Math.max(minHeight, INPUT_MIN_HEIGHT)
     : INPUT_MIN_HEIGHT;
 
-  const inputMaxHeight = maxHeight
-    ? Math.max(maxHeight, INPUT_MAX_HEIGHT)
-    : INPUT_MAX_HEIGHT;
+  const inputMaxHeight = maxHeight || "unset";
 
   const [inputValue, setInputValue] = React.useState(props.value || "");
   const [internalError, setInternalError] = useState("");

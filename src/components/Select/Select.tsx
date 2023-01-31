@@ -4,26 +4,49 @@ import MuiSelect from "@material-ui/core/Select";
 import Box from "../Box/Box";
 import TextInput from "../Input/Input";
 import IconButton from "../IconButton/IconButton";
-import { X, ChevronDown } from "tabler-icons-react";
-import { InputAdornment } from "@material-ui/core";
+import { X, ChevronDown, Tag as TagIcon } from "tabler-icons-react";
+import {
+  createStyles,
+  InputAdornment,
+  makeStyles,
+  Theme,
+} from "@material-ui/core";
 import "./Select.scss";
 import { MenuItemProps } from "../MenuItem/MenuItem.types";
+import Chip from "../Tag/Tag";
+
+const useStyles = makeStyles((theme: Theme) =>
+  createStyles({
+    root: {
+      width: 500,
+      "& > * + *": {
+        marginTop: theme.spacing(3),
+      },
+    },
+    chip: {
+      margin: 4,
+    },
+  })
+);
 
 const Select: React.FC<SelectProps> = ({
   onClose,
   multiSelect,
   selectAll = false,
   inputProps,
+  tagProps,
   checkboxes = true,
   size = "large",
   children,
   dropdownIcon,
-  value = [],
+  value,
+  renderValueAs,
   ...props
 }) => {
   const [selectValue, setSelectValue] = React.useState<string[]>([]);
   const [open, setOpen] = React.useState(props.open);
   const inputRef = React.useRef<any>(null);
+  const classes = useStyles();
 
   React.useEffect(() => {
     if (selectAll) {
@@ -39,7 +62,9 @@ const Select: React.FC<SelectProps> = ({
   }, [selectAll]);
 
   React.useEffect(() => {
-    setSelectValue(value);
+    if (value !== undefined) {
+      setSelectValue(value);
+    }
   }, [value]);
 
   React.useEffect(() => {
@@ -67,7 +92,6 @@ const Select: React.FC<SelectProps> = ({
       if (selectValue.indexOf(value) !== -1) {
         checked = selectValue.indexOf(value) !== -1;
       }
-      checked = selectValue.indexOf(value) !== -1;
 
       return React.cloneElement(item, {
         key: value,
@@ -82,9 +106,49 @@ const Select: React.FC<SelectProps> = ({
     <Box className="navi-menu-component">
       <MuiSelect
         renderValue={(selected) => {
-          return typeof selected === "string"
-            ? selected
-            : (selected as string[]).join(", ");
+          if (renderValueAs === "tag") {
+            return (
+              <Box
+                style={{
+                  flexWrap: "wrap",
+                  display: "flex",
+                  maxHeight: props.maxHeight,
+                }}
+              >
+                {(selected as string[]).map((value) => (
+                  <Chip
+                    size={size}
+                    intent="muted"
+                    dismissible
+                    LeadingIcon={<TagIcon size={8} />}
+                    key={value}
+                    label={value}
+                    value={value}
+                    onDismiss={(_e: any, val?: string) => {
+                      setSelectValue((oldData) => {
+                        let _data = Array.isArray(oldData)
+                          ? [...oldData]
+                          : [oldData];
+                        if (typeof val === "string") {
+                          const index = _data.indexOf(val);
+                          _data.splice(index, 1);
+                        }
+                        return _data;
+                      });
+                    }}
+                    {...tagProps}
+                    className={`${classes.chip} ${tagProps?.className} navi-prevent-menu-open `}
+                    style={{
+                      display: "flex",
+                      ...tagProps?.style,
+                    }}
+                  />
+                ))}
+              </Box>
+            );
+          } else {
+            return (selected as string[]).join(", ");
+          }
         }}
         {...props}
         onChange={(event: React.ChangeEvent<{ value: unknown }>, ele) => {
@@ -177,6 +241,7 @@ const Select: React.FC<SelectProps> = ({
           // Height of the menu dropdown
           PaperProps: {
             style: {
+              marginTop: "18px",
               maxHeight: "calc(100% - 200px)",
               minWidth: `calc(${inputRef?.current?.node?.offsetWidth}px - 8px)`,
             },

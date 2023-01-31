@@ -154,7 +154,7 @@ const DimissibleCloseIcon: React.FC<DismissibleCloseIconProps> = ({
     >
       <Tooltip position="top" title="Clear" size="compact">
         <SystemIcon
-          size={size}
+          size={size === "large" ? "medium" : "small"}
           intent={dismissibleIntent}
           onClick={handleDismiss}
           disabled={disabled}
@@ -246,7 +246,12 @@ const TagComponent: React.FC<TagProps> = ({
       data-value={props.value}
       {...props}
       className={`navi-tag-icons-container ${props.className}`}
-      style={{ display: "inline-block", width: "max-content", outline: "none", ...props.style }}
+      style={{
+        display: "inline-block",
+        width: "max-content",
+        outline: "none",
+        ...props.style,
+      }}
     >
       <Box style={{ ...styles.root }}>
         {LeadingIcon && (
