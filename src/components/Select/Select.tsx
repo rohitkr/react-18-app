@@ -97,25 +97,6 @@ const Select: React.FC<SelectProps> = ({
     setAllSelected(!someMenuItemsSelected);
   }, [selectionMap, allSelected]);
 
-  // React.useEffect(() => {
-  //   if (selectAll) {
-  //     const valueArr: string[] = [];
-  //     React.Children.map(children, (child) => {
-  //       if (React.isValidElement(child)) {
-  //         const value = child.props.value;
-  //         valueArr.push(value);
-  //       }
-  //     });
-  //     setSelectValue([...getSelectedValue()]);
-  //   }
-  // }, [selectAll]);
-
-  // React.useEffect(() => {
-  //   if (value !== undefined) {
-  //     setSelectValue(value);
-  //   }
-  // }, [value]);
-
   React.useEffect(() => {
     setOpen(open);
   }, [open]);
@@ -162,31 +143,30 @@ const Select: React.FC<SelectProps> = ({
     if (renderValueAs === "tag") {
       return (
         <Box
-          style={{
-            flexWrap: "wrap",
-            display: "flex",
-            maxHeight: props.maxHeight,
-          }}
+          flexWrap="wrap"
+          display="flex"
+          maxHeight={`${props.maxHeight}px`}
         >
           {selectedValue &&
             selectedValue.map((value: string) => {
               return (
-                <SelectedChip
-                  size={size}
-                  intent="muted"
-                  dismissible
-                  LeadingIcon={<TagIcon size={8} />}
-                  key={value}
-                  label={value}
-                  value={value}
-                  onDismiss={onSelectedChipDismiss}
-                  {...tagProps}
-                  className={`${classes.chip} ${tagProps?.className} navi-prevent-menu-open `}
-                  style={{
-                    display: "flex",
-                    ...tagProps?.style,
-                  }}
-                />
+                <Box display="flex" margin="5px 6px">
+                  <SelectedChip
+                    size={"large"}
+                    intent="muted"
+                    dismissible
+                    LeadingIcon={<TagIcon size={8} />}
+                    key={value}
+                    label={value}
+                    value={value}
+                    onDismiss={onSelectedChipDismiss}
+                    {...tagProps}
+                    className={`${classes.chip} ${tagProps?.className} navi-prevent-menu-open `}
+                    style={{
+                      ...tagProps?.style,
+                    }}
+                  />
+                </Box>
               );
             })}
         </Box>
@@ -329,17 +309,6 @@ const Select: React.FC<SelectProps> = ({
         }}
         onClose={onSelectClose}
         onOpen={onSelectOpen}
-        // onOpen={(e) => {
-        //   let ele = e.target as HTMLElement;
-        //   let preventMenuOpen = false;
-        //   while (ele.nodeName !== "BODY" && !preventMenuOpen) {
-        //     ele = ele.parentNode as HTMLElement;
-        //     preventMenuOpen = ele.classList.contains("navi-prevent-menu-open");
-        //   }
-        //   if (!preventMenuOpen) {
-        //     setOpen(true);
-        //   }
-        // }}
 
         // Placement of custom clear and dropdown icon button
         endAdornment={selectEndAdornment}
