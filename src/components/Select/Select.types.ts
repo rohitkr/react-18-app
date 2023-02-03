@@ -18,13 +18,16 @@ export interface SelectDataProps {
 }
 
 // export interface SelectProps extends MuiSelectProps {
-export interface SelectProps extends Pick<MuiSelectProps, Exclude<keyof MuiSelectProps, "inputProps" | "onChange">> {
+export interface SelectProps
+  extends Pick<
+    MuiSelectProps,
+    Exclude<keyof MuiSelectProps, "inputProps" | "onChange">
+  > {
   open: boolean;
   size?: "small" | "large";
   // anchorEl?: HTMLElement | null;
   multiSelect?: boolean;
   selectAll?: boolean;
-  allowSelectAll?: boolean;
   checkboxes?: boolean;
   inputProps?: NaviInputProps;
   tagProps?: TagProps;
@@ -34,13 +37,12 @@ export interface SelectProps extends Pick<MuiSelectProps, Exclude<keyof MuiSelec
   minHeight?: number;
   maxHeight?: number;
   value?: string[];
-  renderValueAs?: 'tag' | 'default';
-  onChange?: (
-    data: string[]
-  ) => void;
+  renderValueAs?: "tag" | "default";
+  onChange?: (data: string[]) => void;
+  selectValue?: string[];
 }
 export interface SelectItemCardProps {
-  selectValue: string[];
+  selectValue?: string[];
   title?: string;
   description?: string;
   trailingIcon?: React.ReactNode;
@@ -57,4 +59,14 @@ export interface SelectItemCardProps {
     child: string,
     checked?: boolean
   ) => void;
+}
+
+export interface SelectedChipsProps {
+  size?: "large" | "small";
+  value: string;
+  onDismiss?: (e: React.MouseEvent, value?: string) => void;
+  tagProps?: TagProps;
+  classes?: Object;
+  className?: string;
+  style?: Object;
 }

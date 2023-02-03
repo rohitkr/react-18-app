@@ -13,7 +13,12 @@ import {
 } from "@material-ui/core";
 import "./Select.scss";
 import { MenuItemProps } from "../MenuItem/MenuItem.types";
-import Chip from "../Tag/Tag";
+import SelectedChip from "./SelectedChip";
+import SelectAllMenuItem from "../MenuItem/SelectAllMenuItem";
+
+interface SelectionMapInterface {
+  [key: string]: boolean;
+}
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -40,131 +45,265 @@ const Select: React.FC<SelectProps> = ({
   children,
   dropdownIcon,
   value,
-  renderValueAs,
+  renderValueAs = "tag",
   ...props
 }) => {
-  const [selectValue, setSelectValue] = React.useState<string[]>([]);
-  const [open, setOpen] = React.useState(props.open);
+  const [selectedValue, setSelectValue] = React.useState<string[]>(() => {
+    let allSelectedValues: Array<string> = [];
+
+    if (props.selectValue) {
+      return props.selectValue;
+    }
+    else {
+      if (React.Children.count(children)) {
+        return React.Children.toArray(children).reduce(
+          (acc: Array<string>, child) => {
+            if (React.isValidElement(child) && child.props.checked) {
+              return [...acc, child.props.value];
+            }
+            return acc;
+          }, [])
+      }
+      return allSelectedValues;
+    }
+  });
+  const [open, setOpen] = React.useState(props.open || false);
+  const [allSelected, setAllSelected] = React.useState(false);
+  const [selectionMap, setSelectionMap] = React.useState(() => {
+    if (multiSelect) {
+      if (React.Children.count(children)) {
+        const map = React.Children.toArray(children).reduce(
+          (acc: SelectionMapInterface, child) => {
+            if (React.isValidElement(child)) {
+              acc[child.props.value] = child.props.checked ? true : false;
+              return acc;
+            }
+            return acc;
+          },
+          {}
+        );
+        return map;
+      }
+    }
+    return {};
+  });
   const inputRef = React.useRef<any>(null);
   const classes = useStyles();
 
   React.useEffect(() => {
-    if (selectAll) {
-      const valueArr: string[] = [];
-      React.Children.map(children, (child) => {
-        if (React.isValidElement(child)) {
-          const value = child.props.value;
-          valueArr.push(value);
-        }
-      });
-      setSelectValue([...getSelectedValue()]);
-    }
-  }, [selectAll]);
+    const someMenuItemsSelected = Object.keys(selectionMap).some(
+      (key) => !selectionMap[key]
+    );
+    setAllSelected(!someMenuItemsSelected);
+  }, [selectionMap, allSelected]);
 
-  React.useEffect(() => {
-    if (value !== undefined) {
-      setSelectValue(value);
-    }
-  }, [value]);
+  // React.useEffect(() => {
+  //   if (selectAll) {
+  //     const valueArr: string[] = [];
+  //     React.Children.map(children, (child) => {
+  //       if (React.isValidElement(child)) {
+  //         const value = child.props.value;
+  //         valueArr.push(value);
+  //       }
+  //     });
+  //     setSelectValue([...getSelectedValue()]);
+  //   }
+  // }, [selectAll]);
+
+  // React.useEffect(() => {
+  //   if (value !== undefined) {
+  //     setSelectValue(value);
+  //   }
+  // }, [value]);
 
   React.useEffect(() => {
     setOpen(open);
   }, [open]);
 
-  const getSelectedValue = () => {
-    const valueArr: string[] = [];
-    React.Children.toArray(children).forEach((child) => {
-      if (React.isValidElement(child)) {
-        valueArr.push(child.props.value);
-      }
-    });
-    return valueArr;
-  };
-
-  const items = React.Children.map(children, (child) => {
-    if (React.isValidElement(child)) {
-      const item = child as React.ReactElement<
-        React.PropsWithChildren<MenuItemProps>
-      >;
-      const value = child.props.value;
-      let checked = selectAll || child.props.checked;
-
-      if (selectValue.indexOf(value) !== -1) {
-        checked = selectValue.indexOf(value) !== -1;
-      }
-
-      return React.cloneElement(item, {
-        key: value,
-        size: size,
-        selectable: multiSelect,
-        checked: checked,
+  const onSelectedChipDismiss = React.useCallback((e: React.MouseEvent, value?: string) => {
+    if (value) {
+      setSelectValue((oldData) => {
+        let _data = Array.isArray(oldData)
+          ? [...oldData]
+          : [oldData];
+        if (typeof value === "string") {
+          const index = _data.indexOf(value);
+          _data.splice(index, 1);
+        }
+        return _data;
+      });
+      setSelectionMap((oldMap) => {
+        let _oldMap = { ...oldMap, [String(value)]: false };
+        return _oldMap;
       });
     }
-  });
+  }, [selectionMap]);
+
+  const onSelectClose = React.useCallback(() => {
+    setOpen(false);
+  }, []);
+
+  // This function prevents Menu from opening while clicking on the Chip
+  const onSelectOpen = React.useCallback((e: React.ChangeEvent<{}>) => {
+    let ele = e.target as HTMLElement;
+    let preventMenuOpen = false;
+    while (ele.nodeName !== "BODY" && !preventMenuOpen) {
+      ele = ele.parentNode as HTMLElement;
+      // If the element has className navi-prevent-menu-open, it will prevent 
+      // the menu from opening
+      preventMenuOpen = ele.classList.contains("navi-prevent-menu-open");
+    }
+    if (!preventMenuOpen) {
+      setOpen(true);
+    }
+  }, []);
+
+  const selectedChips = () => {
+    if (renderValueAs === "tag") {
+      return (
+        <Box
+          style={{
+            flexWrap: "wrap",
+            display: "flex",
+            maxHeight: props.maxHeight,
+          }}
+        >
+          {selectedValue &&
+            selectedValue.map((value: string) => {
+              return (
+                <SelectedChip
+                  size={size}
+                  intent="muted"
+                  dismissible
+                  LeadingIcon={<TagIcon size={8} />}
+                  key={value}
+                  label={value}
+                  value={value}
+                  onDismiss={onSelectedChipDismiss}
+                  {...tagProps}
+                  className={`${classes.chip} ${tagProps?.className} navi-prevent-menu-open `}
+                  style={{
+                    display: "flex",
+                    ...tagProps?.style,
+                  }}
+                />
+              );
+            })}
+        </Box>
+      );
+    } else {
+      return selectedValue;
+    }
+  };
+
+  const onSelectChange = React.useCallback(
+    (event: React.ChangeEvent<{ value: unknown }>) => {
+      let updatedSelectedMap: SelectionMapInterface = { ...selectionMap };
+      const value = event.target.value as string[];
+      if (value.indexOf("_select_all") >= 0) {
+        let updatedSelectedValues: Array<string> = [];
+        Object.keys(selectionMap).forEach((key) => {
+          updatedSelectedMap[key] = !allSelected;
+          if (!allSelected) {
+            updatedSelectedValues.push(key);
+          }
+        });
+        setSelectionMap(updatedSelectedMap);
+        setSelectValue(updatedSelectedValues);
+      } else {
+        Object.keys(selectionMap).forEach((key) => {
+          if (value.indexOf(key) >= 0) {
+            updatedSelectedMap[key] = true;
+          } else {
+            updatedSelectedMap[key] = false;
+          }
+        });
+        setSelectionMap(updatedSelectedMap);
+        if (Array.isArray(value)) {
+          setSelectValue(value);
+        } else {
+          setSelectValue([value]);
+        }
+      }
+      const selectedValueArr: string[] = [];
+      Object.keys(updatedSelectedMap).forEach((v) => {
+        if (updatedSelectedMap[v]) {
+          selectedValueArr.push(v);
+        }
+      });
+      props.onChange && props.onChange(selectedValueArr);
+    },
+    [selectionMap, allSelected]
+  );
+
+  const onMenuOpen = () => {
+    setOpen(true);
+  };
+
+  const onClearClick = () => {
+    setSelectionMap((oldMap) => (Object.keys(oldMap).reduce((a, v) => ({ ...a, [v]: false }), {})));
+    setSelectValue([]);
+  };
+  const selectEndAdornment = React.useMemo(() => {
+    return (
+      <InputAdornment position="start" style={{ marginRight: "0px" }}>
+        <IconButton
+          size="small"
+          variant="tertiary"
+          intent="muted"
+          style={{
+            display: selectedValue?.length ? "block" : "none",
+            marginRight: "0px",
+          }}
+          title={"Clear"}
+          onClick={onClearClick}
+        >
+          <X />
+        </IconButton>
+        <IconButton
+          size="small"
+          variant="tertiary"
+          intent="muted"
+          style={{
+            marginRight: "5px",
+            transform: `${open ? "rotate(180deg)" : "rotate(0deg)"}`,
+          }}
+          title={"Open"}
+          onClick={onMenuOpen}
+        >
+          {dropdownIcon || <ChevronDown />}
+        </IconButton>
+      </InputAdornment>
+    );
+  }, []);
+
+  const items = React.useMemo(() => {
+    return React.Children.map(children, (child) => {
+      if (React.isValidElement(child)) {
+        const item = child as React.ReactElement<
+          React.PropsWithChildren<MenuItemProps>
+        >;
+        const value = child.props.value;
+        let checked = child.props.checked || selectionMap[child.props.value];
+
+        return React.cloneElement(item, {
+          key: value,
+          size: size,
+          selectable: multiSelect,
+          checked: checked,
+        });
+      }
+    });
+  }, [selectionMap]);
 
   return (
     <Box className="navi-menu-component">
       <MuiSelect
-        renderValue={(selected) => {
-          if (renderValueAs === "tag") {
-            return (
-              <Box
-                style={{
-                  flexWrap: "wrap",
-                  display: "flex",
-                  maxHeight: props.maxHeight,
-                }}
-              >
-                {(selected as string[]).map((value) => (
-                  <Chip
-                    size={size}
-                    intent="muted"
-                    dismissible
-                    LeadingIcon={<TagIcon size={8} />}
-                    key={value}
-                    label={value}
-                    value={value}
-                    onDismiss={(_e: any, val?: string) => {
-                      setSelectValue((oldData) => {
-                        let _data = Array.isArray(oldData)
-                          ? [...oldData]
-                          : [oldData];
-                        if (typeof val === "string") {
-                          const index = _data.indexOf(val);
-                          _data.splice(index, 1);
-                        }
-                        return _data;
-                      });
-                    }}
-                    {...tagProps}
-                    className={`${classes.chip} ${tagProps?.className} navi-prevent-menu-open `}
-                    style={{
-                      display: "flex",
-                      ...tagProps?.style,
-                    }}
-                  />
-                ))}
-              </Box>
-            );
-          } else {
-            return (selected as string[]).join(", ");
-          }
-        }}
+        renderValue={selectedChips}
         {...props}
-        onChange={(event: React.ChangeEvent<{ value: unknown }>, ele) => {
-          const { value } = event.target;
-          let valueArr: string[] = [];
-          if (Array.isArray(value)) {
-            setSelectValue(value);
-            valueArr = value;
-          } else if (typeof value === "string") {
-            setSelectValue([value]);
-            valueArr = [value];
-          }
-          props.onChange && props.onChange(valueArr);
-        }}
+        onChange={onSelectChange}
         multiple={multiSelect}
-        value={selectValue}
+        value={selectedValue}
         defaultValue=""
         inputRef={inputRef}
         input={
@@ -188,55 +327,22 @@ const Select: React.FC<SelectProps> = ({
           // Hide the actual select component dropdown icon
           IconComponent: () => null,
         }}
-        onClose={() => {
-          setOpen(false);
-        }}
-        onOpen={(e) => {
-          let ele = e.target as HTMLElement;
-          let preventMenuOpen = false;
-          while (ele.nodeName !== "BODY" && !preventMenuOpen) {
-            ele = ele.parentNode as HTMLElement;
-            preventMenuOpen = ele.classList.contains("navi-prevent-menu-open");
-          }
-          if (!preventMenuOpen) {
-            setOpen(true);
-          }
-        }}
+        onClose={onSelectClose}
+        onOpen={onSelectOpen}
+        // onOpen={(e) => {
+        //   let ele = e.target as HTMLElement;
+        //   let preventMenuOpen = false;
+        //   while (ele.nodeName !== "BODY" && !preventMenuOpen) {
+        //     ele = ele.parentNode as HTMLElement;
+        //     preventMenuOpen = ele.classList.contains("navi-prevent-menu-open");
+        //   }
+        //   if (!preventMenuOpen) {
+        //     setOpen(true);
+        //   }
+        // }}
+
         // Placement of custom clear and dropdown icon button
-        endAdornment={
-          <InputAdornment position="start" style={{ marginRight: "0px" }}>
-            <IconButton
-              size="small"
-              variant="tertiary"
-              intent="muted"
-              style={{
-                display: selectValue.length ? "block" : "none",
-                marginRight: "0px",
-              }}
-              title={"Clear"}
-              onClick={() => {
-                setSelectValue([]);
-              }}
-            >
-              <X />
-            </IconButton>
-            <IconButton
-              size="small"
-              variant="tertiary"
-              intent="muted"
-              style={{
-                marginRight: "5px",
-                transform: `${open ? "rotate(180deg)" : "rotate(0deg)"}`,
-              }}
-              title={"Open"}
-              onClick={(e) => {
-                setOpen(true);
-              }}
-            >
-              {dropdownIcon || <ChevronDown />}
-            </IconButton>
-          </InputAdornment>
-        }
+        endAdornment={selectEndAdornment}
         MenuProps={{
           // Height of the menu dropdown
           PaperProps: {
@@ -259,6 +365,14 @@ const Select: React.FC<SelectProps> = ({
           disableAutoFocusItem: true,
         }}
       >
+        {selectAll ? (
+          <SelectAllMenuItem
+            key="_select_all"
+            value="_select_all"
+            size={size}
+            checked={allSelected}
+          />
+        ) : null}
         {items}
       </MuiSelect>
     </Box>

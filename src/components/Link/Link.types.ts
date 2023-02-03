@@ -1,5 +1,5 @@
 import { LinkProps as MuiLinkProps } from "@material-ui/core/Link";
-
+import { ForwardedRef } from "react";
 export interface LinkProps
   extends Pick<MuiLinkProps, Exclude<keyof MuiLinkProps, "variant">> {
   "data-testid"?: string;
@@ -10,4 +10,5 @@ export interface LinkProps
   target?: string;
   leadingIcon?: React.ReactNode | boolean;
   trailingIcon?: React.ReactNode | boolean;
+  forwardedRef?: ForwardedRef<HTMLLinkElement>;
 }

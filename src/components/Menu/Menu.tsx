@@ -5,6 +5,7 @@ import Paper from "@material-ui/core/Paper";
 import Popper from "@material-ui/core/Popper";
 import MenuList from "@material-ui/core/MenuList";
 import "./Menu.scss";
+import SelectAllMenuItem from "../MenuItem/SelectAllMenuItem";
 
 const minWidth = 320;
 
@@ -17,17 +18,19 @@ const Menu: React.FC<MenuProps> = ({
   onMenuChange,
   width,
   height,
-  size,
+  size = "large",
   menuPlacement = "bottom",
   multiSelect = false,
   showSelectedValue = false,
   children,
+  useSelectAll,
   ...props
 }) => {
   const [open, setOpen] = React.useState(props.open || false);
   const [selectedValue, setSelectedValue] = React.useState(
     props.selectedValue || null
   );
+  const [allSelected, setAllSelected] = React.useState(false);
   const [selectionMap, setSelectionMap] = React.useState(() => {
     if (multiSelect) {
       if (React.Children.count(children)) {
@@ -48,6 +51,13 @@ const Menu: React.FC<MenuProps> = ({
   });
 
   React.useEffect(() => {
+    const someMenuItemsDelected = Object.keys(selectionMap).some(
+      (key) => !selectionMap[key]
+    );
+    setAllSelected(!someMenuItemsDelected);
+  }, [selectionMap]);
+
+  React.useEffect(() => {
     setOpen(props.open);
   }, [props.open]);
 
@@ -66,7 +76,15 @@ const Menu: React.FC<MenuProps> = ({
     }
   }
 
-  const onMenuItemClick = React.useCallback(
+  const onSelectAllClick = () => {
+    let updatedSelectionMap: { [key: string]: boolean } = {};
+    Object.keys(selectionMap).forEach((key) => {
+      updatedSelectionMap[key] = !allSelected;
+    });
+    setSelectionMap(updatedSelectionMap);
+  };
+
+  const _onMenuItemClick = React.useCallback(
     (
       e: React.MouseEvent<HTMLLIElement, MouseEvent>,
       value: string | number
@@ -95,9 +113,9 @@ const Menu: React.FC<MenuProps> = ({
     <Popper
       open={open}
       anchorEl={props.anchorEl}
-      role={undefined}
-      placement="bottom"
+      placement={menuPlacement}
       transition
+      style={{ zIndex: 3 }}
     >
       <Paper
         style={{
@@ -111,14 +129,22 @@ const Menu: React.FC<MenuProps> = ({
       >
         <ClickAwayListener onClickAway={handleClose}>
           <MenuList
-            autoFocusItem={false}
+            autoFocusItem={true}
             onKeyDown={handleListKeyDown}
             className="navi-menu-container"
           >
+            {useSelectAll ? (
+              <SelectAllMenuItem
+                key="_select_all"
+                _onMenuItemClick={onSelectAllClick}
+                size={size}
+                checked={allSelected}
+              />
+            ) : null}
             {React.Children.map(children, (child: any) => {
               return React.cloneElement(child, {
                 key: child.props.value,
-                onMenuItemClick,
+                _onMenuItemClick,
                 size,
                 selectable: multiSelect ? true : false,
                 checked:

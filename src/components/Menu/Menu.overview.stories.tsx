@@ -1,18 +1,22 @@
 import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 import Button from "../Button/Button";
-import { Button as MuiButton } from "@material-ui/core";
 import Menu from "./Menu";
 import Box from "../Box/Box";
-import Input from "../Input/Input";
 import SyntaxHighlighter from "react-syntax-highlighter";
 import { docco } from "react-syntax-highlighter/dist/esm/styles/hljs";
-import MenuItem from "../MenuItem/MenuItem";
-import { MoodHappy, Pencil } from "tabler-icons-react";
-import DescriptiveMenuItem from "../MenuItem/DescriptiveMenuItem";
-import GroupHeadingMenuItem from "../MenuItem/GroupHeadingMenuItem";
-import EmptyStateMenuItem from "../MenuItem/EmptyStateMenuItem";
-import DividerMenuItem from "../MenuItem/DividerMenuItem";
+import { Pencil } from "tabler-icons-react";
+import DescriptiveMenuItem from "../DescriptiveMenuItem/DescriptiveMenuItem";
+import GroupHeadingMenuItem from "../GroupHeadingMenuItem/GroupHeadingMenuItem";
+import EmptyStateMenuItem from "../EmptyStateMenuItem/EmptyStateMenuItem";
+import Divider from "../Divider/Divider";
+import "./Menu.overview.scss";
+import Accordion from "@material-ui/core/Accordion";
+import AccordionSummary from "@material-ui/core/AccordionSummary";
+import AccordionDetails from "@material-ui/core/AccordionDetails";
+import Typography from "@material-ui/core/Typography";
+import { CaretDown } from "tabler-icons-react";
+import Link from "../Link/Link";
 
 export default {
   title: `Components/Menu`,
@@ -20,110 +24,346 @@ export default {
   argTypes: {},
 } as ComponentMeta<typeof Menu>;
 
+const CodeBlock = (props: any) => {
+  return (
+    <Accordion>
+      <AccordionSummary expandIcon={<CaretDown />} aria-controls="code-panel">
+        <Typography
+          style={{
+            fontFamily: "Inter",
+            fontSize: "14px",
+          }}
+        >
+          Show Code
+        </Typography>
+      </AccordionSummary>
+      <AccordionDetails>
+        <Box style={{ textAlign: "left" }}>
+          <SyntaxHighlighter language="javascript" style={docco}>
+            {props.children}
+          </SyntaxHighlighter>
+        </Box>
+      </AccordionDetails>
+    </Accordion>
+  );
+};
+
 const Template: ComponentStory<typeof Menu> = (args) => {
   const [open, setOpen] = React.useState(false);
-  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>();
-  const [size, setSize] = React.useState<string>("small");
-  const [leadingIcon, setLeadingIcon] = React.useState<string>("");
-  const [trailingIcon, setTrailingIcon] = React.useState<string>("");
-  const leadingIconVal = leadingIcon ? `leadingIcon={${leadingIcon}}` : "";
-  const trailingIconVal = trailingIcon ? `trailingIcon={${trailingIcon}}` : "";
-  const code = `// sample code     <Link size="${size}" ${leadingIconVal} ${trailingIconVal}>     Link Text     </Link>`;
+  const [linkMenuOpen, setLinkMenuOpen] = React.useState(false);
   const anchorRef = React.useRef<HTMLButtonElement>(null);
-  const anchorRef2 = React.useRef();
+  const linkAnchorRef = React.useRef<HTMLLinkElement>(null);
 
   const onButtonClick = React.useCallback(
-    (e: React.MouseEvent<HTMLElement>) => {
-      if (anchorEl) {
-        setAnchorEl(null);
-      } else {
-        setAnchorEl(e.currentTarget);
-      }
+    (e: React.MouseEvent<Element, MouseEvent>) => {
       setOpen(!open);
     },
-    [open, anchorEl]
+    []
   );
 
   const onMenuClose = React.useCallback(() => {
-    setAnchorEl(null);
     setOpen(false);
+    setLinkMenuOpen(false);
   }, []);
 
-  const onMenuChange = (selectedValues: Array<string | number>) => {};
+  const onLinkClick = React.useCallback(
+    (e: React.MouseEvent<Element, MouseEvent>) => {
+      setLinkMenuOpen(!linkMenuOpen);
+    },
+    []
+  );
+  const onMenuChange = React.useCallback(
+    (selectedValues: Array<string | number>) => {},
+    []
+  );
 
   return (
-    <Box
-      className="container"
-      style={{
-        height: "756px",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-      }}
-    >
+    <Box style={{ fontFamily: "Inter" }}>
+      <h1>Overview</h1>
+      <p>This is the documentation of Navi Menu component</p>
+      <p>
+        Menu is a list of choices appearing in a popup when the user interacts
+        with any component. Menus open over the anchorElement passed to the Menu
+        component. However, the position of the menu can be controlled using the
+        "menuPlacement" prop.
+      </p>
       <Box
+        className="container"
         style={{
-          display: "grid",
-          gridTemplateColumns: "auto auto",
-          padding: "10px",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          marginBottom: "8px",
         }}
       >
-        {/* <Box
-          id="menu-button"
-          onClick={onButtonClick}
-          ref={anchorRef2}
-          style={{ height: "44px", backgroundColor: "blue" }}
-        >
-          Hello wold
-        </Box> */}
-        {/* <Box ref={anchorRef}> */}
-        <button
-          ref={anchorRef}
-          onClick={onButtonClick}
-          // style={{ height: "44px", backgroundColor: "blue" }}
-        >
-          Hello world
-        </button>
-        {/* </Box> */}
-        <Input onClick={onButtonClick} />
+        <Button ref={anchorRef} onClick={onButtonClick}>
+          Button with Menu
+        </Button>
         <Menu
           open={open}
           onMenuChange={onMenuChange}
           handleClose={onMenuClose}
-          height="200px"
-          menuPlacement="left"
+          menuPlacement="bottom"
           anchorEl={anchorRef.current}
           size="small"
+          multiSelect
+          useSelectAll
         >
           <DescriptiveMenuItem
             value="descriptive_item_1"
             avatar="A"
-            title="Sample menu item"
+            title="Sample menu item 1"
             description="With description"
             trailingIcon={<Pencil />}
           />
-          <GroupHeadingMenuItem value="group_heading" title="Group heading" />
-          <DividerMenuItem />
-          <MenuItem value="divider" title="Text only" />
+          <DescriptiveMenuItem value="text_only" title="Text only menu item" />
+          <DescriptiveMenuItem
+            value="descriptive_menu_item_2"
+            title="Descriptive menu item 2"
+            description="Description text 2"
+          />
+          <DescriptiveMenuItem
+            value="descriptive_item_3"
+            avatar="A"
+            title="Sample menu item 3"
+            description="With description"
+            trailingIcon={<Pencil />}
+          />
+          <DescriptiveMenuItem
+            value="text_only_2"
+            title="Text only menu item 2"
+          />
+          <DescriptiveMenuItem
+            value="descriptive_menu-_item_4"
+            title="Descriptive menu item 4"
+            description="Description text 4"
+          />
           <EmptyStateMenuItem
             value="empty_card"
             title="No results found"
             trailingIcon={<Pencil />}
             leadingIcon={<Pencil />}
           />
-          <DescriptiveMenuItem value="text_only" title="Text only" />
-          <DescriptiveMenuItem
-            value="descriptive_menu-_item"
-            title="Descriptive menu item"
-            description="Description text"
-            leadingIcon={<MoodHappy />}
-          />
+
+          <GroupHeadingMenuItem value="group_heading_1" title="Group heading" />
         </Menu>
       </Box>
-      {/* <p>Click on the button above to see the Link code.</p>
-<SyntaxHighlighter language="javascript" style={docco}>
-{code}
-</SyntaxHighlighter> */}
+      <CodeBlock>
+        {`import React from 'react';
+       import { Tag, Menu, DescriptiveMenuItem } from 'navi-design-system';
+
+       const MenuExample = (props) => {
+        const [open, setOpen] = React.useState(false);
+        const anchorRef = React.useRef<HTMLDivElement>(null);
+
+        const onButtonClick = React.useCallback(
+          (e: React.MouseEvent<Element, MouseEvent>) => {
+            setOpen(!open);
+          },
+          [open]
+        );
+
+        const onMenuClose = React.useCallback(() => {
+          setAnchorEl(null);
+          setOpen(false);
+        }, []);
+
+        return (
+          <Box>
+          <Button ref={anchorRef} onClick={onButtonClick}>
+            Button with Menu
+          </Button>
+          <Menu
+            open={open}
+            onMenuChange={onMenuChange}
+            handleClose={onMenuClose}
+            menuPlacement="bottom"
+            anchorEl={anchorRef.current}
+            size="small"
+            multiSelect
+            useSelectAll >
+          <DescriptiveMenuItem
+            value="descriptive_item_1"
+            avatar="A"
+            title="Sample menu item 1"
+            description="With description"
+            trailingIcon={<Pencil />}
+          />
+          <DescriptiveMenuItem value="text_only" title="Text only menu item" />
+          <DescriptiveMenuItem
+            value="descriptive_menu_item_2"
+            title="Descriptive menu item 2"
+            description="Description text 2"
+          />
+          <DescriptiveMenuItem
+            value="descriptive_item_3"
+            avatar="A"
+            title="Sample menu item 3"
+            description="With description"
+            trailingIcon={<Pencil />}
+          />
+          <DescriptiveMenuItem
+            value="text_only_2"
+            title="Text only menu item 2"
+          />
+          <DescriptiveMenuItem
+            value="descriptive_menu-_item_4"
+            title="Descriptive menu item 4"
+            description="Description text 4"
+          />
+          <EmptyStateMenuItem
+            value="empty_card"
+            title="No results found"
+            trailingIcon={<Pencil />}
+            leadingIcon={<Pencil />}
+          />
+          <GroupHeadingMenuItem value="group_heading_1" title="Group heading" />
+        </Menu>
+        </Box>
+        )
+      }
+      `}
+      </CodeBlock>
+      <Divider orientation="horizontal" />
+      <h3>Link with Menu</h3>
+      <p>Here is anotehr example of using the menu with Link component.</p>
+      <Box
+        className="container"
+        style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          marginBottom: "8px",
+        }}
+      >
+        <Link ref={linkAnchorRef} onClick={onLinkClick}>
+          Menu Link
+        </Link>
+        <Menu
+          open={linkMenuOpen}
+          onMenuChange={onMenuChange}
+          handleClose={onMenuClose}
+          menuPlacement="bottom"
+          anchorEl={linkAnchorRef.current}
+          height="300px"
+          size="large"
+          multiSelect
+          useSelectAll
+        >
+          <DescriptiveMenuItem
+            value="descriptive_item_1"
+            avatar="A"
+            title="Sample menu item 1"
+            description="With description"
+            trailingIcon={<Pencil />}
+          />
+          <DescriptiveMenuItem value="text_only" title="Text only menu item" />
+          <DescriptiveMenuItem
+            value="descriptive_menu_item_2"
+            title="Descriptive menu item 2"
+            description="Description text 2"
+          />
+          <DescriptiveMenuItem
+            value="descriptive_item_3"
+            avatar="A"
+            title="Sample menu item 3"
+            description="With description"
+            trailingIcon={<Pencil />}
+          />
+          <DescriptiveMenuItem
+            value="text_only_2"
+            title="Text only menu item 2"
+          />
+          <DescriptiveMenuItem
+            value="descriptive_menu-_item_4"
+            title="Descriptive menu item 4"
+            description="Description text 4"
+          />
+          <EmptyStateMenuItem
+            value="empty_card"
+            title="No results found"
+            trailingIcon={<Pencil />}
+            leadingIcon={<Pencil />}
+          />
+          <GroupHeadingMenuItem value="group_heading_1" title="Group heading" />
+        </Menu>
+      </Box>
+      <CodeBlock>
+        {`import React from 'react';
+       import { Tag, Menu, DescriptiveMenuItem } from 'navi-design-system';
+
+       const MenuExample = (props) => {
+        const [open, setOpen] = React.useState(false);
+        const anchorRef = React.useRef<HTMLLinkElement>(null);
+
+        const onLinkClick = React.useCallback(
+          (e: React.MouseEvent<Element, MouseEvent>) => {
+            setOpen(!open);
+          },
+          [open]
+        );
+
+        const onMenuClose = React.useCallback(() => {
+          setAnchorEl(null);
+          setOpen(false);
+        }, []);
+
+        return (
+          <Box>
+          <Link ref={anchorRef} onClick={onLinkClick}>
+              Menu Link
+          </Link>
+          <Menu
+            open={open}
+            onMenuChange={onMenuChange}
+            handleClose={onMenuClose}
+            menuPlacement="bottom"
+            anchorEl={anchorRef.current}
+            size="large"
+            multiSelect
+            useSelectAll >
+          <DescriptiveMenuItem
+            value="descriptive_item_1"
+            avatar="A"
+            title="Sample menu item 1"
+            description="With description"
+            trailingIcon={<Pencil />}
+          />
+          <DescriptiveMenuItem value="text_only" title="Text only menu item" />
+          <DescriptiveMenuItem
+            value="descriptive_menu_item_2"
+            title="Descriptive menu item 2"
+            description="Description text 2"
+          />
+          <DescriptiveMenuItem
+            value="descriptive_item_3"
+            avatar="A"
+            title="Sample menu item 3"
+            description="With description"
+            trailingIcon={<Pencil />}
+          />
+          <DescriptiveMenuItem
+            value="text_only_2"
+            title="Text only menu item 2"
+          />
+          <DescriptiveMenuItem
+            value="descriptive_menu-_item_4"
+            title="Descriptive menu item 4"
+            description="Description text 4"
+          />
+          <EmptyStateMenuItem
+            value="empty_card"
+            title="No results found"
+            trailingIcon={<Pencil />}
+            leadingIcon={<Pencil />}
+          />
+          <GroupHeadingMenuItem value="group_heading_1" title="Group heading" />
+        </Menu>
+        </Box>
+        )
+      }
+      `}
+      </CodeBlock>
     </Box>
   );
 };

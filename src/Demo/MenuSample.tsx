@@ -4,10 +4,10 @@ import Box from "../components/Box/Box";
 import Input from "../components/Input/Input";
 import MenuItem from "../components/MenuItem/MenuItem";
 import { MoodHappy, Pencil, Movie } from "tabler-icons-react";
-import DescriptiveMenuItem from "../components/MenuItem/DescriptiveMenuItem";
-import GroupHeadingMenuItem from "../components/MenuItem/GroupHeadingMenuItem";
-import EmptyStateMenuItem from "../components/MenuItem/EmptyStateMenuItem";
-import DividerMenuItem from "../components/MenuItem/DividerMenuItem";
+import DescriptiveMenuItem from "../components/DescriptiveMenuItem/DescriptiveMenuItem";
+import GroupHeadingMenuItem from "../components/GroupHeadingMenuItem/GroupHeadingMenuItem";
+import EmptyStateMenuItem from "../components/EmptyStateMenuItem/EmptyStateMenuItem";
+import DividerMenuItem from "../components/DividerMenuItem/DividerMenuItem";
 import { SelectDataProps } from "../components/Select/Select.types";
 
 

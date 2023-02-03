@@ -109,11 +109,12 @@ const LinkContent = (LinkContentProps: LinkProps) => {
   );
 };
 
-const Link = ({
+const LinkComponent = ({
   size = "small",
   style,
   href,
   target,
+  forwardedRef,
   ...rest
 }: LinkProps) => {
   const StyledLink = withStyles(createStyles(size))(
@@ -123,6 +124,7 @@ const Link = ({
           className={classes.linkStyle}
           href={href}
           target={target}
+          ref={forwardedRef}
           {...rest}
         >
           <LinkContent {...rest} />
@@ -134,4 +136,8 @@ const Link = ({
   return <StyledLink />;
 };
 
-export default Link;
+const Link = React.forwardRef<HTMLLinkElement, LinkProps>((props, ref) => {
+  return <LinkComponent {...props} forwardedRef={ref} />;
+});
+
+export default React.memo(Link);

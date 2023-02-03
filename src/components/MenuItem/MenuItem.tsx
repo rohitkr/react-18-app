@@ -10,7 +10,7 @@ const MenuItemCard = ({
   description,
   avatarSrc,
   avatar,
-  trailingIcon,
+  trallingIcon,
   leadingIcon,
   value,
   disableHoverStyle = false,

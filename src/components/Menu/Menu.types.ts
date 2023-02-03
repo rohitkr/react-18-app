@@ -2,7 +2,7 @@ import { MenuProps as MuiMenuProps } from "@material-ui/core/Menu";
 export interface MenuProps extends MuiMenuProps {
   size?: "small" | "large";
   open: boolean;
-  anchorEl: Element | null | undefined;
+  anchorEl?: Element | null | undefined;
   onMenuChange?: (selectedItem: Array<string | number>) => void;
   handleClose?: () => void;
   width?: string;
@@ -11,6 +11,7 @@ export interface MenuProps extends MuiMenuProps {
   selectedValue?: Array<string | number>;
   showSelectedValue?: boolean;
   children: React.ReactNode | React.ReactNode[];
+  useSelectAll?: boolean;
   menuPlacement?:
     | "top"
     | "top-start"

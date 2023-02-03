@@ -6,19 +6,25 @@ import "./GroupHeadingMenuItem.scss";
 import { withStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import tokenObj from "../../tokens/build/json/tokens.json";
-import { GroupHeadingMenuItemProps } from "./MenuItem.types";
-
-const TitleTypography = withStyles((theme) => ({
-  root: {
-    color: tokenObj["color-secondary-800"],
-    fontFamily: tokenObj["text-body-03-font-family"],
-    fontSize: tokenObj["text-body-03-font-size"],
-    fontWeight: Number(tokenObj["text-body-03-font-weight"]),
-    lineHeight: tokenObj["text-body-03-line-height"],
-  },
-}))(Typography);
-
+import { GroupHeadingMenuItemProps } from "./GroupHeadingMenuItem.types";
 const GroupHeadingMenuItem: React.FC<GroupHeadingMenuItemProps> = (props) => {
+  const TitleTypography = withStyles((theme) => ({
+    root: {
+      color: tokenObj["color-secondary-800"],
+      fontFamily: tokenObj["text-body-03-font-family"],
+      fontSize:
+        size === "small"
+          ? tokenObj["text-body-03-font-size"]
+          : tokenObj["text-body-04-font-size"],
+      fontWeight: Number(tokenObj["text-body-03-font-weight"]),
+      lineHeight:
+        size === "small"
+          ? tokenObj["text-body-03-line-height"]
+          : tokenObj["text-body-04-line-height"],
+    },
+  }))(Typography);
+
+  const { size = "large" } = props;
   const MenuItemStyles = () => ({
     root: {
       "&:hover": {

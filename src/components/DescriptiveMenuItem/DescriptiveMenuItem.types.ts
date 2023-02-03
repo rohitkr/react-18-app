@@ -1,15 +1,16 @@
-import { MenuItemProps as MuiMenuItemProps } from "@material-ui/core/MenuItem";
-export interface MenuItemProps extends MuiMenuItemProps {
+import { MenuItemProps } from "../MenuItem/MenuItem.types";
+
+export interface DescriptiveMenuItemProps extends MenuItemProps {
   title?: string;
   size?: "large" | "small";
-  description?: string;
-  trallingIcon?: React.ReactNode;
+  trailingIcon?: React.ReactNode;
   leadingIcon?: React.ReactNode;
+  description?: string;
   avatarSrc?: string;
   avatar?: string;
   checked?: boolean;
   value: string | number;
-  onMenuItemClick?: (
+  _onMenuItemClick?: (
     e: React.MouseEvent<HTMLLIElement, MouseEvent>,
     value: string | number
   ) => void;
@@ -17,7 +18,6 @@ export interface MenuItemProps extends MuiMenuItemProps {
   disableHoverStyle?: boolean;
   disableItemClick?: boolean;
   onBulkActionClick?: Function;
-  isSelected?: boolean;
-  children?: React.ReactNode;
   disabled?: boolean;
+  width?: string;
 }

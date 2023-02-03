@@ -6,7 +6,7 @@ import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import Chip from '@material-ui/core/Chip';
 import { SelectDataProps } from '../components/Select/Select.types';
-import DescriptiveMenuItem from '../components/MenuItem/DescriptiveMenuItem';
+import DescriptiveMenuItem from '../components/DescriptiveMenuItem/DescriptiveMenuItem';
 import { Movie, Pencil } from 'tabler-icons-react';
 
 let data = [

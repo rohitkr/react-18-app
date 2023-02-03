@@ -7,7 +7,7 @@ import Typography from "@material-ui/core/Typography";
 import Checkbox from "../Checkbox/Checkbox";
 import MenuItem from "@material-ui/core/MenuItem";
 import "./DescriptiveMenuItem.scss";
-import { DescriptiveMenuItemProps } from "./MenuItem.types";
+import { DescriptiveMenuItemProps } from "./DescriptiveMenuItem.types";
 
 const DescriptiveMenuItem: React.FC<DescriptiveMenuItemProps> = ({
   avatarSrc,
@@ -16,7 +16,7 @@ const DescriptiveMenuItem: React.FC<DescriptiveMenuItemProps> = ({
   description,
   leadingIcon,
   selectable = false,
-  onMenuItemClick,
+  _onMenuItemClick,
   checked,
   trailingIcon,
   onBulkActionClick,
@@ -25,6 +25,7 @@ const DescriptiveMenuItem: React.FC<DescriptiveMenuItemProps> = ({
   disableItemClick,
   value,
   button,
+  width,
   disabled = false,
   ...props
 }) => {
@@ -56,7 +57,8 @@ const DescriptiveMenuItem: React.FC<DescriptiveMenuItemProps> = ({
   const MenuItemStyles = () => ({
     root: {
       "&:hover": {
-        backgroundColor: disableHoverStyle || disabled ? "transparent" : "#F6F6F9",
+        backgroundColor:
+          disableHoverStyle || disabled ? "transparent" : "#F6F6F9",
       },
     },
   });
@@ -65,7 +67,7 @@ const DescriptiveMenuItem: React.FC<DescriptiveMenuItemProps> = ({
     e: React.MouseEvent<HTMLLIElement, MouseEvent>
   ) => {
     if (!disableItemClick && !disabled) {
-      onMenuItemClick && onMenuItemClick(e, value);
+      _onMenuItemClick && _onMenuItemClick(e, value);
       props.onClick && props.onClick(e);
     }
   };
@@ -81,14 +83,15 @@ const DescriptiveMenuItem: React.FC<DescriptiveMenuItemProps> = ({
     <StyledMenuItem
       {...props}
       disableRipple
-      className={`navi-menu-list-item descriptive-${size} ${
+      className={`${
         checked ? "navi-item-selected" : ""
-      } `}
+      } navi-menu-list-item descriptive-${size}`}
       disableGutters
       onClick={handleMenuItemClick}
+      style={{ ...props.style, width }}
     >
       <Box
-        width="100%"
+        width={width || "100%"}
         display="flex"
         alignItems="center"
         justifyContent="space-between"
@@ -146,4 +149,3 @@ const DescriptiveMenuItem: React.FC<DescriptiveMenuItemProps> = ({
 };
 
 export default React.memo(DescriptiveMenuItem);
-

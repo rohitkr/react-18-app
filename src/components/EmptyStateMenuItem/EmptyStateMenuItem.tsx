@@ -3,7 +3,7 @@ import Box from "../Box/Box";
 import MenuItem from "@material-ui/core/MenuItem";
 import { withStyles } from "@material-ui/core/styles";
 import './EmptyStateMenuItem.scss'
-import { EmptyStateMenuItemProps } from "./MenuItem.types";
+import { EmptyStateMenuItemProps } from "./EmptyStateMenuItem.types";
 
 const MenuItemStyles = () => ({
   root: {
@@ -31,9 +31,9 @@ const EmptyStateMenuItem: React.FC<EmptyStateMenuItemProps> = (props) => {
         width="100%"
       >
         {leadingIcon}
-          <Box component="span" padding="0px 8px">
-            {title}
-          </Box>
+        <Box component="span" padding="0px 8px">
+          {title}
+        </Box>
         {trailingIcon}
       </Box>
     </StyledMenuItem>
