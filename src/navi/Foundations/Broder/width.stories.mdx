@@ -1,0 +1,43 @@
+import { Meta, Story, Canvas } from '@storybook/addon-docs';
+import { DesignTokenDocBlock } from 'storybook-design-token/dist/doc-blocks';
+import shadowToken from '../../TokensOld/base-tokens/shadow-token.json'
+import BorderWidth from "../../utility/Storybook-Components/BorderWidth/BorderWidth"
+
+<Meta title="Foundations/Border radius and width/Border Width" />
+
+#### FOUNDATIONS
+# Border Radius
+###### Border radius is the sharpness of the curves on the corners of labels, buttons, and component background structures. Our curves help us strike the right balance between being approachable while still professional. Border width allows us to give varying weights and prominence to borders.
+
+
+
+<br/>
+<br/>
+
+## Elevation
+
+<BorderWidth 
+  name="Border Width None"
+  borderWidth={shadowToken.attributes['$border-width-none']}
+  tokenName={'$border-width-none'}>
+</BorderWidth>
+
+<BorderWidth 
+  name="Border Width Small"
+  borderWidth={shadowToken.attributes['$border-width-small']}
+  tokenName={'$border-width-small'}>
+</BorderWidth>
+
+<BorderWidth 
+  name="Border Width Medium"
+  borderWidth={shadowToken.attributes['$border-width-medium']}
+  tokenName={'$border-width-medium'}>
+</BorderWidth>
+
+<BorderWidth 
+  name="Border Width Large"
+  borderWidth={shadowToken.attributes['$border-width-large']}
+  tokenName={'$border-width-large'}>
+</BorderWidth>
+
+

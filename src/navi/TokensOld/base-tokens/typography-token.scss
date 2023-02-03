@@ -1,0 +1,220 @@
+/**
+* @tokens BaseColor
+* @presenter Color
+*/
+$base-color: #ff0000;
+
+
+/**
+* @tokens Heading Font
+* @presenter FontFamily
+*/
+$text-heading-01: (
+  font-family: Inter,
+  font-weight: 700,
+  font-size: 34px,
+  line-height: 40px,
+) !default;
+
+$text-heading-02: (
+  font-family: Inter,
+  font-weight: 700,
+  font-size: 30px,
+  line-height: 34px,
+) !default;
+
+$text-heading-03: (
+  font-family: Inter,
+  font-weight: 700,
+  font-size: 26px,
+  line-height: 32px,
+) !default;
+
+$text-heading-04: (
+  font-family: Inter,
+  font-weight: 700,
+  font-size: 24px,
+  line-height: 30px,
+) !default;
+
+$text-heading-05: (
+  font-family: Inter,
+  font-weight: 700,
+  font-size: 22px,
+  line-height: 28px,
+) !default;
+
+/**
+* @tokens SubHeading Font
+* @presenter FontFamily
+*/
+$text-subheading-01: (
+  font-family: Inter,
+  font-weight: 600,
+  font-size: 24px,
+  line-height: 32px,
+) !default;
+
+$text-subheading-02: (
+  font-family: Inter,
+  font-weight: 600,
+  font-size: 22px,
+  line-height: 28px,
+) !default;
+
+$text-subheading-03: (
+  font-family: Inter,
+  font-weight: 600,
+  font-size: 20px,
+  line-height: 26px,
+) !default;
+
+$text-subheading-04: (
+  font-family: Inter,
+  font-weight: 600,
+  font-size: 18px,
+  line-height: 24px,
+) !default;
+
+$text-subheading-05: (
+  font-family: Inter,
+  font-weight: 600,
+  font-size: 16px,
+  line-height: 22px,
+) !default;
+
+$text-subheading-06: (
+  font-family: Inter,
+  font-weight: 600,
+  font-size: 14px,
+  line-height: 20px,
+) !default;
+
+/**
+* @tokens Body Text
+* @presenter FontFamily
+*/
+$text-bodytext-01: (
+  font-family: Inter,
+  font-weight: 400,
+  font-size: 18px,
+  line-height: 26px,
+) !default;
+$text-bodytext-02: (
+  font-family: Inter,
+  font-weight: 400,
+  font-size: 16px,
+  line-height: 24px,
+) !default;
+$text-bodytext-03: (
+  font-family: Inter,
+  font-weight: 400,
+  font-size: 14px,
+  line-height: 22px,
+) !default;
+$text-bodytext-04: (
+  font-family: Inter,
+  font-weight: 400,
+  font-size: 12px,
+  line-height: 20px,
+) !default;
+
+/**
+* @tokens Paragraph Font
+* @presenter FontFamily
+*/
+$text-paragraph-large: (
+  font-family: Inter,
+  font-weight: 400,
+  font-size: 16px,
+  line-height: 26px,
+) !default;
+$text-paragraph-large-strong: (
+  font-family: Inter,
+  font-weight: 700,
+  font-size: 16px,
+  line-height: 26px,
+) !default;
+$text-paragraph-medium: (
+  font-family: Inter,
+  font-weight: 400,
+  font-size: 14px,
+  line-height: 24px,
+) !default;
+$text-paragraph-medium-strong: (
+  font-family: Inter,
+  font-weight: 700,
+  font-size: 14px,
+  line-height: 24px,
+) !default;
+$text-paragraph-small: (
+  font-family: Inter,
+  font-weight: 400,
+  font-size: 12px,
+  line-height: 22px,
+) !default;
+$text-paragraph-small-strong: (
+  font-family: Inter,
+  font-weight: 700,
+  font-size: 12px,
+  line-height: 22px,
+) !default;
+
+/**
+* @tokens Labels
+* @presenter FontFamily
+*/
+$text-label-large: (
+  font-family: Inter,
+  font-weight: 500,
+  font-size: 16px,
+  line-height: 26px,
+) !default;
+$text-label-large-moderate: (
+  font-family: Inter,
+  font-weight: 600,
+  font-size: 16px,
+  line-height: 26px,
+) !default;
+$text-label-medium: (
+  font-family: Inter,
+  font-weight: 500,
+  font-size: 14px,
+  line-height: 24px,
+) !default;
+$text-label-medium-moderate: (
+  font-family: Inter,
+  font-weight: 600,
+  font-size: 14px,
+  line-height: 24px,
+) !default;
+$text-label-small: (
+  font-family: Inter,
+  font-weight: 500,
+  font-size: 12px,
+  line-height: 22px,
+) !default;
+$text-label-small-moderate: (
+  font-family: Inter,
+  font-weight: 600,
+  font-size: 12px,
+  line-height: 22px,
+) !default;
+
+/**
+* @tokens Button Text
+* @presenter FontFamily
+*/
+$text-button-large: (
+  font-family: Inter,
+  font-weight: 500,
+  font-size: 0.875rem,
+  line-height: 1.25rem,
+) !default;
+$text-button-small: (
+  font-family: Inter,
+  font-weight: 500,
+  font-size: 0.75rem,
+  line-height: 1rem,
+) !default;
+

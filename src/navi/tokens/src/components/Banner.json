@@ -1,0 +1,123 @@
+{
+  "banner-alert": {
+    "snackbar": {
+      "root": {
+        "textAlign": {
+          "value": "left"
+        },
+        "width": {
+          "value": "100%"
+        },
+        "desktopMaxWidth": {
+          "value": "45.3125rem"
+        },
+        "desktopMinWidth": {
+          "value": "35.9375rem"
+        },
+        "mobileMaxWidth": {
+          "value": "18.4375rem"
+        },        
+        "mobileMinWidth": {
+          "value": "18.4375rem"
+        },
+
+        "critical": {
+          "value": "{color.critical.300}"
+        },
+        "warning": {
+          "value": "{color.warning.300}"
+        },
+        "success": {
+          "value": "{color.success.500}"
+        },
+        "info": {
+          "value": "{color.info.400}"
+        },
+
+        "padding": {
+          "value": "0.75rem 0.5rem 0.75rem 0.75rem"
+        },
+        "borderWidth": {
+          "value": "0.0625rem"
+        },
+        "borderLeftWidth": {
+          "value": "0.25rem"
+        },
+        "backgroundColor": {
+          "value": "{color.primitive.white}"
+        },
+        "color": {
+          "value": "{color.secondary.1000}"
+        },
+        "fontSize": {
+          "value": "{text.body-03.font-size.value}"
+        },
+        "fontWeight": {
+          "value": "{text.body-03.font-weight.value}"
+        },
+        "lineHeight": {
+          "value": "{text.body-03.line-height.value}"
+        },
+        "fontFamily": {
+          "value": "{text.body-03.font-family.value}"
+        },
+        "alignItems": {
+          "value": "center"
+        }
+      },
+
+      "message": {
+        "textOverflow": { "value": "ellipsis" },
+        "overflow": { "value": "hidden" },
+        "display": { "value": "-webkit-box !important" },
+        "-webkit-line-clamp": { "value": "2" },
+        "-webkit-box-orient": { "value": "vertical" },
+        "white-space": { "value": "normal" },
+        "maxHeight": { "value": "2.5rem" }
+      },
+      "mobileButton": {
+        "marginLeft": { "value": "-0.625rem" },
+        "marginTop": { "value": "0.5rem" },
+        "smDisplay": { "value": "block" },
+        "mdDisplay": { "value": "none" },
+        "lgDisplay": { "value": "none" }
+      },
+      "desktopButton": {
+        "marginRight": { "value": "0.5rem" },
+        "smDisplay": { "value": "none" }
+      },
+      "closeIcon": {
+        "marginRight": { "value": "0.5rem" }
+      }
+    },
+
+    "alert": {
+      "root": {
+        "padding": { "value": "0.75rem 0.5rem 0.75rem 0.75rem" },
+        "borderWidth": { "value": "0.0625rem" },
+        "borderLeftWidth": { "value": "0.25rem" },
+        "backgroundColor": { "value": "{color.primitive.white}" },
+        "color": { "value": "{color.secondary.1000}" },
+        "fontSize": { "value": "{text.body-03.font-size.value}" },
+        "fontWeight": { "value": "{text.body-03.font-weight.value}" },
+        "lineHeight": { "value": "{text.body-03.line-height.value}" },
+        "fontFamily": { "value": "{text.body-03.font-family.value}" },
+        "alignItems": { "value": "center" }
+      },
+      "icon": {
+        "marginRight": { "value": "0.5rem" },
+        "paddingTop": { "value": "0" },
+        "paddingBottom": { "value": "0" }
+      },
+      "message": {
+        "paddingTop": { "value": "0" },
+        "paddingBottom": { "value": "0" },
+        "gutter-margin": { "value": "0 0 0.25rem 0" }
+      },
+      "action": {
+        "padding": { "value": "0 0 0 0.75rem" },
+        "flex": { "value": "none" }
+      }
+    }
+  }
+}

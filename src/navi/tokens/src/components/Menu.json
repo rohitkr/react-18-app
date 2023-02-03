@@ -1,0 +1,14 @@
+{
+    "menu": {
+        "selected": {
+            "backgroundColor": {
+                "value": "{color.info.50}"
+            },
+            "icon": {
+                "color": {
+                    "value": "{color.info.400}"
+                }
+            }
+        }
+    }
+}

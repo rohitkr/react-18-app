@@ -22,5 +22,17 @@
   },
   "include": [
     "src"
+  ],
+  "exclude": [
+    "node_modules",
+    "build",
+    "storybook-static",
+    "src/**/*.stories.tsx",
+    "src/**/*.test.tsx",
+    "src/esm",
+    "src/helpers",
+    "src/tokens",
+    "src/TokensOld",
+    "src/utility",
   ]
 }

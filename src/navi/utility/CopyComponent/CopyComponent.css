@@ -1,0 +1,9 @@
+.copy-to-clipboard:hover span {
+  /* display: none; */
+  visibility: hidden;
+}
+.copy-to-clipboard:hover:before {
+  color:tomato;
+  content: "Copy value";
+}
+

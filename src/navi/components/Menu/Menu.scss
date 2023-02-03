@@ -1,0 +1,31 @@
+@import "../../tokens/build/scss/variables.scss";
+.navi-menu-list-item {
+  &:hover {
+    background-color: transparent;
+  }
+  .no-hover {
+    background-color: transparent;
+  }
+  .MuiListItem-button:hover {
+    background-color: transparent;
+  }
+}
+
+.navi-menu-container {
+  .navi-menu-list-item {
+    padding: 0px;
+  }
+
+  .navi-item-selected {
+    background-color: $menu-selected-background-color;
+    &:hover {
+      background-color: $menu-selected-background-color;
+    }
+
+    .navi-icon-selected {
+      svg {
+        color: $menu-selected-icon-color;
+      }
+    }
+  }
+}

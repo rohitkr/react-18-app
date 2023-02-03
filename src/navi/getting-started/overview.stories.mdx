@@ -1,0 +1,19 @@
+<Meta title="Getting Started/Overview" />
+
+# Navi Design System
+
+## Overview
+**Design system** is a complete set of standards intended to manage design at scale using reusable components and patterns.
+**Storybook** is an open source tool for building UI components and pages in isolation. It streamlines UI development, testing, and documentation.
+**Chromatic** automates gathering UI feedback, visual testing, and documentation, so developers can iterate faster with less manual work.
+Chromatic is enabled in the component library repo and can be accessed using the below URL:
+https://www.chromatic.com/builds?appId=6226f2346f3442003a5bf561
+Use the Whatfix bitbucket account to login to chromatic. 
+### Goals
+1. Design team and developer can work together and deliver the UI component faster
+2. Setup the contribution process to the UI component library
+3. Setup the review process
+4. Enable developers to use components from the UI components library
+
+### Workflow
+All the reusable UI components should be developed in the new ui-component repository and a proper storybook must be written by the developer for the UI component. A unit test should also be written for that component. Once the development is complete and a pull request is created. Chromatic will automatically trigger the build and publish the storybook and a notification will be sent to a slack channel automatically. The stakeholder/design team will get notification through slack channel and will review the component.

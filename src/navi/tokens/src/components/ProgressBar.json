@@ -1,0 +1,100 @@
+{
+  "progressbar": {
+    "root": {
+      "label": {
+        "color": { "value": "{color.secondary.800}" },
+        "fontFamily": {
+          "value": "{text.label-medium.font-family.value}"
+        },
+        "fontSize": {
+          "value": "{text.label-medium.font-size}"
+        },
+        "fontWeight": {
+          "value": "{text.label-medium.font-weight}"
+        },
+        "lineHeight": {
+          "value": "{text.label-medium.line-height}"
+        },
+        "minWidth": {
+          "value": "{spacing.40}"
+        }
+      },
+
+      "containerMain": {
+        "background": { "value": "{color.secondary.200}" },
+        "border-radius": { "value": "{border.radius.radius-small}" },
+        "margin": { "value": "{spacing.8} {spacing.8} {spacing.8} 0" },
+        "overflow": { "value": "hidden" },
+        "width": { "value": "100%" }
+      },
+
+      "fill": {
+        "background": { "value": "{color.info.400}" },
+        "border-radius": { "value": "{border.radius.radius-small}" },
+        "height": { "value": "100%" },
+        "transform-origin": { "value": "left" },
+        "transition": {
+          "value": "width 0.5s ease 0s, transform 0.5s ease 0s"
+        },
+        "width": { "value": "40%" }
+      },
+
+      "info": {
+        "background": { "value": "{color.info.400}" }
+      },
+      "critical": {
+        "background": { "value": "{color.critical.400}" }
+      },
+      "success": {
+        "background": { "value": "{color.success.400}" }
+      },
+      "warning": {
+        "background": { "value": "{color.warning.400}" }
+      },
+      "info-gradient": {
+        "background": {
+          "value": "linear-gradient(270deg, rgba(0,0,0,0) 0%, {color.info.400} 43.81%, {color.info.400} 54.76%, rgba(0,0,0,0) 91.43%)"
+        }
+      },
+      "critical-gradient": {
+        "background": {
+          "value": "linear-gradient(270deg, rgba(0,0,0,0) 0%, {color.critical.400} 43.81%, {color.critical.400} 54.76%, rgba(0,0,0,0) 91.43%)"
+        }
+      },
+      "success-gradient": {
+        "background": {
+          "value": "linear-gradient(270deg, rgba(0,0,0,0) 0%, {color.success.400} 43.81%, {color.success.400} 54.76%, rgba(0,0,0,0) 91.43%)"
+        }
+      },
+      "warning-gradient": {
+        "background": {
+          "value": "linear-gradient(270deg, rgba(0,0,0,0) 0%, {color.warning.400} 43.81%, {color.warning.400} 54.76%, rgba(0,0,0,0) 91.43%)"
+        }
+      },
+
+      "size-small": {
+        "height": { "value": "{spacing.4}" }
+      },
+
+      "size-large": {
+        "height": { "value": "{spacing.8}" }
+      },
+
+      "loading-progress-bar-animation": {
+        "width": { "value": "100%" },
+        "height": { "value": "100%" },
+        "animation": { "value": "loadingAnimation 2s infinite linear" },
+        "transform-origin": { "value": "-100%" }
+      },
+
+      "step-progress-bar-animation": {
+        "animation": {
+          "value": "2s linear 0s infinite normal forwards loadingStepAnimation"
+        },
+        "transform-box": { "value": "fill-box" },
+        "transform-origin": { "value": "50% 50%" },
+        "animation-delay": { "value": "1s" }
+      }
+    }
+  }
+}

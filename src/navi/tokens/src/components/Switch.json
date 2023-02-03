@@ -1,0 +1,110 @@
+{
+  "switch": {
+    "type": {
+      "root": {
+        "width": {
+          "large": {
+            "value": "2.25rem"
+          },
+          "small": {
+            "value": "1.75rem"
+          }
+        },
+        "height": {
+          "large": {
+            "value": "1.25rem"
+          },
+          "small": {
+            "value": "1rem"
+          }
+        },
+        "margin": {
+          "large": {
+            "value": "0 0.75rem"
+          },
+          "small": {
+            "value": "0 0.5rem"
+          }
+        },
+        "padding": {
+          "value": "0"
+        },
+        "border": {
+          "radius": {
+            "value": "0.625rem"
+          }
+        },
+        "background": {
+          "color": {
+            "value": "{color.secondary.400}"
+          }
+        }
+      },
+      "base": {
+        "margin": {
+          "value": "1px 2px 0 2px"
+        },
+        "padding": {
+          "value": "0.625rem"
+        },
+        "disabled": {
+          "border": {
+            "value": "none"
+          },
+          "color": {
+            "value": "{color.secondary.0}"
+          },
+          "widthLarge": {
+            "value": "1rem"
+          },
+          "widthSmall": {
+            "value": "0.75rem"
+          },
+          "heightLarge": {
+            "value": "1rem"
+          },
+          "heightSmall": {
+            "value": "0.75rem"
+          },
+          "boxShadow": {
+            "value": "none"
+          },
+          "track": {
+            "background": {
+              "color": {
+                "value": "{color.secondary.200}"
+              }
+            }
+          }
+        },
+        "checked": {}
+      },
+      "thumb": {
+        "width": {
+          "large": {
+            "value": "1rem"
+          },
+          "small": {
+            "value": "0.75rem"
+          }
+        },
+        "height": {
+          "large": {
+            "value": "1rem"
+          },
+          "small": {
+            "value": "0.75rem"
+          }
+        },
+        "boxShadow": "none"
+      },
+      "boxShadow": {
+        "value": "none"
+      },
+      "shadow": {
+        "checked": {"value": "0px 0px 0px 4px rgba(9, 117, 215, 0.4)"},
+        "unchecked": {"value": "0px 0px 0px 4px rgba(61, 60, 82, 0.4)"}
+      }
+    }
+  }
+}

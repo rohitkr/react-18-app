@@ -1,0 +1,81 @@
+import { Meta, Story, Canvas, Typeset } from '@storybook/addon-docs';
+import typographyToken from '../../TokensOld/base-tokens/typography-token.json'
+import TypographyComponent from "../../utility/Storybook-Components/TypographyComponent/TypographyComponent"
+
+
+<Meta title="Foundations/Typography/Paragraph" />
+
+export const SampleText = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.';
+
+# Typography
+###### Typography represents the font and set type styling we use to create clear, consistent, and accessible hierarchy throughout the Whatfix product.
+### Paragraph
+### Usage
+---
+<br/>
+
+<TypographyComponent 
+  name="Paragraph | Large"
+  styleObj={typographyToken.attributes['$text-paragraph-large']}
+  fontFamily={typographyToken.attributes['$text-paragraph-large']['font-family']}
+  fontWeight={typographyToken.attributes['$text-paragraph-large']['font-weight']}
+  lineHeight={typographyToken.attributes['$text-paragraph-large']['line-height']}
+  fontSize={typographyToken.attributes['$text-paragraph-large']['font-size']}
+  tokenName={'$text-paragraph-large'}>
+Fix problem quickly with galvanized jets
+</TypographyComponent>
+
+<TypographyComponent 
+  name="Paragraph | Large | Strong"
+  styleObj={typographyToken.attributes['$text-paragraph-large-strong']}
+  fontFamily={typographyToken.attributes['$text-paragraph-large-strong']['font-family']}
+  fontWeight={typographyToken.attributes['$text-paragraph-large-strong']['font-weight']}
+  lineHeight={typographyToken.attributes['$text-paragraph-large-strong']['line-height']}
+  fontSize={typographyToken.attributes['$text-paragraph-large-strong']['font-size']}
+  tokenName={'$text-paragraph-large-strong'}>
+The wizard quickly jinxed the gnomes before they vaporized
+</TypographyComponent>
+
+<TypographyComponent 
+  name="Paragraph | Medium"
+  styleObj={typographyToken.attributes['$text-paragraph-medium']}
+  fontFamily={typographyToken.attributes['$text-paragraph-medium']['font-family']}
+  fontWeight={typographyToken.attributes['$text-paragraph-medium']['font-weight']}
+  lineHeight={typographyToken.attributes['$text-paragraph-medium']['line-height']}
+  fontSize={typographyToken.attributes['$text-paragraph-medium']['font-size']}
+  tokenName={'$text-paragraph-medium'}>
+Grumpy wizards make a toxic brew for the jovial queen
+</TypographyComponent>
+
+<TypographyComponent 
+  name="Paragraph | Medium | Strong"
+  styleObj={typographyToken.attributes['$text-paragraph-medium-strong']}
+  fontFamily={typographyToken.attributes['$text-paragraph-medium-strong']['font-family']}
+  fontWeight={typographyToken.attributes['$text-paragraph-medium-strong']['font-weight']}
+  lineHeight={typographyToken.attributes['$text-paragraph-medium-strong']['line-height']}
+  fontSize={typographyToken.attributes['$text-paragraph-medium-strong']['font-size']}
+  tokenName={'$text-paragraph-medium-strong'}>
+The wizard quickly jinxed the gnomes before they vaporized
+</TypographyComponent>
+
+<TypographyComponent 
+  name="Paragraph | Small"
+  styleObj={typographyToken.attributes['$text-paragraph-small']}
+  fontFamily={typographyToken.attributes['$text-paragraph-small']['font-family']}
+  fontWeight={typographyToken.attributes['$text-paragraph-small']['font-weight']}
+  lineHeight={typographyToken.attributes['$text-paragraph-small']['line-height']}
+  fontSize={typographyToken.attributes['$text-paragraph-small']['font-size']}
+  tokenName={'$text-paragraph-small'}>
+Grumpy wizards make a toxic brew for the jovial queen
+</TypographyComponent>
+
+<TypographyComponent 
+  name="Paragraph | Small | Strong"
+  styleObj={typographyToken.attributes['$text-paragraph-small-strong']}
+  fontFamily={typographyToken.attributes['$text-paragraph-small-strong']['font-family']}
+  fontWeight={typographyToken.attributes['$text-paragraph-small-strong']['font-weight']}
+  lineHeight={typographyToken.attributes['$text-paragraph-small-strong']['line-height']}
+  fontSize={typographyToken.attributes['$text-paragraph-small-strong']['font-size']}
+  tokenName={'$text-paragraph-small-strong'}>
+The quick brown fox jumps over the lazy dog
+</TypographyComponent>

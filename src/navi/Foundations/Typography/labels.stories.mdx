@@ -1,0 +1,81 @@
+import { Meta, Story, Canvas, Typeset } from '@storybook/addon-docs';
+import typographyToken from '../../TokensOld/base-tokens/typography-token.json'
+import TypographyComponent from "../../utility/Storybook-Components/TypographyComponent/TypographyComponent"
+
+
+<Meta title="Foundations/Typography/Labels" />
+
+export const SampleText = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.';
+
+# Typography
+###### Typography represents the font and set type styling we use to create clear, consistent, and accessible hierarchy throughout the Whatfix product.
+### Labels
+### Usage
+---
+<br/>
+
+<TypographyComponent 
+  name="Labels Large"
+  styleObj={typographyToken.attributes['$text-label-large']}
+  fontFamily={typographyToken.attributes['$text-label-large']['font-family']}
+  fontWeight={typographyToken.attributes['$text-label-large']['font-weight']}
+  lineHeight={typographyToken.attributes['$text-label-large']['line-height']}
+  fontSize={typographyToken.attributes['$text-label-large']['font-size']}
+  tokenName={'$text-label-large'}>
+Heavy boxes perform quick waltzes and jigs
+</TypographyComponent> 
+
+<TypographyComponent 
+  name="Labels Large Moderate"
+  styleObj={typographyToken.attributes['$text-label-large-moderate']}
+  fontFamily={typographyToken.attributes['$text-label-large-moderate']['font-family']}
+  fontWeight={typographyToken.attributes['$text-label-large-moderate']['font-weight']}
+  lineHeight={typographyToken.attributes['$text-label-large-moderate']['line-height']}
+  fontSize={typographyToken.attributes['$text-label-large-moderate']['font-size']}
+  tokenName={'$text-label-large-moderate'}>
+The wizard quickly jinxed the gnomes before they vaporized
+</TypographyComponent> 
+
+<TypographyComponent 
+  name="Labels Medium"
+  styleObj={typographyToken.attributes['$text-label-medium']}
+  fontFamily={typographyToken.attributes['$text-label-medium']['font-family']}
+  fontWeight={typographyToken.attributes['$text-label-medium']['font-weight']}
+  lineHeight={typographyToken.attributes['$text-label-medium']['line-height']}
+  fontSize={typographyToken.attributes['$text-label-medium']['font-size']}
+  tokenName={'$text-label-medium'}>
+The five boxing wizards jump quickly
+</TypographyComponent> 
+
+<TypographyComponent 
+  name="Labels Medium Bold"
+  styleObj={typographyToken.attributes['$text-label-medium-moderate']}
+  fontFamily={typographyToken.attributes['$text-label-medium-moderate']['font-family']}
+  fontWeight={typographyToken.attributes['$text-label-medium-moderate']['font-weight']}
+  lineHeight={typographyToken.attributes['$text-label-medium-moderate']['line-height']}
+  fontSize={typographyToken.attributes['$text-label-medium-moderate']['font-size']}
+  tokenName={'$text-label-medium-moderate'}>
+The wizard quickly jinxed the gnomes before they vaporized
+</TypographyComponent> 
+
+<TypographyComponent 
+  name="Labels Small"
+  styleObj={typographyToken.attributes['$text-label-small']}
+  fontFamily={typographyToken.attributes['$text-label-small']['font-family']}
+  fontWeight={typographyToken.attributes['$text-label-small']['font-weight']}
+  lineHeight={typographyToken.attributes['$text-label-small']['line-height']}
+  fontSize={typographyToken.attributes['$text-label-small']['font-size']}
+  tokenName={'$text-label-small'}>
+The five boxing wizards jump quickly
+</TypographyComponent> 
+
+<TypographyComponent 
+  name="Labels Small Bold"
+  styleObj={typographyToken.attributes['$text-label-small-moderate']}
+  fontFamily={typographyToken.attributes['$text-label-small-moderate']['font-family']}
+  fontWeight={typographyToken.attributes['$text-label-small-moderate']['font-weight']}
+  lineHeight={typographyToken.attributes['$text-label-small-moderate']['line-height']}
+  fontSize={typographyToken.attributes['$text-label-small-moderate']['font-size']}
+  tokenName={'$text-label-small-moderate'}>
+The five boxing wizards jump quickly
+</TypographyComponent> 

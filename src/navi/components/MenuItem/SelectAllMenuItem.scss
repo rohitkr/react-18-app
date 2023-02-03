@@ -1,0 +1,35 @@
+.descriptive-small {
+  height: 52px;
+}
+.descriptive-large {
+  height: 62px;
+}
+
+.navi-item-selected {
+  background-color: #f0f9ff;
+  &:hover {
+    background-color: #f0f9ff;
+  }
+
+  .navi-icon-selected {
+    svg {
+      color: #0975d7;
+    }
+  }
+}
+
+.navi-menu-item-action-icon-large {
+  svg {
+    height: 20px;
+    width: 20px;
+    color: #6b697b;
+  }
+}
+
+.navi-menu-item-action-icon-small {
+  svg {
+    height: 16px;
+    width: 16px;
+    color: #6b697b;
+  }
+}

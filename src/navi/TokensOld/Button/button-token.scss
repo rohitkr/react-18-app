@@ -1,0 +1,358 @@
+@import "../base-tokens/color-token.scss";
+@import "../base-tokens/shadow-token.scss";
+@import "../base-tokens/typography-token.scss";
+
+// primary
+// border
+
+// prime-primary
+$button-color-prime-primary-shadow: $color-primary-400;
+
+$button-color-prime-primary-background: $color-primary-400;
+$button-color-prime-primary-background-hover: $color-primary-500;
+$button-color-prime-primary-background-pressed: $color-primary-600;
+
+$button-color-prime-primary-border: none;
+$button-color-prime-primary-border-hover: none;
+$button-color-prime-primary-border-pressed: none;
+
+$button-color-prime-primary-label: $primitive-white;
+$button-color-prime-primary-label-hover: $primitive-white;
+$button-color-prime-primary-label-pressed: $primitive-white;
+
+$button-color-prime-primary-disabled-label: $primitive-white;
+$button-color-prime-primary-disabled-border: none;
+$button-color-prime-primary-disabled-background: $color-secondary-500;
+
+// prime-secondary
+$button-color-prime-secondary-shadow: $color-primary-400;
+
+$button-color-prime-secondary-background: none;
+$button-color-prime-secondary-background-hover: $color-primary-50;
+$button-color-prime-secondary-background-pressed: $color-primary-100;
+
+$button-color-prime-secondary-border: $color-primary-400;
+$button-color-prime-secondary-border-hover: $color-primary-500;
+$button-color-prime-secondary-border-pressed: $color-primary-600;
+
+$button-color-prime-secondary-label: $color-primary-400;
+$button-color-prime-secondary-label-hover: $color-primary-500;
+$button-color-prime-secondary-label-pressed: $color-primary-600;
+
+$button-color-prime-secondary-disabled-label: $color-secondary-500;
+$button-color-prime-secondary-disabled-border: $color-secondary-200;
+$button-color-prime-secondary-disabled-background: none;
+
+// prime-tertiary
+$button-color-prime-tertiary-shadow: $color-primary-400;
+
+$button-color-prime-tertiary-background: none;
+$button-color-prime-tertiary-background-hover: $color-primary-50;
+$button-color-prime-tertiary-background-pressed: $color-primary-100;
+
+$button-color-prime-tertiary-border: none;
+$button-color-prime-tertiary-border-hover: none;
+$button-color-prime-tertiary-border-pressed: none;
+
+$button-color-prime-tertiary-label: $color-primary-400;
+$button-color-prime-tertiary-label-hover: $color-primary-500;
+$button-color-prime-tertiary-label-pressed: $color-primary-600;
+
+$button-color-prime-tertiary-disabled-label: $color-secondary-500;
+$button-color-prime-tertiary-disabled-border: none;
+$button-color-prime-tertiary-disabled-background: none;
+
+
+// Muted
+// muted-primary
+$button-color-muted-primary-shadow: $color-secondary-800;
+
+$button-color-muted-primary-background: $color-secondary-800;
+$button-color-muted-primary-background-hover: $color-secondary-900;
+$button-color-muted-primary-background-pressed: $color-secondary-1000;
+
+$button-color-muted-primary-border: none;
+$button-color-muted-primary-border-hover: none;
+$button-color-muted-primary-border-pressed: none;
+
+$button-color-muted-primary-label: $primitive-white;
+$button-color-muted-primary-label-hover: $primitive-white;
+$button-color-muted-primary-label-pressed: $primitive-white;
+
+$button-color-muted-primary-disabled-label: $primitive-white;
+$button-color-muted-primary-disabled-border: none;
+$button-color-muted-primary-disabled-background: $color-secondary-500;
+
+// muted-secondary
+$button-color-muted-secondary-shadow: $color-secondary-800;
+
+$button-color-muted-secondary-background: none;
+$button-color-muted-secondary-background-hover: $color-secondary-50;
+$button-color-muted-secondary-background-pressed: $color-secondary-100;
+
+$button-color-muted-secondary-border: $color-secondary-300;
+$button-color-muted-secondary-border-hover: $color-secondary-400;
+$button-color-muted-secondary-border-pressed: $color-secondary-500;
+
+$button-color-muted-secondary-label: $color-secondary-800;
+$button-color-muted-secondary-label-hover: $color-secondary-900;
+$button-color-muted-secondary-label-pressed: $color-secondary-1000;
+
+$button-color-muted-secondary-disabled-label: $color-secondary-500;
+$button-color-muted-secondary-disabled-border: $color-secondary-200;
+$button-color-muted-secondary-disabled-background: none;
+
+// muted-tertiary
+$button-color-muted-tertiary-shadow: $color-secondary-800;
+
+$button-color-muted-tertiary-background: none;
+$button-color-muted-tertiary-background-hover: $color-secondary-50;
+$button-color-muted-tertiary-background-pressed: $color-secondary-100;
+
+$button-color-muted-tertiary-border: none;
+$button-color-muted-tertiary-border-hover: none;
+$button-color-muted-tertiary-border-pressed: none;
+
+$button-color-muted-tertiary-label: $color-secondary-800;
+$button-color-muted-tertiary-label-hover: $color-secondary-900;
+$button-color-muted-tertiary-label-pressed: $color-secondary-1000;
+
+$button-color-muted-tertiary-disabled-label: $color-secondary-500;
+$button-color-muted-tertiary-disabled-border: none;
+$button-color-muted-tertiary-disabled-background: none;
+
+// Success
+// success-primary
+$button-color-success-primary-shadow: $color-success-500;
+
+$button-color-success-primary-background: $color-success-500;
+$button-color-success-primary-background-hover: $color-success-600;
+$button-color-success-primary-background-pressed: $color-success-700;
+
+$button-color-success-primary-border: none;
+$button-color-success-primary-border-hover: none;
+$button-color-success-primary-border-pressed: none;
+
+$button-color-success-primary-label: $primitive-white;
+$button-color-success-primary-label-hover: $primitive-white;
+$button-color-success-primary-label-pressed: $primitive-white;
+
+$button-color-success-primary-disabled-label: $primitive-white;
+$button-color-success-primary-disabled-border: none;
+$button-color-success-primary-disabled-background: $color-secondary-500;
+
+// success-secondary
+$button-color-success-secondary-shadow: $color-success-500;
+
+$button-color-success-secondary-background: none;
+$button-color-success-secondary-background-hover: $color-success-50;
+$button-color-success-secondary-background-pressed: $color-success-100;
+
+$button-color-success-secondary-border: $color-success-500;
+$button-color-success-secondary-border-hover: $color-success-600;
+$button-color-success-secondary-border-pressed: $color-success-700;
+
+$button-color-success-secondary-label: $color-success-500;
+$button-color-success-secondary-label-hover: $color-success-600;
+$button-color-success-secondary-label-pressed: $color-success-700;
+
+$button-color-success-secondary-disabled-label: $color-secondary-500;
+$button-color-success-secondary-disabled-border: $color-secondary-200;
+$button-color-success-secondary-disabled-background: none;
+
+// success-tertiary
+$button-color-success-tertiary-shadow: $color-success-500;
+
+$button-color-success-tertiary-background: none;
+$button-color-success-tertiary-background-hover: $color-success-50;
+$button-color-success-tertiary-background-pressed: $color-success-100;
+
+$button-color-success-tertiary-border: none;
+$button-color-success-tertiary-border-hover: none;
+$button-color-success-tertiary-border-pressed: none;
+
+$button-color-success-tertiary-label: $color-success-500;
+$button-color-success-tertiary-label-hover: $color-success-600;
+$button-color-success-tertiary-label-pressed: $color-success-700;
+
+$button-color-success-tertiary-disabled-label: $color-secondary-500;
+$button-color-success-tertiary-disabled-border: none;
+$button-color-success-tertiary-disabled-background: none;
+
+
+// Warning
+// warning-primary
+$button-color-warning-primary-shadow: $color-warning-300;
+
+$button-color-warning-primary-background: $color-warning-300;
+$button-color-warning-primary-background-hover: $color-warning-400;
+$button-color-warning-primary-background-pressed: $color-warning-500;
+
+$button-color-warning-primary-border: none;
+$button-color-warning-primary-border-hover: none;
+$button-color-warning-primary-border-pressed: none;
+
+$button-color-warning-primary-label: $color-secondary-1000;
+$button-color-warning-primary-label-hover: $color-secondary-1000;
+$button-color-warning-primary-label-pressed: $color-secondary-1000;
+
+$button-color-warning-primary-disabled-label: $primitive-white;
+$button-color-warning-primary-disabled-border: none;
+$button-color-warning-primary-disabled-background: $color-secondary-500;
+
+// warning-secondary
+$button-color-warning-secondary-shadow: $color-warning-300;
+
+$button-color-warning-secondary-background: none;
+$button-color-warning-secondary-background-hover: $color-warning-50;
+$button-color-warning-secondary-background-pressed: $color-warning-100;
+
+$button-color-warning-secondary-border: $color-warning-600;
+$button-color-warning-secondary-border-hover: $color-warning-700;
+$button-color-warning-secondary-border-pressed: $color-warning-700;
+
+$button-color-warning-secondary-label: $color-warning-600;
+$button-color-warning-secondary-label-hover: $color-warning-700;
+$button-color-warning-secondary-label-pressed: $color-warning-700;
+
+$button-color-warning-secondary-disabled-label: $color-secondary-500;
+$button-color-warning-secondary-disabled-border: $color-secondary-200;
+$button-color-warning-secondary-disabled-background: none;
+
+// warning-tertiary
+$button-color-warning-tertiary-shadow: $color-warning-300;
+
+$button-color-warning-tertiary-background: none;
+$button-color-warning-tertiary-background-hover: $color-warning-50;
+$button-color-warning-tertiary-background-pressed: $color-warning-100;
+
+$button-color-warning-tertiary-border: none;
+$button-color-warning-tertiary-border-hover: none;
+$button-color-warning-tertiary-border-pressed: none;
+
+$button-color-warning-tertiary-label: $color-warning-600;
+$button-color-warning-tertiary-label-hover: $color-warning-700;
+$button-color-warning-tertiary-label-pressed: $color-warning-700;
+
+$button-color-warning-tertiary-disabled-label: $color-secondary-500;
+$button-color-warning-tertiary-disabled-border: none;
+$button-color-warning-tertiary-disabled-background: none;
+
+// Critical
+// critical-primary
+$button-color-critical-primary-shadow: $color-critical-400;
+
+$button-color-critical-primary-background: $color-critical-400;
+$button-color-critical-primary-background-hover: $color-critical-500;
+$button-color-critical-primary-background-pressed: $color-critical-600;
+
+$button-color-critical-primary-border: none;
+$button-color-critical-primary-border-hover: none;
+$button-color-critical-primary-border-pressed: none;
+
+$button-color-critical-primary-label: $primitive-white;
+$button-color-critical-primary-label-hover: $primitive-white;
+$button-color-critical-primary-label-pressed: $primitive-white;
+
+$button-color-critical-primary-disabled-label: $primitive-white;
+$button-color-critical-primary-disabled-border: none;
+$button-color-critical-primary-disabled-background: $color-secondary-500;
+
+// critical-secondary
+$button-color-critical-secondary-shadow: $color-critical-400;
+
+$button-color-critical-secondary-background: none;
+$button-color-critical-secondary-background-hover: $color-critical-50;
+$button-color-critical-secondary-background-pressed: $color-critical-100;
+
+$button-color-critical-secondary-border: $color-critical-400;
+$button-color-critical-secondary-border-hover: $color-critical-500;
+$button-color-critical-secondary-border-pressed: $color-critical-600;
+
+$button-color-critical-secondary-label: $color-critical-400;
+$button-color-critical-secondary-label-hover: $color-critical-500;
+$button-color-critical-secondary-label-pressed: $color-critical-600;
+
+$button-color-critical-secondary-disabled-label: $color-secondary-500;
+$button-color-critical-secondary-disabled-border: $color-secondary-200;
+$button-color-critical-secondary-disabled-background: none;
+
+// critical-tertiary
+$button-color-critical-tertiary-shadow: $color-critical-400;
+
+$button-color-critical-tertiary-background: none;
+$button-color-critical-tertiary-background-hover: $color-critical-50;
+$button-color-critical-tertiary-background-pressed: $color-critical-100;
+
+$button-color-critical-tertiary-border: none;
+$button-color-critical-tertiary-border-hover: none;
+$button-color-critical-tertiary-border-pressed: none;
+
+$button-color-critical-tertiary-label: $color-critical-400;
+$button-color-critical-tertiary-label-hover: $color-critical-500;
+$button-color-critical-tertiary-label-pressed: $color-critical-600;
+
+$button-color-critical-tertiary-disabled-label: $color-secondary-500;
+$button-color-critical-tertiary-disabled-border: none;
+$button-color-critical-tertiary-disabled-background: none;
+
+
+
+// Info
+// info-primary
+$button-color-info-primary-shadow: $color-info-400;
+
+$button-color-info-primary-background: $color-info-400;
+$button-color-info-primary-background-hover: $color-info-500;
+$button-color-info-primary-background-pressed: $color-info-600;
+
+$button-color-info-primary-border: none;
+$button-color-info-primary-border-hover: none;
+$button-color-info-primary-border-pressed: none;
+
+$button-color-info-primary-label: $primitive-white;
+$button-color-info-primary-label-hover: $primitive-white;
+$button-color-info-primary-label-pressed: $primitive-white;
+
+$button-color-info-primary-disabled-label: $primitive-white;
+$button-color-info-primary-disabled-border: none;
+$button-color-info-primary-disabled-background: $color-secondary-500;
+
+// info-secondary
+$button-color-info-secondary-shadow: $color-info-400;
+
+$button-color-info-secondary-background: none;
+$button-color-info-secondary-background-hover: $color-info-50;
+$button-color-info-secondary-background-pressed: $color-info-100;
+
+$button-color-info-secondary-border: $color-info-400;
+$button-color-info-secondary-border-hover: $color-info-500;
+$button-color-info-secondary-border-pressed: $color-info-600;
+
+$button-color-info-secondary-label: $color-info-400;
+$button-color-info-secondary-label-hover: $color-info-500;
+$button-color-info-secondary-label-pressed: $color-info-600;
+
+$button-color-info-secondary-disabled-label: $color-secondary-500;
+$button-color-info-secondary-disabled-border: $color-secondary-200;
+$button-color-info-secondary-disabled-background: none;
+
+// info-tertiary
+$button-color-info-tertiary-shadow: $color-info-400;
+
+$button-color-info-tertiary-background: none;
+$button-color-info-tertiary-background-hover: $color-info-50;
+$button-color-info-tertiary-background-pressed: $color-info-100;
+
+$button-color-info-tertiary-border: none;
+$button-color-info-tertiary-border-hover: none;
+$button-color-info-tertiary-border-pressed: none;
+
+$button-color-info-tertiary-label: $color-info-400;
+$button-color-info-tertiary-label-hover: $color-info-500;
+$button-color-info-tertiary-label-pressed: $color-info-600;
+
+$button-color-info-tertiary-disabled-label: $color-secondary-500;
+$button-color-info-tertiary-disabled-border: none;
+$button-color-info-tertiary-disabled-background: none;
+

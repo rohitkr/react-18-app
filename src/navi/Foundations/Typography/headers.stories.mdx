@@ -1,0 +1,69 @@
+import { Meta, Story, Canvas, Typeset } from '@storybook/addon-docs';
+import typographyToken from '../../TokensOld/base-tokens/typography-token.json'
+import TypographyComponent from "../../utility/Storybook-Components/TypographyComponent/TypographyComponent"
+
+<Meta title="Foundations/Typography/Heading" />
+
+export const SampleText = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.';
+
+# Typography
+###### Typography represents the font and set type styling we use to create clear, consistent, and accessible hierarchy throughout the Whatfix product.
+### Heading
+### Usage
+---
+<br/>
+
+<TypographyComponent 
+  name="Heading 1"
+  styleObj={typographyToken.attributes['$text-heading-01']}
+  fontFamily={typographyToken.attributes['$text-heading-01']['font-family']}
+  fontWeight={typographyToken.attributes['$text-heading-01']['font-weight']}
+  lineHeight={typographyToken.attributes['$text-heading-01']['line-height']}
+  fontSize={typographyToken.attributes['$text-heading-01']['font-size']}
+  tokenName={'$text-heading-01'}>
+The five boxing wizards jump quickly
+</TypographyComponent> 
+
+<TypographyComponent 
+  name="Heading 2"
+  styleObj={typographyToken.attributes['$text-heading-02']}
+  fontFamily={typographyToken.attributes['$text-heading-02']['font-family']}
+  fontWeight={typographyToken.attributes['$text-heading-02']['font-weight']}
+  lineHeight={typographyToken.attributes['$text-heading-02']['line-height']}
+  fontSize={typographyToken.attributes['$text-heading-02']['font-size']}
+  tokenName={'$text-heading-02'}>
+The quick brown fox jumps over the lazy dog
+</TypographyComponent> 
+
+<TypographyComponent 
+  name="Heading 3"
+  styleObj={typographyToken.attributes['$text-heading-03']}
+  fontFamily={typographyToken.attributes['$text-heading-03']['font-family']}
+  fontWeight={typographyToken.attributes['$text-heading-03']['font-weight']}
+  lineHeight={typographyToken.attributes['$text-heading-03']['line-height']}
+  fontSize={typographyToken.attributes['$text-heading-03']['font-size']}
+  tokenName={'$text-heading-03'}>  
+Show mangled quartz flip vibe exactly
+</TypographyComponent> 
+
+<TypographyComponent 
+  name="Heading 4"
+  styleObj={typographyToken.attributes['$text-heading-04']}
+  fontFamily={typographyToken.attributes['$text-heading-04']['font-family']}
+  fontWeight={typographyToken.attributes['$text-heading-04']['font-weight']}
+  lineHeight={typographyToken.attributes['$text-heading-04']['line-height']}
+  fontSize={typographyToken.attributes['$text-heading-04']['font-size']}
+  tokenName={'$text-heading-04'}>
+The wizard quickly jinxed the gnomes before they vaporized
+</TypographyComponent> 
+
+<TypographyComponent 
+  name="Heading 5"
+  styleObj={typographyToken.attributes['$text-heading-05']}
+  fontFamily={typographyToken.attributes['$text-heading-05']['font-family']}
+  fontWeight={typographyToken.attributes['$text-heading-05']['font-weight']}
+  lineHeight={typographyToken.attributes['$text-heading-05']['line-height']}
+  fontSize={typographyToken.attributes['$text-heading-05']['font-size']}
+  tokenName={'$text-heading-05'}>
+The wizard quickly jinxed the gnomes before they vaporized
+</TypographyComponent> 

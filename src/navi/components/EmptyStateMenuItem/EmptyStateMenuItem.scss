@@ -1,0 +1,30 @@
+.navi-menu-container {
+  .empty-large {
+    height: 44px;
+    min-height: 44px;
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    color: #6b697b;
+    svg {
+      height: 20px;
+      width: 20px;
+    }
+  }
+  .empty-small {
+    height: 32px;
+    min-height: 32px;
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 16px;
+    color: #6b697b;
+    svg {
+      height: 16px;
+      width: 16px;
+    }
+  }
+}
