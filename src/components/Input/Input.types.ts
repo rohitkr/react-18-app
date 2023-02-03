@@ -11,7 +11,6 @@ export interface NaviInputProps extends MuiInputBaseProps {
   "data-testid"?: string;
   size?: "large" | "small";
   label?: string;
-  // value?: string;
   maxCharacters?: number;
   required?: boolean;
   helperText?: string;

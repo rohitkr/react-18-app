@@ -41,6 +41,10 @@ export default {
       defaultValue: "More information text",
       control: "text",
     },
+    disabled: {
+      defaultValue: false,
+      control: { type: "boolean" },
+    },
     tooltipPlacement: {
       defaultValue: "top",
       options: [

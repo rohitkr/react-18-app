@@ -1,17 +1,17 @@
-// import { ButtonProps as MuiButtonProps } from "@material-ui/core";
-import { ButtonProps as MuiButtonProps } from "@material-ui/core/Button";
 import { ForwardedRef } from "react";
+import { ButtonProps as MuiButtonProps } from "@material-ui/core/Button";
 export interface ButtonProps
   extends Pick<MuiButtonProps, Exclude<keyof MuiButtonProps, "variant">> {
-  buttonType?: "button" | "icon";
+  buttonType?: 'button' | 'icon';
   rounded?: boolean;
   "data-testid"?: string;
-  variant?: "primary" | "secondary" | "tertiary";
-  intent?: "muted" | "prime" | "info" | "critical" | "warning" | "success";
-  size?: "large" | "small";
+  variant?: 'primary' | 'secondary' | 'tertiary' | 'selected';
+  intent?: 'muted' | 'prime' | 'info' | 'critical' | 'warning' | 'success' | 'mutedLight';
+  size?: 'large' | 'small';
   leadingIcon?: React.ReactNode | MuiButtonProps["startIcon"];
   trailingIcon?: React.ReactNode | MuiButtonProps["endIcon"];
   classes?: any;
+  forwardedRef?: ForwardedRef<HTMLButtonElement>;
 }
 export interface MUIButtonProps {
   children?: any;
@@ -20,8 +20,4 @@ export interface MUIButtonProps {
   startIcon?: React.ReactNode;
   endIcon?: React.ReactNode;
   disabled?: boolean;
-}
-
-export interface NewMUIButtonProps extends MUIButtonProps {
-  color?: "default" | "primary" | "info" | "critical" | "warning" | "success";
 }

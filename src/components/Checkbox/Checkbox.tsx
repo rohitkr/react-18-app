@@ -173,7 +173,7 @@ const Checkbox = ({
   disabled,
   justify,
   spacing,
-  orientation,
+  orientation = "vertical",
   ...rest
 }: CheckboxOptionProps) => {
   const classes = checkboxStyles();
