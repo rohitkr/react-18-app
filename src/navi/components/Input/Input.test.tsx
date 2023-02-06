@@ -38,7 +38,7 @@ const ErrorInputElement = ({ required = false }) => {
       onChange={onValueChange}
       required={!!required}
       successMessage="Success message"
-      errorMessage="Error message" inputType={"success"}    />
+      errorMessage="Error message" inputType={"success"} />
   )
 }
 
@@ -57,8 +57,8 @@ const SuccessInputElement = ({ required = false }) => {
       onChange={onValueChange}
       required={!!required}
       successMessage="Success message"
-      errorMessage="Error message" 
-      inputType={"disabled"}    />
+      errorMessage="Error message"
+    />
   )
 }
 

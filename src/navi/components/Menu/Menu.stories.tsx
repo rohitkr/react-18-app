@@ -116,7 +116,6 @@ const Template: ComponentStory<typeof Menu> = ({ ...args }) => {
     setOpen(!open);
   }, [open]);
 
-  console.log(anchorRef);
   return (
     <Box
       style={{

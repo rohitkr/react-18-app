@@ -51,7 +51,6 @@ const TextInputElement = ({
   const [internalError, setInternalError] = useState("");
   const [characterCount, setCharacterCount] = useState(
     (typeof props.value === "string" && props.value?.length) || 0
-    // props.value?.length || 0
   );
 
   const CharacterLimitText = maxCharacters ? (
@@ -180,6 +179,7 @@ const TextInputElement = ({
           maxWidth: inputMaxWidth,
           minHeight: inputMinHeight,
           maxHeight: inputMaxHeight,
+          ...props.style
         }}
         inputProps={inputProps}
         onBlur={handleBlur}

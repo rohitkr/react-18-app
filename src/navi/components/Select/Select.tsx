@@ -15,7 +15,7 @@ import "./Select.scss";
 import { MenuItemProps } from "../MenuItem/MenuItem.types";
 import SelectedChip from "./SelectedChip";
 import SelectAllMenuItem from "../MenuItem/SelectAllMenuItem";
-
+import tokenObj from "../../tokens/build/json/tokens.json";
 interface SelectionMapInterface {
   [key: string]: boolean;
 }
@@ -45,7 +45,10 @@ const Select: React.FC<SelectProps> = ({
   children,
   dropdownIcon,
   value,
-  renderValueAs = "tag",
+  renderValueAsTag,
+  dataTestId,
+  openTooltipText,
+  clearTooltipText,
   ...props
 }) => {
   const [selectedValue, setSelectValue] = React.useState<string[]>(() => {
@@ -53,8 +56,7 @@ const Select: React.FC<SelectProps> = ({
 
     if (props.selectValue) {
       return props.selectValue;
-    }
-    else {
+    } else {
       if (React.Children.count(children)) {
         return React.Children.toArray(children).reduce(
           (acc: Array<string>, child) => {
@@ -62,7 +64,9 @@ const Select: React.FC<SelectProps> = ({
               return [...acc, child.props.value];
             }
             return acc;
-          }, [])
+          },
+          []
+        );
       }
       return allSelectedValues;
     }
@@ -87,8 +91,13 @@ const Select: React.FC<SelectProps> = ({
     }
     return {};
   });
+  // Used ref as <any> because MUI inputRef for select component is Any
   const inputRef = React.useRef<any>(null);
   const classes = useStyles();
+  const inputPadding =
+    size === "large"
+      ? `${tokenObj["spacing-12"]} ${tokenObj["spacing-0"]}`
+      : `${tokenObj["spacing-8"]} ${tokenObj["spacing-0"]}`;
 
   React.useEffect(() => {
     const someMenuItemsSelected = Object.keys(selectionMap).some(
@@ -101,24 +110,25 @@ const Select: React.FC<SelectProps> = ({
     setOpen(open);
   }, [open]);
 
-  const onSelectedChipDismiss = React.useCallback((e: React.MouseEvent, value?: string) => {
-    if (value) {
-      setSelectValue((oldData) => {
-        let _data = Array.isArray(oldData)
-          ? [...oldData]
-          : [oldData];
-        if (typeof value === "string") {
-          const index = _data.indexOf(value);
-          _data.splice(index, 1);
-        }
-        return _data;
-      });
-      setSelectionMap((oldMap) => {
-        let _oldMap = { ...oldMap, [String(value)]: false };
-        return _oldMap;
-      });
-    }
-  }, [selectionMap]);
+  const onSelectedChipDismiss = React.useCallback(
+    (e: React.MouseEvent, value?: string) => {
+      if (value) {
+        setSelectValue((oldData) => {
+          let _data = Array.isArray(oldData) ? [...oldData] : [oldData];
+          if (typeof value === "string") {
+            const index = _data.indexOf(value);
+            _data.splice(index, 1);
+          }
+          return _data;
+        });
+        setSelectionMap((oldMap) => {
+          let _oldMap = { ...oldMap, [String(value)]: false };
+          return _oldMap;
+        });
+      }
+    },
+    [selectionMap]
+  );
 
   const onSelectClose = React.useCallback(() => {
     setOpen(false);
@@ -130,7 +140,7 @@ const Select: React.FC<SelectProps> = ({
     let preventMenuOpen = false;
     while (ele.nodeName !== "BODY" && !preventMenuOpen) {
       ele = ele.parentNode as HTMLElement;
-      // If the element has className navi-prevent-menu-open, it will prevent 
+      // If the element has className navi-prevent-menu-open, it will prevent
       // the menu from opening
       preventMenuOpen = ele.classList.contains("navi-prevent-menu-open");
     }
@@ -140,17 +150,13 @@ const Select: React.FC<SelectProps> = ({
   }, []);
 
   const selectedChips = () => {
-    if (renderValueAs === "tag") {
+    if (renderValueAsTag) {
       return (
-        <Box
-          flexWrap="wrap"
-          display="flex"
-          maxHeight={`${props.maxHeight}px`}
-        >
+        <Box flexWrap="wrap" display="flex" maxHeight={`${props.maxHeight}px`}>
           {selectedValue &&
             selectedValue.map((value: string) => {
               return (
-                <Box display="flex" margin="5px 6px">
+                <Box display="flex" margin={`5px 6px`}>
                   <SelectedChip
                     size={"large"}
                     intent="muted"
@@ -172,7 +178,7 @@ const Select: React.FC<SelectProps> = ({
         </Box>
       );
     } else {
-      return selectedValue;
+      return selectedValue.join(", ");
     }
   };
 
@@ -221,41 +227,11 @@ const Select: React.FC<SelectProps> = ({
   };
 
   const onClearClick = () => {
-    setSelectionMap((oldMap) => (Object.keys(oldMap).reduce((a, v) => ({ ...a, [v]: false }), {})));
+    setSelectionMap((oldMap) =>
+      Object.keys(oldMap).reduce((a, v) => ({ ...a, [v]: false }), {})
+    );
     setSelectValue([]);
   };
-  const selectEndAdornment = React.useMemo(() => {
-    return (
-      <InputAdornment position="start" style={{ marginRight: "0px" }}>
-        <IconButton
-          size="small"
-          variant="tertiary"
-          intent="muted"
-          style={{
-            display: selectedValue?.length ? "block" : "none",
-            marginRight: "0px",
-          }}
-          title={"Clear"}
-          onClick={onClearClick}
-        >
-          <X />
-        </IconButton>
-        <IconButton
-          size="small"
-          variant="tertiary"
-          intent="muted"
-          style={{
-            marginRight: "5px",
-            transform: `${open ? "rotate(180deg)" : "rotate(0deg)"}`,
-          }}
-          title={"Open"}
-          onClick={onMenuOpen}
-        >
-          {dropdownIcon || <ChevronDown />}
-        </IconButton>
-      </InputAdornment>
-    );
-  }, []);
 
   const items = React.useMemo(() => {
     return React.Children.map(children, (child) => {
@@ -286,11 +262,16 @@ const Select: React.FC<SelectProps> = ({
         value={selectedValue}
         defaultValue=""
         inputRef={inputRef}
+        data-testid={dataTestId || undefined}
         input={
           <TextInput
             // navi-select-input-container class name is being used to prevent menu to be opened
             // while clicking on the batch icon
             className={`navi-select-input-container ${inputProps?.className}`}
+            style={{
+              padding:
+                renderValueAsTag && selectedValue.length ? 0 : inputPadding,
+            }}
             {...{
               minWidth: props.minWidth,
               maxWidth: props.maxWidth,
@@ -309,9 +290,40 @@ const Select: React.FC<SelectProps> = ({
         }}
         onClose={onSelectClose}
         onOpen={onSelectOpen}
-
         // Placement of custom clear and dropdown icon button
-        endAdornment={selectEndAdornment}
+        endAdornment={
+          <InputAdornment
+            position="start"
+            style={{ marginRight: `${tokenObj["spacing-0"]}` }}
+          >
+            <IconButton
+              size="small"
+              variant="tertiary"
+              intent="muted"
+              style={{
+                display: selectedValue?.length ? "block" : "none",
+                marginRight: tokenObj["spacing-0"],
+              }}
+              title={clearTooltipText}
+              onClick={onClearClick}
+            >
+              <X />
+            </IconButton>
+            <IconButton
+              size="small"
+              variant="tertiary"
+              intent="muted"
+              style={{
+                marginRight: "5px",
+                transform: `${open ? "rotate(180deg)" : "rotate(0deg)"}`,
+              }}
+              title={openTooltipText}
+              onClick={onMenuOpen}
+            >
+              {dropdownIcon || <ChevronDown />}
+            </IconButton>
+          </InputAdornment>
+        }
         MenuProps={{
           // Height of the menu dropdown
           PaperProps: {

@@ -22,5 +22,5 @@ export interface NaviInputProps extends MuiInputBaseProps {
   maxWidth?: number;
   minHeight?: number;
   maxHeight?: number;
-  ref?: ForwardedRef<HTMLInputElement> | null | undefined;
+  ref?: ForwardedRef<HTMLInputElement>;
 }

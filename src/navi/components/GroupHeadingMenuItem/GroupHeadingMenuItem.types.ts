@@ -3,4 +3,5 @@ export interface GroupHeadingMenuItemProps {
     title?: string;
     value?: string | number;
     width?: string;
+    "data-testid"?: string;
   }

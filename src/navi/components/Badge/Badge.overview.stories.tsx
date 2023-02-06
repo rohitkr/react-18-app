@@ -5,7 +5,7 @@ import Box from "../Box/Box";
 import SyntaxHighlighter from "react-syntax-highlighter";
 import { docco } from "react-syntax-highlighter/dist/esm/styles/hljs";
 import { InfoCircle } from "tabler-icons-react";
-import './Badge.overview.scss'
+import "./Badge.overview.scss";
 
 export default {
   title: `Components/Badge`,
@@ -40,9 +40,9 @@ const Template: ComponentStory<typeof Badge> = (args) => {
     `;
   return (
     <Box className="container">
-      <Box >Overview</Box>
-      <Box >Documentation for the Navi Badge component</Box>
-      <Box >Here is a sample badge component.</Box>
+      <Box>Overview</Box>
+      <Box>Documentation for the Navi Badge component</Box>
+      <Box>Here is a sample badge component.</Box>
       <Box
         onClick={() => {
           setType("status");
@@ -56,8 +56,8 @@ const Template: ComponentStory<typeof Badge> = (args) => {
       >
         <Badge type="status" label="Sample Badge" />
       </Box>
-      <Box >Badge Size</Box>
-      <Box >Standard</Box>
+      <Box>Badge Size</Box>
+      <Box>Standard</Box>
       <Box
         onClick={() => {
           setType("status");
@@ -71,7 +71,7 @@ const Template: ComponentStory<typeof Badge> = (args) => {
       >
         <Badge type="status" label="Sample Badge" size="large" />
       </Box>
-      <Box >Small</Box>
+      <Box>Small</Box>
       <Box
         onClick={() => {
           setType("status");
@@ -85,9 +85,9 @@ const Template: ComponentStory<typeof Badge> = (args) => {
       >
         <Badge type="status" label="Sample Badge" size="small" />
       </Box>
-      <Box >Badge with icons</Box>
-      <Box >Leading icon</Box>
-      <Box >Size - Standard</Box>
+      <Box>Badge with icons</Box>
+      <Box>Leading icon</Box>
+      <Box>Size - Standard</Box>
       <Box
         onClick={() => {
           setType("status");
@@ -106,7 +106,7 @@ const Template: ComponentStory<typeof Badge> = (args) => {
           LeadingIcon={InfoCircle}
         />
       </Box>
-      <Box >Size - Small</Box>
+      <Box>Size - Small</Box>
       <Box
         onClick={() => {
           setType("status");
@@ -125,8 +125,8 @@ const Template: ComponentStory<typeof Badge> = (args) => {
           LeadingIcon={InfoCircle}
         />
       </Box>
-      <Box >Trailing icon</Box>
-      <Box >Size - Standard</Box>
+      <Box>Trailing icon</Box>
+      <Box>Size - Standard</Box>
       <Box
         onClick={() => {
           setType("status");
@@ -145,7 +145,7 @@ const Template: ComponentStory<typeof Badge> = (args) => {
           TrailingIcon={InfoCircle}
         />
       </Box>
-      <Box >Size - small</Box>
+      <Box>Size - small</Box>
       <Box
         onClick={() => {
           setType("status");
@@ -164,8 +164,8 @@ const Template: ComponentStory<typeof Badge> = (args) => {
           TrailingIcon={InfoCircle}
         />
       </Box>
-      <Box >Badge Types</Box>
-      <Box >Status badge</Box>
+      <Box>Badge Types</Box>
+      <Box>Status badge</Box>
       <table>
         <thead>
           <tr>
@@ -778,7 +778,7 @@ const Template: ComponentStory<typeof Badge> = (args) => {
           </tr>
         </tbody>
       </table>
-      <Box >Notification badge</Box>
+      <Box>Notification badge</Box>
       <table>
         <thead>
           <tr>
@@ -904,9 +904,7 @@ const Template: ComponentStory<typeof Badge> = (args) => {
         </tbody>
       </table>
       <Box>
-        <Box >
-          Click on the Element above to see the box code.
-        </Box>
+        <Box>Click on the Element above to see the box code.</Box>
         <SyntaxHighlighter language="javascript" style={docco}>
           {code}
         </SyntaxHighlighter>

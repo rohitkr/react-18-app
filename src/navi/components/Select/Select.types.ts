@@ -17,15 +17,13 @@ export interface SelectDataProps {
   disabled?: boolean;
 }
 
-// export interface SelectProps extends MuiSelectProps {
 export interface SelectProps
   extends Pick<
     MuiSelectProps,
     Exclude<keyof MuiSelectProps, "inputProps" | "onChange">
   > {
-  open: boolean;
+  open?: boolean;
   size?: "small" | "large";
-  // anchorEl?: HTMLElement | null;
   multiSelect?: boolean;
   selectAll?: boolean;
   checkboxes?: boolean;
@@ -37,9 +35,12 @@ export interface SelectProps
   minHeight?: number;
   maxHeight?: number;
   value?: string[];
-  renderValueAs?: "tag" | "default";
+  renderValueAsTag?: boolean;
   onChange?: (data: string[]) => void;
   selectValue?: string[];
+  dataTestId?: string;
+  clearTooltipText: string;
+  openTooltipText: string;
 }
 export interface SelectItemCardProps {
   selectValue?: string[];

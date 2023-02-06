@@ -2,7 +2,6 @@
 /* cyrillic-ext */
 
 .navi-input-container {
-
   .MuiInput-underline:hover {
     border-bottom: none;
   }
@@ -31,9 +30,7 @@
     outline: none;
     outline: $input-type-default-outline;
     border-radius: $input-type-root-border-radius;
-    height: unset!important;
-    // overflow: auto;
-    // overflow-x: hidden;
+    height: unset !important;
 
     &.large {
       padding: 12px 0;
@@ -48,8 +45,6 @@
       background-color: unset;
     }
 
-
-
     .MuiSelect-select {
       overflow-y: auto;
       mask-image: linear-gradient(to top, transparent, black),
@@ -62,11 +57,11 @@
       -webkit-mask-position: left bottom;
       transition: mask-position 0.3s, -webkit-mask-position 0.3s;
     }
-    
+
     .MuiSelect-select:hover {
       -webkit-mask-position: left top;
     }
-    
+
     @keyframes background {
       from {
         background: pink;
@@ -75,13 +70,12 @@
         background: #c0d6ff;
       }
     }
-    
+
     .wrapper {
       float: left;
       animation: background 5s infinite alternate;
-    }      
+    }
   }
-
 
   .input-label {
     font-size: $input-label-base-font-size;
@@ -129,7 +123,6 @@
     background-color: $input-type-root-background-color;
     border-radius: $input-type-root-border-radius;
     min-width: $input-type-root-min-width;
-    // padding: $input-type-root-padding;
     text-overflow: $input-type-root-text-overflow;
     font-family: $input-label-base-font-family;
     font-style: $input-type-root-font-style;
@@ -191,10 +184,6 @@
     &:hover {
       background-color: $input-type-hover-background-color;
     }
-  }
-
-  .default {
-    // outline: $input-type-default-outline;
   }
 
   .success {

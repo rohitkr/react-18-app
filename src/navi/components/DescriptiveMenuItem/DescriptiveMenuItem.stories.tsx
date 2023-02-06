@@ -138,9 +138,6 @@ const Template: ComponentStory<typeof DescriptiveMenuItem> = ({
 
 export const Default = Template.bind({});
 Default.args = {
-  // open: false,
-  // multiSelect: false,
-  // menuPlacement: "bottom",
   value: "1",
   avatar: "H",
 };

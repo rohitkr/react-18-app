@@ -5,4 +5,5 @@ export interface EmptyStateMenuItemProps {
   leadingIcon?: React.ReactNode;
   value?: string | number;
   width?: string;
+  "data-testid"?: string;
 }

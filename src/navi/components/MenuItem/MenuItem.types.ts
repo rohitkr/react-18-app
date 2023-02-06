@@ -20,4 +20,5 @@ export interface MenuItemProps extends MuiMenuItemProps {
   isSelected?: boolean;
   children?: React.ReactNode;
   disabled?: boolean;
+  "data-testid"?: string;
 }

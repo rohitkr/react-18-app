@@ -20,4 +20,5 @@ export interface DescriptiveMenuItemProps extends MenuItemProps {
   onBulkActionClick?: Function;
   disabled?: boolean;
   width?: string;
+  "data-testid"?: string;
 }

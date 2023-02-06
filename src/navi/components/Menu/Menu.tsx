@@ -6,11 +6,15 @@ import Popper from "@material-ui/core/Popper";
 import MenuList from "@material-ui/core/MenuList";
 import "./Menu.scss";
 import SelectAllMenuItem from "../MenuItem/SelectAllMenuItem";
+import { MenuItemProps } from "../MenuItem/MenuItem.types";
 
 const minWidth = 320;
 
 interface SelectionMapInterface {
-  [key: string]: boolean;
+  [key: string]: boolean | undefined;
+}
+interface MenuItemsMapInterface {
+  [key: string]: MenuItemProps;
 }
 
 const Menu: React.FC<MenuProps> = ({
@@ -31,6 +35,23 @@ const Menu: React.FC<MenuProps> = ({
     props.selectedValue || null
   );
   const [allSelected, setAllSelected] = React.useState(false);
+  const [menuItemsMap] = React.useState(() => {
+    if (React.Children.count(children)) {
+      const map = React.Children.toArray(children).reduce(
+        (acc: MenuItemsMapInterface, child) => {
+          if (React.isValidElement(child)) {
+            acc[child.props.value] = { ...child.props };
+            return acc;
+          }
+          return acc;
+        },
+        {}
+      );
+      return map;
+    } else {
+      return {};
+    }
+  });
   const [selectionMap, setSelectionMap] = React.useState(() => {
     if (multiSelect) {
       if (React.Children.count(children)) {
@@ -79,7 +100,14 @@ const Menu: React.FC<MenuProps> = ({
   const onSelectAllClick = () => {
     let updatedSelectionMap: { [key: string]: boolean } = {};
     Object.keys(selectionMap).forEach((key) => {
-      updatedSelectionMap[key] = !allSelected;
+      if (menuItemsMap[key].disabled) {
+        updatedSelectionMap[key] = menuItemsMap[key].checked ? true : false;
+      } else if ("checked" in menuItemsMap[key]) {
+        updatedSelectionMap[key] =
+          menuItemsMap[key].checked || !selectionMap[key];
+      } else {
+        updatedSelectionMap[key] = !allSelected;
+      }
     });
     let selectedValues = [];
     for (let value in updatedSelectionMap) {
@@ -100,6 +128,20 @@ const Menu: React.FC<MenuProps> = ({
         onMenuChange && onMenuChange([value]);
         setSelectedValue([value]);
         handleClose();
+      } else if ("checked" in menuItemsMap[value]) {
+        let updatedMap = {
+          ...selectionMap,
+          [value]: menuItemsMap[value].checked,
+        };
+        setSelectionMap(updatedMap);
+        let selectedValues = [];
+        for (let value in updatedMap) {
+          if (updatedMap[value]) {
+            selectedValues.push(value);
+          }
+        }
+        setSelectedValue(selectedValues);
+        onMenuChange && onMenuChange(selectedValues);
       } else {
         let updatedMap = { ...selectionMap, [value]: !selectionMap[value] };
         setSelectionMap(updatedMap);

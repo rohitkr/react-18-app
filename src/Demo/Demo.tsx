@@ -233,9 +233,9 @@ let menuData = [
         <path
           d="M11.6667 6.66658V4.99992C11.6667 4.55789 11.4911 4.13397 11.1785 3.82141C10.866 3.50885 10.442 3.33325 10 3.33325H4.16667C3.72464 3.33325 3.30072 3.50885 2.98816 3.82141C2.67559 4.13397 2.5 4.55789 2.5 4.99992V14.9999C2.5 15.4419 2.67559 15.8659 2.98816 16.1784C3.30072 16.491 3.72464 16.6666 4.16667 16.6666H10C10.442 16.6666 10.866 16.491 11.1785 16.1784C11.4911 15.8659 11.6667 15.4419 11.6667 14.9999V13.3332M5.83333 9.99992H17.5M17.5 9.99992L15 7.49992M17.5 9.99992L15 12.4999"
           stroke="#6B697B"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
         />
       </svg>
     ),
@@ -258,9 +258,9 @@ let trendInsight = [
         <path
           d="M23 12.1667L25.5 14.6667M25.5 14.6667L23 17.1667M25.5 14.6667H22.6692C21.9992 14.6668 21.3392 14.8284 20.745 15.1378C20.1508 15.4472 19.64 15.8954 19.2558 16.4442L15.9108 21.2226C15.5267 21.7714 15.0159 22.2196 14.4217 22.529C13.8275 22.8384 13.1674 23 12.4975 23.0001H10.5"
           stroke="#6B697B"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
         />
       </svg>
     ),
@@ -280,9 +280,9 @@ let trendInsight = [
         <path
           d="M12.5833 12.1667H23.4166C23.5366 12.2088 23.6454 12.2778 23.7347 12.3685C23.8239 12.4591 23.8912 12.5689 23.9314 12.6896C23.9716 12.8103 23.9837 12.9385 23.9667 13.0646C23.9497 13.1906 23.9041 13.3111 23.8333 13.4167L19.6666 18.0001V23.8334L16.3333 21.3334V18.0001L12.1666 13.4167C12.0959 13.3111 12.0502 13.1906 12.0332 13.0646C12.0162 12.9385 12.0283 12.8103 12.0685 12.6896C12.1087 12.5689 12.176 12.4591 12.2653 12.3685C12.3545 12.2778 12.4633 12.2088 12.5833 12.1667Z"
           stroke="#6B697B"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
         />
       </svg>
     ),
@@ -333,9 +333,9 @@ let trendInsight = [
         <path
           d="M19.6666 10.5V13.8333C19.6666 14.0543 19.7544 14.2663 19.9107 14.4226C20.067 14.5789 20.2789 14.6667 20.5 14.6667H23.8333M19.6666 10.5H13.8333C13.3913 10.5 12.9673 10.6756 12.6548 10.9882C12.3422 11.3007 12.1666 11.7246 12.1666 12.1667V23.8333C12.1666 24.2754 12.3422 24.6993 12.6548 25.0118C12.9673 25.3244 13.3913 25.5 13.8333 25.5H22.1666C22.6087 25.5 23.0326 25.3244 23.3451 25.0118C23.6577 24.6993 23.8333 24.2754 23.8333 23.8333V14.6667M19.6666 10.5L23.8333 14.6667M15.5 22.1667H20.5M15.5 18.8333H20.5"
           stroke="#6B697B"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
         />
       </svg>
     ),
@@ -355,13 +355,25 @@ let trendInsight = [
         <path
           d="M18 23.8335C16.8599 23.1752 15.5665 22.8287 14.25 22.8287C12.9335 22.8287 11.6401 23.1752 10.5 23.8335V13.0002C11.6401 12.3419 12.9335 11.9954 14.25 11.9954C15.5665 11.9954 16.8599 12.3419 18 13.0002M18 23.8335C19.1401 23.1752 20.4335 22.8287 21.75 22.8287C23.0665 22.8287 24.3599 23.1752 25.5 23.8335V13.0002C24.3599 12.3419 23.0665 11.9954 21.75 11.9954C20.4335 11.9954 19.1401 12.3419 18 13.0002M18 23.8335V13.0002"
           stroke="#6B697B"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
         />
       </svg>
     ),
-  },
+  }, {
+    title: "Sample data 1",
+    description: "Sample data",
+  }, {
+    title: "Sample data 2",
+    description: "Sample data",
+  }, {
+    title: "Sample data 3",
+    description: "Sample data",
+  }, {
+    title: "Sample data 4",
+    description: "Sample data",
+  }
 ];
 
 export default function AutocompleteControlled() {
@@ -446,10 +458,12 @@ export default function AutocompleteControlled() {
           size="large"
           maxWidth={750}
           minWidth={300}
+          // renderValueAsTag
           onChange={(value) => {
             console.log("value: ", value);
             // setPersonaVal(value);
           }}
+
           inputProps={{
             label: "Select Movies",
             errorMessage: "Error message",
@@ -507,7 +521,7 @@ export default function AutocompleteControlled() {
           }}
           maxHeight={133}
           value={value}
-          renderValueAs="tag"
+          renderValueAsTag
           inputProps={{
             label: "Large Size Select Example with Chip",
             errorMessage: "Error message",
@@ -525,6 +539,56 @@ export default function AutocompleteControlled() {
           }}
         >
           {menuItem}
+        </Select>
+
+
+        <Select
+          open={open}
+          multiSelect={true}
+          selectAll={true}
+          size="large"
+          onChange={(updatedValue) => {
+            setValue(updatedValue);
+          }}
+          maxHeight={140}
+          minWidth={400}
+          renderValueAsTag
+          tagProps={{
+            variant: "neutral",
+          }}
+          value={value}
+          inputProps={{
+            label: "Select Movies",
+            errorMessage: "Error message",
+            helperText: "Helper text",
+            minWidth: 300,
+            maxWidth: 800,
+            fullWidth: true,
+            moreInfo: "More information text",
+            required: true,
+            size: "large",
+            successMessage: "Success message",
+            tooltipPlacement: "top",
+            inputType: "default",
+          }}
+        >
+          {data &&
+            data.map(
+              ({ title = "", avatar, type, ...val }: SelectDataProps, i) => {
+                return val.divider ? (
+                  <DividerMenuItem />
+                ) : (
+                  <DescriptiveMenuItem
+                    key={i}
+                    value={title}
+                    title={title}
+                    checked={false}
+                    selectable={true}
+                    {...val}
+                  />
+                );
+              }
+            )}
         </Select>
 
         <div style={{ height: "100px" }}>
@@ -584,7 +648,7 @@ export default function AutocompleteControlled() {
               setValue(updatedValue);
             }}
             value={value}
-            renderValueAs="tag"
+            renderValueAsTag="tag"
             maxHeight={250}
             // renderValue={(selected) => {
             //   return (

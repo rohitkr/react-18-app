@@ -117,8 +117,14 @@ const Template: ComponentStory<typeof Menu> = (args) => {
             title="Sample menu item 1"
             description="With description"
             trailingIcon={<Pencil />}
+            checked={true}
           />
-          <DescriptiveMenuItem value="text_only" title="Text only menu item" />
+          <DescriptiveMenuItem
+            value="text_only"
+            title="Text only menu item"
+            checked={true}
+            disabled
+          />
           <DescriptiveMenuItem
             value="descriptive_menu_item_2"
             title="Descriptive menu item 2"
