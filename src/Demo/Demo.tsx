@@ -463,7 +463,8 @@ export default function AutocompleteControlled() {
             console.log("value: ", value);
             // setPersonaVal(value);
           }}
-
+          openTooltipText="open"
+          clearTooltipText="Clear"
           inputProps={{
             label: "Select Movies",
             errorMessage: "Error message",
@@ -519,6 +520,8 @@ export default function AutocompleteControlled() {
             variant: "neutral",
             // style: { height: "100px" },
           }}
+          openTooltipText="open"
+          clearTooltipText="Clear"
           maxHeight={133}
           value={value}
           renderValueAsTag
@@ -557,6 +560,8 @@ export default function AutocompleteControlled() {
             variant: "neutral",
           }}
           value={value}
+          openTooltipText="open"
+          clearTooltipText="Clear"
           inputProps={{
             label: "Select Movies",
             errorMessage: "Error message",
