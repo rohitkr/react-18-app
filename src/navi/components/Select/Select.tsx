@@ -16,8 +16,12 @@ import { MenuItemProps } from "../MenuItem/MenuItem.types";
 import SelectedChip from "./SelectedChip";
 import SelectAllMenuItem from "../MenuItem/SelectAllMenuItem";
 import tokenObj from "../../tokens/build/json/tokens.json";
+
 interface SelectionMapInterface {
-  [key: string]: boolean;
+  [key: string]: boolean | undefined;
+}
+interface MenuItemsMapInterface {
+  [key: string]: MenuItemProps;
 }
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -51,6 +55,23 @@ const Select: React.FC<SelectProps> = ({
   clearTooltipText,
   ...props
 }) => {
+  const [menuItemsMap] = React.useState(() => {
+    if (React.Children.count(children)) {
+      const map = React.Children.toArray(children).reduce(
+        (acc: MenuItemsMapInterface, child) => {
+          if (React.isValidElement(child)) {
+            acc[child.props.value] = { ...child.props };
+            return acc;
+          }
+          return acc;
+        },
+        {}
+      );
+      return map;
+    } else {
+      return {};
+    }
+  });
   const [selectedValue, setSelectValue] = React.useState<string[]>(() => {
     let allSelectedValues: Array<string> = [];
 
@@ -112,20 +133,28 @@ const Select: React.FC<SelectProps> = ({
 
   const onSelectedChipDismiss = React.useCallback(
     (e: React.MouseEvent, value?: string) => {
+      let updatedMap = { ...selectionMap };
       if (value) {
-        setSelectValue((oldData) => {
-          let _data = Array.isArray(oldData) ? [...oldData] : [oldData];
-          if (typeof value === "string") {
-            const index = _data.indexOf(value);
-            _data.splice(index, 1);
-          }
-          return _data;
-        });
-        setSelectionMap((oldMap) => {
-          let _oldMap = { ...oldMap, [String(value)]: false };
-          return _oldMap;
-        });
+        if (
+          "checked" in menuItemsMap[String(value)] ||
+          menuItemsMap[String(value)].disabled
+        ) {
+          updatedMap = {
+            ...updatedMap,
+            [String(value)]: menuItemsMap[value].checked || false,
+          };
+        } else {
+          updatedMap = { ...updatedMap, [String(value)]: false };
+        }
       }
+      setSelectionMap(updatedMap);
+      let updatedSelectedValues: Array<string> = [];
+      Object.keys(updatedMap).forEach((key) => {
+        if (updatedMap[key]) {
+          updatedSelectedValues.push(key);
+        }
+      });
+      setSelectValue(updatedSelectedValues);
     },
     [selectionMap]
   );
@@ -189,8 +218,14 @@ const Select: React.FC<SelectProps> = ({
       if (value.indexOf("_select_all") >= 0) {
         let updatedSelectedValues: Array<string> = [];
         Object.keys(selectionMap).forEach((key) => {
-          updatedSelectedMap[key] = !allSelected;
-          if (!allSelected) {
+          if ("checked" in menuItemsMap[key] || menuItemsMap[key].disabled) {
+            updatedSelectedMap[key] = menuItemsMap[key].checked;
+          } else {
+            updatedSelectedMap[key] = !allSelected;
+          }
+        });
+        Object.keys(updatedSelectedMap).forEach((key) => {
+          if (updatedSelectedMap[key]) {
             updatedSelectedValues.push(key);
           }
         });
@@ -198,7 +233,9 @@ const Select: React.FC<SelectProps> = ({
         setSelectValue(updatedSelectedValues);
       } else {
         Object.keys(selectionMap).forEach((key) => {
-          if (value.indexOf(key) >= 0) {
+          if ("checked" in menuItemsMap[key] || menuItemsMap[key].disabled) {
+            updatedSelectedMap[key] = menuItemsMap[key].checked;
+          } else if (value.indexOf(key) >= 0) {
             updatedSelectedMap[key] = true;
           } else {
             updatedSelectedMap[key] = false;
@@ -212,9 +249,9 @@ const Select: React.FC<SelectProps> = ({
         }
       }
       const selectedValueArr: string[] = [];
-      Object.keys(updatedSelectedMap).forEach((v) => {
-        if (updatedSelectedMap[v]) {
-          selectedValueArr.push(v);
+      Object.keys(updatedSelectedMap).forEach((val) => {
+        if (updatedSelectedMap[val]) {
+          selectedValueArr.push(val);
         }
       });
       props.onChange && props.onChange(selectedValueArr);
@@ -227,10 +264,29 @@ const Select: React.FC<SelectProps> = ({
   };
 
   const onClearClick = () => {
-    setSelectionMap((oldMap) =>
-      Object.keys(oldMap).reduce((a, v) => ({ ...a, [v]: false }), {})
-    );
-    setSelectValue([]);
+    let updatedMap = { ...selectionMap };
+    Object.keys(selectionMap).forEach((key) => {
+      if ("checked" in menuItemsMap[key] || menuItemsMap[key].disabled) {
+        updatedMap = {
+          ...updatedMap,
+          [String(key)]: menuItemsMap[key].checked,
+        };
+      } else {
+        updatedMap = {
+          ...updatedMap,
+          [String(key)]: false,
+        };
+      }
+      setSelectionMap(updatedMap);
+    });
+
+    const selectedValueArr: string[] = [];
+    Object.keys(updatedMap).forEach((key) => {
+      if (updatedMap[key]) {
+        selectedValueArr.push(key);
+      }
+    });
+    setSelectValue(selectedValueArr);
   };
 
   const items = React.useMemo(() => {
@@ -240,7 +296,7 @@ const Select: React.FC<SelectProps> = ({
           React.PropsWithChildren<MenuItemProps>
         >;
         const value = child.props.value;
-        let checked = child.props.checked || selectionMap[child.props.value];
+        let checked = selectionMap[child.props.value];
 
         return React.cloneElement(item, {
           key: value,

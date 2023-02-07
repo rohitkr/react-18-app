@@ -115,6 +115,7 @@ const LinkComponent = ({
   href,
   target,
   forwardedRef,
+  translate,
   ...rest
 }: LinkProps) => {
   const StyledLink = withStyles(createStyles(size))(

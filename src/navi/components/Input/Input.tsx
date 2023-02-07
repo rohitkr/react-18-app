@@ -29,6 +29,7 @@ const TextInputElement = ({
   minHeight,
   maxHeight,
   tooltipPlacement,
+  translate,
   size = "large",
   innerRef,
   ...props

@@ -1,7 +1,7 @@
 import { ForwardedRef } from "react";
 import { ButtonProps as MuiButtonProps } from "@material-ui/core/Button";
 export interface ButtonProps
-  extends Pick<MuiButtonProps, Exclude<keyof MuiButtonProps, "variant">> {
+  extends Pick<MuiButtonProps, Exclude<keyof MuiButtonProps, "variant" | "translate">> {
   buttonType?: 'button' | 'icon';
   rounded?: boolean;
   "data-testid"?: string;
@@ -12,6 +12,7 @@ export interface ButtonProps
   trailingIcon?: React.ReactNode | MuiButtonProps["endIcon"];
   classes?: any;
   forwardedRef?: ForwardedRef<HTMLButtonElement>;
+  translate?: string;
 }
 export interface MUIButtonProps {
   children?: any;

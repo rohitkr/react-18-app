@@ -72,36 +72,36 @@ let data = [
     title: "The Lord of the Rings: The Fellowship of the Ring",
     description: "2001",
   },
-  {
-    title: "Star Wars: Episode V - The Empire Strikes Back",
-    description: "1980",
-  },
-  { title: "Forrest Gump", description: "1994" },
-  { title: "Inception", description: "2010" },
-  {
-    title: "The Lord of the Rings: The Two Towers",
-    description: "2002",
-  },
-  { title: "One Flew Over the Cuckoo's Nest", description: "1975" },
-  { title: "Goodfellas", description: "1990" },
-  { title: "The Matrix", description: "1999" },
-  { title: "Seven Samurai", description: "1954" },
-  {
-    title: "Star Wars: Episode IV - A New Hope",
-    description: "1977",
-  },
-  { title: "City of God", description: "2002" },
-  { title: "Se7en", description: "1995" },
-  { title: "The Silence of the Lambs", description: "1991" },
-  { title: "It's a Wonderful Life", description: "1946" },
-  { title: "Life Is Beautiful", description: "1997" },
-  { title: "The Usual Suspects", description: "1995" },
-  { title: "Léon: The Professional", description: "1994" },
-  { title: "Spirited Away", description: "2001" },
-  { title: "Saving Private Ryan", description: "1998" },
-  { title: "Once Upon a Time in the West", description: "1968" },
-  { title: "American History X", description: "1998" },
-  { title: "Interstellar", description: "2014" },
+  // {
+  //   title: "Star Wars: Episode V - The Empire Strikes Back",
+  //   description: "1980",
+  // },
+  // { title: "Forrest Gump", description: "1994" },
+  // { title: "Inception", description: "2010" },
+  // {
+  //   title: "The Lord of the Rings: The Two Towers",
+  //   description: "2002",
+  // },
+  // { title: "One Flew Over the Cuckoo's Nest", description: "1975" },
+  // { title: "Goodfellas", description: "1990" },
+  // { title: "The Matrix", description: "1999" },
+  // { title: "Seven Samurai", description: "1954" },
+  // {
+  //   title: "Star Wars: Episode IV - A New Hope",
+  //   description: "1977",
+  // },
+  // { title: "City of God", description: "2002" },
+  // { title: "Se7en", description: "1995" },
+  // { title: "The Silence of the Lambs", description: "1991" },
+  // { title: "It's a Wonderful Life", description: "1946" },
+  // { title: "Life Is Beautiful", description: "1997" },
+  // { title: "The Usual Suspects", description: "1995" },
+  // { title: "Léon: The Professional", description: "1994" },
+  // { title: "Spirited Away", description: "2001" },
+  // { title: "Saving Private Ryan", description: "1998" },
+  // { title: "Once Upon a Time in the West", description: "1968" },
+  // { title: "American History X", description: "1998" },
+  // { title: "Interstellar", description: "2014" },
 ];
 
 let menuData = [
@@ -437,7 +437,6 @@ export const Overview: ComponentStory<typeof Select> = ({ ...args }) => {
                   key={i}
                   value={title}
                   title={title}
-                  checked={false}
                   selectable={true}
                   {...val}
                 />

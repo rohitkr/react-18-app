@@ -6,8 +6,9 @@ export interface NavInputStyles extends CSSProperties {
   boxSizing: "border-box" | "content-box" | "initial" | "inherit";
 }
 
-export interface NaviInputProps extends MuiInputBaseProps {
-  inputType?: "default" | "disabled" | "success" | "critical" | "read-only";
+export interface NaviInputProps
+  extends Pick<MuiInputBaseProps, Exclude<keyof MuiInputBaseProps, "translate">> {
+    inputType?: "default" | "disabled" | "success" | "critical" | "read-only";
   "data-testid"?: string;
   size?: "large" | "small";
   label?: string;
@@ -23,4 +24,5 @@ export interface NaviInputProps extends MuiInputBaseProps {
   minHeight?: number;
   maxHeight?: number;
   ref?: ForwardedRef<HTMLInputElement>;
+  translate?: string;
 }

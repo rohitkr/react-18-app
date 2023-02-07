@@ -14,7 +14,8 @@ export type TooltipPositionTypes =
   | "top-end"
   | "top-start"
   | "top";
-export interface NaviTooltipProps extends MuiTooltipProps {
+export interface NaviTooltipProps
+  extends Pick<MuiTooltipProps, Exclude<keyof MuiTooltipProps, "translate">> {
   position: TooltipPositionTypes;
   "data-testid"?: string;
   showArrow?: boolean;
@@ -22,5 +23,6 @@ export interface NaviTooltipProps extends MuiTooltipProps {
   title: string;
   forwardedRef?: ForwardedRef<HTMLDivElement>;
   maxWidth?: number;
-  open?: boolean
+  open?: boolean;
+  translate?: string;
 }

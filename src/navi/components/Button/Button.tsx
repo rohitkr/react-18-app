@@ -685,6 +685,7 @@ const ButtonComponent = ({
   trailingIcon,
   style,
   forwardedRef,
+  translate,
   ...attrs
 }: ButtonProps) => {
   let buttonProps: MUIButtonProps = {};
