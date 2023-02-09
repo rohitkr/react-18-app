@@ -1,0 +1,29 @@
+@import "../navi/tokens/build/scss/variables.scss";
+
+.navi-autocomplete-menu-container {
+
+    .MuiAutocomplete-listbox {
+      .MuiAutocomplete-option {
+        padding: 0;
+      }
+    }
+
+    .navi-menu-list-item {
+      width: 100%;
+      padding: 0px;
+    }
+  
+    .navi-item-selected {
+      background-color: $menu-selected-background-color;
+      &:hover {
+        background-color: $menu-selected-background-color;
+      }
+  
+      .navi-icon-selected {
+        svg {
+          color: $menu-selected-icon-color;
+        }
+      }
+    }
+  }
+  

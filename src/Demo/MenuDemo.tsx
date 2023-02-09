@@ -37,7 +37,7 @@ export default () => {
       open={open}
       onMenuChange={onMenuChange}
       handleClose={handleMenuClose}
-      menuPlacement="right"
+      // menuPlacement="right"
       height="200px"
       anchorEl={anchorRef.current}
       size="small"
@@ -48,7 +48,7 @@ export default () => {
       <DescriptiveMenuItem
         value="Sample Menu item - 1"
         title="Sample Menu item - 1"
-        description="Description text"
+        // description="Description text"
         selectable
         leadingIcon={<MoodHappy />}
       />
