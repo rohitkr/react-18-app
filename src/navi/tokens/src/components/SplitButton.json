@@ -1,0 +1,42 @@
+{
+    "splitbutton": {
+        "intent": {
+            "infoSoft": {
+                "color": {
+                    "value": "{color.info.400}"
+                },
+                "border": {
+                    "value": "1px solid {color.info.400}"
+                }
+            },
+            "infoBold": {
+                "color": {
+                    "value": "{color.info.500}"
+                }
+            },
+            "mutedLight": {
+                "color": {
+                    "value": "{color.secondary.400}"
+                },
+                "border": {
+                    "value": "1px solid {color.secondary.400}"
+                }
+            },
+            "mutedBold": {
+                "color": {
+                    "value": "{color.secondary.900}"
+                }
+            },
+            "prime": {
+                "color": {
+                    "value": "{color.primary.500}"
+                }
+            },
+            "default": {
+                "color": {
+                    "value": "{color.secondary.400}"
+                }
+            }
+        }
+    }
+}
