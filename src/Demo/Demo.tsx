@@ -18,10 +18,11 @@ import { X, ChevronDown, Tag as TagIcon } from "tabler-icons-react";
 import { MoodHappy, Pencil, Movie } from "tabler-icons-react";
 import MenuDemo from './MenuDemo';
 import './Autocomplete.scss'
+import { Autocomplete } from '../navi';
+
 const icon = <CheckBoxOutlineBlankIcon fontSize="small" />;
 const checkedIcon = <CheckBoxIcon fontSize="small" />;
 const countryList = _countryList.splice(0, 10);
-import { Autocomplete } from '../navi';
 
 
 export default function CheckboxesTags() {
@@ -96,53 +97,26 @@ export default function CheckboxesTags() {
 
         <Box>
           <Autocomplete
-            multiple
-            // open
-            // value={[countryList[1]]}
-            // id="checkboxes-tags-demo"
-            options={countryList}
-            disableCloseOnSelect
-            getOptionLabel={(option: any) => option.name}
-            renderOption={(option: any, { selected }) => (
-              <DescriptiveMenuItem
-                value={option.name}
-                title={option.name}
-                // description={option.density}
-                selectable
-                checked={selected}
-                size="small"
-              // leadingIcon={<MoodHappy />}
-              />
-            )}
-            onChange={(e, v) => { console.log(e, v) }}
-            style={{ width: 500 }}
-            PaperComponent={({ children }) => (
-              <Paper
-                // style={{ background: "yellow" }}
-                className="navi-autocomplete-menu-container"
-              >
-                {Array.isArray(children) && children.map((val) => {
-                  console.log("val: ", val);
-                  return val
-                })}
-              </Paper>
-            )}
-            renderInput={({ ...params }) => {
-              console.log("params: ", params);
-              return (
-                <NaviTextField
-                  label='Autocomplete using Navi Text input'
-                  {...params}
-                  minWidth={400}
-                // inputProps={params.InputProps}
-                // {...params.InputProps}
-                // {...params.inputProps}
-                />
-              )
+            autocompleteProps={{
+              multiple: true,
+              disableCloseOnSelect: true,
+              options: countryList,
+              renderInput: ({ ...params }) => {
+                return (
+                  <NaviTextField
+                    label='Autocomplete using Navi Text input'
+                    {...params}
+                    minWidth={400} />
+                );
+              }
             }}
+            selectable={false}
+            size={'small'}
+            label={''}
           />
         </Box>
 
+        {/* 
         <Box>
           <Autocomplete
             // multiple
@@ -153,7 +127,7 @@ export default function CheckboxesTags() {
             renderOption={(option: any, { selected }) => (
               <DescriptiveMenuItem value={option.name} title={option.name} selectable selected={selected} />
             )}
-            onChange={(e, v) => { console.log(e, v) }}
+            // onChange={(e, v) => { console.log(e, v) }}
             style={{ width: 500 }}
             renderInput={({ ...params }) => {
               // console.log("mui-params: ", params);
@@ -173,10 +147,11 @@ export default function CheckboxesTags() {
             options={countryList}
             disableCloseOnSelect
             getOptionLabel={(option: any) => option.name}
-            renderOption={(option: any, { selected }) => (
-              <DescriptiveMenuItem value={option.name} title={option.name} selectable selected={selected} />
-            )}
-            onChange={(e, v) => { console.log(e, v) }}
+            renderOption={(option: any, { selected }) => {
+              // console.log(option);
+              return <DescriptiveMenuItem value={option.name} title={option.name} selectable selected={selected} />
+            }}
+            // onChange={(e, v) => { console.log(e, v) }}
             style={{ width: 500 }}
             renderInput={({ ...params }) => {
               // console.log("mui-params: ", params);
@@ -186,7 +161,7 @@ export default function CheckboxesTags() {
               )
             }}
           />
-        </Box>
+        </Box> */}
 
         <Box>
           <MenuDemo />

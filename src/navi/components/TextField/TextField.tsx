@@ -107,7 +107,7 @@ const TextInputElement = ({
       hoverClass = "empty-field";
     }
   }
-console.log("inputProps: ", inputProps);
+// console.log("inputProps: ", inputProps);
   return (
     <Box
       ref={innerRef}

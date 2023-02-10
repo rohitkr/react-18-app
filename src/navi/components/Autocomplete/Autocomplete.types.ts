@@ -10,3 +10,11 @@ export interface AutocompleteProps extends Pick<MuiAutocompleteProps<data[], tru
   selectable?: boolean;
   options: data[];
 }
+
+export interface CustomAutoCompleteProps<T> {
+  autocompleteProps: MuiAutocompleteProps<T, boolean | undefined, boolean | undefined, boolean | undefined>;
+  selectable: boolean,
+  size: 'small' | 'large',
+  label: string;
+  loading?: boolean;
+}
