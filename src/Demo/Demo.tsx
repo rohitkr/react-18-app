@@ -4,7 +4,7 @@ import React from 'react';
 import Checkbox from '@material-ui/core/Checkbox';
 import TextField from '@material-ui/core/TextField';
 import Input from "@material-ui/core/Input";
-import Autocomplete from '@material-ui/lab/Autocomplete';
+// import Autocomplete from '@material-ui/lab/Autocomplete';
 import CheckBoxOutlineBlankIcon from '@material-ui/icons/CheckBoxOutlineBlank';
 import CheckBoxIcon from '@material-ui/icons/CheckBox';
 import _countryList from './countryList.json';
@@ -21,6 +21,8 @@ import './Autocomplete.scss'
 const icon = <CheckBoxOutlineBlankIcon fontSize="small" />;
 const checkedIcon = <CheckBoxIcon fontSize="small" />;
 const countryList = _countryList.splice(0, 10);
+import { Autocomplete } from '../navi';
+
 
 export default function CheckboxesTags() {
   return (
@@ -100,15 +102,15 @@ export default function CheckboxesTags() {
             // id="checkboxes-tags-demo"
             options={countryList}
             disableCloseOnSelect
-            getOptionLabel={(option) => option.name}
-            renderOption={(option, { selected }) => (
+            getOptionLabel={(option: any) => option.name}
+            renderOption={(option: any, { selected }) => (
               <DescriptiveMenuItem
-              value={option.name}
-              title={option.name} 
-              // description={option.density}
-              selectable
-              checked={selected}
-              size="small"
+                value={option.name}
+                title={option.name}
+                // description={option.density}
+                selectable
+                checked={selected}
+                size="small"
               // leadingIcon={<MoodHappy />}
               />
             )}
@@ -122,7 +124,7 @@ export default function CheckboxesTags() {
                 {Array.isArray(children) && children.map((val) => {
                   console.log("val: ", val);
                   return val
-                  })}
+                })}
               </Paper>
             )}
             renderInput={({ ...params }) => {
@@ -147,8 +149,8 @@ export default function CheckboxesTags() {
             // id="checkboxes-tags-demo"
             options={countryList}
             disableCloseOnSelect
-            getOptionLabel={(option) => option.name}
-            renderOption={(option, { selected }) => (
+            getOptionLabel={(option: any) => option.name}
+            renderOption={(option: any, { selected }) => (
               <DescriptiveMenuItem value={option.name} title={option.name} selectable selected={selected} />
             )}
             onChange={(e, v) => { console.log(e, v) }}
@@ -170,8 +172,8 @@ export default function CheckboxesTags() {
             // id="checkboxes-tags-demo"
             options={countryList}
             disableCloseOnSelect
-            getOptionLabel={(option) => option.name}
-            renderOption={(option, { selected }) => (
+            getOptionLabel={(option: any) => option.name}
+            renderOption={(option: any, { selected }) => (
               <DescriptiveMenuItem value={option.name} title={option.name} selectable selected={selected} />
             )}
             onChange={(e, v) => { console.log(e, v) }}

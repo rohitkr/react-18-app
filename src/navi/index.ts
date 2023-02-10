@@ -1,3 +1,4 @@
+import Autocomplete from "./components/Autocomplete/Autocomplete";
 import Badge from "./components/Badge/Badge";
 import BannerAlert from "./components/BannerAlert/BannerAlert";
 import Box from "./components/Box/Box";
@@ -27,6 +28,7 @@ import Tooltip from "./components/Tooltip/Tooltip";
 
 export * from "./Icons/Icons";
 export {
+  Autocomplete,
   Badge,
   BannerAlert,
   Box,
