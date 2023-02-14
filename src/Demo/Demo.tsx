@@ -1,6 +1,7 @@
 import React from "react";
 import Chip from "../navi/components/Tag/Tag";
 import Box from "../navi/components/Box/Box";
+import Input from "../navi/components/Input/Input";
 import { createStyles, makeStyles, Theme } from "@material-ui/core/styles";
 import Select from "../navi/components/Select/Select";
 import {
@@ -20,8 +21,8 @@ import MenuSample from "./MenuSample";
 import SelectSample from "./SelectSample";
 import Tag from "../navi/components/Tag/Tag";
 import SystemIcon from "../navi/components/SystemIcon/SystemIcon";
-import { SplitButton } from "../navi";
-import Input from './InputIssue/InputIssue';
+// import Input from './InputIssue/InputIssue';
+import SelectDemo from './Select';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -450,26 +451,18 @@ export default function AutocompleteControlled() {
         height: "1500px",
       }}
     >
-      <div style={{ height: "100px" }}>
-        <SplitButton
-          intent="info-bold"
-          tooltip={"Split Button tooltip"}
-          buttonText={"Split Button"}
-          menuItems={[
-            <GroupHeadingMenuItem key={1} title="Group heading 1" />,
-            <DescriptiveMenuItem key={2} title="Descriptive menu item 1" value="d_m_1" />,
-            <DescriptiveMenuItem key={3} title="Descriptive menu item 2" value="d_m_2" />,
-            <DescriptiveMenuItem key={4} title="Descriptive menu item 3" value="d_m_3" />,
-            <DescriptiveMenuItem key={5} title="Descriptive menu item 4" value="d_m_4" />,
-            <DividerMenuItem key={6} />,
-          ]}
-          onChange={(e) => {
-            console.log(e);
+      <div>
+        <SelectDemo />
+        <br/>
+        <br/>
+        <br/>
+        <Input label="Test" size="large" type="default" required
+          className="input-classname"
+          inputProps={{
+            className: "input-props-classname"
           }}
         />
-      </div>
-      <div>
-        <Input />
+
       </div>
     </div>
   );

@@ -34,7 +34,6 @@ const Template: ComponentStory<typeof Divider> = (args) => {
         display="flex"
         justifyContent="center"
         margin="50px"
-        width="100%"
         onClick={() => {
           setOrientation("horizontal");
           setOpacity("");
@@ -46,7 +45,6 @@ const Template: ComponentStory<typeof Divider> = (args) => {
       </Box>
       <h2>Horizontal Divider</h2>
       <Box
-        width="100%"
         onClick={() => {
           setOrientation("horizontal");
           setOpacity("");
@@ -58,7 +56,6 @@ const Template: ComponentStory<typeof Divider> = (args) => {
       </Box>
       <h2>Vertical Divider</h2>
       <Box
-        width="100%"
         onClick={() => {
           setOrientation("vertical");
           setOpacity("");
@@ -72,7 +69,6 @@ const Template: ComponentStory<typeof Divider> = (args) => {
       <h2>Divider variant</h2>
       <h3>Weight - 1</h3>
       <Box
-        width="100%"
         onClick={() => {
           setOrientation("horizontal");
           setWeight("1");
@@ -85,7 +81,6 @@ const Template: ComponentStory<typeof Divider> = (args) => {
       </Box>
       <h3>Weight - 2</h3>
       <Box
-        width="100%"
         onClick={() => {
           setOrientation("horizontal");
           setWeight("2");
@@ -99,7 +94,6 @@ const Template: ComponentStory<typeof Divider> = (args) => {
       <h2> Divider colors</h2>
       <h3>Color - light</h3>
       <Box
-        width="100%"
         onClick={() => {
           setOrientation("horizontal");
           setWeight("1");
@@ -112,7 +106,6 @@ const Template: ComponentStory<typeof Divider> = (args) => {
       </Box>
       <h3>Color - dark</h3>
       <Box
-        width="100%"
         onClick={() => {
           setOrientation("horizontal");
           setWeight("1");
@@ -125,7 +118,6 @@ const Template: ComponentStory<typeof Divider> = (args) => {
       </Box>
       <h3>Color - muted</h3>
       <Box
-        width="100%"
         onClick={() => {
           setOrientation("horizontal");
           setWeight("1");
@@ -138,7 +130,6 @@ const Template: ComponentStory<typeof Divider> = (args) => {
       </Box>
       <h3>Color - custom</h3>
       <Box
-        width="100%"
         onClick={() => {
           setOrientation("horizontal");
           setWeight("2");
@@ -151,7 +142,6 @@ const Template: ComponentStory<typeof Divider> = (args) => {
       </Box>
       <h3>Color - custom with opacity</h3>
       <Box
-        width="100%"
         onClick={() => {
           setOrientation("horizontal");
           setWeight("2");

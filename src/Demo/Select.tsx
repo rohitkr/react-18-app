@@ -1,20 +1,14 @@
-import { ComponentStory, ComponentMeta } from "@storybook/react";
 import React from "react";
-import Box from "../Box/Box";
-import Chip from "../Tag/Tag";
-import Select from "./Select";
+import {Box, Tag as Chip, Select, DividerMenuItem, DescriptiveMenuItem, GroupHeadingMenuItem} from "../navi";
+// import Chip from "../Tag/Tag";
+// import Select from "./Select";
 import { Pencil, Movie, Tag as TagIcon } from "tabler-icons-react";
-import { SelectDataProps } from "./Select.types";
-import DividerMenuItem from "../DividerMenuItem/DividerMenuItem";
-import DescriptiveMenuItem from "../DescriptiveMenuItem/DescriptiveMenuItem";
+import { SelectDataProps } from "../navi/components/Select/Select.types";
+// import DividerMenuItem from "../DividerMenuItem/DividerMenuItem";
+// import DescriptiveMenuItem from "../DescriptiveMenuItem/DescriptiveMenuItem";
 import { makeStyles, Theme, createStyles } from "@material-ui/core";
-import GroupHeadingMenuItem from "../GroupHeadingMenuItem/GroupHeadingMenuItem";
+// import GroupHeadingMenuItem from "../GroupHeadingMenuItem/GroupHeadingMenuItem";
 
-export default {
-  title: `Components/Select`,
-  component: Select,
-  argTypes: {},
-} as ComponentMeta<typeof Select>;
 
 let data = [
   {
@@ -330,7 +324,7 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 );
 
-export const Overview: ComponentStory<typeof Select> = ({ ...args }) => {
+export default ({ ...args }) => {
   const classes = useStyles();
   const [value, setValue] = React.useState<string[]>([
     "The Shawshank Redemption",
@@ -358,7 +352,7 @@ export const Overview: ComponentStory<typeof Select> = ({ ...args }) => {
           label: "Single Select",
           errorMessage: "",
           helperText: "",
-          // maxCharacters: 100,
+          maxCharacters: 100,
           minWidth: 600,
           moreInfo: "",
           required: true,
@@ -407,9 +401,9 @@ export const Overview: ComponentStory<typeof Select> = ({ ...args }) => {
           variant: "neutral",
         }}
         value={value}
-        // className={`aaa-select-classname`}
+        className={`select-classname`}
         inputProps={{
-          className: `aaa-classname`,
+          className: `input-classname`,
           label: "Select Movies",
           errorMessage: "Error message",
           helperText: "Helper text",

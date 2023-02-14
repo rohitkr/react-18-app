@@ -18,7 +18,7 @@ interface MenuItemsMapInterface {
 }
 
 const Menu: React.FC<MenuProps> = ({
-  handleClose,
+  onClose,
   onMenuChange,
   width,
   height,
@@ -28,8 +28,6 @@ const Menu: React.FC<MenuProps> = ({
   showSelectedValue = false,
   children,
   useSelectAll,
-  hideOnSelect = true,
-  style,
   ...props
 }) => {
   const [open, setOpen] = React.useState(props.open || false);
@@ -84,18 +82,18 @@ const Menu: React.FC<MenuProps> = ({
     setOpen(props.open);
   }, [props.open]);
 
-  const onHandleClose = (e: React.MouseEvent<Document, MouseEvent>) => {
-    handleClose && handleClose();
+  const handleClose = () => {
+    props.handleClose && props.handleClose();
   };
 
   function handleListKeyDown(event: React.KeyboardEvent) {
     if (event.key === "Tab") {
       event.preventDefault();
-      handleClose && handleClose();
+      props.handleClose && props.handleClose();
     }
     if (event.key === " ") {
       event.preventDefault();
-      handleClose && handleClose();
+      props.handleClose && props.handleClose();
     }
   }
 
@@ -119,9 +117,6 @@ const Menu: React.FC<MenuProps> = ({
     }
     setSelectionMap(updatedSelectionMap);
     onMenuChange && onMenuChange(selectedValues);
-    if (hideOnSelect) {
-      handleClose && handleClose();
-    }
   };
 
   const _onMenuItemClick = React.useCallback(
@@ -132,6 +127,7 @@ const Menu: React.FC<MenuProps> = ({
       if (!multiSelect) {
         onMenuChange && onMenuChange([value]);
         setSelectedValue([value]);
+        handleClose();
       } else if ("checked" in menuItemsMap[value]) {
         let updatedMap = {
           ...selectionMap,
@@ -158,9 +154,6 @@ const Menu: React.FC<MenuProps> = ({
         setSelectedValue(selectedValues);
         onMenuChange && onMenuChange(selectedValues);
       }
-      if (hideOnSelect) {
-        handleClose && handleClose();
-      }
     },
     [selectionMap]
   );
@@ -175,17 +168,15 @@ const Menu: React.FC<MenuProps> = ({
     >
       <Paper
         style={{
-          width:
-            width || `${(props.anchorEl as HTMLAnchorElement)?.offsetWidth}px`,
-          minWidth: width ? "" : minWidth,
+          width: width || (props.anchorEl as HTMLAnchorElement)?.offsetWidth,
+          minWidth,
           boxShadow:
             "0px 6px 20px rgba(0, 0, 0, 0.14), 0px 4px 12px rgba(0, 0, 0, 0.18)",
           maxHeight: height ? height : "auto",
           overflowY: height ? "scroll" : "auto",
-          ...style,
         }}
       >
-        <ClickAwayListener onClickAway={onHandleClose}>
+        <ClickAwayListener onClickAway={handleClose}>
           <MenuList
             autoFocusItem={true}
             onKeyDown={handleListKeyDown}

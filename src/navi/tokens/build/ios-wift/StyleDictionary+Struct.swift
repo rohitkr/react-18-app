@@ -4,7 +4,7 @@
 //
 
 // Do not edit directly
-// Generated on Wed, 08 Feb 2023 11:18:14 GMT
+// Generated on Mon, 23 Jan 2023 07:37:10 GMT
 
 
 import UIKit
@@ -725,14 +725,6 @@ internal struct StyleDictionaryStruct {
     internal static let spacing64 = 4rem
     internal static let spacing72 = 4.5rem
     internal static let spacing8 = .5rem
-    internal static let splitbuttonIntentDefaultColor = UIColor(red: 0.753, green: 0.745, blue: 0.800, alpha: 1)
-    internal static let splitbuttonIntentInfoBoldColor = UIColor(red: 0.051, green: 0.349, blue: 0.671, alpha: 1)
-    internal static let splitbuttonIntentInfoSoftBorder = 1px solid UIColor(red: 0.035, green: 0.459, blue: 0.843, alpha: 1)
-    internal static let splitbuttonIntentInfoSoftColor = UIColor(red: 0.035, green: 0.459, blue: 0.843, alpha: 1)
-    internal static let splitbuttonIntentMutedBoldColor = UIColor(red: 0.169, green: 0.169, blue: 0.251, alpha: 1)
-    internal static let splitbuttonIntentMutedLightBorder = 1px solid UIColor(red: 0.753, green: 0.745, blue: 0.800, alpha: 1)
-    internal static let splitbuttonIntentMutedLightColor = UIColor(red: 0.753, green: 0.745, blue: 0.800, alpha: 1)
-    internal static let splitbuttonIntentPrimeColor = UIColor(red: 0.620, green: 0.255, blue: 0.000, alpha: 1)
     internal static let switchTypeBaseDisabledBorder = none
     internal static let switchTypeBaseDisabledBoxShadow = none
     internal static let switchTypeBaseDisabledColor = UIColor(red: 0.988, green: 0.988, blue: 0.992, alpha: 1)

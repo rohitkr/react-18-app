@@ -10,6 +10,11 @@
     border-bottom: none;
   }
 
+  // Hide the dashed border bottom in disabled input
+  .MuiInput-underline.Mui-disabled:before {
+    border-bottom: none;
+  }
+
   .MuiInput-underline:before {
     border-bottom: none;
   }
@@ -22,59 +27,6 @@
     padding: $input-type-root-padding;
     outline: $input-type-default-outline;
     border-radius: $input-type-root-border-radius;
-  }
-
-  // Input style when used for Select component
-  .navi-select-input-container {
-    padding: 0;
-    outline: none;
-    outline: $input-type-default-outline;
-    border-radius: $input-type-root-border-radius;
-    height: unset !important;
-
-    &.large {
-      padding: 12px 0;
-    }
-    &.small {
-      padding: 8px 0;
-    }
-    .MuiSelect-root {
-      padding: $input-type-root-select-padding;
-    }
-    .MuiSelect-root:focus {
-      background-color: unset;
-    }
-
-    .MuiSelect-select {
-      overflow-y: auto;
-      mask-image: linear-gradient(to top, transparent, black),
-        linear-gradient(to left, transparent 17px, black 17px);
-      mask-size: 100% 20000px;
-      mask-position: left bottom;
-      -webkit-mask-image: linear-gradient(to top, transparent, black),
-        linear-gradient(to left, transparent 17px, black 17px);
-      -webkit-mask-size: 100% 20000px;
-      -webkit-mask-position: left bottom;
-      transition: mask-position 0.3s, -webkit-mask-position 0.3s;
-    }
-
-    .MuiSelect-select:hover {
-      -webkit-mask-position: left top;
-    }
-
-    @keyframes background {
-      from {
-        background: pink;
-      }
-      to {
-        background: #c0d6ff;
-      }
-    }
-
-    .wrapper {
-      float: left;
-      animation: background 5s infinite alternate;
-    }
   }
 
   .input-label {
@@ -206,5 +158,73 @@
     background-color: $input-type-read-only-background-color;
     color: $input-type-read-only-color;
     outline: $input-type-read-only-outline;
+  }
+
+  // Styles to show Active state for Input
+  .Mui-focused {
+    outline: $input-type-focus-border;
+
+    &:hover {
+      outline: $input-type-focus-border;
+    }
+  }
+}
+
+// Input style when used for Select component
+.navi-select-input-container {
+  .base-input {
+    padding: 0;
+    outline: none;
+    outline: $input-type-default-outline;
+    border-radius: $input-type-root-border-radius;
+    height: unset !important;
+  }
+
+  &.large {
+    padding: 12px 0;
+  }
+
+  &.small {
+    padding: 8px 0;
+  }
+
+  .MuiSelect-root {
+    padding: $input-type-root-select-padding;
+  }
+
+  .MuiSelect-root:focus {
+    background-color: unset;
+  }
+
+  .MuiSelect-select {
+    overflow-y: auto;
+    mask-image: linear-gradient(to top, transparent, black),
+      linear-gradient(to left, transparent 17px, black 17px);
+    mask-size: 100% 20000px;
+    mask-position: left bottom;
+    -webkit-mask-image: linear-gradient(to top, transparent, black),
+      linear-gradient(to left, transparent 17px, black 17px);
+    -webkit-mask-size: 100% 20000px;
+    -webkit-mask-position: left bottom;
+    transition: mask-position 0.3s, -webkit-mask-position 0.3s;
+  }
+
+  .MuiSelect-select:hover {
+    -webkit-mask-position: left top;
+  }
+
+  @keyframes background {
+    from {
+      background: pink;
+    }
+
+    to {
+      background: #c0d6ff;
+    }
+  }
+
+  .wrapper {
+    float: left;
+    animation: background 5s infinite alternate;
   }
 }

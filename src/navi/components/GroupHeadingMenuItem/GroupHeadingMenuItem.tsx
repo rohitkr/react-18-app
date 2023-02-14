@@ -4,24 +4,29 @@ import Divider from "../Divider/Divider";
 import MenuItem from "@material-ui/core/MenuItem";
 import "./GroupHeadingMenuItem.scss";
 import { withStyles } from "@material-ui/core/styles";
+import Typography from "@material-ui/core/Typography";
 import tokenObj from "../../tokens/build/json/tokens.json";
 import { GroupHeadingMenuItemProps } from "./GroupHeadingMenuItem.types";
 const GroupHeadingMenuItem: React.FC<GroupHeadingMenuItemProps> = (props) => {
-  const { size = "large" } = props;
-  const MenuItemStyles = () => ({
+  const TitleTypography = withStyles((theme) => ({
     root: {
-      height: size === "small" ? "36px" : "48px",
       color: tokenObj["color-secondary-800"],
       fontFamily: tokenObj["text-body-03-font-family"],
       fontSize:
         size === "small"
-          ? tokenObj["text-body-04-font-size"]
-          : tokenObj["text-body-03-font-size"],
+          ? tokenObj["text-body-03-font-size"]
+          : tokenObj["text-body-04-font-size"],
       fontWeight: Number(tokenObj["text-body-03-font-weight"]),
       lineHeight:
         size === "small"
           ? tokenObj["text-body-03-line-height"]
           : tokenObj["text-body-04-line-height"],
+    },
+  }))(Typography);
+
+  const { size = "large" } = props;
+  const MenuItemStyles = () => ({
+    root: {
       "&:hover": {
         backgroundColor: "transparent",
       },
@@ -32,7 +37,7 @@ const GroupHeadingMenuItem: React.FC<GroupHeadingMenuItemProps> = (props) => {
     <StyledMenuItem
       {...props}
       disableRipple
-      className={`navi-menu-list-item`}
+      className={`navi-menu-list-item group-heading-${props.size}`}
       disableGutters
     >
       <Box height="inherit" padding="8px" width="100%" display="flex">
@@ -44,7 +49,7 @@ const GroupHeadingMenuItem: React.FC<GroupHeadingMenuItemProps> = (props) => {
           paddingLeft="8px"
           paddingRight="8px"
         >
-          <Box paddingRight="4px">{props.title}</Box>
+          <TitleTypography>{props.title}</TitleTypography>
           <Divider orientation="horizontal" paddingLeft="8px" />
         </Box>
       </Box>
