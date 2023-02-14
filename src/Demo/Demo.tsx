@@ -48,7 +48,7 @@ export default function CheckboxesTags() {
                     // display: selectedValue?.length ? "block" : "none",
                     marginRight: tokenObj["spacing-0"],
                   }}
-                  title={"clearTooltipText"}
+                  title={"clearTooltipText"} 
                 // onClick={onClearClick}
                 >
                   <X />
@@ -80,17 +80,11 @@ export default function CheckboxesTags() {
                     marginRight: tokenObj["spacing-0"],
                   }}
                   title={"clearTooltipText"}
-                // onClick={onClearClick}
                 >
                   <X />
                 </IconButton>
               </InputAdornment>
             }}
-            // endAdornment={}
-            // navi-select-input-container class name is being used to prevent menu to be opened
-            // while clicking on the batch icon
-            // className={`navi-select-input-container `}
-            // size={size}
             inputType={"default"}
           />
         </Box>
@@ -112,7 +106,6 @@ export default function CheckboxesTags() {
             }}
             selectable={false}
             size={'small'}
-            label={''}
           />
         </Box>
 

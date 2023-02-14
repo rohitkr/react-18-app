@@ -11,7 +11,7 @@ import './Autocomplete.scss'
 
 
 export default <T,>(props: CustomAutoCompleteProps<T>) => {
-  const { label, loading, selectable, size, autocompleteProps } = props;
+  const { selectable, size, autocompleteProps, inputProps } = props;
   // const { selectable } = autocompleteProps;
   return (<>
     <Autocomplete
@@ -55,7 +55,7 @@ export default <T,>(props: CustomAutoCompleteProps<T>) => {
 };
 
 
-export const CustomAutoComplete = function CheckboxesTags({ size, selectable, options, ...props }: AutocompleteProps) {
+export const CustomAutoComplete = function CheckboxesTags({ size, selectable, options, inputProps, ...props }: AutocompleteProps) {
   return (
     <>
       This is an auto complete
@@ -95,6 +95,7 @@ export const CustomAutoComplete = function CheckboxesTags({ size, selectable, op
               label='Autocomplete using Navi Text input'
               {...params}
               minWidth={400}
+              {...inputProps}
             // inputProps={params.InputProps}
             // {...params.InputProps}
             // {...params.inputProps}
