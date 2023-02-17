@@ -187,41 +187,37 @@ const TagComponent: React.FC<TagProps> = ({
   const [isHovered, setIsHovered] = React.useState(false);
   const [isFocussed, setIsFocussed] = React.useState(false);
 
-  const handleHover = React.useCallback((e: React.MouseEvent) => {
+  const handleHover = (e: React.MouseEvent) => {
     setIsHovered(true);
-  }, []);
+  }
 
-  const handleHoverOut = React.useCallback((e: React.MouseEvent) => {
+  const handleHoverOut = (e: React.MouseEvent) => {
     setIsHovered(false);
     onHover && onHover(e);
-  }, []);
+  }
 
-  const handleDismiss = React.useCallback((e: React.MouseEvent) => {
+  const handleDismiss = (e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
     dismissible && onDismiss && onDismiss(e, props.value);
-  }, []);
+  }
 
-  const handleOnClick = React.useCallback((e: React.MouseEvent) => {
+  const handleOnClick = (e: React.MouseEvent) => {
     e.preventDefault();
     onClick && onClick(e);
-  }, []);
+  }
 
-  const handleFocus = React.useCallback(
+  const handleFocus =
     (e: React.FocusEvent<HTMLElement, Element>) => {
       setIsFocussed(true);
       onFocus && onFocus(e);
-    },
-    []
-  );
+    }
 
-  const handleBlur = React.useCallback(
+  const handleBlur =
     (e: React.FocusEvent<HTMLElement, Element>) => {
       setIsFocussed(false);
       onFocus && onFocus(e);
-    },
-    []
-  );
+    }
 
   const styles = tagStyles(
     size,
