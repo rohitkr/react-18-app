@@ -29,6 +29,8 @@
 
   .navi-autocomplete-input {
     padding: 0;
+    flex-grow: 1;
+    width: 0;
   }
 
   .MuiAutocomplete-inputRoot[class*="MuiInput-root"] .MuiAutocomplete-input {

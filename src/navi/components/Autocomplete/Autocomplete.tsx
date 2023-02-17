@@ -2,6 +2,8 @@
 
 import React from 'react';
 import Autocomplete from '@material-ui/lab/Autocomplete';
+import Chip from '@material-ui/core/Chip/Chip';
+import TextField from '@material-ui/core/TextField';
 import Paper from '@material-ui/core/Paper';
 import DescriptiveMenuItem from '../DescriptiveMenuItem/DescriptiveMenuItem';
 import GroupHeadingMenuItem from '../GroupHeadingMenuItem/GroupHeadingMenuItem';
@@ -178,6 +180,7 @@ export const CustomAutoComplete = function CheckboxesTags({ size, selectable, op
       disableCloseOnSelect={props.multiple}
       renderInput={({ ...params }) => {
         return (
+          // <TextField {...params} variant="filled" placeholder="Favorites" />
           <NaviTextField
             {...inputProps}
             {...params}
@@ -188,7 +191,7 @@ export const CustomAutoComplete = function CheckboxesTags({ size, selectable, op
           />
         );
       }}
-    />
+  />
   </Box>
   );
 }

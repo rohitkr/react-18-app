@@ -25,13 +25,12 @@ export default function Tags() {
         multiple
         id="tags-filled"
         options={top100Films.map((option) => option.title)}
-        defaultValue={[top100Films[13].title]}
+        // defaultValue={[top100Films[13].title]}
         disableCloseOnSelect
         // freeSolo
         renderTags={(value: string[], getTagProps) =>
           value.map((option: string, index: number) => {
             const props: any = {...getTagProps({ index }), 'data-tag-index' : ""};
-            console.log(props);
             return (
               // <NaviChip label={option} {...props} dismissible onDismiss={(e) => { console.log("onDelete: ", e); props.onDelete && props.onDelete(e); }} />
               <Chip label={option} dismissible {...props}
@@ -48,7 +47,7 @@ export default function Tags() {
           })
         }
         renderInput={(params) => (
-          <TextField {...params} variant="filled" label="freeSolo" placeholder="Favorites" />
+          <TextField {...params} variant="filled" placeholder="Favorites" />
         )}
       />
     </div>
