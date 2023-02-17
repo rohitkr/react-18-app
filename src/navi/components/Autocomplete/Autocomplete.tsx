@@ -175,6 +175,7 @@ export const CustomAutoComplete = function CheckboxesTags({ size, selectable, op
       }}
       options={options}
       {...props}
+      disableCloseOnSelect={props.multiple}
       renderInput={({ ...params }) => {
         return (
           <NaviTextField

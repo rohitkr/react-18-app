@@ -118,6 +118,8 @@ export default function CheckboxesTags() {
           <CustomAutoComplete
             options={countryList}
             multiple
+            limitTags={2}
+            disableCloseOnSelect={true}
             // open
             size="small"
             inputProps={{
