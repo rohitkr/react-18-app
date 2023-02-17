@@ -83,24 +83,24 @@ export default <T,>(props: CustomAutoCompleteProps<T>) => {
           const props: any = getTagProps({ index });
           return (
             // <Chip label={val.name} {...getTagProps({ index })}  />
-            <Box display="flex" margin={`5px 6px`}>{val.name}</Box>
-            // <Tag
-            //   size={"large"}
-            //   intent="muted"
-            //   dismissible
-            //   LeadingIcon={<TagIcon size={8} />}
-            //   key={index}
-            //   label={val.name}
-            //   value={val.name}
-            //   {...props}
-            //   onDismiss={(e) => { props.onDelete && props.onDelete() }}
-            // // onDismiss={onSelectedChipDismiss}
-            // // {...tagProps}
-            // // className={`${classes.chip} ${tagProps?.className} navi-prevent-menu-open `}
-            // // style={{
-            // //   ...tagProps?.style,
-            // // }}
-            // />
+            // <Box display="flex" margin={`5px 6px`}>
+            <Tag
+              size={"large"}
+              intent="muted"
+              dismissible
+              LeadingIcon={<TagIcon size={8} />}
+              key={index}
+              label={val.name}
+              value={val.name}
+              {...props}
+              onDismiss={(e) => { props.onDelete && props.onDelete() }}
+            // onDismiss={onSelectedChipDismiss}
+            // {...tagProps}
+            // className={`${classes.chip} ${tagProps?.className} navi-prevent-menu-open `}
+            // style={{
+            //   ...tagProps?.style,
+            // }}
+            />
             // </Box>
           )
         });
@@ -156,14 +156,8 @@ export const CustomAutoComplete = function CheckboxesTags({ size, selectable, op
           return (
             // <Chip label={val.name} {...getTagProps({ index })}  />
             // <Box display="flex" margin={`5px 6px`}>
-            
-            // <Box display="flex" margin={`5px 6px`}
-            //   style={{ background: "#fff000", padding: "10px", borderRadius: "9px" }}
-            //   onClick={(e) => { props.onDelete && props.onDelete(); }}
-            // >{val.name}</Box>
-
             <Tag
-              size={"large"}
+              size={size}
               intent="muted"
               dismissible
               LeadingIcon={<TagIcon size={8} />}
@@ -171,8 +165,7 @@ export const CustomAutoComplete = function CheckboxesTags({ size, selectable, op
               label={val.name}
               value={val.name}
               {...props}
-              onClick={(e) => { props.onDelete && props.onDelete(); }} />
-              // onDismiss={(e) => { props.onDelete && props.onDelete(); }} />
+              onDismiss={(e) => { props.onDelete && props.onDelete(); }} />
             // </Box>
           );
         });
@@ -187,7 +180,6 @@ export const CustomAutoComplete = function CheckboxesTags({ size, selectable, op
       disableCloseOnSelect={props.multiple}
       renderInput={({ ...params }) => {
         return (
-          // <TextField {...params} variant="filled" placeholder="Favorites" />
           <NaviTextField
             {...inputProps}
             {...params}
@@ -198,7 +190,7 @@ export const CustomAutoComplete = function CheckboxesTags({ size, selectable, op
           />
         );
       }}
-    />
+  />
   </Box>
   );
 }

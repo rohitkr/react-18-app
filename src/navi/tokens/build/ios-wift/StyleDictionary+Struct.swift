@@ -4,7 +4,7 @@
 //
 
 // Do not edit directly
-// Generated on Mon, 23 Jan 2023 07:37:10 GMT
+// Generated on Fri, 17 Feb 2023 10:59:01 GMT
 
 
 import UIKit
@@ -997,17 +997,17 @@ internal struct StyleDictionaryStruct {
     internal static let tagTypeRootLabelLargeLineHeight = 20px
     internal static let tagTypeRootLabelMargin = 0px 4px
     internal static let tagTypeRootLabelSmallFontFamily = Inter
-    internal static let tagTypeRootLabelSmallFontSize = 12px
+    internal static let tagTypeRootLabelSmallFontSize = 14px
     internal static let tagTypeRootLabelSmallFontWeight = 500
-    internal static let tagTypeRootLabelSmallLineHeight = 16px
+    internal static let tagTypeRootLabelSmallLineHeight = 20px
     internal static let tagTypeRootLargeFontSize = 14px
     internal static let tagTypeRootLargeHeight = 20px
     internal static let tagTypeRootLargeLineHeight = 1.25rem
-    internal static let tagTypeRootLargePadding = 8px 8px
-    internal static let tagTypeRootSmallFontSize = 12px
-    internal static let tagTypeRootSmallHeight = 12px
-    internal static let tagTypeRootSmallLineHeight = 1rem
-    internal static let tagTypeRootSmallPadding = 4px 4px
+    internal static let tagTypeRootLargePadding = 4px 4px
+    internal static let tagTypeRootSmallFontSize = 14px
+    internal static let tagTypeRootSmallHeight = 1.25px
+    internal static let tagTypeRootSmallLineHeight = 1.25rem
+    internal static let tagTypeRootSmallPadding = 0
     internal static let textBody01FontFamily = Inter
     internal static let textBody01FontSize = 1.125rem
     internal static let textBody01FontWeight = 400

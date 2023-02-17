@@ -53,7 +53,6 @@ const Select: React.FC<SelectProps> = ({
   dataTestId,
   openTooltipText,
   clearTooltipText,
-  className='',
   ...props
 }) => {
   const [menuItemsMap] = React.useState(() => {
@@ -310,7 +309,7 @@ const Select: React.FC<SelectProps> = ({
   }, [selectionMap]);
 
   return (
-    <Box className={`navi-menu-component ${className}`}>
+    <Box className="navi-menu-component">
       <MuiSelect
         renderValue={selectedChips}
         {...props}
@@ -322,18 +321,19 @@ const Select: React.FC<SelectProps> = ({
         data-testid={dataTestId || undefined}
         input={
           <TextInput
-            {...inputProps}
-            className={`navi-select-input-container ${inputProps?.className || ''}`}
+            // navi-select-input-container class name is being used to prevent menu to be opened
+            // while clicking on the batch icon
+            className={`navi-select-input-container ${inputProps?.className}`}
             style={{
               padding:
                 renderValueAsTag && selectedValue.length ? 0 : inputPadding,
-                ...inputProps?.style
             }}
             {...{
               minWidth: props.minWidth,
               maxWidth: props.maxWidth,
               minHeight: props.minHeight,
               maxHeight: props.maxHeight,
+              ...inputProps,
             }}
             size={size}
             inputType={"default"}
@@ -343,10 +343,6 @@ const Select: React.FC<SelectProps> = ({
         inputProps={{
           // Hide the actual select component dropdown icon
           IconComponent: () => null,
-          // ...inputProps,
-          // navi-select-input-container class name is being used to prevent menu to be opened
-          // while clicking on the batch icon
-          // className: `navi-select-input-container ${inputProps?.className}`
         }}
         onClose={onSelectClose}
         onOpen={onSelectOpen}
