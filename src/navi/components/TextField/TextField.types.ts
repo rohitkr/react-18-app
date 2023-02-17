@@ -13,6 +13,7 @@ export interface NaviInputProps
   "data-testid"?: string;
   size?: "large" | "small";
   label?: string;
+  width?: string | number;
   maxCharacters?: number;
   required?: boolean;
   helperText?: string;

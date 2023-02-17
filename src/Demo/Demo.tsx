@@ -17,12 +17,15 @@ import tokenObj from '../navi/tokens/build/json/tokens.json'
 import { X, ChevronDown, Tag as TagIcon } from "tabler-icons-react";
 import { MoodHappy, Pencil, Movie } from "tabler-icons-react";
 import MenuDemo from './MenuDemo';
+import SelectDemo from './SelectDemo';
+import MuiAutocomplete from './MuiAutocomplete';
 import './Autocomplete.scss'
-import { Autocomplete } from '../navi';
-
+import { Autocomplete, Input as NaviInput, Tag as Chip } from '../navi';
+import { CustomAutoComplete } from '../navi/components/Autocomplete/Autocomplete'
+import { AutocompleteRenderInputParams } from '@material-ui/lab';
 const icon = <CheckBoxOutlineBlankIcon fontSize="small" />;
 const checkedIcon = <CheckBoxIcon fontSize="small" />;
-const countryList = _countryList.splice(0, 10);
+const countryList = _countryList.splice(0, 50);
 
 
 export default function CheckboxesTags() {
@@ -48,7 +51,7 @@ export default function CheckboxesTags() {
                     // display: selectedValue?.length ? "block" : "none",
                     marginRight: tokenObj["spacing-0"],
                   }}
-                  title={"clearTooltipText"} 
+                  title={"clearTooltipText"}
                 // onClick={onClearClick}
                 >
                   <X />
@@ -89,9 +92,10 @@ export default function CheckboxesTags() {
           />
         </Box>
 
-        <Box>
+        <Box marginLeft='30px'>
           <Autocomplete
             autocompleteProps={{
+              // open: true,
               multiple: true,
               disableCloseOnSelect: true,
               options: countryList,
@@ -99,16 +103,41 @@ export default function CheckboxesTags() {
                 return (
                   <NaviTextField
                     label='Autocomplete using Navi Text input'
+                    placeholder='Navi Autocomplete'
                     {...params}
                     minWidth={400} />
                 );
               }
             }}
             selectable={false}
-            size={'small'}
+            size={'large'}
           />
         </Box>
 
+        <Box>
+          <CustomAutoComplete
+            options={countryList}
+            multiple
+            // open
+            size="small"
+            inputProps={{
+              label: "Navi Autocomplete component",
+              helperText: "Helper Text",
+              successMessage: "Success Message Text",
+              errorMessage: "Error Message Text",
+              // required: true,
+              minWidth: 600,
+              moreInfo: "More info text",
+              placeholder: "place holder text",
+              // inputType: "critical",
+              tooltipPlacement: "bottom"
+            }}
+          />
+        </Box>
+
+        <Box>
+          <MuiAutocomplete />
+        </Box>
         {/* 
         <Box>
           <Autocomplete
@@ -156,8 +185,14 @@ export default function CheckboxesTags() {
           />
         </Box> */}
 
-        <Box>
+        <Box marginLeft='30px'>
           <MenuDemo />
+        </Box>
+        <Box marginLeft='30px'>
+          <SelectDemo />
+        </Box>
+        <Box marginLeft='30px'>
+          <NaviInput label='Navi Text input' required />
         </Box>
       </Box>
 

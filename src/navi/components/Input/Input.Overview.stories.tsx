@@ -60,7 +60,7 @@ const Template: ComponentStory<typeof Input> = (args) => {
       <div
         style={{ display: "flex", justifyContent: "center", margin: "50px" }}
       >
-        <Input inputType="default" />
+        <Input inputType="default" maxWidth={800}/>
       </div>
       <p>Note: Pass the 'value' prop to Input to make it a controlled input.</p>
       <h2>Input states</h2>
@@ -86,6 +86,7 @@ const Template: ComponentStory<typeof Input> = (args) => {
               <Input
                 inputType="default"
                 label="Label"
+                width={'500px'}
                 onClick={() => {
                   setType("default");
                   setLabel("Label");
@@ -471,6 +472,7 @@ const Template: ComponentStory<typeof Input> = (args) => {
         inputType="success"
         label="Sample label"
         successMessage="Success message"
+        width={'auto'}
         onClick={() => {
           setType("success");
           setLabel("Sample label");

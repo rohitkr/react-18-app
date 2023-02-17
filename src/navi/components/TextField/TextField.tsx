@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import baseTokens from "../../tokens/build/json/tokens.json";
-import Input from "@material-ui/core/Input";
 import TextField from "@material-ui/core/TextField";
 import Box from "../Box/Box";
 import InputLabel from "@material-ui/core/InputLabel";
@@ -32,9 +31,10 @@ const TextInputElement = ({
   tooltipPlacement,
   translate,
   size = "large",
+  inputProps,
   innerRef,
-  defaultValue,
-  InputProps,
+  width,
+  className='',
   ...props
 }: NaviInputProps) => {
   const inputMinWidth = minWidth
@@ -72,8 +72,8 @@ const TextInputElement = ({
     </div>
   ) : null;
 
-  const inputProps = {
-    ...props.inputProps,
+  inputProps = {
+    ...inputProps,
     readOnly: inputType === "read-only",
     maxLength: maxCharacters,
   };
@@ -81,7 +81,7 @@ const TextInputElement = ({
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = e.target;
     setCharacterCount(
-      (typeof props.value === "string" && props.value?.length) || 0
+      (typeof value === "string" && value?.length) || 0
     );
     setInputValue(value);
     props.onChange && props.onChange(e);
@@ -107,12 +107,15 @@ const TextInputElement = ({
       hoverClass = "empty-field";
     }
   }
-// console.log("inputProps: ", inputProps);
+
   return (
     <Box
       ref={innerRef}
-      style={{ display: "inline-block" }}
-      className={`navi-input-container ${props.className}`}
+      style={{
+        display: "inline-block",
+        width: width === 'auto' ? '100%' : ''
+      }}
+      className={`navi-text-field-container ${className}`}
     >
       <InputLabel className="input-label">
         <div
@@ -168,48 +171,24 @@ const TextInputElement = ({
         {CharacterLimitText}
       </InputLabel>
       <TextField
-        variant="outlined"
-        inputProps={{
-          className: `
-            base-input 
-            ${size}
-            ${inputType}
-            ${hoverClass}
-            ${errorClass}
-            ${props.className}          
-        `,
-          style: {
-            minWidth: inputMinWidth,
-            maxWidth: inputMaxWidth,
-            minHeight: inputMinHeight,
-            maxHeight: inputMaxHeight,
-            ...props.style
-          },
-          ...inputProps,
-          // ...InputProps,
-          // ...{...props.InputProps}
+        disabled={inputType === "disabled"}
+        style={{
+          minWidth: inputMinWidth,
+          maxWidth: width === 'auto' ? '' : inputMaxWidth,
+          minHeight: inputMinHeight,
+          maxHeight: inputMaxHeight,
+          width: width === 'auto' ? '100%' : width,
+          ...inputProps.style
         }}
-        InputProps={InputProps}
-        // endAdornment={inputProps.endAdornment}
-
-        //   disabled={inputType === "disabled"}
-        //   {...props}
-        //   className={`
-        //   base-input 
-        //   ${size}
-        //   ${inputType}
-        //   ${hoverClass}
-        //   ${errorClass}
-        //   ${props.className}
-        // `}
-        //   style={{
-        //     minWidth: inputMinWidth,
-        //     maxWidth: inputMaxWidth,
-        //     minHeight: inputMinHeight,
-        //     maxHeight: inputMaxHeight,
-        //     ...props.style
-        //   }}
-        //   inputProps={inputProps}
+        inputProps={inputProps}
+        {...props}
+        className={`
+          base-input
+          ${size}
+          ${inputType}
+          ${hoverClass}
+          ${errorClass}
+        `}
         onBlur={handleBlur}
         onChange={handleInputChange}
       ></TextField>

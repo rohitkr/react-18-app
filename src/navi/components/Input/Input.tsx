@@ -31,7 +31,10 @@ const TextInputElement = ({
   tooltipPlacement,
   translate,
   size = "large",
+  inputProps,
   innerRef,
+  width,
+  className='',
   ...props
 }: NaviInputProps) => {
   const inputMinWidth = minWidth
@@ -69,8 +72,8 @@ const TextInputElement = ({
     </div>
   ) : null;
 
-  const inputProps = {
-    ...props.inputProps,
+  inputProps = {
+    ...inputProps,
     readOnly: inputType === "read-only",
     maxLength: maxCharacters,
   };
@@ -78,7 +81,7 @@ const TextInputElement = ({
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = e.target;
     setCharacterCount(
-      (typeof props.value === "string" && props.value?.length) || 0
+      (typeof value === "string" && value?.length) || 0
     );
     setInputValue(value);
     props.onChange && props.onChange(e);
@@ -108,8 +111,11 @@ const TextInputElement = ({
   return (
     <Box
       ref={innerRef}
-      style={{ display: "inline-block" }}
-      className={`navi-input-container ${props.className}`}
+      style={{
+        display: "inline-block",
+        width: width === 'auto' ? '100%' : ''
+      }}
+      className={`navi-input-container ${className}`}
     >
       <InputLabel className="input-label">
         <div
@@ -166,23 +172,23 @@ const TextInputElement = ({
       </InputLabel>
       <Input
         disabled={inputType === "disabled"}
-        {...props}
-        className={`
-        base-input 
-        ${size}
-        ${inputType}
-        ${hoverClass}
-        ${errorClass}
-        ${props.className}
-      `}
         style={{
           minWidth: inputMinWidth,
-          maxWidth: inputMaxWidth,
+          maxWidth: width === 'auto' ? '' : inputMaxWidth,
           minHeight: inputMinHeight,
           maxHeight: inputMaxHeight,
-          ...props.style
+          width: width === 'auto' ? '100%' : width,
+          ...inputProps.style
         }}
         inputProps={inputProps}
+        {...props}
+        className={`
+          base-input
+          ${size}
+          ${inputType}
+          ${hoverClass}
+          ${errorClass}
+        `}
         onBlur={handleBlur}
         onChange={handleInputChange}
       ></Input>
