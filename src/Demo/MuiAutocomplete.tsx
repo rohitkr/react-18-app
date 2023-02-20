@@ -30,14 +30,14 @@ export default function Tags() {
         // freeSolo
         renderTags={(value: string[], getTagProps) =>
           value.map((option: string, index: number) => {
-            const props: any = {...getTagProps({ index }), 'data-tag-index' : ""};
+            const props: any = {...getTagProps({ index })};
             return (
               // <NaviChip label={option} {...props} dismissible onDismiss={(e) => { console.log("onDelete: ", e); props.onDelete && props.onDelete(e); }} />
               <Chip label={option} dismissible {...props}
-                onDelete={(e: any) => {
-                  console.log("onDelete: ", e.target);
-                  // props.onDelete && props.onDelete()
-                }}
+                // onDelete={(e: any) => {
+                //   console.log("onDelete: ", e.target);
+                //   // props.onDelete && props.onDelete()
+                // }}
                 onClick={(e: any) => {
                   console.log("onDelete: ", e.target);
                   props.onDelete && props.onDelete()

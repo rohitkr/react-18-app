@@ -118,10 +118,14 @@ export default function CheckboxesTags() {
           <CustomAutoComplete
             options={countryList}
             multiple
-            limitTags={2}
+            limitTags={4}
             disableCloseOnSelect={true}
             // open
-            size="small"
+            required
+            size="large"
+            onChange={(e, value, reason) => {
+              console.log(value, reason)
+            }}
             inputProps={{
               label: "Navi Autocomplete component",
               helperText: "Helper Text",

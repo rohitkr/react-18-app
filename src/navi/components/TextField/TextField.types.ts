@@ -11,6 +11,7 @@ export interface NaviInputProps
   extends Pick<TextFieldProps, Exclude<keyof TextFieldProps, "translate" | "size">> {
     inputType?: "default" | "disabled" | "success" | "critical" | "read-only";
   "data-testid"?: string;
+  dataValue?: string;
   size?: "large" | "small";
   label?: string;
   width?: string | number;

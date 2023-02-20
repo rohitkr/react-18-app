@@ -11,7 +11,7 @@ import DividerMenuItem from '../DividerMenuItem/DividerMenuItem';
 import EmptyStateMenuItem from '../EmptyStateMenuItem/EmptyStateMenuItem';
 import MenuItem from '../MenuItem/MenuItem';
 import NaviTextField from '../TextField/TextField'
-import { AutocompleteProps, CustomAutoCompleteProps } from './Autocomplete.types'
+import { AutocompleteProps, CustomAutoCompleteProps, DataObj } from './Autocomplete.types'
 import Box from '../Box/Box';
 import Tag from '../Tag/Tag';
 import { Tag as TagIcon } from 'tabler-icons-react';
@@ -93,7 +93,7 @@ export default <T,>(props: CustomAutoCompleteProps<T>) => {
               label={val.name}
               value={val.name}
               {...props}
-              onDismiss={(e) => { props.onDelete && props.onDelete() }}
+            // onDismiss={(e) => { props.onDelete && props.onDelete() }}
             // onDismiss={onSelectedChipDismiss}
             // {...tagProps}
             // className={`${classes.chip} ${tagProps?.className} navi-prevent-menu-open `}
@@ -130,8 +130,11 @@ export default <T,>(props: CustomAutoCompleteProps<T>) => {
 
 
 export const CustomAutoComplete = function CheckboxesTags({ size, selectable, options, inputProps, ...props }: AutocompleteProps) {
+  const [dataValue, setDataValue] = React.useState<(string | DataObj)[]>();
   return (<Box className='navi-autocomplete-container'>
     <Autocomplete
+      // To suppress the Autocomplete warning: The value provided to Autocomplete is invalid
+      getOptionSelected={(option, value) => option.name === value.name}
       getOptionLabel={(option: any) => option.name}
       renderOption={(option: any, { selected }) => {
         const MenuComponent = GetComponent(option, selected, size);
@@ -139,7 +142,6 @@ export const CustomAutoComplete = function CheckboxesTags({ size, selectable, op
           MenuComponent
         );
       }}
-      onChange={(e, v) => { console.log(e, v); }}
       style={{ width: 500 }}
       PaperComponent={({ children }) => (
         <Paper
@@ -154,8 +156,6 @@ export const CustomAutoComplete = function CheckboxesTags({ size, selectable, op
         return value.map((val: { name: string; }, index: number) => {
           const props: any = getTagProps({ index });
           return (
-            // <Chip label={val.name} {...getTagProps({ index })}  />
-            // <Box display="flex" margin={`5px 6px`}>
             <Tag
               size={size}
               intent="muted"
@@ -165,8 +165,8 @@ export const CustomAutoComplete = function CheckboxesTags({ size, selectable, op
               label={val.name}
               value={val.name}
               {...props}
-              onDismiss={(e) => { props.onDelete && props.onDelete(); }} />
-            // </Box>
+              onDismiss={(e) => { props.onDelete && props.onDelete(); }}
+            />
           );
         });
       }}
@@ -177,20 +177,28 @@ export const CustomAutoComplete = function CheckboxesTags({ size, selectable, op
       }}
       options={options}
       {...props}
+      onChange={(event, value, reason) => {
+        const valueArr: string[] = [];
+        value.forEach((v: any) => valueArr.push(v.value));
+        setDataValue(valueArr);
+        props.onChange && props.onChange(event, value, reason);
+      }}
       disableCloseOnSelect={props.multiple}
       renderInput={({ ...params }) => {
         return (
           <NaviTextField
             {...inputProps}
             {...params}
+            required={props.required}
             inputProps={{
               ...params.inputProps,
               className: `navi-autocomplete-input ${size}`,
             }}
+            dataValue={dataValue?.join(',')}
           />
         );
       }}
-  />
+    />
   </Box>
   );
 }

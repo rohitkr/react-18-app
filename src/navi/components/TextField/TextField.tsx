@@ -35,6 +35,7 @@ const TextInputElement = ({
   innerRef,
   width,
   className='',
+  dataValue,
   ...props
 }: NaviInputProps) => {
   const inputMinWidth = minWidth
@@ -91,7 +92,7 @@ const TextInputElement = ({
     e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement, Element>
   ) => {
     const { value } = e.target;
-    required && !value
+    required && !value && !dataValue
       ? setInternalError("Empty input field")
       : setInternalError("");
     props.onBlur && props.onBlur(e);
@@ -180,7 +181,10 @@ const TextInputElement = ({
           width: width === 'auto' ? '100%' : width,
           ...inputProps.style
         }}
-        inputProps={inputProps}
+        inputProps={{
+          ...inputProps,
+          // "data-value": dataValue
+        }}
         {...props}
         className={`
           base-input

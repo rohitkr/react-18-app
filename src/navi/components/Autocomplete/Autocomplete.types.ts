@@ -2,19 +2,19 @@ import { AutocompleteProps as MuiAutocompleteProps, AutocompleteRenderInputParam
 import { NaviInputProps } from "../TextField/TextField.types";
 
 
-interface data {
+export interface DataObj {
   name: string
   value?: string
   title?: string
   description?: string
   checked?: boolean
 }
-type DataObj = data[];
-export interface AutocompleteProps extends Pick<MuiAutocompleteProps<data, true, true, true>, Exclude<keyof MuiAutocompleteProps<string, true, true, true>, "options" | "size" | "renderInput">> {
+export interface AutocompleteProps extends Pick<MuiAutocompleteProps<DataObj, true, true, true>, Exclude<keyof MuiAutocompleteProps<string, true, true, true>, "options" | "size" | "renderInput">> {
   inputProps?: NaviInputProps;
   size?: 'small' | 'large'
   selectable?: boolean;
-  options: data[];
+  options: DataObj[];
+  required?: boolean;
   renderInput?: (params: AutocompleteRenderInputParams) => React.ReactNode;
 }
 
