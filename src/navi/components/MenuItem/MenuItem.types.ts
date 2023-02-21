@@ -1,4 +1,12 @@
 import { MenuItemProps as MuiMenuItemProps } from "@material-ui/core/MenuItem";
+
+export enum MenuItemType {
+  DIVIDER = "divider",
+  DESCRIPTIVE = "descriptive",
+  EMPTY = "empty",
+  GROUP_HEADING = "group_heading",
+  SELECT_ALL = '_select_all'
+}
 export interface MenuItemProps extends MuiMenuItemProps {
   title?: string;
   size?: "large" | "small";
@@ -7,7 +15,7 @@ export interface MenuItemProps extends MuiMenuItemProps {
   leadingIcon?: React.ReactNode;
   avatarSrc?: string;
   avatar?: string;
-  checked?: boolean;
+  selected?: boolean;
   value: string | number;
   onMenuItemClick?: (
     e: React.MouseEvent<HTMLLIElement, MouseEvent>,

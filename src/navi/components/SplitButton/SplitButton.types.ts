@@ -1,4 +1,9 @@
-import { ForwardedRef } from 'react';
+import { DividerMenuItemProps } from "./../DividerMenuItem/DividerMenuItem.types";
+import { EmptyStateMenuItemProps } from "../EmptyStateMenuItem/EmptyStateMenuItem.types";
+import { DescriptiveMenuItemProps } from "./../DescriptiveMenuItem/DescriptiveMenuItem.types";
+import { ForwardedRef } from "react";
+import { GroupHeadingMenuItemProps } from "../GroupHeadingMenuItem/GroupHeadingMenuItem.types";
+import { MenuItemType } from "../MenuItem/MenuItem.types";
 export interface SplitButtonMenuProps {
   label: string;
   value: string;
@@ -12,10 +17,19 @@ export interface SplitButtonMenuProps {
     e: React.MouseEvent<HTMLLIElement, MouseEvent>
   ) => void;
 }
+
+type MenuItemsPropsContent = DescriptiveMenuItemProps &
+  EmptyStateMenuItemProps &
+  GroupHeadingMenuItemProps &
+  DividerMenuItemProps;
+interface MenuItemsProps extends MenuItemsPropsContent {
+  type: MenuItemType;
+}
 export interface SplitButtonProps {
+  id?: string;
+  dataTestId?: string;
   size?: "small" | "large";
   intent?: "info-soft" | "info-bold" | "muted-light" | "muted-bold" | "prime";
-  buttonIcon?: React.ReactNode;
   tooltipPosition?:
     | "top"
     | "top-start"
@@ -31,7 +45,7 @@ export interface SplitButtonProps {
     | "right-end";
   tooltip: string;
   buttonText: string;
-  menuItems: Array<React.ReactNode>;
+  menuItems: Array<MenuItemsProps>;
   menuProps?: {
     open?: boolean;
     onMenuChange?: (selectedItem: Array<string | number>) => void;

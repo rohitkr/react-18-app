@@ -53,7 +53,6 @@ const Select: React.FC<SelectProps> = ({
   dataTestId,
   openTooltipText,
   clearTooltipText,
-  className='',
   ...props
 }) => {
   const [menuItemsMap] = React.useState(() => {
@@ -82,7 +81,7 @@ const Select: React.FC<SelectProps> = ({
       if (React.Children.count(children)) {
         return React.Children.toArray(children).reduce(
           (acc: Array<string>, child) => {
-            if (React.isValidElement(child) && child.props.checked) {
+            if (React.isValidElement(child) && child.props.selected) {
               return [...acc, child.props.value];
             }
             return acc;
@@ -101,7 +100,7 @@ const Select: React.FC<SelectProps> = ({
         const map = React.Children.toArray(children).reduce(
           (acc: SelectionMapInterface, child) => {
             if (React.isValidElement(child)) {
-              acc[child.props.value] = child.props.checked ? true : false;
+              acc[child.props.value] = child.props.selected ? true : false;
               return acc;
             }
             return acc;
@@ -137,12 +136,12 @@ const Select: React.FC<SelectProps> = ({
       let updatedMap = { ...selectionMap };
       if (value) {
         if (
-          "checked" in menuItemsMap[String(value)] ||
+          "selected" in menuItemsMap[String(value)] ||
           menuItemsMap[String(value)].disabled
         ) {
           updatedMap = {
             ...updatedMap,
-            [String(value)]: menuItemsMap[value].checked || false,
+            [String(value)]: menuItemsMap[value].selected || false,
           };
         } else {
           updatedMap = { ...updatedMap, [String(value)]: false };
@@ -219,8 +218,8 @@ const Select: React.FC<SelectProps> = ({
       if (value.indexOf("_select_all") >= 0) {
         let updatedSelectedValues: Array<string> = [];
         Object.keys(selectionMap).forEach((key) => {
-          if ("checked" in menuItemsMap[key] || menuItemsMap[key].disabled) {
-            updatedSelectedMap[key] = menuItemsMap[key].checked;
+          if ("selected" in menuItemsMap[key] || menuItemsMap[key].disabled) {
+            updatedSelectedMap[key] = menuItemsMap[key].selected;
           } else {
             updatedSelectedMap[key] = !allSelected;
           }
@@ -234,8 +233,8 @@ const Select: React.FC<SelectProps> = ({
         setSelectValue(updatedSelectedValues);
       } else {
         Object.keys(selectionMap).forEach((key) => {
-          if ("checked" in menuItemsMap[key] || menuItemsMap[key].disabled) {
-            updatedSelectedMap[key] = menuItemsMap[key].checked;
+          if ("selected" in menuItemsMap[key] || menuItemsMap[key].disabled) {
+            updatedSelectedMap[key] = menuItemsMap[key].selected;
           } else if (value.indexOf(key) >= 0) {
             updatedSelectedMap[key] = true;
           } else {
@@ -267,10 +266,10 @@ const Select: React.FC<SelectProps> = ({
   const onClearClick = () => {
     let updatedMap = { ...selectionMap };
     Object.keys(selectionMap).forEach((key) => {
-      if ("checked" in menuItemsMap[key] || menuItemsMap[key].disabled) {
+      if ("selected" in menuItemsMap[key] || menuItemsMap[key].disabled) {
         updatedMap = {
           ...updatedMap,
-          [String(key)]: menuItemsMap[key].checked,
+          [String(key)]: menuItemsMap[key].selected,
         };
       } else {
         updatedMap = {
@@ -297,20 +296,20 @@ const Select: React.FC<SelectProps> = ({
           React.PropsWithChildren<MenuItemProps>
         >;
         const value = child.props.value;
-        let checked = selectionMap[child.props.value];
+        let selected = selectionMap[child.props.value];
 
         return React.cloneElement(item, {
           key: value,
           size: size,
           selectable: multiSelect,
-          checked: checked,
+          selected: selected,
         });
       }
     });
   }, [selectionMap]);
 
   return (
-    <Box className={`navi-menu-component ${className}`}>
+    <Box className="navi-menu-component">
       <MuiSelect
         renderValue={selectedChips}
         {...props}
@@ -322,18 +321,19 @@ const Select: React.FC<SelectProps> = ({
         data-testid={dataTestId || undefined}
         input={
           <TextInput
-            {...inputProps}
-            className={`navi-select-input-container ${inputProps?.className || ''}`}
+            // navi-select-input-container class name is being used to prevent menu to be opened
+            // while clicking on the batch icon
+            className={`navi-select-input-container ${inputProps?.className}`}
             style={{
               padding:
                 renderValueAsTag && selectedValue.length ? 0 : inputPadding,
-                ...inputProps?.style
             }}
             {...{
               minWidth: props.minWidth,
               maxWidth: props.maxWidth,
               minHeight: props.minHeight,
               maxHeight: props.maxHeight,
+              ...inputProps,
             }}
             size={size}
             inputType={"default"}
@@ -343,10 +343,6 @@ const Select: React.FC<SelectProps> = ({
         inputProps={{
           // Hide the actual select component dropdown icon
           IconComponent: () => null,
-          // ...inputProps,
-          // navi-select-input-container class name is being used to prevent menu to be opened
-          // while clicking on the batch icon
-          // className: `navi-select-input-container ${inputProps?.className}`
         }}
         onClose={onSelectClose}
         onOpen={onSelectOpen}
@@ -411,7 +407,7 @@ const Select: React.FC<SelectProps> = ({
             key="_select_all"
             value="_select_all"
             size={size}
-            checked={allSelected}
+            selected={allSelected}
           />
         ) : null}
         {items}

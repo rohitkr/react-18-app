@@ -6,7 +6,7 @@ import { ArrowLeft, ArrowRight } from "tabler-icons-react";
 import { DescriptiveMenuItemProps } from "./DescriptiveMenuItem.types";
 
 export default {
-  title: "Components/DescriptiveMenuItem",
+  title: "Components/MenuItem/DescriptiveMenuItem",
   component: DescriptiveMenuItem,
   parameters: {
     docs: {

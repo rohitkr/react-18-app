@@ -5,7 +5,7 @@ import { GroupHeadingMenuItemProps } from "./GroupHeadingMenuItem.types";
 import GroupHeadingMenuItem from "./GroupHeadingMenuItem";
 
 export default {
-  title: "Components/GroupHeadingMenuItem",
+  title: "Components/MenuItem/GroupHeadingMenuItem",
   component: GroupHeadingMenuItem,
   parameters: {
     docs: {

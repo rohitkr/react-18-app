@@ -24,8 +24,15 @@ import SystemIcon from "../navi/components/SystemIcon/SystemIcon";
 // import Input from './InputIssue/InputIssue';
 // import SelectDemo from './Select';
 // import { TextArea } from "../navi";
-import { Input as NaviInput } from "../navi";
+import { Input as NaviInput, SplitButton } from "../navi";
 
+export enum MenuItemType {
+  DIVIDER = "divider",
+  DESCRIPTIVE = "descriptive",
+  EMPTY = "empty",
+  GROUP_HEADING = "group_heading",
+  SELECT_ALL = '_select_all'
+}
 
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -476,7 +483,7 @@ export default function AutocompleteControlled() {
         <NaviInput maxCharacters={100} label="Navi Text Area default" />
         <NaviInput disabled maxCharacters={100} label="Navi Text Area disabled" />
         <NaviInput readOnly maxCharacters={100} label="Navi Text Area read only" />
-        <NaviInput  maxCharacters={100} label="Navi Text Area read only" />
+        <NaviInput maxCharacters={100} label="Navi Text Area read only" />
       </div>
 
       <div>
@@ -508,10 +515,10 @@ export default function AutocompleteControlled() {
           tagProps={{
             variant: 'neutral'
           }}
-          // value={[
-          //   'The Shawshank Redemption',
-          //   'The Dark Knight'
-          // ]}
+        // value={[
+        //   'The Shawshank Redemption',
+        //   'The Dark Knight'
+        // ]}
         >
           <DescriptiveMenuItem
             description="1994"
@@ -610,6 +617,52 @@ export default function AutocompleteControlled() {
             value="The Lord of the Rings: The Fellowship of the Ring"
           />
         </Select>
+      </div>
+
+      <div>
+        <SplitButton
+          intent="prime"
+          // buttonIcon={<ChevronDown />}
+          tooltip="Open menu"
+          buttonText="Split button"
+          
+          onChange={(e)=>{console.log(e)}}
+          menuItems={[
+            {
+              type: MenuItemType.GROUP_HEADING,
+              title: "Group Heading 1",
+              value: "group_heading_1",
+            },
+            {
+              type: MenuItemType.DESCRIPTIVE,
+              title: "Descriptive menu item 1",
+              value: "d_m_1",
+            },
+            {
+              type: MenuItemType.DESCRIPTIVE,
+              title: "Descriptive menu item 2",
+              value: "d_m_2",
+            },
+            {
+              type: MenuItemType.DESCRIPTIVE,
+              title: "Descriptive menu item 3",
+              value: "d_m_3",
+            },
+            {
+              type: MenuItemType.DESCRIPTIVE,
+              title: "Descriptive menu item 4",
+              value: "d_m_4",
+            },
+            { type: MenuItemType.DIVIDER, value: "divider_m_i" },
+          ]}
+          menuProps={{
+            // multiSelect: true,
+            // width: "400px",
+            // menuPlacement: "right",
+            // hideOnSelect: true,
+          }}
+        />
+
       </div>
 
     </div>

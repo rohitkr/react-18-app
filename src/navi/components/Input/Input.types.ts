@@ -10,7 +10,6 @@ export interface NaviInputProps
   extends Pick<MuiInputBaseProps, Exclude<keyof MuiInputBaseProps, "translate">> {
     inputType?: "default" | "disabled" | "success" | "critical" | "read-only";
   "data-testid"?: string;
-  width?: string | number;
   size?: "large" | "small";
   label?: string;
   maxCharacters?: number;

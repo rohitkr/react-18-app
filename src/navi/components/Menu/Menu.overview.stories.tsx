@@ -117,12 +117,12 @@ const Template: ComponentStory<typeof Menu> = (args) => {
             title="Sample menu item 1"
             description="With description"
             trailingIcon={<Pencil />}
-            checked={true}
+            selected={true}
           />
           <DescriptiveMenuItem
             value="text_only"
             title="Text only menu item"
-            checked={true}
+            selected={true}
             disabled
           />
           <DescriptiveMenuItem
@@ -152,8 +152,90 @@ const Template: ComponentStory<typeof Menu> = (args) => {
             trailingIcon={<Pencil />}
             leadingIcon={<Pencil />}
           />
+          <DescriptiveMenuItem
+            value="descridsptive_item_1"
+            avatar="A"
+            title="Sample menu item 1"
+            description="With description"
+            trailingIcon={<Pencil />}
+            selected={true}
+          />
+          <DescriptiveMenuItem
+            value="textdsfg_only"
+            title="Text only menu item"
+            selected={true}
+            disabled
+          />
+          <DescriptiveMenuItem
+            value="descrfdgiptive_menu_item_2"
+            title="Descriptive menu item 2"
+            description="Description text 2"
+          />
+          <DescriptiveMenuItem
+            value="descrfghiptive_item_3"
+            avatar="A"
+            title="Sample menu item 3"
+            description="With description"
+            trailingIcon={<Pencil />}
+          />
+          <DescriptiveMenuItem
+            value="text_hjhfonly_2"
+            title="Text only menu item 2"
+          />
+          <DescriptiveMenuItem
+            value="descrihgjptive_menu-_item_4"
+            title="Descriptive menu item 4"
+            description="Description text 4"
+          />
+          <EmptyStateMenuItem
+            value="empvcbcvty_card"
+            title="No results found"
+            trailingIcon={<Pencil />}
+            leadingIcon={<Pencil />}
+          />
+          <DescriptiveMenuItem
+            value="descrvcbsdiptive_item_1"
+            avatar="A"
+            title="Sample menu item 1"
+            description="With description"
+            trailingIcon={<Pencil />}
+            selected={true}
+          />
+          <DescriptiveMenuItem
+            value="texcvbxt_only"
+            title="Text only menu item"
+            selected={true}
+            disabled
+          />
+          <DescriptiveMenuItem
+            value="descripsdfctive_menu_item_2"
+            title="Descriptive menu item 2"
+            description="Description text 2"
+          />
+          <DescriptiveMenuItem
+            value="descrcsdfiptive_item_3"
+            avatar="A"
+            title="Sample menu item 3"
+            description="With description"
+            trailingIcon={<Pencil />}
+          />
+          <DescriptiveMenuItem
+            value="tevdsfxt_only_2"
+            title="Text only menu item 2"
+          />
+          <DescriptiveMenuItem
+            value="descriptivesdfs_menu-_item_4"
+            title="Descriptive menu item 4"
+            description="Description text 4"
+          />
+          <EmptyStateMenuItem
+            value="empsdfsdty_card"
+            title="No results found"
+            trailingIcon={<Pencil />}
+            leadingIcon={<Pencil />}
+          />
 
-          <GroupHeadingMenuItem value="group_heading_1" title="Group heading" />
+          <GroupHeadingMenuItem value="gfsroup_heading_1" title="Group heading" />
         </Menu>
       </Box>
       <CodeBlock>

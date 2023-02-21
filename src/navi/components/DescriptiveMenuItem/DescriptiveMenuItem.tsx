@@ -17,7 +17,7 @@ const DescriptiveMenuItem: React.FC<DescriptiveMenuItemProps> = ({
   leadingIcon,
   selectable = false,
   _onMenuItemClick,
-  checked,
+  selected,
   trailingIcon,
   onBulkActionClick,
   disableHoverStyle,
@@ -84,7 +84,7 @@ const DescriptiveMenuItem: React.FC<DescriptiveMenuItemProps> = ({
       {...props}
       disableRipple
       className={`${
-        checked ? "navi-item-selected" : ""
+        selected ? "navi-item-selected" : ""
       } navi-menu-list-item descriptive-${size}`}
       disableGutters
       onClick={handleMenuItemClick}
@@ -104,7 +104,7 @@ const DescriptiveMenuItem: React.FC<DescriptiveMenuItemProps> = ({
               <Checkbox
                 label={""}
                 value={value}
-                checked={checked}
+                checked={selected}
                 size="small"
               />
             </Box>
@@ -134,7 +134,7 @@ const DescriptiveMenuItem: React.FC<DescriptiveMenuItemProps> = ({
         {trailingIcon && (
           <Box
             className={`${
-              checked ? "navi-icon-selected" : ""
+              selected ? "navi-icon-selected" : ""
             } navi-menu-item-action-icon-${size}`}
             display="flex"
             onClick={handleTrailingIconClick}
