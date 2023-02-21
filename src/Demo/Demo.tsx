@@ -475,9 +475,9 @@ export default function AutocompleteControlled() {
       <div>
         <NaviInput width="auto" maxCharacters={100} label="Navi Text Area default" />
         <NaviInput required maxCharacters={100} label="Navi Text Area default" />
-        <NaviInput disabled maxCharacters={100} label="Navi Text Area disabled" />
-        <NaviInput inputType="disabled" maxCharacters={100} label="Navi Text Area read only" />
-        <NaviInput inputType="read-only" maxCharacters={100} label="Navi Text Area read only" />
+        <NaviInput disabled maxCharacters={100} label="Navi Text Area disabled" value="disabled text field"/>
+        <NaviInput inputType="disabled" maxCharacters={100} label="Navi Text Area read only" value="disabled text field"/>
+        <NaviInput inputType="read-only" maxCharacters={100} label="Navi Text Area read only" value="Read only text field"/>
         <NaviInput  maxCharacters={100} label="Navi Text Area read only" />
       </div>
       <div>

@@ -112,17 +112,6 @@
     }
   }
 
-  .navi-disabled {
-    outline: $input-type-disabled-outline;
-    background-color: $input-type-disabled-background-color;
-    font-family: $input-type-disabled-font-family;
-    font-style: $input-type-disabled-font-style;
-
-    &:hover {
-      outline: $input-type-disabled-outline;
-    }
-  }
-
   .navi-empty-field {
     &:hover {
       background-color: $input-type-root-background-color;
@@ -163,6 +152,18 @@
 
     &:hover {
       outline: $input-type-focus-border;
+    }
+  }
+
+  .navi-disabled {
+    outline: $input-type-disabled-outline;
+    background-color: $input-type-disabled-background-color;
+    font-family: $input-type-disabled-font-family;
+    font-style: $input-type-disabled-font-style;
+
+    &:hover {
+      outline: $input-type-disabled-outline;
+      background-color: $input-type-disabled-background-color;
     }
   }
 }
