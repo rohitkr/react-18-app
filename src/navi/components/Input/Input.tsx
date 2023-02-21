@@ -14,6 +14,7 @@ const tokenObj: { [key: string]: any } = tokens;
 const INPUT_MIN_WIDTH = 280;
 const INPUT_MAX_WIDTH = 280;
 const INPUT_MIN_HEIGHT = 32;
+const FOCUS_CLASS_NAME = 'navi-focused';
 
 const TextInputElement = ({
   inputType = "default",
@@ -35,6 +36,7 @@ const TextInputElement = ({
   innerRef,
   width,
   className='',
+  inputClassName='',
   disabled,
   ...props
 }: NaviInputProps) => {
@@ -52,6 +54,7 @@ const TextInputElement = ({
 
   const inputMaxHeight = maxHeight || "unset";
 
+  const [focusClassName, setFocusClassName] = useState("");
   const [inputValue, setInputValue] = React.useState(props.value || "");
   const [internalError, setInternalError] = useState("");
   const [characterCount, setCharacterCount] = useState(
@@ -95,23 +98,15 @@ const TextInputElement = ({
     required && !value
       ? setInternalError("Empty input field")
       : setInternalError("");
+    setFocusClassName('');
     props.onBlur && props.onBlur(e);
   };
-  let hoverClass;
-  // if (inputType === "disabled" || disabled) {
-  //   hoverClass = "";
-  // } else {
-  //   if ((typeof inputValue === "string" && inputValue?.length) || 0) {
-  //     hoverClass = "filled-field";
-  //   } else {
-  //     hoverClass = "empty-field";
-  //   }
-  // }
-  if ((typeof inputValue === "string" && inputValue?.length) || 0) {
-    // hoverClass = "filled-field";
-  } else {
-    // hoverClass = "empty-field";
-  }
+  const handleFocus = (
+    e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement, Element>
+  ) => {
+    setFocusClassName(FOCUS_CLASS_NAME);
+    props.onFocus && props.onFocus(e);
+  };
 
   return (
     <Box
@@ -186,6 +181,7 @@ const TextInputElement = ({
         }}
         inputProps={{...inputProps, className: `navi-text-input-input ${inputProps.className || ''}`}}
         {...props}
+        onFocus={handleFocus}
         disabled={inputType === "disabled" || disabled}
         className={`
           navi-text-input-base
@@ -195,6 +191,8 @@ const TextInputElement = ({
           ${inputType === "disabled" || disabled ? 'navi-disabled' : ''}
           navi-${(typeof inputValue === "string" && inputValue?.length) ? 'filled-field' : 'empty-field'}
           ${internalError ? 'navi-critical' : ''}
+          ${focusClassName}
+          ${inputClassName}
         `.replace(/\n|\s+/g, ' ')}
         onBlur={handleBlur}
         onChange={handleInputChange}

@@ -17,6 +17,8 @@ import SelectedChip from "./SelectedChip";
 import SelectAllMenuItem from "../MenuItem/SelectAllMenuItem";
 import tokenObj from "../../tokens/build/json/tokens.json";
 
+const FOCUS_CLASS_NAME = 'navi-select-focused';
+
 interface SelectionMapInterface {
   [key: string]: boolean | undefined;
 }
@@ -113,6 +115,7 @@ const Select: React.FC<SelectProps> = ({
     }
     return {};
   });
+  const [focusClassName, setFocusClassName] = React.useState("");
   // Used ref as <any> because MUI inputRef for select component is Any
   const inputRef = React.useRef<any>(null);
   const classes = useStyles();
@@ -162,12 +165,14 @@ const Select: React.FC<SelectProps> = ({
 
   const onSelectClose = React.useCallback(() => {
     setOpen(false);
+    setFocusClassName('')
   }, []);
 
   // This function prevents Menu from opening while clicking on the Chip
   const onSelectOpen = React.useCallback((e: React.ChangeEvent<{}>) => {
     let ele = e.target as HTMLElement;
     let preventMenuOpen = false;
+    setFocusClassName(FOCUS_CLASS_NAME);
     while (ele.nodeName !== "BODY" && !preventMenuOpen) {
       ele = ele.parentNode as HTMLElement;
       // If the element has className navi-prevent-menu-open, it will prevent
@@ -261,6 +266,7 @@ const Select: React.FC<SelectProps> = ({
   );
 
   const onMenuOpen = () => {
+    setFocusClassName(FOCUS_CLASS_NAME);
     setOpen(true);
   };
 
@@ -324,6 +330,7 @@ const Select: React.FC<SelectProps> = ({
           <TextInput
             {...inputProps}
             className={`navi-select-input-container ${inputProps?.className || ''}`}
+            inputClassName={focusClassName}
             style={{
               padding:
                 renderValueAsTag && selectedValue.length ? 0 : inputPadding,

@@ -123,13 +123,13 @@
     }
   }
 
-  .empty-field {
+  .navi-empty-field {
     &:hover {
       background-color: $input-type-root-background-color;
     }
   }
 
-  .filled-field {
+  .navi-filled-field {
     &:hover {
       background-color: $input-type-hover-background-color;
     }
@@ -158,7 +158,7 @@
   }
 
   // Styles to show Active state for Input
-  .Mui-focused {
+  .navi-focused {
     outline: $input-type-focus-border;
 
     &:hover {
@@ -191,5 +191,22 @@
 
   .navi-text-input-input:focus {
     background-color: unset;
+  }
+
+  .navi-focused {
+    outline: $input-type-hover-outline;
+
+    &:hover {
+      outline: $input-type-hover-outline;
+    }
+  }
+
+  // Styles to show Active state for Input
+  .navi-select-focused {
+    outline: $input-type-focus-border;
+
+    &:hover {
+      outline: $input-type-focus-border;
+    }
   }
 }
