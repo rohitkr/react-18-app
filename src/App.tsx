@@ -2,28 +2,22 @@ import React from 'react';
 import logo from './logo.svg';
 // import './App.css';
 import Demo from './Demo/Demo';
+import { Button } from '@material-ui/core';
+import { Button as NaviButton } from './navi'
+import { StylesProvider, createGenerateClassName } from '@material-ui/core/styles';
+
+const generateClassName = createGenerateClassName({
+  seed: "Ecc",
+});
 
 function App() {
-  return (
+  return (<StylesProvider generateClassName={generateClassName}>
     <div className="App">
+      <Button>Test button</Button>
+      <NaviButton>Test NaviButton</NaviButton>
       <Demo />
-
-      {/* <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header> */}
     </div>
-  );
+  </StylesProvider>)
 }
 
 export default App;

@@ -2,31 +2,54 @@
 /* cyrillic-ext */
 
 .navi-input-container {
-  .MuiInput-underline:hover {
-    border-bottom: none;
+  // .MuiInput-underline:hover {
+  //   border-bottom: none;
+  // }
+
+  // .MuiInput-underline:hover:not(.Mui-disabled):before {
+  //   border-bottom: none;
+  // }
+
+  // // Hide the dashed border bottom in disabled input
+  // .MuiInput-underline.Mui-disabled:before {
+  //   border-bottom: none;
+  // }
+
+  // .MuiInput-underline:before {
+  //   border-bottom: none;
+  // }
+
+  // .MuiInput-underline:after {
+  //   border-bottom: none;
+  // }
+
+  // .MuiInputBase-root {
+  //   padding: $input-type-root-padding;
+  //   outline: $input-type-default-outline;
+  //   border-radius: $input-type-root-border-radius;
+  // }
+
+  .navi-text-input-base {
+    padding: $input-type-root-padding;
+    outline: $input-type-default-outline;
+    border-radius: $input-type-root-border-radius;
   }
 
-  .MuiInput-underline:hover:not(.Mui-disabled):before {
+  .navi-text-input-base::after {
+    border-bottom: none!important;
+  }
+
+  .navi-text-input-base::before {
+    border-bottom: none!important;
+  }
+
+  .navi-text-input-base:hover:not(.Mui-disabled):before {
     border-bottom: none;
   }
 
   // Hide the dashed border bottom in disabled input
-  .MuiInput-underline.Mui-disabled:before {
+  .navi-text-input-base.Mui-disabled:before {
     border-bottom: none;
-  }
-
-  .MuiInput-underline:before {
-    border-bottom: none;
-  }
-
-  .MuiInput-underline:after {
-    border-bottom: none;
-  }
-
-  .MuiInputBase-root {
-    padding: $input-type-root-padding;
-    outline: $input-type-default-outline;
-    border-radius: $input-type-root-border-radius;
   }
 
   .input-label {
@@ -188,30 +211,30 @@
     padding: 8px 0;
   }
 
-  .MuiSelect-root {
-    padding: $input-type-root-select-padding;
-  }
+  // .MuiSelect-root {
+  //   padding: $input-type-root-select-padding;
+  // }
 
-  .MuiSelect-root:focus {
-    background-color: unset;
-  }
+  // .MuiSelect-root:focus {
+  //   background-color: unset;
+  // }
 
-  .MuiSelect-select {
-    overflow-y: auto;
-    mask-image: linear-gradient(to top, transparent, black),
-      linear-gradient(to left, transparent 17px, black 17px);
-    mask-size: 100% 20000px;
-    mask-position: left bottom;
-    -webkit-mask-image: linear-gradient(to top, transparent, black),
-      linear-gradient(to left, transparent 17px, black 17px);
-    -webkit-mask-size: 100% 20000px;
-    -webkit-mask-position: left bottom;
-    transition: mask-position 0.3s, -webkit-mask-position 0.3s;
-  }
+  // .MuiSelect-select {
+  //   overflow-y: auto;
+  //   mask-image: linear-gradient(to top, transparent, black),
+  //     linear-gradient(to left, transparent 17px, black 17px);
+  //   mask-size: 100% 20000px;
+  //   mask-position: left bottom;
+  //   -webkit-mask-image: linear-gradient(to top, transparent, black),
+  //     linear-gradient(to left, transparent 17px, black 17px);
+  //   -webkit-mask-size: 100% 20000px;
+  //   -webkit-mask-position: left bottom;
+  //   transition: mask-position 0.3s, -webkit-mask-position 0.3s;
+  // }
 
-  .MuiSelect-select:hover {
-    -webkit-mask-position: left top;
-  }
+  // .MuiSelect-select:hover {
+  //   -webkit-mask-position: left top;
+  // }
 
   @keyframes background {
     from {

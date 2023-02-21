@@ -180,9 +180,10 @@ const TextInputElement = ({
           width: width === 'auto' ? '100%' : width,
           ...inputProps.style
         }}
-        inputProps={inputProps}
+        inputProps={{...inputProps, className: `navi-text-input-input ${inputProps.className || ''}`}}
         {...props}
         className={`
+          navi-text-input-base
           base-input
           ${size}
           ${inputType}

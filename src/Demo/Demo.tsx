@@ -17,12 +17,16 @@ import { SelectDataProps } from "../navi/components/Select/Select.types";
 import DescriptiveMenuItem from "../navi/components/DescriptiveMenuItem/DescriptiveMenuItem";
 import DividerMenuItem from "../navi/components/DividerMenuItem/DividerMenuItem";
 import GroupHeadingMenuItem from "../navi/components/GroupHeadingMenuItem/GroupHeadingMenuItem";
-import MenuSample from "./MenuSample";
-import SelectSample from "./SelectSample";
+// import MenuSample from "./MenuSample";
+// import SelectSample from "./SelectSample";
 import Tag from "../navi/components/Tag/Tag";
 import SystemIcon from "../navi/components/SystemIcon/SystemIcon";
 // import Input from './InputIssue/InputIssue';
-import SelectDemo from './Select';
+// import SelectDemo from './Select';
+// import { TextArea } from "../navi";
+import { Input as NaviInput } from "../navi";
+
+
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -452,18 +456,162 @@ export default function AutocompleteControlled() {
       }}
     >
       <div>
-        <SelectDemo />
-        <br/>
-        <br/>
-        <br/>
-        <Input label="Test" size="large" type="default" required
-          className="input-classname"
-          inputProps={{
-            className: "input-props-classname"
+        {/* <TextArea
+          maxCharacters={100}
+          width="1200px"
+          height="100px"
+          label="Navi Text Area"
+          required
+          value="Value for text area component"
+          intent="success"
+          placeholder="Text area placeholder text"
+          errorMessage="Text area error message"
+          moreInfo="Navi text area"
+          onChange={(e) => {
+            // console.log(e.value, e.value.length);
           }}
-        />
-
+        /> */}
       </div>
+      <div>
+        <NaviInput maxCharacters={100} label="Navi Text Area default" />
+        <NaviInput disabled maxCharacters={100} label="Navi Text Area disabled" />
+        <NaviInput readOnly maxCharacters={100} label="Navi Text Area read only" />
+        <NaviInput  maxCharacters={100} label="Navi Text Area read only" />
+      </div>
+
+      <div>
+        <Select
+          clearTooltipText="Clear Data"
+          inputProps={{
+            className: 'aaa-classname',
+            errorMessage: 'Error message',
+            fullWidth: true,
+            helperText: 'Helper text',
+            inputType: 'default',
+            label: 'Select Movies',
+            maxWidth: 800,
+            minWidth: 300,
+            moreInfo: 'More information text',
+            required: true,
+            size: 'large',
+            successMessage: 'Success message',
+            tooltipPlacement: 'top'
+          }}
+          maxHeight={140}
+          minWidth={400}
+          multiSelect
+          onChange={function noRefCheck() { }}
+          openTooltipText="Open Menu"
+          renderValueAsTag
+          selectAll
+          size="large"
+          tagProps={{
+            variant: 'neutral'
+          }}
+          // value={[
+          //   'The Shawshank Redemption',
+          //   'The Dark Knight'
+          // ]}
+        >
+          <DescriptiveMenuItem
+            description="1994"
+            leadingIcon={<Movie />}
+            onClick={function noRefCheck() { }}
+            selectable
+            title="The Shawshank Redemption"
+            trailingIcon={<Pencil />}
+            value="The Shawshank Redemption"
+          />
+          <DescriptiveMenuItem
+            description="1972"
+            leadingIcon={<Movie />}
+            onClick={function noRefCheck() { }}
+            selectable
+            title="The Godfather"
+            trailingIcon={<Pencil />}
+            value="The Godfather"
+          />
+          <DescriptiveMenuItem
+            // checked
+            description="1974"
+            disabled
+            leadingIcon={<Movie />}
+            onClick={function noRefCheck() { }}
+            selectable
+            title="The Godfather: Part II"
+            trailingIcon={<Pencil />}
+            value="The Godfather: Part II"
+          />
+          <DescriptiveMenuItem
+            // checked
+            description="2008"
+            leadingIcon={<Movie />}
+            onClick={function noRefCheck() { }}
+            selectable
+            title="The Dark Knight"
+            trailingIcon={<Pencil />}
+            value="The Dark Knight"
+          />
+          <DescriptiveMenuItem
+            // checked
+            description="1957"
+            leadingIcon={<Movie />}
+            onClick={function noRefCheck() { }}
+            selectable
+            title="12 Angry Men"
+            trailingIcon={<Pencil />}
+            value="12 Angry Men"
+          />
+          <DescriptiveMenuItem
+            // checked
+            description="1993"
+            leadingIcon={<Movie />}
+            onClick={function noRefCheck() { }}
+            selectable
+            title="Schindler's List"
+            trailingIcon={<Pencil />}
+            value="Schindler's List"
+          />
+          <DescriptiveMenuItem
+            description="1994"
+            leadingIcon={<Movie />}
+            onClick={function noRefCheck() { }}
+            selectable
+            title="Pulp Fiction"
+            trailingIcon={<Pencil />}
+            value="Pulp Fiction"
+          />
+          <DescriptiveMenuItem
+            description="2003"
+            onClick={function noRefCheck() { }}
+            selectable
+            title="The Lord of the Rings: The Return of the King"
+            value="The Lord of the Rings: The Return of the King"
+          />
+          <DescriptiveMenuItem
+            description="1966"
+            onClick={function noRefCheck() { }}
+            selectable
+            title="The Good, the Bad and the Ugly"
+            value="The Good, the Bad and the Ugly"
+          />
+          <DescriptiveMenuItem
+            description="1999"
+            onClick={function noRefCheck() { }}
+            selectable
+            title="Fight Club"
+            value="Fight Club"
+          />
+          <DescriptiveMenuItem
+            description="2001"
+            onClick={function noRefCheck() { }}
+            selectable
+            title="The Lord of the Rings: The Fellowship of the Ring"
+            value="The Lord of the Rings: The Fellowship of the Ring"
+          />
+        </Select>
+      </div>
+
     </div>
   );
 }
