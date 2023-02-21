@@ -35,6 +35,7 @@ const TextInputElement = ({
   innerRef,
   width,
   className='',
+  disabled,
   ...props
 }: NaviInputProps) => {
   const inputMinWidth = minWidth
@@ -97,15 +98,19 @@ const TextInputElement = ({
     props.onBlur && props.onBlur(e);
   };
   let hoverClass;
-  let errorClass = internalError ? "critical" : "";
-  if (inputType === "disabled") {
-    hoverClass = "";
+  // if (inputType === "disabled" || disabled) {
+  //   hoverClass = "";
+  // } else {
+  //   if ((typeof inputValue === "string" && inputValue?.length) || 0) {
+  //     hoverClass = "filled-field";
+  //   } else {
+  //     hoverClass = "empty-field";
+  //   }
+  // }
+  if ((typeof inputValue === "string" && inputValue?.length) || 0) {
+    // hoverClass = "filled-field";
   } else {
-    if ((typeof inputValue === "string" && inputValue?.length) || 0) {
-      hoverClass = "filled-field";
-    } else {
-      hoverClass = "empty-field";
-    }
+    // hoverClass = "empty-field";
   }
 
   return (
@@ -117,7 +122,7 @@ const TextInputElement = ({
       }}
       className={`navi-input-container ${className}`}
     >
-      <InputLabel className="input-label">
+      <InputLabel className="navi-input-label">
         <div
           style={{
             wordBreak: "break-word",
@@ -171,7 +176,6 @@ const TextInputElement = ({
         {CharacterLimitText}
       </InputLabel>
       <Input
-        disabled={inputType === "disabled"}
         style={{
           minWidth: inputMinWidth,
           maxWidth: width === 'auto' ? '' : inputMaxWidth,
@@ -182,23 +186,25 @@ const TextInputElement = ({
         }}
         inputProps={{...inputProps, className: `navi-text-input-input ${inputProps.className || ''}`}}
         {...props}
+        disabled={inputType === "disabled" || disabled}
         className={`
           navi-text-input-base
-          base-input
-          ${size}
-          ${inputType}
-          ${hoverClass}
-          ${errorClass}
-        `}
+          navi-base-input
+          navi-${size}
+          ${inputType === "disabled" ? "" : "navi-" + inputType}
+          ${inputType === "disabled" || disabled ? 'navi-disabled' : ''}
+          navi-${(typeof inputValue === "string" && inputValue?.length) ? 'filled-field' : 'empty-field'}
+          ${internalError ? 'navi-critical' : ''}
+        `.replace(/\n|\s+/g, ' ')}
         onBlur={handleBlur}
         onChange={handleInputChange}
       ></Input>
 
       {helperText ? (
-        <InputLabel className="helper-text">{helperText}</InputLabel>
+        <InputLabel className="navi-helper-text">{helperText}</InputLabel>
       ) : null}
       {(errorMessage && inputType === "critical") || internalError ? (
-        <InputLabel className="error-message">
+        <InputLabel className="navi-error-message">
           <div style={{ display: "flex", alignItems: "center" }}>
             <AlertCircle
               size={16}
@@ -211,7 +217,7 @@ const TextInputElement = ({
         </InputLabel>
       ) : null}
       {!!successMessage && inputType === "success" && !internalError ? (
-        <InputLabel className="success-message">
+        <InputLabel className="navi-success-message">
           <div style={{ display: "flex", alignItems: "center" }}>
             <CircleCheck
               size={16}

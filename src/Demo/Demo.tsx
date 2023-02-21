@@ -473,17 +473,26 @@ export default function AutocompleteControlled() {
         /> */}
       </div>
       <div>
-        <NaviInput maxCharacters={100} label="Navi Text Area default" />
+        <NaviInput width="auto" maxCharacters={100} label="Navi Text Area default" />
+        <NaviInput required maxCharacters={100} label="Navi Text Area default" />
         <NaviInput disabled maxCharacters={100} label="Navi Text Area disabled" />
-        <NaviInput readOnly maxCharacters={100} label="Navi Text Area read only" />
+        <NaviInput inputType="disabled" maxCharacters={100} label="Navi Text Area read only" />
+        <NaviInput inputType="read-only" maxCharacters={100} label="Navi Text Area read only" />
         <NaviInput  maxCharacters={100} label="Navi Text Area read only" />
+      </div>
+      <div>
+        <NaviInput size="small" maxCharacters={100} label="Navi Small Text Input default" />
+        <NaviInput size="small" required maxCharacters={100} label="Navi Small Text Input default" />
+        <NaviInput size="small" disabled maxCharacters={100} label="Navi Small Text Input disabled" />
+        <NaviInput size="small" inputType="disabled" maxCharacters={100} label="Navi Small Text Input read only" />
+        <NaviInput size="small" inputType="read-only" maxCharacters={100} label="Navi Small Text Input read only" />
+        <NaviInput size="small"  maxCharacters={100} label="Navi Small Text Input read only" />
       </div>
 
       <div>
         <Select
           clearTooltipText="Clear Data"
           inputProps={{
-            className: 'aaa-classname',
             errorMessage: 'Error message',
             fullWidth: true,
             helperText: 'Helper text',

@@ -2,32 +2,6 @@
 /* cyrillic-ext */
 
 .navi-input-container {
-  // .MuiInput-underline:hover {
-  //   border-bottom: none;
-  // }
-
-  // .MuiInput-underline:hover:not(.Mui-disabled):before {
-  //   border-bottom: none;
-  // }
-
-  // // Hide the dashed border bottom in disabled input
-  // .MuiInput-underline.Mui-disabled:before {
-  //   border-bottom: none;
-  // }
-
-  // .MuiInput-underline:before {
-  //   border-bottom: none;
-  // }
-
-  // .MuiInput-underline:after {
-  //   border-bottom: none;
-  // }
-
-  // .MuiInputBase-root {
-  //   padding: $input-type-root-padding;
-  //   outline: $input-type-default-outline;
-  //   border-radius: $input-type-root-border-radius;
-  // }
 
   .navi-text-input-base {
     padding: $input-type-root-padding;
@@ -36,11 +10,11 @@
   }
 
   .navi-text-input-base::after {
-    border-bottom: none!important;
+    border-bottom: none;
   }
 
   .navi-text-input-base::before {
-    border-bottom: none!important;
+    border-bottom: none;
   }
 
   .navi-text-input-base:hover:not(.Mui-disabled):before {
@@ -48,11 +22,11 @@
   }
 
   // Hide the dashed border bottom in disabled input
-  .navi-text-input-base.Mui-disabled:before {
+  .navi-text-input-base.navi-disabled:before {
     border-bottom: none;
   }
 
-  .input-label {
+  .navi-input-label {
     font-size: $input-label-base-font-size;
     font-family: $input-label-base-font-family;
     line-height: $input-label-base-line-height;
@@ -63,7 +37,7 @@
     color: $input-label-base-color;
   }
 
-  .helper-text {
+  .navi-helper-text {
     margin-top: $input-label-helper-margin-top;
     line-height: $input-label-helper-line-height;
     font-size: $input-label-helper-font-size;
@@ -73,7 +47,7 @@
     word-break: $input-label-helper-word-break;
   }
 
-  .success-message {
+  .navi-success-message {
     margin-top: $input-label-success-margin-top;
     line-height: $input-label-success-line-height;
     font-size: $input-label-success-font-size;
@@ -83,7 +57,7 @@
     word-break: $input-label-success-word-break;
   }
 
-  .error-message {
+  .navi-error-message {
     margin-top: $input-label-error-margin-top;
     line-height: $input-label-error-line-height;
     font-size: $input-label-error-font-size;
@@ -93,7 +67,7 @@
     word-break: $input-label-error-word-break;
   }
 
-  .base-input {
+  .navi-base-input {
     box-sizing: $input-type-root-box-sizing;
     background-color: $input-type-root-background-color;
     border-radius: $input-type-root-border-radius;
@@ -108,7 +82,7 @@
     }
   }
 
-  .large {
+  .navi-large {
     height: $input-size-large-height;
     font-size: $input-size-large-font-size;
     line-height: $input-size-large-line-height;
@@ -123,7 +97,7 @@
     }
   }
 
-  .small {
+  .navi-small {
     height: $input-size-small-height;
     font-size: $input-size-small-font-size;
     line-height: $input-size-small-line-height;
@@ -138,7 +112,7 @@
     }
   }
 
-  .disabled {
+  .navi-disabled {
     outline: $input-type-disabled-outline;
     background-color: $input-type-disabled-background-color;
     font-family: $input-type-disabled-font-family;
@@ -161,7 +135,7 @@
     }
   }
 
-  .success {
+  .navi-success {
     outline: $input-type-success-outline;
 
     &:hover {
@@ -169,7 +143,7 @@
     }
   }
 
-  .critical {
+  .navi-critical {
     outline: $input-type-error-outline;
 
     &:hover {
@@ -177,7 +151,7 @@
     }
   }
 
-  .read-only {
+  .navi-read-only {
     background-color: $input-type-read-only-background-color;
     color: $input-type-read-only-color;
     outline: $input-type-read-only-outline;
@@ -195,7 +169,7 @@
 
 // Input style when used for Select component
 .navi-select-input-container {
-  .base-input {
+  .navi-base-input {
     padding: 0;
     outline: none;
     outline: $input-type-default-outline;
@@ -203,51 +177,19 @@
     height: unset !important;
   }
 
-  &.large {
+  &.navi-large {
     padding: 12px 0;
   }
 
-  &.small {
+  &.navi-small {
     padding: 8px 0;
   }
 
-  // .MuiSelect-root {
-  //   padding: $input-type-root-select-padding;
-  // }
-
-  // .MuiSelect-root:focus {
-  //   background-color: unset;
-  // }
-
-  // .MuiSelect-select {
-  //   overflow-y: auto;
-  //   mask-image: linear-gradient(to top, transparent, black),
-  //     linear-gradient(to left, transparent 17px, black 17px);
-  //   mask-size: 100% 20000px;
-  //   mask-position: left bottom;
-  //   -webkit-mask-image: linear-gradient(to top, transparent, black),
-  //     linear-gradient(to left, transparent 17px, black 17px);
-  //   -webkit-mask-size: 100% 20000px;
-  //   -webkit-mask-position: left bottom;
-  //   transition: mask-position 0.3s, -webkit-mask-position 0.3s;
-  // }
-
-  // .MuiSelect-select:hover {
-  //   -webkit-mask-position: left top;
-  // }
-
-  @keyframes background {
-    from {
-      background: pink;
-    }
-
-    to {
-      background: #c0d6ff;
-    }
+  .navi-text-input-input {
+    padding: $input-type-root-select-padding;
   }
 
-  .wrapper {
-    float: left;
-    animation: background 5s infinite alternate;
+  .navi-text-input-input:focus {
+    background-color: unset;
   }
 }
