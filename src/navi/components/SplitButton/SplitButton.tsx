@@ -8,7 +8,6 @@ import { ChevronDown, ChevronUp } from "tabler-icons-react";
 import Divider from "../Divider/Divider";
 import Menu from "../Menu/Menu";
 import tokens from "../../tokens/build/json/tokens.json";
-import { MenuItemType } from "../MenuItem/MenuItem.types";
 import DescriptiveMenuItem from "../DescriptiveMenuItem/DescriptiveMenuItem";
 import DividerMenuItem from "../DividerMenuItem/DividerMenuItem";
 import GroupHeadingMenuItem from "../GroupHeadingMenuItem/GroupHeadingMenuItem";
@@ -27,7 +26,7 @@ const SplitButtonComponent: React.FC<SplitButtonProps> = ({
   onChange,
   id,
   dataTestId,
-  ...restProps
+  multiSelect,
 }) => {
   const anchorEl = React.useRef<HTMLDivElement>(null);
   const [open, setOpen] = React.useState(menuProps?.open || false);
@@ -107,42 +106,35 @@ const SplitButtonComponent: React.FC<SplitButtonProps> = ({
     }
   }, [intent]);
 
-  let defaultButtonIcon;
-  if (!Boolean(anchorEl)) {
-    defaultButtonIcon = <ChevronDown />;
-  } else if (Boolean(anchorEl)) {
-    defaultButtonIcon = <ChevronUp />;
-  }
-
   const MenuItem = React.useMemo(() => {
     return menuItems.map((menuItem, index) => {
       switch (menuItem.type) {
-        case MenuItemType.DESCRIPTIVE:
+        case "descriptive":
           return (
             <DescriptiveMenuItem
-            {...menuItem}
-            value={menuItem.value}
-            key={`${menuItem.value}-${index}`}            />
+              {...menuItem}
+              key={`${menuItem.value}-${index}`}
+            />
           );
-        case MenuItemType.DIVIDER:
+        case "divider":
           return (
             <DividerMenuItem {...menuItem} key={`${menuItem.value}-${index}`} />
           );
-        case MenuItemType.GROUP_HEADING:
+        case "group_heading":
           return (
             <GroupHeadingMenuItem
               {...menuItem}
               key={`${menuItem.value}-${index}`}
             />
           );
-        case MenuItemType.EMPTY:
+        case "empty":
           return (
             <EmptyStateMenuItem
               {...menuItem}
               key={`${menuItem.value}-${index}`}
             />
           );
-        case MenuItemType.SELECT_ALL:
+        case "_select_all":
           return (
             <SelectAllMenuItem
               {...menuItem}
@@ -152,6 +144,12 @@ const SplitButtonComponent: React.FC<SplitButtonProps> = ({
       }
     });
   }, [menuItems]);
+
+  const menuWidth = React.useMemo(() => {
+    if (menuProps && !menuProps.width) {
+      return `${anchorEl.current?.offsetWidth}px`;
+    }
+  }, [anchorEl.current, menuProps]);
 
   return (
     <Box>
@@ -180,7 +178,7 @@ const SplitButtonComponent: React.FC<SplitButtonProps> = ({
           rounded={false}
           title={tooltip}
         >
-          {defaultButtonIcon}
+          <ChevronDown />
         </IconButton>
       </Box>
       {menuItems && (
@@ -191,7 +189,9 @@ const SplitButtonComponent: React.FC<SplitButtonProps> = ({
           open={open}
           keepMounted
           handleClose={handleClose}
-          style={{ margin: "4px" }}
+          style={{ minWidth: menuWidth, margin: "none", marginTop: "4px" }}
+          multiSelect={multiSelect}
+          menuPlacement="bottom-start"
           {...menuProps}
         >
           {MenuItem}

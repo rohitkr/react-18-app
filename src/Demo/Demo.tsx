@@ -624,7 +624,8 @@ export default function AutocompleteControlled() {
           intent="prime"
           // buttonIcon={<ChevronDown />}
           tooltip="Open menu"
-          buttonText="Split button"
+          multiSelect
+          buttonText="Split button Text Button width"
           
           onChange={(e)=>{console.log(e)}}
           menuItems={[

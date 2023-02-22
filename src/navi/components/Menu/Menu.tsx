@@ -28,11 +28,21 @@ const Menu: React.FC<MenuProps> = ({
   showSelectedValue = false,
   children,
   useSelectAll,
-  hideOnSelect = false,
+  hideOnSelect,
   style,
   ...props
 }) => {
   const [open, setOpen] = React.useState(props.open || false);
+  const [hideMenuOnSelect] = React.useState(() => {
+    if (typeof hideOnSelect === "boolean") {
+      return hideOnSelect;
+    } else {
+      if (multiSelect) {
+        return false;
+      }
+      return true;
+    }
+  });
   const [selectedValue, setSelectedValue] = React.useState(
     props.selectedValue || null
   );
@@ -119,7 +129,7 @@ const Menu: React.FC<MenuProps> = ({
     }
     setSelectionMap(updatedSelectionMap);
     onMenuChange && onMenuChange(selectedValues);
-    if (hideOnSelect) {
+    if (hideMenuOnSelect) {
       handleClose && handleClose();
     }
   };
@@ -158,7 +168,7 @@ const Menu: React.FC<MenuProps> = ({
         setSelectedValue(selectedValues);
         onMenuChange && onMenuChange(selectedValues);
       }
-      if (hideOnSelect) {
+      if (hideMenuOnSelect) {
         handleClose && handleClose();
       }
     },
@@ -175,9 +185,12 @@ const Menu: React.FC<MenuProps> = ({
     >
       <Paper
         style={{
-          width:
-            width || `${(props.anchorEl as HTMLAnchorElement)?.offsetWidth}px`,
-          minWidth: width ? "" : minWidth,
+          margin: "4px",
+          width: width || "auto",
+          minWidth:
+            props.anchorEl?.offsetWidth > minWidth
+              ? `${(props.anchorEl as HTMLAnchorElement)?.offsetWidth}px`
+              : `${minWidth}px`,
           boxShadow:
             "0px 6px 20px rgba(0, 0, 0, 0.14), 0px 4px 12px rgba(0, 0, 0, 0.18)",
           maxHeight: height ? height : "30rem",

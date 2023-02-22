@@ -5,7 +5,6 @@ import Box from "../Box/Box";
 import SyntaxHighlighter from "react-syntax-highlighter";
 import { docco } from "react-syntax-highlighter/dist/esm/styles/hljs";
 import { ChevronDown } from "tabler-icons-react";
-import { MenuItemType } from "../MenuItem/MenuItem.types";
 
 export default {
   title: `Components/SplitButton`,
@@ -37,38 +36,36 @@ const Template: ComponentStory<typeof SplitButton> = (args) => {
             size="small"
             menuItems={[
               {
-                type: MenuItemType.GROUP_HEADING,
+                type: "group_heading",
                 title: "Group Heading 1",
                 value: "group_heading_1",
               },
               {
-                type: MenuItemType.DESCRIPTIVE,
+                type: "descriptive",
                 title: "Descriptive menu item 1",
                 value: "d_m_1",
               },
               {
-                type: MenuItemType.DESCRIPTIVE,
+                type: "descriptive",
                 title: "Descriptive menu item 2",
                 value: "d_m_2",
               },
               {
-                type: MenuItemType.DESCRIPTIVE,
+                type: "descriptive",
                 title: "Descriptive menu item 3",
                 value: "d_m_3",
               },
               {
-                type: MenuItemType.DESCRIPTIVE,
+                type: "descriptive",
                 title: "Descriptive menu item 4",
                 value: "d_m_4",
               },
-              { type: MenuItemType.DIVIDER, value: "divider_m_i" },
+              { type: "divider", value: "divider_m_i" },
             ]}
             onChange={(selectedMenu) => {
               console.log(selectedMenu);
             }}
             menuProps={{
-              multiSelect: true,
-              useSelectAll: true,
               hideOnSelect: false,
             }}
           />`);
@@ -81,38 +78,36 @@ const Template: ComponentStory<typeof SplitButton> = (args) => {
             size="small"
             menuItems={[
               {
-                type: MenuItemType.GROUP_HEADING,
+                type: "group_heading",
                 title: "Group Heading 1",
                 value: "group_heading_1",
               },
               {
-                type: MenuItemType.DESCRIPTIVE,
+                type: "descriptive",
                 title: "Descriptive menu item 1",
                 value: "d_m_1",
               },
               {
-                type: MenuItemType.DESCRIPTIVE,
+                type: "descriptive",
                 title: "Descriptive menu item 2",
                 value: "d_m_2",
               },
               {
-                type: MenuItemType.DESCRIPTIVE,
+                type: "descriptive",
                 title: "Descriptive menu item 3",
                 value: "d_m_3",
               },
               {
-                type: MenuItemType.DESCRIPTIVE,
+                type: "descriptive",
                 title: "Descriptive menu item 4",
                 value: "d_m_4",
               },
-              { type: MenuItemType.DIVIDER, value: "divider_m_i" },
+              { type: "divider", value: "divider_m_i" },
             ]}
             onChange={(selectedMenu) => {
               console.log(selectedMenu);
             }}
             menuProps={{
-              multiSelect: true,
-              useSelectAll: true,
               hideOnSelect: false,
             }}
           />
@@ -128,36 +123,35 @@ const Template: ComponentStory<typeof SplitButton> = (args) => {
             buttonText="Split button"
             menuItems={[
               {
-                type: MenuItemType.GROUP_HEADING,
+                type: 'group_heading',
                 title: "Group Heading 1",
                 value: "group_heading_1",
               },
               {
-                type: MenuItemType.DESCRIPTIVE,
+                type: 'descriptive',
                 title: "Descriptive menu item 1",
                 value: "d_m_1",
               },
               {
-                type: MenuItemType.DESCRIPTIVE,
+                type: 'descriptive',
                 title: "Descriptive menu item 2",
                 value: "d_m_2",
               },
               {
-                type: MenuItemType.DESCRIPTIVE,
+                type:'descriptive',
                 title: "Descriptive menu item 3",
                 value: "d_m_3",
               },
               {
-                type: MenuItemType.DESCRIPTIVE,
+                type: 'descriptive',
                 title: "Descriptive menu item 4",
                 value: "d_m_4",
               },
-              { type: MenuItemType.DIVIDER, value: "divider_m_i" },
+              { type: 'divider, value: "divider_m_i" },
             ]}
             menuProps={{
-              width: "400px",
-              menuPlacement: "right",
-              hideOnSelect: true,
+              hideOnSelect: false,
+              showSelectedValue: true,
             }}
           />
             `);
@@ -165,41 +159,39 @@ const Template: ComponentStory<typeof SplitButton> = (args) => {
         >
           <SplitButton
             intent="muted-bold"
-            buttonIcon={<ChevronDown />}
             tooltip="Open menu"
             buttonText="Split button"
             menuItems={[
               {
-                type: MenuItemType.GROUP_HEADING,
+                type: "group_heading",
                 title: "Group Heading 1",
                 value: "group_heading_1",
               },
               {
-                type: MenuItemType.DESCRIPTIVE,
+                type: "descriptive",
                 title: "Descriptive menu item 1",
                 value: "d_m_1",
               },
               {
-                type: MenuItemType.DESCRIPTIVE,
+                type: "descriptive",
                 title: "Descriptive menu item 2",
                 value: "d_m_2",
               },
               {
-                type: MenuItemType.DESCRIPTIVE,
+                type: "descriptive",
                 title: "Descriptive menu item 3",
                 value: "d_m_3",
               },
               {
-                type: MenuItemType.DESCRIPTIVE,
+                type: "descriptive",
                 title: "Descriptive menu item 4",
                 value: "d_m_4",
               },
-              { type: MenuItemType.DIVIDER, value: "divider_m_i" },
+              { type: "divider", value: "divider_m_i" },
             ]}
             menuProps={{
-              width: "400px",
-              menuPlacement: "right",
-              hideOnSelect: true,
+              hideOnSelect: false,
+              showSelectedValue: true,
             }}
           />
         </Box>
@@ -224,35 +216,33 @@ const Template: ComponentStory<typeof SplitButton> = (args) => {
             buttonText="Split button"
             menuItems={[
               {
-                type: MenuItemType.GROUP_HEADING,
+                type: 'group_heading,
                 title: "Group Heading 1",
                 value: "group_heading_1",
               },
               {
-                type: MenuItemType.DESCRIPTIVE,
+                type: 'descriptive',
                 title: "Descriptive menu item 1",
                 value: "d_m_1",
               },
               {
-                type: MenuItemType.DESCRIPTIVE,
+                type: 'descriptive',
                 title: "Descriptive menu item 2",
                 value: "d_m_2",
               },
               {
-                type: MenuItemType.DESCRIPTIVE,
+                type: 'descriptive',
                 title: "Descriptive menu item 3",
                 value: "d_m_3",
               },
               {
-                type: MenuItemType.DESCRIPTIVE,
+                type: 'descriptive',
                 title: "Descriptive menu item 4",
                 value: "d_m_4",
               },
-              { type: MenuItemType.DIVIDER, value: "divider_m_i" },
+              { type: 'divider', value: "divider_m_i" },
             ]}
             menuProps={{
-              width: "400px",
-              menuPlacement: "right",
               hideOnSelect: true,
             }}
           />
@@ -262,40 +252,37 @@ const Template: ComponentStory<typeof SplitButton> = (args) => {
           <p>Muted Light</p>
           <SplitButton
             intent="muted-light"
-            buttonIcon={<ChevronDown />}
             tooltip="Open menu"
             buttonText="Split button"
             menuItems={[
               {
-                type: MenuItemType.GROUP_HEADING,
+                type: "group_heading",
                 title: "Group Heading 1",
                 value: "group_heading_1",
               },
               {
-                type: MenuItemType.DESCRIPTIVE,
+                type: "descriptive",
                 title: "Descriptive menu item 1",
                 value: "d_m_1",
               },
               {
-                type: MenuItemType.DESCRIPTIVE,
+                type: "descriptive",
                 title: "Descriptive menu item 2",
                 value: "d_m_2",
               },
               {
-                type: MenuItemType.DESCRIPTIVE,
+                type: "descriptive",
                 title: "Descriptive menu item 3",
                 value: "d_m_3",
               },
               {
-                type: MenuItemType.DESCRIPTIVE,
+                type: "descriptive",
                 title: "Descriptive menu item 4",
                 value: "d_m_4",
               },
-              { type: MenuItemType.DIVIDER, value: "divider_m_i" },
+              { type: "divider", value: "divider_m_i" },
             ]}
             menuProps={{
-              width: "400px",
-              menuPlacement: "right",
               hideOnSelect: true,
             }}
           />
@@ -313,35 +300,33 @@ const Template: ComponentStory<typeof SplitButton> = (args) => {
             buttonText="Split button"
             menuItems={[
               {
-                type: MenuItemType.GROUP_HEADING,
+                type: 'group_heading',
                 title: "Group Heading 1",
                 value: "group_heading_1",
               },
               {
-                type: MenuItemType.DESCRIPTIVE,
+                type: 'descriptive',
                 title: "Descriptive menu item 1",
                 value: "d_m_1",
               },
               {
-                type: MenuItemType.DESCRIPTIVE,
+                type: 'descriptive',
                 title: "Descriptive menu item 2",
                 value: "d_m_2",
               },
               {
-                type: MenuItemType.DESCRIPTIVE,
+                type: 'descriptive',
                 title: "Descriptive menu item 3",
                 value: "d_m_3",
               },
               {
-                type: MenuItemType.DESCRIPTIVE,
+                type: 'descriptive',
                 title: "Descriptive menu item 4",
                 value: "d_m_4",
               },
-              { type: MenuItemType.DIVIDER, value: "divider_m_i" },
+              { type: 'divider', value: "divider_m_i" },
             ]}
             menuProps={{
-              width: "400px",
-              menuPlacement: "right",
               hideOnSelect: true,
             }}
           />
@@ -351,40 +336,37 @@ const Template: ComponentStory<typeof SplitButton> = (args) => {
           <p>muted-bold</p>
           <SplitButton
             intent="muted-bold"
-            buttonIcon={<ChevronDown />}
             tooltip="Open menu"
             buttonText="Split button"
             menuItems={[
               {
-                type: MenuItemType.GROUP_HEADING,
+                type: "group_heading",
                 title: "Group Heading 1",
                 value: "group_heading_1",
               },
               {
-                type: MenuItemType.DESCRIPTIVE,
+                type: "descriptive",
                 title: "Descriptive menu item 1",
                 value: "d_m_1",
               },
               {
-                type: MenuItemType.DESCRIPTIVE,
+                type: "descriptive",
                 title: "Descriptive menu item 2",
                 value: "d_m_2",
               },
               {
-                type: MenuItemType.DESCRIPTIVE,
+                type: "descriptive",
                 title: "Descriptive menu item 3",
                 value: "d_m_3",
               },
               {
-                type: MenuItemType.DESCRIPTIVE,
+                type: "descriptive",
                 title: "Descriptive menu item 4",
                 value: "d_m_4",
               },
-              { type: MenuItemType.DIVIDER, value: "divider_m_i" },
+              { type: "divider", value: "divider_m_i" },
             ]}
             menuProps={{
-              width: "400px",
-              menuPlacement: "right",
               hideOnSelect: true,
             }}
           />
@@ -402,35 +384,34 @@ const Template: ComponentStory<typeof SplitButton> = (args) => {
             buttonText="Split button"
             menuItems={[
               {
-                type: MenuItemType.GROUP_HEADING,
+                type: 'group_heading,
                 title: "Group Heading 1",
                 value: "group_heading_1",
               },
               {
-                type: MenuItemType.DESCRIPTIVE,
+                type: 'descriptive',
                 title: "Descriptive menu item 1",
                 value: "d_m_1",
               },
               {
-                type: MenuItemType.DESCRIPTIVE,
+                type:'descriptive',
                 title: "Descriptive menu item 2",
                 value: "d_m_2",
               },
               {
-                type: MenuItemType.DESCRIPTIVE,
+                type: 'descriptive'
                 title: "Descriptive menu item 3",
                 value: "d_m_3",
               },
               {
-                type: MenuItemType.DESCRIPTIVE,
+                type: 'descriptive',
                 title: "Descriptive menu item 4",
                 value: "d_m_4",
               },
-              { type: MenuItemType.DIVIDER, value: "divider_m_i" },
+              { type:divider, value: "divider_m_i" },
             ]}
             menuProps={{
               width: "400px",
-              menuPlacement: "right",
               hideOnSelect: true,
             }}
           />
@@ -440,40 +421,38 @@ const Template: ComponentStory<typeof SplitButton> = (args) => {
           <p>info-bold</p>
           <SplitButton
             intent="info-bold"
-            buttonIcon={<ChevronDown />}
             tooltip="Open menu"
             buttonText="Split button"
             menuItems={[
               {
-                type: MenuItemType.GROUP_HEADING,
+                type: "group_heading",
                 title: "Group Heading 1",
                 value: "group_heading_1",
               },
               {
-                type: MenuItemType.DESCRIPTIVE,
+                type: "descriptive",
                 title: "Descriptive menu item 1",
                 value: "d_m_1",
               },
               {
-                type: MenuItemType.DESCRIPTIVE,
+                type: "descriptive",
                 title: "Descriptive menu item 2",
                 value: "d_m_2",
               },
               {
-                type: MenuItemType.DESCRIPTIVE,
+                type: "descriptive",
                 title: "Descriptive menu item 3",
                 value: "d_m_3",
               },
               {
-                type: MenuItemType.DESCRIPTIVE,
+                type: "descriptive",
                 title: "Descriptive menu item 4",
                 value: "d_m_4",
               },
-              { type: MenuItemType.DIVIDER, value: "divider_m_i" },
+              { type: "divider", value: "divider_m_i" },
             ]}
             menuProps={{
               width: "400px",
-              menuPlacement: "right",
               hideOnSelect: true,
             }}
           />
@@ -491,35 +470,34 @@ const Template: ComponentStory<typeof SplitButton> = (args) => {
             buttonText="Split button"
             menuItems={[
               {
-                type: MenuItemType.GROUP_HEADING,
+                type: 'group_heading,
                 title: "Group Heading 1",
                 value: "group_heading_1",
               },
               {
-                type: MenuItemType.DESCRIPTIVE,
+                type: 'descriptive',
                 title: "Descriptive menu item 1",
                 value: "d_m_1",
               },
               {
-                type: MenuItemType.DESCRIPTIVE,
+                type: 'descriptive',
                 title: "Descriptive menu item 2",
                 value: "d_m_2",
               },
               {
-                type: MenuItemType.DESCRIPTIVE,
+                type: 'descriptive',
                 title: "Descriptive menu item 3",
                 value: "d_m_3",
               },
               {
-                type: MenuItemType.DESCRIPTIVE,
+                type: 'descriptive',
                 title: "Descriptive menu item 4",
                 value: "d_m_4",
               },
-              { type: MenuItemType.DIVIDER, value: "divider_m_i" },
+              { type: 'divider', value: "divider_m_i" },
             ]}
             menuProps={{
               width: "400px",
-              menuPlacement: "right",
               hideOnSelect: true,
             }}
           />
@@ -529,40 +507,38 @@ const Template: ComponentStory<typeof SplitButton> = (args) => {
           <p>info-soft</p>
           <SplitButton
             intent="info-soft"
-            buttonIcon={<ChevronDown />}
             tooltip="Open menu"
             buttonText="Split button"
             menuItems={[
               {
-                type: MenuItemType.GROUP_HEADING,
+                type: "group_heading",
                 title: "Group Heading 1",
                 value: "group_heading_1",
               },
               {
-                type: MenuItemType.DESCRIPTIVE,
+                type: "descriptive",
                 title: "Descriptive menu item 1",
                 value: "d_m_1",
               },
               {
-                type: MenuItemType.DESCRIPTIVE,
+                type: "descriptive",
                 title: "Descriptive menu item 2",
                 value: "d_m_2",
               },
               {
-                type: MenuItemType.DESCRIPTIVE,
+                type: "descriptive",
                 title: "Descriptive menu item 3",
                 value: "d_m_3",
               },
               {
-                type: MenuItemType.DESCRIPTIVE,
+                type: "descriptive",
                 title: "Descriptive menu item 4",
                 value: "d_m_4",
               },
-              { type: MenuItemType.DIVIDER, value: "divider_m_i" },
+              { type: "divider", value: "divider_m_i" },
             ]}
             menuProps={{
               width: "400px",
-              menuPlacement: "right",
               hideOnSelect: true,
             }}
           />
@@ -580,35 +556,34 @@ const Template: ComponentStory<typeof SplitButton> = (args) => {
             buttonText="Split button"
             menuItems={[
               {
-                type: MenuItemType.GROUP_HEADING,
+                type: 'group_heading,
                 title: "Group Heading 1",
                 value: "group_heading_1",
               },
               {
-                type: MenuItemType.DESCRIPTIVE,
+                type: 'descriptive',
                 title: "Descriptive menu item 1",
                 value: "d_m_1",
               },
               {
-                type: MenuItemType.DESCRIPTIVE,
+                type: 'descriptive',
                 title: "Descriptive menu item 2",
                 value: "d_m_2",
               },
               {
-                type: MenuItemType.DESCRIPTIVE,
+                type: 'descriptive',
                 title: "Descriptive menu item 3",
                 value: "d_m_3",
               },
               {
-                type: MenuItemType.DESCRIPTIVE,
+                type: 'descriptive',
                 title: "Descriptive menu item 4",
                 value: "d_m_4",
               },
-              { type: MenuItemType.DIVIDER, value: "divider_m_i" },
+              { type: 'divider', value: "divider_m_i" },
             ]}
             menuProps={{
               width: "400px",
-              menuPlacement: "right",
               hideOnSelect: true,
             }}
           />
@@ -618,40 +593,38 @@ const Template: ComponentStory<typeof SplitButton> = (args) => {
           <p>prime</p>
           <SplitButton
             intent="prime"
-            buttonIcon={<ChevronDown />}
             tooltip="Open menu"
             buttonText="Split button"
             menuItems={[
               {
-                type: MenuItemType.GROUP_HEADING,
+                type: "group_heading",
                 title: "Group Heading 1",
                 value: "group_heading_1",
               },
               {
-                type: MenuItemType.DESCRIPTIVE,
+                type: "descriptive",
                 title: "Descriptive menu item 1",
                 value: "d_m_1",
               },
               {
-                type: MenuItemType.DESCRIPTIVE,
+                type: "descriptive",
                 title: "Descriptive menu item 2",
                 value: "d_m_2",
               },
               {
-                type: MenuItemType.DESCRIPTIVE,
+                type: "descriptive",
                 title: "Descriptive menu item 3",
                 value: "d_m_3",
               },
               {
-                type: MenuItemType.DESCRIPTIVE,
+                type: "descriptive",
                 title: "Descriptive menu item 4",
                 value: "d_m_4",
               },
-              { type: MenuItemType.DIVIDER, value: "divider_m_i" },
+              { type: "divider", value: "divider_m_i" },
             ]}
             menuProps={{
               width: "400px",
-              menuPlacement: "right",
               hideOnSelect: true,
             }}
           />

@@ -3,7 +3,6 @@ import { EmptyStateMenuItemProps } from "../EmptyStateMenuItem/EmptyStateMenuIte
 import { DescriptiveMenuItemProps } from "./../DescriptiveMenuItem/DescriptiveMenuItem.types";
 import { ForwardedRef } from "react";
 import { GroupHeadingMenuItemProps } from "../GroupHeadingMenuItem/GroupHeadingMenuItem.types";
-import { MenuItemType } from "../MenuItem/MenuItem.types";
 export interface SplitButtonMenuProps {
   label: string;
   value: string;
@@ -23,7 +22,7 @@ type MenuItemsPropsContent = DescriptiveMenuItemProps &
   GroupHeadingMenuItemProps &
   DividerMenuItemProps;
 interface MenuItemsProps extends MenuItemsPropsContent {
-  type: MenuItemType;
+  type: "divider" | "descriptive" | "empty" | "group_heading" | "_select_all";
 }
 export interface SplitButtonProps {
   id?: string;
@@ -44,6 +43,7 @@ export interface SplitButtonProps {
     | "right-start"
     | "right-end";
   tooltip: string;
+  multiSelect?: boolean;
   buttonText: string;
   menuItems: Array<MenuItemsProps>;
   menuProps?: {
@@ -52,24 +52,10 @@ export interface SplitButtonProps {
     handleClose?: () => void;
     width?: string | number;
     height?: string | number;
-    multiSelect?: boolean;
     selectedValue?: Array<string | number>;
     showSelectedValue?: boolean;
     useSelectAll?: boolean;
     hideOnSelect?: boolean;
-    menuPlacement?:
-      | "top"
-      | "top-start"
-      | "top-end"
-      | "bottom"
-      | "bottom-start"
-      | "bottom-end"
-      | "left"
-      | "left-start"
-      | "left-end"
-      | "right"
-      | "right-start"
-      | "right-end";
   };
   onChange?: (selectedMenuItem: Array<string | number>) => void;
   forwardedRef?: ForwardedRef<HTMLDivElement> | null;

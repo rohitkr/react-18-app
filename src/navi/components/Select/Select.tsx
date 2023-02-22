@@ -81,7 +81,7 @@ const Select: React.FC<SelectProps> = ({
       if (React.Children.count(children)) {
         return React.Children.toArray(children).reduce(
           (acc: Array<string>, child) => {
-            if (React.isValidElement(child) && child.props.selected) {
+            if (React.isValidElement(child) && child.props.checked) {
               return [...acc, child.props.value];
             }
             return acc;
@@ -218,7 +218,7 @@ const Select: React.FC<SelectProps> = ({
       if (value.indexOf("_select_all") >= 0) {
         let updatedSelectedValues: Array<string> = [];
         Object.keys(selectionMap).forEach((key) => {
-          if ("selected" in menuItemsMap[key] || menuItemsMap[key].disabled) {
+          if ("checked" in menuItemsMap[key] || menuItemsMap[key].disabled) {
             updatedSelectedMap[key] = menuItemsMap[key].selected;
           } else {
             updatedSelectedMap[key] = !allSelected;
@@ -233,7 +233,7 @@ const Select: React.FC<SelectProps> = ({
         setSelectValue(updatedSelectedValues);
       } else {
         Object.keys(selectionMap).forEach((key) => {
-          if ("selected" in menuItemsMap[key] || menuItemsMap[key].disabled) {
+          if ("checked" in menuItemsMap[key] || menuItemsMap[key].disabled) {
             updatedSelectedMap[key] = menuItemsMap[key].selected;
           } else if (value.indexOf(key) >= 0) {
             updatedSelectedMap[key] = true;
@@ -296,13 +296,12 @@ const Select: React.FC<SelectProps> = ({
           React.PropsWithChildren<MenuItemProps>
         >;
         const value = child.props.value;
-        let selected = selectionMap[child.props.value];
 
         return React.cloneElement(item, {
           key: value,
           size: size,
           selectable: multiSelect,
-          selected: selected,
+          selected: selectionMap[child.props.value],
         });
       }
     });
@@ -407,7 +406,7 @@ const Select: React.FC<SelectProps> = ({
             key="_select_all"
             value="_select_all"
             size={size}
-            selected={allSelected}
+            checked={allSelected}
           />
         ) : null}
         {items}

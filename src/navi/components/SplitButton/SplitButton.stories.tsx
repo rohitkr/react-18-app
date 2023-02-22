@@ -1,7 +1,6 @@
 import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 import SplitButton from "./SplitButton";
-import { MenuItemType } from "../MenuItem/MenuItem.types";
 
 export default {
   title: `Components/SplitButton`,
@@ -56,35 +55,35 @@ Default.args = {
   buttonText: "Sample text",
   menuItems: [
     {
-      type: MenuItemType.GROUP_HEADING,
+      type: "group_heading",
       title: "Group Heading 1",
       value: "group_heading_1",
     },
     {
-      type: MenuItemType.DESCRIPTIVE,
+      type: "descriptive",
       title: "Descriptive menu item 1",
       value: "d_m_1",
     },
     {
-      type: MenuItemType.DESCRIPTIVE,
+      type: "descriptive",
       title: "Descriptive menu item 2",
       value: "d_m_2",
     },
     {
-      type: MenuItemType.DESCRIPTIVE,
+      type: "descriptive",
       title: "Descriptive menu item 3",
       value: "d_m_3",
     },
     {
-      type: MenuItemType.DESCRIPTIVE,
+      type: "descriptive",
       title: "Descriptive menu item 4",
       value: "d_m_4",
     },
-    { type: MenuItemType.DIVIDER, value: "divider_m_i" },
+    { type: "divider", value: "divider_m_i" },
   ],
   menuProps: {
     width: "400px",
     hideOnSelect: true,
-    menuPlacement: 'right'
+    menuPlacement: "right",
   },
 };

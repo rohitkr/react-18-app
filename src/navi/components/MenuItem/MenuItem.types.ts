@@ -1,12 +1,4 @@
 import { MenuItemProps as MuiMenuItemProps } from "@material-ui/core/MenuItem";
-
-export enum MenuItemType {
-  DIVIDER = "divider",
-  DESCRIPTIVE = "descriptive",
-  EMPTY = "empty",
-  GROUP_HEADING = "group_heading",
-  SELECT_ALL = '_select_all'
-}
 export interface MenuItemProps extends MuiMenuItemProps {
   title?: string;
   size?: "large" | "small";

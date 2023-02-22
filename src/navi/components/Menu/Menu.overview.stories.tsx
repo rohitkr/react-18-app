@@ -235,7 +235,10 @@ const Template: ComponentStory<typeof Menu> = (args) => {
             leadingIcon={<Pencil />}
           />
 
-          <GroupHeadingMenuItem value="gfsroup_heading_1" title="Group heading" />
+          <GroupHeadingMenuItem
+            value="gfsroup_heading_1"
+            title="Group heading"
+          />
         </Menu>
       </Box>
       <CodeBlock>
