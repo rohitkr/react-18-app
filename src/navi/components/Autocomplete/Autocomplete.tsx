@@ -2,8 +2,6 @@
 
 import React from 'react';
 import Autocomplete from '@material-ui/lab/Autocomplete';
-import Chip from '@material-ui/core/Chip/Chip';
-import TextField from '@material-ui/core/TextField';
 import Paper from '@material-ui/core/Paper';
 import DescriptiveMenuItem from '../DescriptiveMenuItem/DescriptiveMenuItem';
 import GroupHeadingMenuItem from '../GroupHeadingMenuItem/GroupHeadingMenuItem';
@@ -17,20 +15,20 @@ import Tag from '../Tag/Tag';
 import { Tag as TagIcon } from 'tabler-icons-react';
 import './Autocomplete.scss'
 
-interface MenuItemMap {
-  DescriptiveMenuItem: Function,
-  GroupHeadingMenuItem: Function,
-  DividerMenuItem: Function,
-  EmptyStateMenuItem: Function,
-  MenuItem: Function,
-}
-const MenuItemMap: MenuItemMap = {
-  DescriptiveMenuItem: DescriptiveMenuItem,
-  GroupHeadingMenuItem: GroupHeadingMenuItem,
-  DividerMenuItem: DividerMenuItem,
-  EmptyStateMenuItem: EmptyStateMenuItem,
-  MenuItem: MenuItem,
-};
+// interface MenuItemMap {
+//   DescriptiveMenuItem: Function,
+//   GroupHeadingMenuItem: Function,
+//   DividerMenuItem: Function,
+//   EmptyStateMenuItem: Function,
+//   MenuItem: Function,
+// }
+// const MenuItemMap: MenuItemMap = {
+//   DescriptiveMenuItem: DescriptiveMenuItem,
+//   GroupHeadingMenuItem: GroupHeadingMenuItem,
+//   DividerMenuItem: DividerMenuItem,
+//   EmptyStateMenuItem: EmptyStateMenuItem,
+//   MenuItem: MenuItem,
+// };
 
 const GetComponent = (option: any, selected: boolean, size?: 'small' | 'large') => {
   switch (option.type) {
