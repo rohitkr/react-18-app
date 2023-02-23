@@ -65,6 +65,7 @@ export interface SelectItemCardProps {
 export interface SelectedChipsProps {
   size?: "large" | "small";
   value: string;
+  label?: string;
   onDismiss?: (e: React.MouseEvent, value?: string) => void;
   tagProps?: TagProps;
   classes?: Object;

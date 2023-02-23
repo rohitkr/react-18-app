@@ -20,10 +20,6 @@ import tokenObj from "../../tokens/build/json/tokens.json";
 interface SelectionMapInterface {
   [key: string]: boolean | undefined;
 }
-
-interface MenuMapInterface {
-  [key: string]: SelectProps;
-}
 interface MenuItemsMapInterface {
   [key: string]: MenuItemProps;
 }
@@ -99,30 +95,12 @@ const Select: React.FC<SelectProps> = ({
   const [open, setOpen] = React.useState(props.open || false);
   const [allSelected, setAllSelected] = React.useState(false);
   const [selectionMap, setSelectionMap] = React.useState(() => {
-    if (multiSelect) {
-      if (React.Children.count(children)) {
-        const map = React.Children.toArray(children).reduce(
-          (acc: SelectionMapInterface, child) => {
-            if (React.isValidElement(child)) {
-              acc[child.props.value] = child.props.checked ? true : false;
-              return acc;
-            }
-            return acc;
-          },
-          {}
-        );
-        return map;
-      }
-    }
-    return {};
-  });
-
-  const [menuMap, setMenuMap] = React.useState(() => {
     if (React.Children.count(children)) {
       const map = React.Children.toArray(children).reduce(
-        (acc: MenuMapInterface, child) => {
+        (acc: SelectionMapInterface, child) => {
           if (React.isValidElement(child)) {
-            acc[child.props.value] = { ...child.props };
+            acc[child.props.value] = child.props.checked ? true : false;
+            // acc[child.props.value] = child.props.checked ? {...child.props, selected: true} : {...child.props, selected: false};
             return acc;
           }
           return acc;
@@ -133,7 +111,6 @@ const Select: React.FC<SelectProps> = ({
     }
     return {};
   });
-
   // Used ref as <any> because MUI inputRef for select component is Any
   const inputRef = React.useRef<any>(null);
   const classes = useStyles();
@@ -157,10 +134,7 @@ const Select: React.FC<SelectProps> = ({
     (e: React.MouseEvent, value?: string) => {
       let updatedMap = { ...selectionMap };
       if (value) {
-        if (
-          "checked" in menuItemsMap[String(value)] ||
-          menuItemsMap[String(value)].disabled
-        ) {
+        if ("checked" in menuItemsMap[String(value)] || menuItemsMap[String(value)].disabled) {
           updatedMap = {
             ...updatedMap,
             [String(value)]: menuItemsMap[value].checked || false,
@@ -200,12 +174,13 @@ const Select: React.FC<SelectProps> = ({
     }
   }, []);
 
-  const selectedChips = () => {
+  const renderValue = () => {
     if (renderValueAsTag) {
       return (
         <Box flexWrap="wrap" display="flex" maxHeight={`${props.maxHeight}px`}>
           {selectedValue &&
             selectedValue.map((value: string) => {
+              const label = menuItemsMap[value].title || '';
               return (
                 <Box display="flex" margin={`5px 6px`}>
                   <SelectedChip
@@ -214,7 +189,7 @@ const Select: React.FC<SelectProps> = ({
                     dismissible
                     LeadingIcon={<TagIcon size={8} />}
                     key={value}
-                    label={value}
+                    label={label}
                     value={value}
                     onDismiss={onSelectedChipDismiss}
                     {...tagProps}
@@ -229,7 +204,9 @@ const Select: React.FC<SelectProps> = ({
         </Box>
       );
     } else {
-      return selectedValue.join(", ");
+      return [...selectedValue].map((v) => {
+        return menuItemsMap[v].title
+      }).join(", ");
     }
   };
 
@@ -252,8 +229,7 @@ const Select: React.FC<SelectProps> = ({
           }
         });
         setSelectionMap(updatedSelectedMap);
-        // const finalSelectedValues = updatedSelectedValues.map((val)=> menuItemsMap[val].title || '')
-        // setSelectValue(finalSelectedValues);
+        setSelectValue(updatedSelectedValues);
       } else {
         Object.keys(selectionMap).forEach((key) => {
           if ("checked" in menuItemsMap[key] || menuItemsMap[key].disabled) {
@@ -266,15 +242,9 @@ const Select: React.FC<SelectProps> = ({
         });
         setSelectionMap(updatedSelectedMap);
         if (Array.isArray(value)) {
-          console.log("value: ", value)
-          const finalValues = value.map((val)=> menuItemsMap[val].title || '');
-          value.forEach((v) => {
-            console.log("v: ", v)
-          });
-          setSelectValue(finalValues);
+          setSelectValue(value);
         } else {
-          const finalValue = menuItemsMap[value].title || '';
-          setSelectValue([finalValue]);
+          setSelectValue([value]);
         }
       }
       const selectedValueArr: string[] = [];
@@ -340,7 +310,7 @@ const Select: React.FC<SelectProps> = ({
   return (
     <Box className="navi-menu-component">
       <MuiSelect
-        renderValue={selectedChips}
+        renderValue={renderValue}
         {...props}
         onChange={onSelectChange}
         multiple={multiSelect}

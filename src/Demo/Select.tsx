@@ -173,8 +173,9 @@ export default ({ ...args }) => {
     <div>
       <Select
         open={false}
-        multiSelect
-        selectAll={false}
+        renderValueAsTag
+        multiSelect={true}
+        selectAll={true}
         size="large"
         maxWidth={250}
         minWidth={400}
