@@ -21,7 +21,7 @@ import SelectDemo from './SelectDemo';
 import MuiAutocomplete from './MuiAutocomplete';
 import './Autocomplete.scss'
 import { Autocomplete, Input as NaviInput, Tag as Chip } from '../navi';
-import { CustomAutoComplete } from '../navi/components/Autocomplete/Autocomplete'
+// import { CustomAutoComplete } from '../navi/components/Autocomplete/Autocomplete'
 import { AutocompleteRenderInputParams } from '@material-ui/lab';
 const icon = <CheckBoxOutlineBlankIcon fontSize="small" />;
 const checkedIcon = <CheckBoxIcon fontSize="small" />;
@@ -94,28 +94,31 @@ export default function CheckboxesTags() {
 
         <Box marginLeft='30px'>
           <Autocomplete
-            autocompleteProps={{
-              // open: true,
-              multiple: true,
-              disableCloseOnSelect: true,
-              options: countryList,
-              renderInput: ({ ...params }) => {
-                return (
-                  <NaviTextField
-                    label='Autocomplete using Navi Text input'
-                    placeholder='Navi Autocomplete'
-                    {...params}
-                    minWidth={400} />
-                );
-              }
-            }}
+            // autocompleteProps={{
+            //   // open: true,
+            //   multiple: true,
+            //   disableCloseOnSelect: true,
+            //   options: countryList,
+            //   renderInput: ({ ...params }) => {
+            //     return (
+            //       <NaviTextField
+            //         label='Autocomplete using Navi Text input'
+            //         placeholder='Navi Autocomplete'
+            //         {...params}
+            //         minWidth={400} />
+            //     );
+            //   }
+            // }}
             selectable={false}
             size={'large'}
+            required
+            // multiple
+            options={countryList}
           />
         </Box>
 
         <Box>
-          <CustomAutoComplete
+          <Autocomplete
             options={countryList}
             multiple
             limitTags={4}
@@ -124,10 +127,10 @@ export default function CheckboxesTags() {
             required
             size="large"
             onChange={(e, value, reason) => {
-              console.log(value, reason)
+              // console.log(value, reason)
             }}
             inputProps={{
-              label: "Navi Autocomplete component",
+              // label: "Navi Autocomplete component",
               helperText: "Helper Text",
               successMessage: "Success Message Text",
               errorMessage: "Error Message Text",

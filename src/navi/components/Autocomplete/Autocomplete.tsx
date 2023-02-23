@@ -9,26 +9,11 @@ import DividerMenuItem from '../DividerMenuItem/DividerMenuItem';
 import EmptyStateMenuItem from '../EmptyStateMenuItem/EmptyStateMenuItem';
 import MenuItem from '../MenuItem/MenuItem';
 import NaviTextField from '../TextField/TextField'
-import { AutocompleteProps, CustomAutoCompleteProps, DataObj } from './Autocomplete.types'
+import { AutocompleteProps, DataObj } from './Autocomplete.types'
 import Box from '../Box/Box';
 import Tag from '../Tag/Tag';
 import { Tag as TagIcon } from 'tabler-icons-react';
 import './Autocomplete.scss'
-
-// interface MenuItemMap {
-//   DescriptiveMenuItem: Function,
-//   GroupHeadingMenuItem: Function,
-//   DividerMenuItem: Function,
-//   EmptyStateMenuItem: Function,
-//   MenuItem: Function,
-// }
-// const MenuItemMap: MenuItemMap = {
-//   DescriptiveMenuItem: DescriptiveMenuItem,
-//   GroupHeadingMenuItem: GroupHeadingMenuItem,
-//   DividerMenuItem: DividerMenuItem,
-//   EmptyStateMenuItem: EmptyStateMenuItem,
-//   MenuItem: MenuItem,
-// };
 
 const GetComponent = (option: any, selected: boolean, size?: 'small' | 'large') => {
   switch (option.type) {
@@ -53,81 +38,7 @@ const GetComponent = (option: any, selected: boolean, size?: 'small' | 'large') 
   }
 }
 
-
-export default <T,>(props: CustomAutoCompleteProps<T>) => {
-  const { selectable, size, autocompleteProps, inputProps } = props;
-  return (<Box className='navi-autocomplete-container'>
-    <Autocomplete
-      getOptionLabel={(option: any) => option.name}
-      renderOption={(option: any, { selected }) => {
-        const MenuComponent = GetComponent(option, selected, size);
-        return (
-          MenuComponent
-        )
-      }}
-      onChange={(e, v) => { console.log(e, v) }}
-      style={{ width: 500 }}
-      PaperComponent={({ children }) => (
-        <Paper
-          className="navi-autocomplete-menu-container"
-        >
-          {Array.isArray(children) && children.map((val) => {
-            return val
-          })}
-        </Paper>
-      )}
-      renderTags={(value: any, getTagProps) => {
-        return value.map((val: { name: string }, index: number) => {
-          const props: any = getTagProps({ index });
-          return (
-            // <Chip label={val.name} {...getTagProps({ index })}  />
-            // <Box display="flex" margin={`5px 6px`}>
-            <Tag
-              size={"large"}
-              intent="muted"
-              dismissible
-              LeadingIcon={<TagIcon size={8} />}
-              key={index}
-              label={val.name}
-              value={val.name}
-              {...props}
-            // onDismiss={(e) => { props.onDelete && props.onDelete() }}
-            // onDismiss={onSelectedChipDismiss}
-            // {...tagProps}
-            // className={`${classes.chip} ${tagProps?.className} navi-prevent-menu-open `}
-            // style={{
-            //   ...tagProps?.style,
-            // }}
-            />
-            // </Box>
-          )
-        });
-      }}
-      {...autocompleteProps}
-      renderInput={({ ...params }) => {
-        return (
-          <NaviTextField
-            label='Autocomplete using Navi Text input'
-            {...params}
-            inputProps={{
-              ...params.inputProps,
-              className: `navi-autocomplete-input ${size}`,
-            }}
-            minWidth={400}
-          />
-        )
-      }}
-      ListboxProps={{
-        style: {
-          marginTop: "10px",
-        }
-      }}
-    />
-  </Box>);
-};
-
-
-export const CustomAutoComplete = function CheckboxesTags({ size, selectable, options, inputProps, ...props }: AutocompleteProps) {
+export default ({ size, selectable, options, inputProps, ...props }: AutocompleteProps) => {
   const [dataValue, setDataValue] = React.useState<(string | DataObj)[]>();
   return (<Box className='navi-autocomplete-container'>
     <Autocomplete
@@ -177,7 +88,11 @@ export const CustomAutoComplete = function CheckboxesTags({ size, selectable, op
       {...props}
       onChange={(event, value, reason) => {
         const valueArr: string[] = [];
-        value.forEach((v: any) => valueArr.push(v.value));
+        if (Array.isArray(value)) {
+          value.forEach((v: any) => valueArr.push(v.value || v.title || v.name));
+        } else {
+          valueArr.push(value);
+        }
         setDataValue(valueArr);
         props.onChange && props.onChange(event, value, reason);
       }}
