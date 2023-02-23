@@ -409,13 +409,13 @@ export default function AutocompleteControlled() {
   const inputRef = React.useRef<HTMLInputElement>(null);
 
   const menuItem = data.map(
-    ({ title = "", avatar, type, ...val }: SelectDataProps, i) => {
+    ({ title = "", value="", avatar, type, ...val }: SelectDataProps, i) => {
       return val.divider ? (
         <DividerMenuItem key={i} />
       ) : (
         <DescriptiveMenuItem
           key={i}
-          value={title}
+          value={value}
           title={title}
           checked={false}
           selectable={true}

@@ -47,14 +47,12 @@ let data = [
   {
     title: "12 Angry Men",
     description: "1957",
-    checked: true,
     trailingIcon: <Pencil />,
     leadingIcon: <Movie />,
   },
   {
     title: "Schindler's List",
     description: "1993",
-    checked: true,
     trailingIcon: <Pencil />,
     leadingIcon: <Movie />,
   },
@@ -407,9 +405,7 @@ export const Overview: ComponentStory<typeof Select> = ({ ...args }) => {
           variant: "neutral",
         }}
         value={value}
-        // className={`aaa-select-classname`}
         inputProps={{
-          className: `aaa-classname`,
           label: "Select Movies",
           errorMessage: "Error message",
           helperText: "Helper text",

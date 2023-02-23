@@ -9,7 +9,7 @@ export interface SelectDataProps {
   leadingIcon?: React.ReactNode;
   avatar?: React.ReactNode;
   multiSelect?: boolean;
-  value?: string;
+  value?: string | number;
   checked?: boolean;
   type?: "divider" | "select";
   divider?: boolean;

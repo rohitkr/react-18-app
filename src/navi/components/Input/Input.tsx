@@ -31,10 +31,7 @@ const TextInputElement = ({
   tooltipPlacement,
   translate,
   size = "large",
-  inputProps,
   innerRef,
-  width,
-  className='',
   ...props
 }: NaviInputProps) => {
   const inputMinWidth = minWidth
@@ -72,8 +69,8 @@ const TextInputElement = ({
     </div>
   ) : null;
 
-  inputProps = {
-    ...inputProps,
+  const inputProps = {
+    ...props.inputProps,
     readOnly: inputType === "read-only",
     maxLength: maxCharacters,
   };
@@ -81,7 +78,7 @@ const TextInputElement = ({
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = e.target;
     setCharacterCount(
-      (typeof value === "string" && value?.length) || 0
+      (typeof props.value === "string" && props.value?.length) || 0
     );
     setInputValue(value);
     props.onChange && props.onChange(e);
@@ -111,11 +108,8 @@ const TextInputElement = ({
   return (
     <Box
       ref={innerRef}
-      style={{
-        display: "inline-block",
-        width: width === 'auto' ? '100%' : ''
-      }}
-      className={`navi-input-container ${className}`}
+      style={{ display: "inline-block" }}
+      className={`navi-input-container ${props.className}`}
     >
       <InputLabel className="input-label">
         <div
@@ -172,23 +166,23 @@ const TextInputElement = ({
       </InputLabel>
       <Input
         disabled={inputType === "disabled"}
-        style={{
-          minWidth: inputMinWidth,
-          maxWidth: width === 'auto' ? '' : inputMaxWidth,
-          minHeight: inputMinHeight,
-          maxHeight: inputMaxHeight,
-          width: width === 'auto' ? '100%' : width,
-          ...inputProps.style
-        }}
-        inputProps={inputProps}
         {...props}
         className={`
-          base-input
-          ${size}
-          ${inputType}
-          ${hoverClass}
-          ${errorClass}
-        `}
+        base-input 
+        ${size}
+        ${inputType}
+        ${hoverClass}
+        ${errorClass}
+        ${props.className}
+      `}
+        style={{
+          minWidth: inputMinWidth,
+          maxWidth: inputMaxWidth,
+          minHeight: inputMinHeight,
+          maxHeight: inputMaxHeight,
+          ...props.style
+        }}
+        inputProps={inputProps}
         onBlur={handleBlur}
         onChange={handleInputChange}
       ></Input>

@@ -20,6 +20,10 @@ import tokenObj from "../../tokens/build/json/tokens.json";
 interface SelectionMapInterface {
   [key: string]: boolean | undefined;
 }
+
+interface MenuMapInterface {
+  [key: string]: SelectProps;
+}
 interface MenuItemsMapInterface {
   [key: string]: MenuItemProps;
 }
@@ -53,7 +57,6 @@ const Select: React.FC<SelectProps> = ({
   dataTestId,
   openTooltipText,
   clearTooltipText,
-  className='',
   ...props
 }) => {
   const [menuItemsMap] = React.useState(() => {
@@ -113,6 +116,24 @@ const Select: React.FC<SelectProps> = ({
     }
     return {};
   });
+
+  const [menuMap, setMenuMap] = React.useState(() => {
+    if (React.Children.count(children)) {
+      const map = React.Children.toArray(children).reduce(
+        (acc: MenuMapInterface, child) => {
+          if (React.isValidElement(child)) {
+            acc[child.props.value] = { ...child.props };
+            return acc;
+          }
+          return acc;
+        },
+        {}
+      );
+      return map;
+    }
+    return {};
+  });
+
   // Used ref as <any> because MUI inputRef for select component is Any
   const inputRef = React.useRef<any>(null);
   const classes = useStyles();
@@ -231,7 +252,8 @@ const Select: React.FC<SelectProps> = ({
           }
         });
         setSelectionMap(updatedSelectedMap);
-        setSelectValue(updatedSelectedValues);
+        // const finalSelectedValues = updatedSelectedValues.map((val)=> menuItemsMap[val].title || '')
+        // setSelectValue(finalSelectedValues);
       } else {
         Object.keys(selectionMap).forEach((key) => {
           if ("checked" in menuItemsMap[key] || menuItemsMap[key].disabled) {
@@ -244,9 +266,15 @@ const Select: React.FC<SelectProps> = ({
         });
         setSelectionMap(updatedSelectedMap);
         if (Array.isArray(value)) {
-          setSelectValue(value);
+          console.log("value: ", value)
+          const finalValues = value.map((val)=> menuItemsMap[val].title || '');
+          value.forEach((v) => {
+            console.log("v: ", v)
+          });
+          setSelectValue(finalValues);
         } else {
-          setSelectValue([value]);
+          const finalValue = menuItemsMap[value].title || '';
+          setSelectValue([finalValue]);
         }
       }
       const selectedValueArr: string[] = [];
@@ -310,7 +338,7 @@ const Select: React.FC<SelectProps> = ({
   }, [selectionMap]);
 
   return (
-    <Box className={`navi-menu-component ${className}`}>
+    <Box className="navi-menu-component">
       <MuiSelect
         renderValue={selectedChips}
         {...props}
@@ -322,18 +350,19 @@ const Select: React.FC<SelectProps> = ({
         data-testid={dataTestId || undefined}
         input={
           <TextInput
-            {...inputProps}
-            className={`navi-select-input-container ${inputProps?.className || ''}`}
+            // navi-select-input-container class name is being used to prevent menu to be opened
+            // while clicking on the batch icon
+            className={`navi-select-input-container ${inputProps?.className}`}
             style={{
               padding:
                 renderValueAsTag && selectedValue.length ? 0 : inputPadding,
-                ...inputProps?.style
             }}
             {...{
               minWidth: props.minWidth,
               maxWidth: props.maxWidth,
               minHeight: props.minHeight,
               maxHeight: props.maxHeight,
+              ...inputProps,
             }}
             size={size}
             inputType={"default"}
@@ -343,10 +372,6 @@ const Select: React.FC<SelectProps> = ({
         inputProps={{
           // Hide the actual select component dropdown icon
           IconComponent: () => null,
-          // ...inputProps,
-          // navi-select-input-container class name is being used to prevent menu to be opened
-          // while clicking on the batch icon
-          // className: `navi-select-input-container ${inputProps?.className}`
         }}
         onClose={onSelectClose}
         onOpen={onSelectOpen}
