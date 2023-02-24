@@ -2,6 +2,10 @@
 /* cyrillic-ext */
 
 .navi-text-field-container {
+  .input-hidden {
+    // display: none;
+  }
+
   .MuiInput-underline:hover {
     border-bottom: none;
   }

@@ -14,6 +14,7 @@ import Box from '../Box/Box';
 import Tag from '../Tag/Tag';
 import { Tag as TagIcon } from 'tabler-icons-react';
 import './Autocomplete.scss'
+import { ClickAwayListener } from '@material-ui/core';
 
 const GetComponent = (option: any, selected: boolean, size?: 'small' | 'large') => {
   switch (option.type) {
@@ -40,8 +41,10 @@ const GetComponent = (option: any, selected: boolean, size?: 'small' | 'large') 
 
 export default ({ size, selectable, options, inputProps, ...props }: AutocompleteProps) => {
   const [dataValue, setDataValue] = React.useState<(string | DataObj)[]>();
+  const [open, setOpen] = React.useState(false);
   return (<Box className='navi-autocomplete-container'>
     <Autocomplete
+      open={open}
       // To suppress the Autocomplete warning: The value provided to Autocomplete is invalid
       getOptionSelected={(option, value) => option.name === value.name}
       getOptionLabel={(option: any) => option.name}
@@ -51,6 +54,20 @@ export default ({ size, selectable, options, inputProps, ...props }: Autocomplet
           MenuComponent
         );
       }}
+      onOpen={() => {
+        console.log("on open...");
+        setOpen(true);
+      }}
+      onClose={() => {
+        console.log("on Close...");
+        setOpen(false);
+      }}
+      onClickCapture={(e) => {
+        console.log("on onClickCapture...");
+        setTimeout(() => setOpen(true), 0);
+      }}
+      forcePopupIcon
+
       style={{ width: 500 }}
       PaperComponent={({ children }) => (
         <Paper
@@ -99,16 +116,22 @@ export default ({ size, selectable, options, inputProps, ...props }: Autocomplet
       disableCloseOnSelect={props.multiple}
       renderInput={({ ...params }) => {
         return (
-          <NaviTextField
-            {...inputProps}
-            {...params}
-            required={props.required}
-            inputProps={{
-              ...params.inputProps,
-              className: `navi-autocomplete-input ${size}`,
-            }}
-            dataValue={dataValue?.join(',')}
-          />
+          <ClickAwayListener onClickAway={(event: React.MouseEvent<Document, MouseEvent>): void => {
+            console.log('Click away not implemented.');
+            setOpen(false);
+          }}>
+            <NaviTextField
+              {...inputProps}
+              {...params}
+              required={props.required}
+              inputProps={{
+                ...params.inputProps,
+                disabled: true,
+                className: `navi-autocomplete-input ${size}`,
+              }}
+              dataValue={dataValue?.join(',')}
+            />
+          </ClickAwayListener>
         );
       }}
     />
