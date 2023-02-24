@@ -59,3 +59,11 @@
     color: $color-secondary-600;
   }
 }
+
+.navi-select-with-scroll:hover {
+  overflow-y: scroll;
+}
+
+.navi-select-with-scroll {
+  overflow: hidden;
+}

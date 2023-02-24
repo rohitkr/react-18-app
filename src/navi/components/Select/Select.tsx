@@ -183,7 +183,7 @@ const Select: React.FC<SelectProps> = ({
   const renderValue = () => {
     if (renderValueAsTag) {
       return (
-        <Box flexWrap="wrap" display="flex" maxHeight={`${props.maxHeight}px`}>
+        <Box flexWrap="wrap" display="flex" maxHeight={`${props.maxHeight}px`} className="navi-select-with-scroll">
           {selectedValue &&
             selectedValue.map((value: string) => {
               const label = menuItemsMap[value].title || '';
