@@ -14,7 +14,7 @@ const SelectedChip: React.FC<SelectedChipsProps> = ({
     (e: React.MouseEvent, value?: string) => {
       value && onDismiss && onDismiss(e, value);
     },
-    []
+    [onDismiss]
   );
   return (
     <Chip

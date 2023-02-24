@@ -81,7 +81,7 @@ const DividerComponent: React.FC<DividerProps> = (props) => {
           weight === "1"
             ? tokenObj["divider-weight-1-size"]
             : tokenObj["divider-weight-2-size"],
-        width: "100%",
+        width,
       };
     } else {
       dividerStyle = {
@@ -90,7 +90,7 @@ const DividerComponent: React.FC<DividerProps> = (props) => {
           weight === "1"
             ? tokenObj["divider-weight-1-size"]
             : tokenObj["divider-weight-2-size"],
-        height: "100%",
+        height,
       };
     }
     return dividerStyle;
@@ -100,13 +100,13 @@ const DividerComponent: React.FC<DividerProps> = (props) => {
     <Box
       className="navi-divider-container"
       style={{ ...dividerContainerStyles, ...dividerStyleObj }}
+      backgroundColor={dividerColor.hexColor}
+      opacity={dividerColor.opacity}
       data-testid={dataTestId}
       ref={forwardedRef}
       {...restProps}
     >
       <Box
-        backgroundColor={dividerColor.hexColor}
-        opacity={dividerColor.opacity}
         height={height}
         width={width}
       />

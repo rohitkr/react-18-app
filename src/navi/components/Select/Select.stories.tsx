@@ -189,8 +189,8 @@ const SelectComponent: ComponentStory<typeof Select> = ({ ...args }) => {
               <DescriptiveMenuItem
                 key={i}
                 value={value}
-                title={value}
-                checked={false}
+                title={title}
+                selected={false}
                 selectable={true}
                 {...val}
               />

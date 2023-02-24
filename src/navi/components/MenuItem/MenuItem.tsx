@@ -15,7 +15,7 @@ const MenuItemCard = ({
   value,
   disableHoverStyle = false,
   disableItemClick = false,
-  isSelected,
+  selected,
   button,
   ...props
 }: MenuItemProps) => {
@@ -41,7 +41,7 @@ const MenuItemCard = ({
       {...props}
       disableRipple
       className={`navi-menu-list-item ${size} ${
-        isSelected ? "navi-item-selected" : ""
+        selected ? "navi-item-selected" : ""
       } `}
       disableGutters
       onClick={onMenuItemClick}

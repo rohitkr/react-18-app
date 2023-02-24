@@ -205,7 +205,7 @@ export default ({ ...args }) => {
       <Select
         open={false}
         renderValueAsTag
-        multiSelect={false}
+        multiSelect={true}
         selectAll={true}
         size="large"
         maxWidth={250}
@@ -266,7 +266,7 @@ export default ({ ...args }) => {
         }}
         // value={value}
         inputProps={{
-          // className: `aaa-classname`,
+          className: `aaa-classname`,
           label: "MultiSelect Component With Tags",
           errorMessage: "Error message",
           helperText: "Helper text",

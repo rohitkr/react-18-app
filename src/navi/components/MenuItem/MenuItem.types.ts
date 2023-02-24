@@ -7,7 +7,7 @@ export interface MenuItemProps extends MuiMenuItemProps {
   leadingIcon?: React.ReactNode;
   avatarSrc?: string;
   avatar?: string;
-  checked?: boolean;
+  selected?: boolean;
   value: string | number;
   onMenuItemClick?: (
     e: React.MouseEvent<HTMLLIElement, MouseEvent>,

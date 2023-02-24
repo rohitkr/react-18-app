@@ -2,7 +2,7 @@ import React from "react";
 import Box from "../Box/Box";
 import MenuItem from "@material-ui/core/MenuItem";
 import { withStyles } from "@material-ui/core/styles";
-import './EmptyStateMenuItem.scss'
+import "./EmptyStateMenuItem.scss";
 import { EmptyStateMenuItemProps } from "./EmptyStateMenuItem.types";
 
 const MenuItemStyles = () => ({
@@ -23,6 +23,7 @@ const EmptyStateMenuItem: React.FC<EmptyStateMenuItemProps> = (props) => {
       disableRipple
       className={`navi-menu-list-item empty-${size}`}
       disableGutters
+      selected={false}
     >
       <Box
         display="flex"

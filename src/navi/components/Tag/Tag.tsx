@@ -182,6 +182,7 @@ const TagComponent: React.FC<TagProps> = ({
   disabled = false,
   forwardedRef,
   "data-testid": dataTestId,
+  value,
   ...props
 }) => {
   const [isHovered, setIsHovered] = React.useState(false);
@@ -194,13 +195,13 @@ const TagComponent: React.FC<TagProps> = ({
   const handleHoverOut = React.useCallback((e: React.MouseEvent) => {
     setIsHovered(false);
     onHover && onHover(e);
-  }, []);
+  }, [onHover]);
 
   const handleDismiss = React.useCallback((e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
-    dismissible && onDismiss && onDismiss(e, props.value);
-  }, []);
+    dismissible && onDismiss && onDismiss(e, value);
+  }, [dismissible, onDismiss, value ]);
 
   const handleOnClick = React.useCallback((e: React.MouseEvent) => {
     e.preventDefault();
@@ -243,7 +244,7 @@ const TagComponent: React.FC<TagProps> = ({
       onBlur={handleBlur}
       ref={forwardedRef}
       data-testid={dataTestId}
-      data-value={props.value}
+      data-value={value}
       {...props}
       className={`navi-tag-icons-container ${props.className}`}
       style={{

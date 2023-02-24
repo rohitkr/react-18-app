@@ -17,6 +17,8 @@ import SelectedChip from "./SelectedChip";
 import SelectAllMenuItem from "../MenuItem/SelectAllMenuItem";
 import tokenObj from "../../tokens/build/json/tokens.json";
 
+const FOCUS_CLASS_NAME = 'navi-select-focused';
+
 interface SelectionMapInterface {
   [key: string]: boolean | undefined;
 }
@@ -53,6 +55,8 @@ const Select: React.FC<SelectProps> = ({
   dataTestId,
   openTooltipText,
   clearTooltipText,
+  onChange,
+  className='',
   ...props
 }) => {
   const [menuItemsMap] = React.useState(() => {
@@ -81,7 +85,7 @@ const Select: React.FC<SelectProps> = ({
       if (React.Children.count(children)) {
         return React.Children.toArray(children).reduce(
           (acc: Array<string>, child) => {
-            if (React.isValidElement(child) && child.props.checked) {
+            if (React.isValidElement(child) && child.props.selected) {
               return [...acc, child.props.value];
             }
             return acc;
@@ -99,8 +103,7 @@ const Select: React.FC<SelectProps> = ({
       const map = React.Children.toArray(children).reduce(
         (acc: SelectionMapInterface, child) => {
           if (React.isValidElement(child)) {
-            acc[child.props.value] = child.props.checked ? true : false;
-            // acc[child.props.value] = child.props.checked ? {...child.props, selected: true} : {...child.props, selected: false};
+            acc[child.props.value] = child.props.selected ? true : false;
             return acc;
           }
           return acc;
@@ -111,6 +114,7 @@ const Select: React.FC<SelectProps> = ({
     }
     return {};
   });
+  const [focusClassName, setFocusClassName] = React.useState("");
   // Used ref as <any> because MUI inputRef for select component is Any
   const inputRef = React.useRef<any>(null);
   const classes = useStyles();
@@ -134,10 +138,10 @@ const Select: React.FC<SelectProps> = ({
     (e: React.MouseEvent, value?: string) => {
       let updatedMap = { ...selectionMap };
       if (value) {
-        if ("checked" in menuItemsMap[String(value)] || menuItemsMap[String(value)].disabled) {
+        if ("selected" in menuItemsMap[String(value)] || menuItemsMap[String(value)].disabled) {
           updatedMap = {
             ...updatedMap,
-            [String(value)]: menuItemsMap[value].checked || false,
+            [String(value)]: menuItemsMap[value].selected || false,
           };
         } else {
           updatedMap = { ...updatedMap, [String(value)]: false };
@@ -152,17 +156,19 @@ const Select: React.FC<SelectProps> = ({
       });
       setSelectValue(updatedSelectedValues);
     },
-    [selectionMap]
+    [selectionMap, menuItemsMap]
   );
 
   const onSelectClose = React.useCallback(() => {
     setOpen(false);
+    setFocusClassName('')
   }, []);
 
   // This function prevents Menu from opening while clicking on the Chip
   const onSelectOpen = React.useCallback((e: React.ChangeEvent<{}>) => {
     let ele = e.target as HTMLElement;
     let preventMenuOpen = false;
+    setFocusClassName(FOCUS_CLASS_NAME);
     while (ele.nodeName !== "BODY" && !preventMenuOpen) {
       ele = ele.parentNode as HTMLElement;
       // If the element has className navi-prevent-menu-open, it will prevent
@@ -217,8 +223,8 @@ const Select: React.FC<SelectProps> = ({
       if (value.indexOf("_select_all") >= 0) {
         let updatedSelectedValues: Array<string> = [];
         Object.keys(selectionMap).forEach((key) => {
-          if ("checked" in menuItemsMap[key] || menuItemsMap[key].disabled) {
-            updatedSelectedMap[key] = menuItemsMap[key].checked;
+          if ("selected" in menuItemsMap[key] || menuItemsMap[key].disabled) {
+            updatedSelectedMap[key] = menuItemsMap[key].selected;
           } else {
             updatedSelectedMap[key] = !allSelected;
           }
@@ -232,8 +238,8 @@ const Select: React.FC<SelectProps> = ({
         setSelectValue(updatedSelectedValues);
       } else {
         Object.keys(selectionMap).forEach((key) => {
-          if ("checked" in menuItemsMap[key] || menuItemsMap[key].disabled) {
-            updatedSelectedMap[key] = menuItemsMap[key].checked;
+          if ("selected" in menuItemsMap[key] || menuItemsMap[key].disabled) {
+            updatedSelectedMap[key] = menuItemsMap[key].selected;
           } else if (value.indexOf(key) >= 0) {
             updatedSelectedMap[key] = true;
           } else {
@@ -253,22 +259,23 @@ const Select: React.FC<SelectProps> = ({
           selectedValueArr.push(val);
         }
       });
-      props.onChange && props.onChange(selectedValueArr);
+      onChange && onChange(selectedValueArr);
     },
-    [selectionMap, allSelected]
+    [selectionMap, allSelected, menuItemsMap, onChange]
   );
 
   const onMenuOpen = () => {
+    setFocusClassName(FOCUS_CLASS_NAME);
     setOpen(true);
   };
 
   const onClearClick = () => {
     let updatedMap = { ...selectionMap };
     Object.keys(selectionMap).forEach((key) => {
-      if ("checked" in menuItemsMap[key] || menuItemsMap[key].disabled) {
+      if ("selected" in menuItemsMap[key] || menuItemsMap[key].disabled) {
         updatedMap = {
           ...updatedMap,
-          [String(key)]: menuItemsMap[key].checked,
+          [String(key)]: menuItemsMap[key].selected,
         };
       } else {
         updatedMap = {
@@ -295,20 +302,20 @@ const Select: React.FC<SelectProps> = ({
           React.PropsWithChildren<MenuItemProps>
         >;
         const value = child.props.value;
-        let checked = selectionMap[child.props.value];
+        let selected = selectionMap[child.props.value];
 
         return React.cloneElement(item, {
           key: value,
           size: size,
           selectable: multiSelect,
-          checked: checked,
+          selected: selected,
         });
       }
     });
   }, [selectionMap]);
 
   return (
-    <Box className="navi-menu-component">
+    <Box className={`navi-menu-component ${className}`}>
       <MuiSelect
         renderValue={renderValue}
         {...props}
@@ -320,20 +327,20 @@ const Select: React.FC<SelectProps> = ({
         data-testid={dataTestId || undefined}
         input={
           <TextInput
-            // navi-select-input-container class name is being used to prevent menu to be opened
-            // while clicking on the batch icon
-            className={`navi-select-input-container ${inputProps?.className}`}
             style={{
               padding:
                 renderValueAsTag && selectedValue.length ? 0 : inputPadding,
+                ...inputProps?.style
             }}
             {...{
               minWidth: props.minWidth,
               maxWidth: props.maxWidth,
               minHeight: props.minHeight,
               maxHeight: props.maxHeight,
-              ...inputProps,
             }}
+            // navi-select-input-container className is being used to prevent menu to be opened
+            // while clicking on the batch icon
+            className={`navi-select-input-container ${inputProps?.className} ${focusClassName}`}
             size={size}
             inputType={"default"}
           />
@@ -406,7 +413,7 @@ const Select: React.FC<SelectProps> = ({
             key="_select_all"
             value="_select_all"
             size={size}
-            checked={allSelected}
+            selected={allSelected}
           />
         ) : null}
         {items}

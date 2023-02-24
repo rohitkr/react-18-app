@@ -16,6 +16,7 @@ import Menu from "./components/Menu/Menu";
 import MenuItem from "./components/MenuItem/MenuItem";
 import ProgressBar from "./components/ProgressBar/ProgressBar";
 import RadioGroup from "./components/RadioGroup/RadioGroup";
+import SplitButton from "./components/SplitButton/SplitButton";
 import Select from "./components/Select/Select";
 import Switch from "./components/Switch/Switch";
 import SystemIcon from "./components/SystemIcon/SystemIcon";
@@ -45,6 +46,7 @@ export {
   MenuItem,
   ProgressBar,
   RadioGroup,
+  SplitButton,
   Select,
   Switch,
   SystemIcon,

@@ -7,7 +7,7 @@ import Box from "../Box/Box";
 import { MoodSad2 } from "tabler-icons-react";
 
 export default {
-  title: `Components/EmptyStateMenuItem`,
+  title: `Components/MenuItem/EmptyStateMenuItem`,
   component: EmptyStateMenuItem,
   argTypes: {},
 } as ComponentMeta<typeof EmptyStateMenuItem>;

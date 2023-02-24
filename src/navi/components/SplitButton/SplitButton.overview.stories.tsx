@@ -4,10 +4,7 @@ import SplitButton from "./SplitButton";
 import Box from "../Box/Box";
 import SyntaxHighlighter from "react-syntax-highlighter";
 import { docco } from "react-syntax-highlighter/dist/esm/styles/hljs";
-import { InfoCircle, ChevronDown } from "tabler-icons-react";
-import DescriptiveMenuItem from "../DescriptiveMenuItem/DescriptiveMenuItem";
-import GroupHeadingMenuItem from "../GroupHeadingMenuItem/GroupHeadingMenuItem";
-import DividerMenuItem from "../DividerMenuItem/DividerMenuItem";
+import { ChevronDown } from "tabler-icons-react";
 
 export default {
   title: `Components/SplitButton`,
@@ -16,164 +13,622 @@ export default {
 } as ComponentMeta<typeof SplitButton>;
 
 const Template: ComponentStory<typeof SplitButton> = (args) => {
-  const [size, setSize] = React.useState("");
-  const [type, setType] = React.useState("");
-  const [label, setLabel] = React.useState("Sample label");
-  const [intent, setIntent] = React.useState("");
-  const [variant, setVariant] = React.useState("");
-  const [leadingIcon, setLeadingIcon] = React.useState("");
-  const [trailingIcon, setTrailingIcon] = React.useState("");
-
-  const sizeValue = size ? `size="${size}"` : "";
-  const typeValue = type ? `type="${type}"` : "";
-  const labelValue = label ? `label="${label}"` : "";
-  const intentValue = intent ? `intent="${intent}"` : "";
-  const variantValue = variant ? `variant="${variant}"` : "";
-  const leadingIconValue = leadingIcon
-    ? `leadingIcon={<${leadingIcon} />}`
-    : "";
-  const trailingIconValue = trailingIcon
-    ? `leadingIcon={<${trailingIcon} />}`
-    : "";
-
-  const code = `
-    // sample code
-    <Badge ${sizeValue} ${typeValue} ${labelValue} ${intentValue} ${variantValue} ${leadingIconValue} ${trailingIconValue}/>
-    `;
+  const [code, setCode] = React.useState(`// sample code`);
   return (
     <Box className="container">
       <h1>Overview</h1>
       <p>Documentation for the Navi Split button component</p>
+      <p>
+        Split button is composite component with a text and an Icon button
+        combined together with an attached menu. On click of the split button, a
+        menu opens with a list of menu items to choose from.
+      </p>
       <p>Here is a sample split button component.</p>
+      <h3>Size - Small</h3>
       <Box style={{ display: "flex", flexDirection: "column", rowGap: "10px" }}>
-        <SplitButton
-          intent="info-soft"
-          tooltip="Open menu"
-          buttonText="Profile menu profile menu"
-          size="small"
-          menuItems={[
-            <GroupHeadingMenuItem title="Group heading 1" />,
-            <DescriptiveMenuItem title="Descriptive menu item 1" value="d_m_1" />,
-            <DescriptiveMenuItem title="Descriptive menu item 2" value="d_m_2" />,
-            <DescriptiveMenuItem title="Descriptive menu item 3" value="d_m_3" />,
-            <DescriptiveMenuItem title="Descriptive menu item 4" value="d_m_4" />,
-            <DividerMenuItem />,
-          ]}
-          onChange={(selectedMenu) => {
-            console.log(selectedMenu);
+        <Box
+          onClick={() => {
+            setCode(`//SampleCode
+            <SplitButton
+            intent="info-soft"
+            tooltip="Open menu"
+            buttonText="Profile menu profile menu"
+            size="small"
+            menuItems={[
+              {
+                type: "group_heading",
+                title: "Group Heading 1",
+                value: "group_heading_1",
+              },
+              {
+                type: "descriptive",
+                title: "Descriptive menu item 1",
+                value: "d_m_1",
+              },
+              {
+                type: "descriptive",
+                title: "Descriptive menu item 2",
+                value: "d_m_2",
+              },
+              {
+                type: "descriptive",
+                title: "Descriptive menu item 3",
+                value: "d_m_3",
+              },
+              {
+                type: "descriptive",
+                title: "Descriptive menu item 4",
+                value: "d_m_4",
+              },
+              { type: "divider", value: "divider_m_i" },
+            ]}
+            onChange={(selectedMenu) => {
+              console.log(selectedMenu);
+            }}
+            menuProps={{
+              hideOnSelect: false,
+            }}
+          />`);
           }}
-          menuProps={{
-            multiSelect: true,
-            useSelectAll: true,
-            hideOnSelect: false
+        >
+          <SplitButton
+            intent="info-soft"
+            tooltip="Open menu"
+            buttonText="Profile menu profile menu"
+            size="small"
+            menuItems={[
+              {
+                type: "group_heading",
+                title: "Group Heading 1",
+                value: "group_heading_1",
+              },
+              {
+                type: "descriptive",
+                title: "Descriptive menu item 1",
+                value: "d_m_1",
+              },
+              {
+                type: "descriptive",
+                title: "Descriptive menu item 2",
+                value: "d_m_2",
+              },
+              {
+                type: "descriptive",
+                title: "Descriptive menu item 3",
+                value: "d_m_3",
+              },
+              {
+                type: "descriptive",
+                title: "Descriptive menu item 4",
+                value: "d_m_4",
+              },
+              { type: "divider", value: "divider_m_i" },
+            ]}
+            onChange={(selectedMenu) => {
+              console.log(selectedMenu);
+            }}
+            menuProps={{
+              hideOnSelect: false,
+            }}
+          />
+        </Box>
+        <h3>Size - Large</h3>
+        <Box
+          onClick={() => {
+            setCode(`//SampleCode
+            <SplitButton
+            intent="muted-bold"
+            buttonIcon={<ChevronDown />}
+            tooltip="Open menu"
+            buttonText="Split button"
+            menuItems={[
+              {
+                type: 'group_heading',
+                title: "Group Heading 1",
+                value: "group_heading_1",
+              },
+              {
+                type: 'descriptive',
+                title: "Descriptive menu item 1",
+                value: "d_m_1",
+              },
+              {
+                type: 'descriptive',
+                title: "Descriptive menu item 2",
+                value: "d_m_2",
+              },
+              {
+                type:'descriptive',
+                title: "Descriptive menu item 3",
+                value: "d_m_3",
+              },
+              {
+                type: 'descriptive',
+                title: "Descriptive menu item 4",
+                value: "d_m_4",
+              },
+              { type: 'divider, value: "divider_m_i" },
+            ]}
+            menuProps={{
+              hideOnSelect: false,
+              showSelectedValue: true,
+            }}
+          />
+            `);
           }}
-        />
-        {/* <SplitButton
-          intent="info-bold"
-          buttonIcon={<ChevronDown />}
-          tooltip="Open menu"
-          buttonText="Split button"
-          menu={[
-            { label: "Menu item 1", value: "menu1" },
-            { label: "Menu item 2", value: "menu2" },
-            { label: "Menu item 1", value: "menu1", icon: <InfoCircle /> },
-          ]}
-        /> */}
-        {/* <SplitButton
-          intent="muted-light"
-          buttonIcon={<ChevronDown />}
-          tooltip="Open menu"
-          buttonText="Split button"
-          menu={[
-            { label: "Menu item 1", value: "menu1" },
-            { label: "Menu item 2", value: "menu2" },
-            { label: "Menu item 1", value: "menu1", icon: <InfoCircle /> },
-          ]}
-        /> */}
-        <SplitButton
-          intent="muted-bold"
-          buttonIcon={<ChevronDown />}
-          tooltip="Open menu"
-          buttonText="Split button"
-          menuItems={[
-            <GroupHeadingMenuItem title="Group heading 1" />,
-            <DescriptiveMenuItem title="Descriptive menu item" value="d_m_1" />,
-            <DividerMenuItem />,
-          ]}
-          menuProps={{ width: "400px", menuPlacement: "right", hideOnSelect: true }}
-        />
-        {/* <SplitButton
-          intent="prime"
-          buttonIcon={<ChevronDown />}
-          tooltip="Open menu"
-          buttonText="Split button"
-          menu={[
-            { label: "Menu item 1", value: "menu1" },
-            { label: "Menu item 2", value: "menu2" },
-            { label: "Menu item 1", value: "menu1", icon: <InfoCircle /> },
-          ]}
-        />
-        <h2>Size -small</h2>
-        <SplitButton
-          intent="info-soft"
-          size="small"
-          buttonIcon={<ChevronDown />}
-          tooltip="Open menu"
-          buttonText="Split button"
-          menu={[
-            { label: "Menu item 1", value: "menu1" },
-            { label: "Menu item 2", value: "menu2" },
-            { label: "Menu item 1", value: "menu1", icon: <InfoCircle /> },
-          ]}
-        />
-        <SplitButton
-          intent="info-bold"
-          size="small"
-          buttonIcon={<ChevronDown />}
-          tooltip="Open menu"
-          buttonText="Split button"
-          menu={[
-            { label: "Menu item 1", value: "menu1" },
-            { label: "Menu item 2", value: "menu2" },
-            { label: "Menu item 1", value: "menu1", icon: <InfoCircle /> },
-          ]}
-        />
-        <SplitButton
-          intent="muted-light"
-          size="small"
-          buttonIcon={<ChevronDown />}
-          tooltip="Open menu"
-          buttonText="Split button"
-          menu={[
-            { label: "Menu item 1", value: "menu1" },
-            { label: "Menu item 2", value: "menu2" },
-            { label: "Menu item 1", value: "menu1", icon: <InfoCircle /> },
-          ]}
-        />
-        <SplitButton
-          intent="muted-bold"
-          size="small"
-          buttonIcon={<ChevronDown />}
-          tooltip="Open menu"
-          buttonText="Split button"
-          menu={[
-            { label: "Menu item 1", value: "menu1" },
-            { label: "Menu item 2", value: "menu2" },
-            { label: "Menu item 1", value: "menu1", icon: <InfoCircle /> },
-          ]}
-        />
-        <SplitButton
-          intent="prime"
-          size="small"
-          buttonIcon={<ChevronDown />}
-          tooltip="Open menu"
-          buttonText="Split button"
-          menu={[
-            { label: "Menu item 1", value: "menu1" },
-            { label: "Menu item 2", value: "menu2" },
-            { label: "Menu item 1", value: "menu1", icon: <InfoCircle /> },
-          ]}
-        /> */}
+        >
+          <SplitButton
+            intent="muted-bold"
+            tooltip="Open menu"
+            buttonText="Split button"
+            menuItems={[
+              {
+                type: "group_heading",
+                title: "Group Heading 1",
+                value: "group_heading_1",
+              },
+              {
+                type: "descriptive",
+                title: "Descriptive menu item 1",
+                value: "d_m_1",
+              },
+              {
+                type: "descriptive",
+                title: "Descriptive menu item 2",
+                value: "d_m_2",
+              },
+              {
+                type: "descriptive",
+                title: "Descriptive menu item 3",
+                value: "d_m_3",
+              },
+              {
+                type: "descriptive",
+                title: "Descriptive menu item 4",
+                value: "d_m_4",
+              },
+              { type: "divider", value: "divider_m_i" },
+            ]}
+            menuProps={{
+              hideOnSelect: false,
+              showSelectedValue: true,
+            }}
+          />
+        </Box>
+      </Box>
+      <h3>Intents</h3>
+      <Box
+        display="flex"
+        width="100%"
+        justifyContent="space-between"
+        alignItems="center"
+      >
+        <Box
+          display="flex"
+          flexDirection="column"
+          alignItems="center"
+          onClick={() => {
+            setCode(`//SampleCode
+            <SplitButton
+            intent="muted-light"
+            buttonIcon={<ChevronDown />}
+            tooltip="Open menu"
+            buttonText="Split button"
+            menuItems={[
+              {
+                type: 'group_heading,
+                title: "Group Heading 1",
+                value: "group_heading_1",
+              },
+              {
+                type: 'descriptive',
+                title: "Descriptive menu item 1",
+                value: "d_m_1",
+              },
+              {
+                type: 'descriptive',
+                title: "Descriptive menu item 2",
+                value: "d_m_2",
+              },
+              {
+                type: 'descriptive',
+                title: "Descriptive menu item 3",
+                value: "d_m_3",
+              },
+              {
+                type: 'descriptive',
+                title: "Descriptive menu item 4",
+                value: "d_m_4",
+              },
+              { type: 'divider', value: "divider_m_i" },
+            ]}
+            menuProps={{
+              hideOnSelect: true,
+            }}
+          />
+            `);
+          }}
+        >
+          <p>Muted Light</p>
+          <SplitButton
+            intent="muted-light"
+            tooltip="Open menu"
+            buttonText="Split button"
+            menuItems={[
+              {
+                type: "group_heading",
+                title: "Group Heading 1",
+                value: "group_heading_1",
+              },
+              {
+                type: "descriptive",
+                title: "Descriptive menu item 1",
+                value: "d_m_1",
+              },
+              {
+                type: "descriptive",
+                title: "Descriptive menu item 2",
+                value: "d_m_2",
+              },
+              {
+                type: "descriptive",
+                title: "Descriptive menu item 3",
+                value: "d_m_3",
+              },
+              {
+                type: "descriptive",
+                title: "Descriptive menu item 4",
+                value: "d_m_4",
+              },
+              { type: "divider", value: "divider_m_i" },
+            ]}
+            menuProps={{
+              hideOnSelect: true,
+            }}
+          />
+        </Box>
+        <Box
+          display="flex"
+          flexDirection="column"
+          alignItems="center"
+          onClick={() => {
+            setCode(`//SampleCode
+            <SplitButton
+            intent="muted-bold"
+            buttonIcon={<ChevronDown />}
+            tooltip="Open menu"
+            buttonText="Split button"
+            menuItems={[
+              {
+                type: 'group_heading',
+                title: "Group Heading 1",
+                value: "group_heading_1",
+              },
+              {
+                type: 'descriptive',
+                title: "Descriptive menu item 1",
+                value: "d_m_1",
+              },
+              {
+                type: 'descriptive',
+                title: "Descriptive menu item 2",
+                value: "d_m_2",
+              },
+              {
+                type: 'descriptive',
+                title: "Descriptive menu item 3",
+                value: "d_m_3",
+              },
+              {
+                type: 'descriptive',
+                title: "Descriptive menu item 4",
+                value: "d_m_4",
+              },
+              { type: 'divider', value: "divider_m_i" },
+            ]}
+            menuProps={{
+              hideOnSelect: true,
+            }}
+          />
+            `);
+          }}
+        >
+          <p>muted-bold</p>
+          <SplitButton
+            intent="muted-bold"
+            tooltip="Open menu"
+            buttonText="Split button"
+            menuItems={[
+              {
+                type: "group_heading",
+                title: "Group Heading 1",
+                value: "group_heading_1",
+              },
+              {
+                type: "descriptive",
+                title: "Descriptive menu item 1",
+                value: "d_m_1",
+              },
+              {
+                type: "descriptive",
+                title: "Descriptive menu item 2",
+                value: "d_m_2",
+              },
+              {
+                type: "descriptive",
+                title: "Descriptive menu item 3",
+                value: "d_m_3",
+              },
+              {
+                type: "descriptive",
+                title: "Descriptive menu item 4",
+                value: "d_m_4",
+              },
+              { type: "divider", value: "divider_m_i" },
+            ]}
+            menuProps={{
+              hideOnSelect: true,
+            }}
+          />
+        </Box>
+        <Box
+          display="flex"
+          flexDirection="column"
+          alignItems="center"
+          onClick={() => {
+            setCode(`//SampleCode
+            <SplitButton
+            intent="info-bold"
+            buttonIcon={<ChevronDown />}
+            tooltip="Open menu"
+            buttonText="Split button"
+            menuItems={[
+              {
+                type: 'group_heading,
+                title: "Group Heading 1",
+                value: "group_heading_1",
+              },
+              {
+                type: 'descriptive',
+                title: "Descriptive menu item 1",
+                value: "d_m_1",
+              },
+              {
+                type:'descriptive',
+                title: "Descriptive menu item 2",
+                value: "d_m_2",
+              },
+              {
+                type: 'descriptive'
+                title: "Descriptive menu item 3",
+                value: "d_m_3",
+              },
+              {
+                type: 'descriptive',
+                title: "Descriptive menu item 4",
+                value: "d_m_4",
+              },
+              { type:divider, value: "divider_m_i" },
+            ]}
+            menuProps={{
+              width: "400px",
+              hideOnSelect: true,
+            }}
+          />
+            `);
+          }}
+        >
+          <p>info-bold</p>
+          <SplitButton
+            intent="info-bold"
+            tooltip="Open menu"
+            buttonText="Split button"
+            menuItems={[
+              {
+                type: "group_heading",
+                title: "Group Heading 1",
+                value: "group_heading_1",
+              },
+              {
+                type: "descriptive",
+                title: "Descriptive menu item 1",
+                value: "d_m_1",
+              },
+              {
+                type: "descriptive",
+                title: "Descriptive menu item 2",
+                value: "d_m_2",
+              },
+              {
+                type: "descriptive",
+                title: "Descriptive menu item 3",
+                value: "d_m_3",
+              },
+              {
+                type: "descriptive",
+                title: "Descriptive menu item 4",
+                value: "d_m_4",
+              },
+              { type: "divider", value: "divider_m_i" },
+            ]}
+            menuProps={{
+              width: "400px",
+              hideOnSelect: true,
+            }}
+          />
+        </Box>
+        <Box
+          display="flex"
+          flexDirection="column"
+          alignItems="center"
+          onClick={() => {
+            setCode(`//SampleCode
+            <SplitButton
+            intent="info-soft"
+            buttonIcon={<ChevronDown />}
+            tooltip="Open menu"
+            buttonText="Split button"
+            menuItems={[
+              {
+                type: 'group_heading,
+                title: "Group Heading 1",
+                value: "group_heading_1",
+              },
+              {
+                type: 'descriptive',
+                title: "Descriptive menu item 1",
+                value: "d_m_1",
+              },
+              {
+                type: 'descriptive',
+                title: "Descriptive menu item 2",
+                value: "d_m_2",
+              },
+              {
+                type: 'descriptive',
+                title: "Descriptive menu item 3",
+                value: "d_m_3",
+              },
+              {
+                type: 'descriptive',
+                title: "Descriptive menu item 4",
+                value: "d_m_4",
+              },
+              { type: 'divider', value: "divider_m_i" },
+            ]}
+            menuProps={{
+              width: "400px",
+              hideOnSelect: true,
+            }}
+          />
+            `);
+          }}
+        >
+          <p>info-soft</p>
+          <SplitButton
+            intent="info-soft"
+            tooltip="Open menu"
+            buttonText="Split button"
+            menuItems={[
+              {
+                type: "group_heading",
+                title: "Group Heading 1",
+                value: "group_heading_1",
+              },
+              {
+                type: "descriptive",
+                title: "Descriptive menu item 1",
+                value: "d_m_1",
+              },
+              {
+                type: "descriptive",
+                title: "Descriptive menu item 2",
+                value: "d_m_2",
+              },
+              {
+                type: "descriptive",
+                title: "Descriptive menu item 3",
+                value: "d_m_3",
+              },
+              {
+                type: "descriptive",
+                title: "Descriptive menu item 4",
+                value: "d_m_4",
+              },
+              { type: "divider", value: "divider_m_i" },
+            ]}
+            menuProps={{
+              width: "400px",
+              hideOnSelect: true,
+            }}
+          />
+        </Box>
+        <Box
+          display="flex"
+          flexDirection="column"
+          alignItems="center"
+          onClick={() => {
+            setCode(`//SampleCode
+            <SplitButton
+            intent="prime"
+            buttonIcon={<ChevronDown />}
+            tooltip="Open menu"
+            buttonText="Split button"
+            menuItems={[
+              {
+                type: 'group_heading,
+                title: "Group Heading 1",
+                value: "group_heading_1",
+              },
+              {
+                type: 'descriptive',
+                title: "Descriptive menu item 1",
+                value: "d_m_1",
+              },
+              {
+                type: 'descriptive',
+                title: "Descriptive menu item 2",
+                value: "d_m_2",
+              },
+              {
+                type: 'descriptive',
+                title: "Descriptive menu item 3",
+                value: "d_m_3",
+              },
+              {
+                type: 'descriptive',
+                title: "Descriptive menu item 4",
+                value: "d_m_4",
+              },
+              { type: 'divider', value: "divider_m_i" },
+            ]}
+            menuProps={{
+              width: "400px",
+              hideOnSelect: true,
+            }}
+          />
+            `);
+          }}
+        >
+          <p>prime</p>
+          <SplitButton
+            intent="prime"
+            tooltip="Open menu"
+            buttonText="Split button"
+            menuItems={[
+              {
+                type: "group_heading",
+                title: "Group Heading 1",
+                value: "group_heading_1",
+              },
+              {
+                type: "descriptive",
+                title: "Descriptive menu item 1",
+                value: "d_m_1",
+              },
+              {
+                type: "descriptive",
+                title: "Descriptive menu item 2",
+                value: "d_m_2",
+              },
+              {
+                type: "descriptive",
+                title: "Descriptive menu item 3",
+                value: "d_m_3",
+              },
+              {
+                type: "descriptive",
+                title: "Descriptive menu item 4",
+                value: "d_m_4",
+              },
+              { type: "divider", value: "divider_m_i" },
+            ]}
+            menuProps={{
+              width: "400px",
+              hideOnSelect: true,
+            }}
+          />
+        </Box>
       </Box>
       <Box>
         <p>Click on the Element above to see the box code.</p>

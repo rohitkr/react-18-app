@@ -8,7 +8,7 @@ export interface DescriptiveMenuItemProps extends MenuItemProps {
   description?: string;
   avatarSrc?: string;
   avatar?: string;
-  checked?: boolean;
+  selected?: boolean;
   value: string | number;
   _onMenuItemClick?: (
     e: React.MouseEvent<HTMLLIElement, MouseEvent>,

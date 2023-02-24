@@ -27,6 +27,7 @@ const DividerMenuItem: React.FC<DividerMenuItemProps> = ({
       disableRipple
       className={`navi-menu-list-item divider-${size}`}
       disableGutters
+      selected={false}
     >
       <Box
         display="flex"
