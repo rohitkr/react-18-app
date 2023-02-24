@@ -456,12 +456,12 @@ export default function AutocompleteControlled() {
         <br/>
         <br/>
         <br/>
-        <Input label="Test" size="large" type="default" required
+        {/* <Input label="Test" size="large" type="default" required
           className="input-classname"
           inputProps={{
             className: "input-props-classname"
           }}
-        />
+        /> */}
 
       </div>
     </div>

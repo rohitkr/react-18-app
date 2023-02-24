@@ -5,6 +5,7 @@ import { SelectDataProps } from "../navi/components/Select/Select.types";
 import { makeStyles, Theme, createStyles, MenuItem, Select as MuiSelect } from "@material-ui/core";
 
 
+
 let data = [
   {
     title: "The Shawshank Redemption",
@@ -24,26 +25,26 @@ let data = [
     trailingIcon: <Pencil />,
     leadingIcon: <Movie />,
     disabled: true,
-    checked: true,
+    // checked: true,
   },
   {
     title: "The Dark Knight",
     description: "2008",
-    checked: true,
+    // checked: true,
     trailingIcon: <Pencil />,
     leadingIcon: <Movie />,
   },
   {
     title: "12 Angry Men",
     description: "1957",
-    checked: true,
+    // checked: true,
     trailingIcon: <Pencil />,
     leadingIcon: <Movie />,
   },
   {
     title: "Schindler's List",
     description: "1993",
-    checked: true,
+    // checked: true,
     trailingIcon: <Pencil />,
     leadingIcon: <Movie />,
   },
@@ -63,6 +64,36 @@ let data = [
     title: "The Lord of the Rings: The Fellowship of the Ring",
     description: "2001",
   },
+  // {
+  //   title: "Star Wars: Episode V - The Empire Strikes Back",
+  //   description: "1980",
+  // },
+  // { title: "Forrest Gump", description: "1994" },
+  // { title: "Inception", description: "2010" },
+  // {
+  //   title: "The Lord of the Rings: The Two Towers",
+  //   description: "2002",
+  // },
+  // { title: "One Flew Over the Cuckoo's Nest", description: "1975" },
+  // { title: "Goodfellas", description: "1990" },
+  // { title: "The Matrix", description: "1999" },
+  // { title: "Seven Samurai", description: "1954" },
+  // {
+  //   title: "Star Wars: Episode IV - A New Hope",
+  //   description: "1977",
+  // },
+  // { title: "City of God", description: "2002" },
+  // { title: "Se7en", description: "1995" },
+  // { title: "The Silence of the Lambs", description: "1991" },
+  // { title: "It's a Wonderful Life", description: "1946" },
+  // { title: "Life Is Beautiful", description: "1997" },
+  // { title: "The Usual Suspects", description: "1995" },
+  // { title: "Léon: The Professional", description: "1994" },
+  // { title: "Spirited Away", description: "2001" },
+  // { title: "Saving Private Ryan", description: "1998" },
+  // { title: "Once Upon a Time in the West", description: "1968" },
+  // { title: "American History X", description: "1998" },
+  // { title: "Interstellar", description: "2014" },
 ];
 
 let menuData = [
@@ -174,7 +205,7 @@ export default ({ ...args }) => {
       <Select
         open={false}
         renderValueAsTag
-        multiSelect={true}
+        multiSelect={false}
         selectAll={true}
         size="large"
         maxWidth={250}
@@ -219,6 +250,56 @@ export default ({ ...args }) => {
         />
       </Select>
 
+      <Select
+        // open={open}
+        multiSelect={true}
+        selectAll={true}
+        size="large"
+        onChange={(updatedValue) => {
+          // setValue(updatedValue);
+        }}
+        maxHeight={140}
+        minWidth={400}
+        renderValueAsTag
+        tagProps={{
+          variant: "neutral",
+        }}
+        // value={value}
+        inputProps={{
+          // className: `aaa-classname`,
+          label: "MultiSelect Component With Tags",
+          errorMessage: "Error message",
+          helperText: "Helper text",
+          minWidth: 300,
+          maxWidth: 800,
+          fullWidth: true,
+          moreInfo: "More information text",
+          required: true,
+          size: "large",
+          successMessage: "Success message",
+          tooltipPlacement: "top",
+          inputType: "default",
+        }}
+        clearTooltipText={"Clear Data"}
+        openTooltipText={"Open Menu"}
+      >
+        {data &&
+          data.map(
+            ({ title = "", avatar, type, ...val }: SelectDataProps, i) => {
+              return val.divider ? (
+                <DividerMenuItem />
+              ) : (
+                <DescriptiveMenuItem
+                  key={i}
+                  value={title}
+                  title={title}
+                  selectable={true}
+                  {...val}
+                />
+              );
+            }
+          )}
+      </Select>
 
       <MuiSelect
         value="7"
