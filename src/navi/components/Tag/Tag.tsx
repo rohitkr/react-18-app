@@ -196,16 +196,16 @@ const TagComponent: React.FC<TagProps> = ({
     onHover && onHover(e);
   }, []);
 
-  const handleDismiss = React.useCallback((e: React.MouseEvent) => {
+  const handleDismiss = (e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
     dismissible && onDismiss && onDismiss(e, props.value);
-  }, []);
+  }
 
-  const handleOnClick = React.useCallback((e: React.MouseEvent) => {
+  const handleOnClick = (e: React.MouseEvent) => {
     e.preventDefault();
     onClick && onClick(e);
-  }, []);
+  }
 
   const handleFocus = React.useCallback(
     (e: React.FocusEvent<HTMLElement, Element>) => {

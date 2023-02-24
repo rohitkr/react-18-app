@@ -130,31 +130,6 @@ const Select: React.FC<SelectProps> = ({
     setOpen(open);
   }, [open]);
 
-  const onSelectedChipDismiss = React.useCallback(
-    (e: React.MouseEvent, value?: string) => {
-      let updatedMap = { ...selectionMap };
-      if (value) {
-        if ("checked" in menuItemsMap[String(value)] || menuItemsMap[String(value)].disabled) {
-          updatedMap = {
-            ...updatedMap,
-            [String(value)]: menuItemsMap[value].checked || false,
-          };
-        } else {
-          updatedMap = { ...updatedMap, [String(value)]: false };
-        }
-      }
-      setSelectionMap(updatedMap);
-      let updatedSelectedValues: Array<string> = [];
-      Object.keys(updatedMap).forEach((key) => {
-        if (updatedMap[key]) {
-          updatedSelectedValues.push(key);
-        }
-      });
-      setSelectValue(updatedSelectedValues);
-    },
-    [selectionMap]
-  );
-
   const onSelectClose = React.useCallback(() => {
     setOpen(false);
   }, []);
@@ -191,7 +166,31 @@ const Select: React.FC<SelectProps> = ({
                     key={value}
                     label={label}
                     value={value}
-                    onDismiss={onSelectedChipDismiss}
+                    onDismiss={(e: React.MouseEvent, value?: string) => {
+
+                      setSelectionMap((oldMap) => {
+                        let updatedMap = {...oldMap};
+                        console.log("oldMap: ", oldMap);
+                        if (value) {
+                          if ("checked" in menuItemsMap[String(value)] || menuItemsMap[String(value)].disabled) {
+                            updatedMap = {
+                              ...oldMap,
+                              [String(value)]: menuItemsMap[value].checked || false,
+                            };
+                          } else {
+                            updatedMap = { ...oldMap, [String(value)]: false };
+                          }
+                        }                        
+                        let updatedSelectedValues: Array<string> = [];
+                        Object.keys(updatedMap).forEach((key) => {
+                          if (updatedMap[key]) {
+                            updatedSelectedValues.push(key);
+                          }
+                        });
+                        setSelectValue(updatedSelectedValues);
+                        return updatedMap;
+                      });
+                    }}
                     {...tagProps}
                     className={`${classes.chip} ${tagProps?.className} navi-prevent-menu-open `}
                     style={{
@@ -210,8 +209,7 @@ const Select: React.FC<SelectProps> = ({
     }
   };
 
-  const onSelectChange = React.useCallback(
-    (event: React.ChangeEvent<{ value: unknown }>) => {
+  const onSelectChange = (event: React.ChangeEvent<{ value: unknown }>) => {
       let updatedSelectedMap: SelectionMapInterface = { ...selectionMap };
       const value = event.target.value as string[];
       if (value.indexOf("_select_all") >= 0) {
@@ -254,9 +252,9 @@ const Select: React.FC<SelectProps> = ({
         }
       });
       props.onChange && props.onChange(selectedValueArr);
-    },
-    [selectionMap, allSelected]
-  );
+
+      console.log("selectionMap onChange: ", selectionMap);
+    }
 
   const onMenuOpen = () => {
     setOpen(true);
@@ -322,7 +320,6 @@ const Select: React.FC<SelectProps> = ({
           <TextInput
             // navi-select-input-container class name is being used to prevent menu to be opened
             // while clicking on the batch icon
-            className={`navi-select-input-container ${inputProps?.className}`}
             style={{
               padding:
                 renderValueAsTag && selectedValue.length ? 0 : inputPadding,
@@ -334,6 +331,7 @@ const Select: React.FC<SelectProps> = ({
               maxHeight: props.maxHeight,
               ...inputProps,
             }}
+            className={`navi-select-input-container ${inputProps?.className || ''}`}
             size={size}
             inputType={"default"}
           />
