@@ -10,7 +10,7 @@ import MuiButton, {
 // variant?: 'primary' | 'secondary' | 'tertiary' | 'selected';
 // intent?: 'muted' | 'prime' | 'info' | 'critical' | 'warning' | 'success' | 'mutedLight';
 
-export type ColorTypes = 'success' | 'muted' | 'warning' | 'info' | 'prime' | 'critical' | 'mutedLight';
+export type ColorTypes = 'success' | 'muted' | 'warning' | 'info' | 'prime' | 'critical' | 'mutedLight';``
 
 type ButtonProps = { color?: ColorTypes } & Omit<MuiButtonProps, "color">;
 
@@ -151,6 +151,4 @@ const Button: React.FC<ButtonProps> = ({ children, color, ...props }) => {
 
 Button.displayName = "Button";
 
-export default () => <>
-<Button color="muted" variant="text">Test</Button>
-</>
+export default Button;

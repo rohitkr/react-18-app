@@ -23,7 +23,7 @@ import Tag from "../navi/components/Tag/Tag";
 import SystemIcon from "../navi/components/SystemIcon/SystemIcon";
 // import Input from './InputIssue/InputIssue';
 import SelectDemo from './Select';
-import ThemeMui from './ThemeMui';
+import ThemeMuiButton from './ThemeMui';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -410,7 +410,7 @@ export default function AutocompleteControlled() {
   const inputRef = React.useRef<HTMLInputElement>(null);
 
   const menuItem = data.map(
-    ({ title = "", value="", avatar, type, ...val }: SelectDataProps, i) => {
+    ({ title = "", value = "", avatar, type, ...val }: SelectDataProps, i) => {
       return val.divider ? (
         <DividerMenuItem key={i} />
       ) : (
@@ -452,9 +452,57 @@ export default function AutocompleteControlled() {
         height: "1500px",
       }}
     >
-
-      <ThemeMui />
-
+      <div>
+        <Select clearTooltipText={""} openTooltipText={""} minWidth={500} maxWidth={500}  inputProps={{width: "auto"}}>
+          <DescriptiveMenuItem
+            value={"1"}
+            title={"One"}
+            selectable={true}
+          />
+          <DescriptiveMenuItem
+            value={"2"}
+            title={"Two"}
+            selectable={true}
+          />
+          <DescriptiveMenuItem
+            value={"3"}
+            title={"Three"}
+            selectable={true}
+          />
+          <DescriptiveMenuItem
+            value={"4"}
+            title={"Four"}
+            selectable={true}
+          />
+        </Select>
+      </div>
+      <div>
+        <ThemeMuiButton color="prime" variant="contained">Test</ThemeMuiButton>
+        <ThemeMuiButton color="info" variant="contained">Test</ThemeMuiButton>
+        <ThemeMuiButton color="success" variant="contained">Test</ThemeMuiButton>
+        <ThemeMuiButton color="warning" variant="contained">Test</ThemeMuiButton>
+        <ThemeMuiButton color="muted" variant="contained">Test</ThemeMuiButton>
+        <ThemeMuiButton color="critical" variant="contained">Test</ThemeMuiButton>
+        <ThemeMuiButton color="mutedLight" variant="contained">Test</ThemeMuiButton>
+      </div>
+      <div>
+        <ThemeMuiButton color="prime" variant="outlined">Test</ThemeMuiButton>
+        <ThemeMuiButton color="info" variant="outlined">Test</ThemeMuiButton>
+        <ThemeMuiButton color="success" variant="outlined">Test</ThemeMuiButton>
+        <ThemeMuiButton color="warning" variant="outlined">Test</ThemeMuiButton>
+        <ThemeMuiButton color="muted" variant="outlined">Test</ThemeMuiButton>
+        <ThemeMuiButton color="critical" variant="outlined">Test</ThemeMuiButton>
+        <ThemeMuiButton color="mutedLight" variant="outlined">Test</ThemeMuiButton>
+      </div>
+      <div>
+        <ThemeMuiButton color="prime" variant="text">Test</ThemeMuiButton>
+        <ThemeMuiButton color="info" variant="text">Test</ThemeMuiButton>
+        <ThemeMuiButton color="success" variant="text">Test</ThemeMuiButton>
+        <ThemeMuiButton color="warning" variant="text">Test</ThemeMuiButton>
+        <ThemeMuiButton color="muted" variant="text">Test</ThemeMuiButton>
+        <ThemeMuiButton color="critical" variant="text">Test</ThemeMuiButton>
+        <ThemeMuiButton color="mutedLight" variant="text">Test</ThemeMuiButton>
+      </div>
     </div>
   );
 }
