@@ -23,6 +23,7 @@ import Tag from "../navi/components/Tag/Tag";
 import SystemIcon from "../navi/components/SystemIcon/SystemIcon";
 // import Input from './InputIssue/InputIssue';
 import SelectDemo from './Select';
+import ThemeMui from './ThemeMui';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -451,19 +452,9 @@ export default function AutocompleteControlled() {
         height: "1500px",
       }}
     >
-      <div>
-        <SelectDemo />
-        <br/>
-        <br/>
-        <br/>
-        {/* <Input label="Test" size="large" type="default" required
-          className="input-classname"
-          inputProps={{
-            className: "input-props-classname"
-          }}
-        /> */}
 
-      </div>
+      <ThemeMui />
+
     </div>
   );
 }
