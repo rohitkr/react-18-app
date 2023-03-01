@@ -24,6 +24,7 @@ import SystemIcon from "../navi/components/SystemIcon/SystemIcon";
 // import Input from './InputIssue/InputIssue';
 import SelectDemo from './Select';
 import ThemeMuiButton from './ThemeMui';
+import ThemeComponent from "./Theme";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -475,6 +476,9 @@ export default function AutocompleteControlled() {
             selectable={true}
           />
         </Select>
+      </div>
+      <div>
+        <ThemeComponent />
       </div>
       <div>
         <ThemeMuiButton color="prime" variant="contained">Test</ThemeMuiButton>

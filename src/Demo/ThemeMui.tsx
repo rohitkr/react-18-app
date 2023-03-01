@@ -5,7 +5,7 @@ import capitalize from "lodash/capitalize";
 import MuiButton, {
   ButtonProps as MuiButtonProps
 } from "@material-ui/core/Button";
-
+import tokenObj from '../navi/tokens/build/json/tokens.json';
 
 // variant?: 'primary' | 'secondary' | 'tertiary' | 'selected';
 // intent?: 'muted' | 'prime' | 'info' | 'critical' | 'warning' | 'success' | 'mutedLight';
@@ -16,6 +16,25 @@ type ButtonProps = { color?: ColorTypes } & Omit<MuiButtonProps, "color">;
 
 const useStyles = makeStyles<Theme>(theme =>
   createStyles({
+    primary: {
+      main: tokenObj['color-primary-400'],      
+    },
+    secondary: {
+      main: tokenObj['color-secondary-800'],
+    },
+    success: {
+      main: tokenObj['color-success-400'],
+    },
+    info: {
+      main: tokenObj['color-info-400'],
+    },
+    warning: {
+      main: tokenObj['color-warning-300'],
+    },
+    error: {
+      main: tokenObj['color-critical-400'],
+    },
+
     outlinedSuccess: {
       borderColor: theme.palette.success.main,
       color: theme.palette.success.main
