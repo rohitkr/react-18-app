@@ -39,8 +39,45 @@ const GetComponent = (option: any, selected: boolean, size?: 'small' | 'large') 
   }
 }
 
-export default ({ size, selectable, options, inputProps, ...props }: AutocompleteProps) => {
+export default ({ size, selectable, options, inputProps, renderValueAsTag, ...props }: AutocompleteProps) => {
   const [dataValue, setDataValue] = React.useState<(string | DataObj)[]>();
+
+  // const renderValue = () => {
+  //   if (renderValueAsTag) {
+  //     return (
+  //       <Box flexWrap="wrap" display="flex" maxHeight={`${props.maxHeight}px`} className="navi-select-with-scroll">
+  //         {selectedValue &&
+  //           selectedValue.map((value: string) => {
+  //             const label = menuItemsMap[value].title || '';
+  //             return (
+  //               <Box display="flex" margin={`5px 6px`}>
+  //                 <SelectedChip
+  //                   size={"large"}
+  //                   intent="muted"
+  //                   dismissible
+  //                   LeadingIcon={<TagIcon size={8} />}
+  //                   key={value}
+  //                   label={label}
+  //                   value={value}
+  //                   onDismiss={onSelectedChipDismiss}
+  //                   {...tagProps}
+  //                   className={`${classes.chip} ${tagProps?.className} navi-prevent-menu-open `}
+  //                   style={{
+  //                     ...tagProps?.style,
+  //                   }}
+  //                 />
+  //               </Box>
+  //             );
+  //           })}
+  //       </Box>
+  //     );
+  //   } else {
+  //     return [...selectedValue].map((v) => {
+  //       return menuItemsMap[v].title
+  //     }).join(", ");
+  //   }
+  // };
+
   return (<Box className='navi-autocomplete-container'>
     <Autocomplete
       // To suppress the Autocomplete warning: The value provided to Autocomplete is invalid
@@ -53,6 +90,7 @@ export default ({ size, selectable, options, inputProps, ...props }: Autocomplet
         );
       }}
       style={{ width: 500 }}
+
       // PaperComponent={({ children }) => (
       //   <Paper
       //     className="navi-autocomplete-menu-container"
@@ -63,22 +101,27 @@ export default ({ size, selectable, options, inputProps, ...props }: Autocomplet
       //   </Paper>
       // )}
       renderTags={(value: any, getTagProps) => {
-        return value.map((val: { name: string; }, index: number) => {
-          const props: any = getTagProps({ index });
-          return (
-            <Tag
-              size={size}
-              intent="muted"
-              dismissible
-              LeadingIcon={<TagIcon size={8} />}
-              key={index}
-              label={val.name}
-              value={val.name}
-              {...props}
-              onDismiss={(e) => { props.onDelete && props.onDelete(); }}
-            />
-          );
-        });
+        return (
+          <Box flexWrap="wrap" display="flex" className="navi-select-with-scroll">
+            {value.map((val: { name: string; }, index: number) => {
+              const props: any = getTagProps({ index });
+              return (
+                <Tag
+                  size={size}
+                  intent="muted"
+                  dismissible
+                  LeadingIcon={<TagIcon size={8} />}
+                  key={index}
+                  label={val.name}
+                  value={val.name}
+                  {...props}
+                  onDismiss={(e) => { props.onDelete && props.onDelete(); }}
+                />
+              );
+            })
+            }
+          </Box>
+        )
       }}
       ListboxProps={{
         style: {
@@ -110,7 +153,7 @@ export default ({ size, selectable, options, inputProps, ...props }: Autocomplet
               ...params.inputProps,
               // className: `navi-autocomplete-input ${size}`,
             }}
-            className={ `navi-select-input-container ${inputProps?.className}`}
+            className={`navi-select-input-container ${inputProps?.className}`}
             value={dataValue?.join(',')}
             size={size}
           />

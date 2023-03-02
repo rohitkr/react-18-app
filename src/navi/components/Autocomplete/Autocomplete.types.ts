@@ -15,6 +15,7 @@ export interface AutocompleteProps extends Pick<MuiAutocompleteProps<DataObj, tr
   selectable?: boolean;
   options: DataObj[];
   required?: boolean;
+  renderValueAsTag?: boolean;
   renderInput?: (params: AutocompleteRenderInputParams) => React.ReactNode;
 }
 
