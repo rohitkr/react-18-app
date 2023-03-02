@@ -1,210 +1,210 @@
-@import "../../tokens/build/scss/variables.scss";
-/* cyrillic-ext */
+// @import "../../tokens/build/scss/variables.scss";
+// /* cyrillic-ext */
 
-.navi-input-container {
-  .MuiInput-underline:hover {
-    border-bottom: none;
-  }
+// .navi-input-container {
+//   .MuiInput-underline:hover {
+//     border-bottom: none;
+//   }
 
-  .MuiInput-underline:hover:not(.Mui-disabled):before {
-    border-bottom: none;
-  }
+//   .MuiInput-underline:hover:not(.Mui-disabled):before {
+//     border-bottom: none;
+//   }
 
-  .MuiInput-underline:before {
-    border-bottom: none;
-  }
+//   .MuiInput-underline:before {
+//     border-bottom: none;
+//   }
 
-  .MuiInput-underline:after {
-    border-bottom: none;
-  }
+//   .MuiInput-underline:after {
+//     border-bottom: none;
+//   }
 
-  .MuiInputBase-root {
-    padding: $input-type-root-padding;
-    outline: $input-type-default-outline;
-    border-radius: $input-type-root-border-radius;
-  }
+//   .MuiInputBase-root {
+//     padding: $input-type-root-padding;
+//     outline: $input-type-default-outline;
+//     border-radius: $input-type-root-border-radius;
+//   }
 
-  // Input style when used for Select component
-  .navi-select-input-container {
-    padding: 0;
-    outline: none;
-    outline: $input-type-default-outline;
-    border-radius: $input-type-root-border-radius;
-    height: unset !important;
+//   // Input style when used for Select component
+//   .navi-select-input-container {
+//     padding: 0;
+//     outline: none;
+//     outline: $input-type-default-outline;
+//     border-radius: $input-type-root-border-radius;
+//     height: unset !important;
 
-    &.large {
-      padding: 12px 0;
-    }
-    &.small {
-      padding: 8px 0;
-    }
-    .MuiSelect-root {
-      padding: $input-type-root-select-padding;
-    }
-    .MuiSelect-root:focus {
-      background-color: unset;
-    }
+//     &.large {
+//       padding: 12px 0;
+//     }
+//     &.small {
+//       padding: 8px 0;
+//     }
+//     .MuiSelect-root {
+//       padding: $input-type-root-select-padding;
+//     }
+//     .MuiSelect-root:focus {
+//       background-color: unset;
+//     }
 
-    .MuiSelect-select {
-      overflow-y: auto;
-      mask-image: linear-gradient(to top, transparent, black),
-        linear-gradient(to left, transparent 17px, black 17px);
-      mask-size: 100% 20000px;
-      mask-position: left bottom;
-      -webkit-mask-image: linear-gradient(to top, transparent, black),
-        linear-gradient(to left, transparent 17px, black 17px);
-      -webkit-mask-size: 100% 20000px;
-      -webkit-mask-position: left bottom;
-      transition: mask-position 0.3s, -webkit-mask-position 0.3s;
-    }
+//     .MuiSelect-select {
+//       overflow-y: auto;
+//       mask-image: linear-gradient(to top, transparent, black),
+//         linear-gradient(to left, transparent 17px, black 17px);
+//       mask-size: 100% 20000px;
+//       mask-position: left bottom;
+//       -webkit-mask-image: linear-gradient(to top, transparent, black),
+//         linear-gradient(to left, transparent 17px, black 17px);
+//       -webkit-mask-size: 100% 20000px;
+//       -webkit-mask-position: left bottom;
+//       transition: mask-position 0.3s, -webkit-mask-position 0.3s;
+//     }
 
-    .MuiSelect-select:hover {
-      -webkit-mask-position: left top;
-    }
+//     .MuiSelect-select:hover {
+//       -webkit-mask-position: left top;
+//     }
 
-    @keyframes background {
-      from {
-        background: pink;
-      }
-      to {
-        background: #c0d6ff;
-      }
-    }
+//     @keyframes background {
+//       from {
+//         background: pink;
+//       }
+//       to {
+//         background: #c0d6ff;
+//       }
+//     }
 
-    .wrapper {
-      float: left;
-      animation: background 5s infinite alternate;
-    }
-  }
+//     .wrapper {
+//       float: left;
+//       animation: background 5s infinite alternate;
+//     }
+//   }
 
-  .input-label {
-    font-size: $input-label-base-font-size;
-    font-family: $input-label-base-font-family;
-    line-height: $input-label-base-line-height;
-    justify-content: $input-label-base-justify-content;
-    font-weight: $input-label-base-font-weight;
-    margin-bottom: $input-label-base-margin-bottom;
-    display: $input-label-base-display;
-    color: $input-label-base-color;
-  }
+//   .input-label {
+//     font-size: $input-label-base-font-size;
+//     font-family: $input-label-base-font-family;
+//     line-height: $input-label-base-line-height;
+//     justify-content: $input-label-base-justify-content;
+//     font-weight: $input-label-base-font-weight;
+//     margin-bottom: $input-label-base-margin-bottom;
+//     display: $input-label-base-display;
+//     color: $input-label-base-color;
+//   }
 
-  .helper-text {
-    margin-top: $input-label-helper-margin-top;
-    line-height: $input-label-helper-line-height;
-    font-size: $input-label-helper-font-size;
-    font-family: $input-label-base-font-family;
-    font-weight: $input-label-helper-font-weight;
-    color: $input-label-helper-color;
-    word-break: $input-label-helper-word-break;
-  }
+//   .helper-text {
+//     margin-top: $input-label-helper-margin-top;
+//     line-height: $input-label-helper-line-height;
+//     font-size: $input-label-helper-font-size;
+//     font-family: $input-label-base-font-family;
+//     font-weight: $input-label-helper-font-weight;
+//     color: $input-label-helper-color;
+//     word-break: $input-label-helper-word-break;
+//   }
 
-  .success-message {
-    margin-top: $input-label-success-margin-top;
-    line-height: $input-label-success-line-height;
-    font-size: $input-label-success-font-size;
-    font-family: $input-label-base-font-family;
-    font-weight: $input-label-success-font-weight;
-    color: $input-label-success-color;
-    word-break: $input-label-success-word-break;
-  }
+//   .success-message {
+//     margin-top: $input-label-success-margin-top;
+//     line-height: $input-label-success-line-height;
+//     font-size: $input-label-success-font-size;
+//     font-family: $input-label-base-font-family;
+//     font-weight: $input-label-success-font-weight;
+//     color: $input-label-success-color;
+//     word-break: $input-label-success-word-break;
+//   }
 
-  .error-message {
-    margin-top: $input-label-error-margin-top;
-    line-height: $input-label-error-line-height;
-    font-size: $input-label-error-font-size;
-    font-family: $input-label-base-font-family;
-    font-weight: $input-label-success-font-weight;
-    color: $input-label-error-color;
-    word-break: $input-label-error-word-break;
-  }
+//   .error-message {
+//     margin-top: $input-label-error-margin-top;
+//     line-height: $input-label-error-line-height;
+//     font-size: $input-label-error-font-size;
+//     font-family: $input-label-base-font-family;
+//     font-weight: $input-label-success-font-weight;
+//     color: $input-label-error-color;
+//     word-break: $input-label-error-word-break;
+//   }
 
-  .base-input {
-    box-sizing: $input-type-root-box-sizing;
-    background-color: $input-type-root-background-color;
-    border-radius: $input-type-root-border-radius;
-    min-width: $input-type-root-min-width;
-    text-overflow: $input-type-root-text-overflow;
-    font-family: $input-label-base-font-family;
-    font-style: $input-type-root-font-style;
-    font-weight: $input-type-root-font-weight;
+//   .base-input {
+//     box-sizing: $input-type-root-box-sizing;
+//     background-color: $input-type-root-background-color;
+//     border-radius: $input-type-root-border-radius;
+//     min-width: $input-type-root-min-width;
+//     text-overflow: $input-type-root-text-overflow;
+//     font-family: $input-label-base-font-family;
+//     font-style: $input-type-root-font-style;
+//     font-weight: $input-type-root-font-weight;
 
-    &:hover {
-      outline: $input-type-hover-outline;
-    }
-  }
+//     &:hover {
+//       outline: $input-type-hover-outline;
+//     }
+//   }
 
-  .large {
-    height: $input-size-large-height;
-    font-size: $input-size-large-font-size;
-    line-height: $input-size-large-line-height;
+//   .large {
+//     height: $input-size-large-height;
+//     font-size: $input-size-large-font-size;
+//     line-height: $input-size-large-line-height;
 
-    ::-webkit-input-placeholder {
-      font-family: $input-placeholder-font-family;
-      font-style: $input-placeholder-font-style;
-      line-height: $input-placeholder-large-line-height;
-      font-size: $input-placeholder-large-font-size;
-      font-weight: $input-placeholder-font-weight;
-      color: $input-placeholder-color;
-    }
-  }
+//     ::-webkit-input-placeholder {
+//       font-family: $input-placeholder-font-family;
+//       font-style: $input-placeholder-font-style;
+//       line-height: $input-placeholder-large-line-height;
+//       font-size: $input-placeholder-large-font-size;
+//       font-weight: $input-placeholder-font-weight;
+//       color: $input-placeholder-color;
+//     }
+//   }
 
-  .small {
-    height: $input-size-small-height;
-    font-size: $input-size-small-font-size;
-    line-height: $input-size-small-line-height;
+//   .small {
+//     height: $input-size-small-height;
+//     font-size: $input-size-small-font-size;
+//     line-height: $input-size-small-line-height;
 
-    ::-webkit-input-placeholder {
-      font-family: $input-placeholder-font-family;
-      font-style: $input-placeholder-font-style;
-      line-height: $input-placeholder-small-line-height;
-      font-size: $input-placeholder-small-font-size;
-      font-weight: $input-placeholder-font-weight;
-      color: $input-placeholder-color;
-    }
-  }
+//     ::-webkit-input-placeholder {
+//       font-family: $input-placeholder-font-family;
+//       font-style: $input-placeholder-font-style;
+//       line-height: $input-placeholder-small-line-height;
+//       font-size: $input-placeholder-small-font-size;
+//       font-weight: $input-placeholder-font-weight;
+//       color: $input-placeholder-color;
+//     }
+//   }
 
-  .disabled {
-    outline: $input-type-disabled-outline;
-    background-color: $input-type-disabled-background-color;
-    font-family: $input-type-disabled-font-family;
-    font-style: $input-type-disabled-font-style;
+//   .disabled {
+//     outline: $input-type-disabled-outline;
+//     background-color: $input-type-disabled-background-color;
+//     font-family: $input-type-disabled-font-family;
+//     font-style: $input-type-disabled-font-style;
 
-    &:hover {
-      outline: $input-type-disabled-outline;
-    }
-  }
+//     &:hover {
+//       outline: $input-type-disabled-outline;
+//     }
+//   }
 
-  .empty-field {
-    &:hover {
-      background-color: $input-type-root-background-color;
-    }
-  }
+//   .empty-field {
+//     &:hover {
+//       background-color: $input-type-root-background-color;
+//     }
+//   }
 
-  .filled-field {
-    &:hover {
-      background-color: $input-type-hover-background-color;
-    }
-  }
+//   .filled-field {
+//     &:hover {
+//       background-color: $input-type-hover-background-color;
+//     }
+//   }
 
-  .success {
-    outline: $input-type-success-outline;
+//   .success {
+//     outline: $input-type-success-outline;
 
-    &:hover {
-      outline: $input-type-success-outline;
-    }
-  }
+//     &:hover {
+//       outline: $input-type-success-outline;
+//     }
+//   }
 
-  .critical {
-    outline: $input-type-error-outline;
+//   .critical {
+//     outline: $input-type-error-outline;
 
-    &:hover {
-      outline: $input-type-error-outline;
-    }
-  }
+//     &:hover {
+//       outline: $input-type-error-outline;
+//     }
+//   }
 
-  .read-only {
-    background-color: $input-type-read-only-background-color;
-    color: $input-type-read-only-color;
-    outline: $input-type-read-only-outline;
-  }
-}
+//   .read-only {
+//     background-color: $input-type-read-only-background-color;
+//     color: $input-type-read-only-color;
+//     outline: $input-type-read-only-outline;
+//   }
+// }

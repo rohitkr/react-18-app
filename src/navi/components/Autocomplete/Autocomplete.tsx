@@ -39,7 +39,7 @@ const GetComponent = (option: any, selected: boolean, size?: 'small' | 'large') 
 }
 
 export default ({ size, selectable, options, inputProps, ...props }: AutocompleteProps) => {
-  const [dataValue, setDataValue] = React.useState<(string | DataObj)[]>();
+  // const [dataValue, setDataValue] = React.useState<(string | DataObj)[]>();
   return (<Box className='navi-autocomplete-container'>
     <Autocomplete
       // To suppress the Autocomplete warning: The value provided to Autocomplete is invalid
@@ -93,7 +93,7 @@ export default ({ size, selectable, options, inputProps, ...props }: Autocomplet
         } else {
           valueArr.push(value);
         }
-        setDataValue(valueArr);
+        // setDataValue(valueArr);
         props.onChange && props.onChange(event, value, reason);
       }}
       disableCloseOnSelect={props.multiple}
@@ -103,11 +103,14 @@ export default ({ size, selectable, options, inputProps, ...props }: Autocomplet
             {...inputProps}
             {...params}
             required={props.required}
+            // width="auto"
             inputProps={{
               ...params.inputProps,
-              className: `navi-autocomplete-input ${size}`,
+              // className: `navi-autocomplete-input ${size}`,
             }}
-            dataValue={dataValue?.join(',')}
+            className={ `navi-select-input-container ${inputProps?.className}`}
+            // dataValue={dataValue?.join(',')}
+            size={size}
           />
         );
       }}

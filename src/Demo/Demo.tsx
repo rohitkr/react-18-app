@@ -34,94 +34,37 @@ export default function CheckboxesTags() {
       <Box display='flex' flexDirection='column' style={{ gap: "120px" }} height="1200px" >
         <Box>
           <NaviTextField
-            label='Test Label'
+            label='Navi TextField Component'
             required
             helperText='Some helper text'
+            size='large'
+            maxCharacters={20}
             errorMessage='This is a required field'
-            InputProps={{
-              endAdornment: <InputAdornment
-                position="start"
-                style={{ marginRight: `${tokenObj["spacing-0"]}` }}
-              >
-                <IconButton
-                  size="small"
-                  variant="tertiary"
-                  intent="muted"
-                  style={{
-                    // display: selectedValue?.length ? "block" : "none",
-                    marginRight: tokenObj["spacing-0"],
-                  }}
-                  title={"clearTooltipText"}
-                // onClick={onClearClick}
-                >
-                  <X />
-                </IconButton>
-                <IconButton
-                  size="small"
-                  variant="tertiary"
-                  intent="muted"
-                  style={{
-                    marginRight: "5px",
-                    // transform: `${open ? "rotate(180deg)" : "rotate(0deg)"}`,
-                  }}
-                  title={"openTooltipText"}
-                // onClick={onMenuOpen}
-                >
-                  {<ChevronDown />}
-                </IconButton>
-              </InputAdornment>,
-              startAdornment: <InputAdornment
-                position="start"
-                style={{ marginRight: `${tokenObj["spacing-0"]}` }}
-              >
-                <IconButton
-                  size="small"
-                  variant="tertiary"
-                  intent="muted"
-                  style={{
-                    // display: selectedValue?.length ? "block" : "none",
-                    marginRight: tokenObj["spacing-0"],
-                  }}
-                  title={"clearTooltipText"}
-                >
-                  <X />
-                </IconButton>
-              </InputAdornment>
-            }}
+            placeholder='Navi large size input placeholder'
             inputType={"default"}
+            width="auto"
+          />
+        </Box>
+        <Box>
+          <NaviTextField
+            label='Navi TextField Component'
+            required
+            size='small'
+            maxCharacters={20}
+            helperText='Some helper text'
+            errorMessage='This is a required field'
+            placeholder='Navi small size input placeholder'
+            inputType={"default"}
+            width="auto"
+
           />
         </Box>
 
         <Box marginLeft='30px'>
           <Autocomplete
-            // autocompleteProps={{
-            //   // open: true,
-            //   multiple: true,
-            //   disableCloseOnSelect: true,
-            //   options: countryList,
-            //   renderInput: ({ ...params }) => {
-            //     return (
-            //       <NaviTextField
-            //         label='Autocomplete using Navi Text input'
-            //         placeholder='Navi Autocomplete'
-            //         {...params}
-            //         minWidth={400} />
-            //     );
-            //   }
-            // }}
-            selectable={false}
-            size={'large'}
-            required
-            // multiple
-            options={countryList}
-          />
-        </Box>
-
-        <Box>
-          <Autocomplete
             options={countryList}
             multiple
-            limitTags={4}
+            // limitTags={4}
             disableCloseOnSelect={true}
             // open
             required
@@ -130,14 +73,41 @@ export default function CheckboxesTags() {
               // console.log(value, reason)
             }}
             inputProps={{
-              // label: "Navi Autocomplete component",
+              label: "Navi Autocomplete component",
               helperText: "Helper Text",
               successMessage: "Success Message Text",
               errorMessage: "Error Message Text",
               // required: true,
               minWidth: 600,
               moreInfo: "More info text",
-              placeholder: "place holder text",
+              placeholder: "Navi autocomplete small place holder text",
+              // inputType: "critical",
+              tooltipPlacement: "bottom"
+            }}
+          />
+        </Box>
+
+        <Box marginLeft='30px'>
+          <Autocomplete
+            options={countryList}
+            multiple
+            // limitTags={4}
+            disableCloseOnSelect={true}
+            // open
+            required
+            size="small"
+            onChange={(e, value, reason) => {
+              // console.log(value, reason)
+            }}
+            inputProps={{
+              label: "Navi Autocomplete component",
+              helperText: "Helper Text",
+              successMessage: "Success Message Text",
+              errorMessage: "Error Message Text",
+              // required: true,
+              minWidth: 600,
+              moreInfo: "More info text",
+              placeholder: "Navi autocomplete large place holder text",
               // inputType: "critical",
               tooltipPlacement: "bottom"
             }}

@@ -27,5 +27,6 @@ export interface NaviInputProps
   minHeight?: number;
   maxHeight?: number;
   ref?: ForwardedRef<HTMLInputElement>;
+  inputClassName?: string;
   translate?: string;
 }
