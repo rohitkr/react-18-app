@@ -195,6 +195,7 @@
 .navi-select-input-container {
   .navi-base-input {
     padding: 0;
+    padding-right: 16px;
     outline: $input-type-default-outline;
     border-radius: $input-type-root-border-radius;
     // height: unset !important;

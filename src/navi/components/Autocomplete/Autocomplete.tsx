@@ -14,6 +14,7 @@ import Box from '../Box/Box';
 import Tag from '../Tag/Tag';
 import { Tag as TagIcon } from 'tabler-icons-react';
 import './Autocomplete.scss'
+import TextField from '@material-ui/core/TextField';
 
 const GetComponent = (option: any, selected: boolean, size?: 'small' | 'large') => {
   switch (option.type) {
@@ -39,7 +40,7 @@ const GetComponent = (option: any, selected: boolean, size?: 'small' | 'large') 
 }
 
 export default ({ size, selectable, options, inputProps, ...props }: AutocompleteProps) => {
-  // const [dataValue, setDataValue] = React.useState<(string | DataObj)[]>();
+  const [dataValue, setDataValue] = React.useState<(string | DataObj)[]>();
   return (<Box className='navi-autocomplete-container'>
     <Autocomplete
       // To suppress the Autocomplete warning: The value provided to Autocomplete is invalid
@@ -52,15 +53,15 @@ export default ({ size, selectable, options, inputProps, ...props }: Autocomplet
         );
       }}
       style={{ width: 500 }}
-      PaperComponent={({ children }) => (
-        <Paper
-          className="navi-autocomplete-menu-container"
-        >
-          {Array.isArray(children) && children.map((val) => {
-            return val;
-          })}
-        </Paper>
-      )}
+      // PaperComponent={({ children }) => (
+      //   <Paper
+      //     className="navi-autocomplete-menu-container"
+      //   >
+      //     {Array.isArray(children) && children.map((val) => {
+      //       return val;
+      //     })}
+      //   </Paper>
+      // )}
       renderTags={(value: any, getTagProps) => {
         return value.map((val: { name: string; }, index: number) => {
           const props: any = getTagProps({ index });
@@ -85,6 +86,7 @@ export default ({ size, selectable, options, inputProps, ...props }: Autocomplet
         }
       }}
       options={options}
+      autoHighlight
       {...props}
       onChange={(event, value, reason) => {
         const valueArr: string[] = [];
@@ -93,7 +95,7 @@ export default ({ size, selectable, options, inputProps, ...props }: Autocomplet
         } else {
           valueArr.push(value);
         }
-        // setDataValue(valueArr);
+        setDataValue(valueArr);
         props.onChange && props.onChange(event, value, reason);
       }}
       disableCloseOnSelect={props.multiple}
@@ -109,7 +111,7 @@ export default ({ size, selectable, options, inputProps, ...props }: Autocomplet
               // className: `navi-autocomplete-input ${size}`,
             }}
             className={ `navi-select-input-container ${inputProps?.className}`}
-            // dataValue={dataValue?.join(',')}
+            value={dataValue?.join(',')}
             size={size}
           />
         );

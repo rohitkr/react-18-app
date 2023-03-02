@@ -97,7 +97,8 @@ const TextInputElement = ({
     e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement, Element>
   ) => {
     const { value } = e.target;
-    required && !value
+    const isValue = value || props.value;
+    required && !isValue
       ? setInternalError("Empty input field")
       : setInternalError("");
     setFocusClassName('');
