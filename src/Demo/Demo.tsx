@@ -36,7 +36,7 @@ export default function CheckboxesTags() {
 
   return (
     <>
-      <Box display='flex' marginLeft="50px" flexDirection='column' style={{ gap: "120px" }} height="1200px" >
+      <Box display='flex' marginLeft="50px"  marginRight="50px" flexDirection='column' style={{ gap: "120px" }} height="1200px" >
         <Box>
           <NaviTextField
             label='Navi TextField Component'
