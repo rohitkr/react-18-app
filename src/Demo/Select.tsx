@@ -208,23 +208,11 @@ export default ({ ...args }) => {
         multiSelect={true}
         selectAll={true}
         size="large"
-        maxWidth={250}
-        minWidth={400}
+        maxWidth={600}
+        minWidth={600}
+        // width={"600px"}
         dataTestId="select-component"
-        inputProps={{
-          label: "Single Select",
-          errorMessage: "",
-          helperText: "",
-          maxCharacters: 100,
-          minWidth: 600,
-          moreInfo: "",
-          required: true,
-          size: "large",
-          successMessage: "",
-          tooltipPlacement: "top",
-          inputType: "default",
-        }}
-        // value={"6"}
+        label="Simple Navi Select"
         clearTooltipText={"Clear Data"}
         openTooltipText={"Open Menu"}
       >
@@ -258,27 +246,26 @@ export default ({ ...args }) => {
         onChange={(updatedValue) => {
           // setValue(updatedValue);
         }}
-        maxHeight={140}
-        minWidth={400}
+        width={"auto"}
         renderValueAsTag
         tagProps={{
           variant: "neutral",
         }}
         // value={value}
         inputProps={{
-          className: `aaa-classname`,
-          label: "MultiSelect Component With Tags",
-          errorMessage: "Error message",
-          helperText: "Helper text",
-          minWidth: 300,
-          maxWidth: 800,
-          fullWidth: true,
-          moreInfo: "More information text",
-          required: true,
-          size: "large",
-          successMessage: "Success message",
-          tooltipPlacement: "top",
-          inputType: "default",
+          // className: `aaa-classname`,
+          // label: "MultiSelect Component With Tags",
+          // errorMessage: "Error message",
+          // helperText: "Helper text",
+          // minWidth: 300,
+          // maxWidth: 800,
+          // fullWidth: true,
+          // moreInfo: "More information text",
+          // required: true,
+          // size: "large",
+          // successMessage: "Success message",
+          // tooltipPlacement: "top",
+          // inputType: "default",
         }}
         clearTooltipText={"Clear Data"}
         openTooltipText={"Open Menu"}

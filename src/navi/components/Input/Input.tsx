@@ -34,7 +34,7 @@ const TextInputElement = ({
   size = "large",
   inputProps,
   innerRef,
-  width,
+  width='',
   className='',
   inputClassName='',
   disabled,
@@ -113,7 +113,7 @@ const TextInputElement = ({
       ref={innerRef}
       style={{
         display: "inline-block",
-        width: width === 'auto' ? '100%' : ''
+        width: width === 'auto' ? '100%' : width
       }}
       className={`navi-input-container ${className}`}
     >

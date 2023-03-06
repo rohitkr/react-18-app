@@ -56,7 +56,7 @@ const Select: React.FC<SelectProps> = ({
   openTooltipText,
   clearTooltipText,
   onChange,
-  className='',
+  className = '',
   ...props
 }) => {
   const [menuItemsMap] = React.useState(() => {
@@ -183,30 +183,32 @@ const Select: React.FC<SelectProps> = ({
   const renderValue = () => {
     if (renderValueAsTag) {
       return (
-        <Box flexWrap="wrap" display="flex" maxHeight={`${props.maxHeight}px`} className="navi-select-with-scroll">
-          {selectedValue &&
-            selectedValue.map((value: string) => {
-              const label = menuItemsMap[value].title || '';
-              return (
-                <Box display="flex" margin={`5px 6px`}>
-                  <SelectedChip
-                    size={"large"}
-                    intent="muted"
-                    dismissible
-                    LeadingIcon={<TagIcon size={8} />}
-                    key={value}
-                    label={label}
-                    value={value}
-                    onDismiss={onSelectedChipDismiss}
-                    {...tagProps}
-                    className={`${classes.chip} ${tagProps?.className} navi-prevent-menu-open `}
-                    style={{
-                      ...tagProps?.style,
-                    }}
-                  />
-                </Box>
-              );
-            })}
+        <Box flexWrap="wrap" display="flex" maxHeight={`${props.maxHeight}px`} className="navi-select-scroll-container">
+          <Box flexWrap="wrap" display="flex" className="navi-select-scroll-content">
+            {selectedValue &&
+              selectedValue.map((value: string) => {
+                const label = menuItemsMap[value].title || '';
+                return (
+                  <Box display="flex" margin={`5px 6px`}>
+                    <SelectedChip
+                      size={"large"}
+                      intent="muted"
+                      dismissible
+                      LeadingIcon={<TagIcon size={8} />}
+                      key={value}
+                      label={label}
+                      value={value}
+                      onDismiss={onSelectedChipDismiss}
+                      {...tagProps}
+                      className={`${classes.chip} ${tagProps?.className} navi-prevent-menu-open `}
+                      style={{
+                        ...tagProps?.style,
+                      }}
+                    />
+                  </Box>
+                );
+              })}
+          </Box>
         </Box>
       );
     } else {
@@ -327,17 +329,24 @@ const Select: React.FC<SelectProps> = ({
         data-testid={dataTestId || undefined}
         input={
           <TextInput
+            {...inputProps}
             style={{
               padding:
                 renderValueAsTag && selectedValue.length ? 0 : inputPadding,
-                ...inputProps?.style
+              ...inputProps?.style
             }}
-            {...{
-              minWidth: props.minWidth,
-              maxWidth: props.maxWidth,
-              minHeight: props.minHeight,
-              maxHeight: props.maxHeight,
-            }}
+            label={props.label || inputProps?.label}
+            placeholder={props.placeholder || inputProps?.placeholder}
+            moreInfo={props.moreInfo || inputProps?.moreInfo}
+            successMessage={props.successMessage || inputProps?.successMessage}
+            helperText={props.helperText || inputProps?.helperText}
+            width={props.width || inputProps?.width}
+            minWidth={props.minWidth || inputProps?.minWidth}
+            maxWidth={props.maxWidth || inputProps?.maxWidth}
+            minHeight={props.minHeight || inputProps?.minHeight}
+            maxHeight={props.maxHeight || inputProps?.maxHeight}
+            fullWidth={true}
+
             // navi-select-input-container className is being used to prevent menu to be opened
             // while clicking on the batch icon
             className={`navi-select-input-container ${inputProps?.className} ${focusClassName}`}
