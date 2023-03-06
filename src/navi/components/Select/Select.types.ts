@@ -9,7 +9,7 @@ export interface SelectDataProps {
   leadingIcon?: React.ReactNode;
   avatar?: React.ReactNode;
   multiSelect?: boolean;
-  value?: string;
+  value?: string | number;
   checked?: boolean;
   type?: "divider" | "select";
   divider?: boolean;
@@ -65,6 +65,7 @@ export interface SelectItemCardProps {
 export interface SelectedChipsProps {
   size?: "large" | "small";
   value: string;
+  label?: string;
   onDismiss?: (e: React.MouseEvent, value?: string) => void;
   tagProps?: TagProps;
   classes?: Object;

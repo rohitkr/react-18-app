@@ -5,7 +5,7 @@ import { DividerMenuItemProps } from "./DividerMenuItem.types";
 import DividerMenuItem from "./DividerMenuItem";
 
 export default {
-  title: "Components/DividerMenuItem",
+  title: "Components/MenuItem/DividerMenuItem",
   component: DividerMenuItem,
   parameters: {
     docs: {

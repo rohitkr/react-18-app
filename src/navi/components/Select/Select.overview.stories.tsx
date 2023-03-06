@@ -35,24 +35,26 @@ let data = [
     trailingIcon: <Pencil />,
     leadingIcon: <Movie />,
     disabled: true,
-    checked: true,
+    // selected: true,
   },
   {
     title: "The Dark Knight",
     description: "2008",
-    checked: true,
+    // selected: true,
     trailingIcon: <Pencil />,
     leadingIcon: <Movie />,
   },
   {
     title: "12 Angry Men",
     description: "1957",
+    // selected: true,
     trailingIcon: <Pencil />,
     leadingIcon: <Movie />,
   },
   {
     title: "Schindler's List",
     description: "1993",
+    // selected: true,
     trailingIcon: <Pencil />,
     leadingIcon: <Movie />,
   },
@@ -381,7 +383,7 @@ export const Overview: ComponentStory<typeof Select> = ({ ...args }) => {
                   key={i}
                   value={title}
                   title={title}
-                  checked={false}
+                  selected={false}
                   selectable={true}
                   {...val}
                 />
@@ -391,12 +393,11 @@ export const Overview: ComponentStory<typeof Select> = ({ ...args }) => {
       </Select>
 
       <Select
-        open={open}
         multiSelect={true}
         selectAll={true}
         size="large"
         onChange={(updatedValue) => {
-          setValue(updatedValue);
+          console.log(updatedValue);
         }}
         maxHeight={140}
         minWidth={400}
@@ -404,9 +405,9 @@ export const Overview: ComponentStory<typeof Select> = ({ ...args }) => {
         tagProps={{
           variant: "neutral",
         }}
-        value={value}
         inputProps={{
-          label: "Select Movies",
+          className: `aaa-classname`,
+          label: "MultiSelect Select Movies with Chip",
           errorMessage: "Error message",
           helperText: "Helper text",
           minWidth: 300,
@@ -429,11 +430,6 @@ export const Overview: ComponentStory<typeof Select> = ({ ...args }) => {
                 <DividerMenuItem />
               ) : (
                 <DescriptiveMenuItem
-                  onClick={() => {
-                    if (title === "Select All") {
-                      setSelectAll(true);
-                    }
-                  }}
                   key={i}
                   value={title}
                   title={title}

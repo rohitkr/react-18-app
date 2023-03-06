@@ -14,7 +14,6 @@ const tokenObj: { [key: string]: any } = tokens;
 const INPUT_MIN_WIDTH = 280;
 const INPUT_MAX_WIDTH = 280;
 const INPUT_MIN_HEIGHT = 32;
-const FOCUS_CLASS_NAME = 'navi-focused';
 
 const TextInputElement = ({
   inputType = "default",
@@ -36,10 +35,7 @@ const TextInputElement = ({
   innerRef,
   width,
   className='',
-  inputClassName='',
-  disabled,
-  InputProps,
-  variant,
+  dataValue,
   ...props
 }: NaviInputProps) => {
   const inputMinWidth = minWidth
@@ -56,7 +52,6 @@ const TextInputElement = ({
 
   const inputMaxHeight = maxHeight || "unset";
 
-  const [focusClassName, setFocusClassName] = useState("");
   const [inputValue, setInputValue] = React.useState(props.value || "");
   const [internalError, setInternalError] = useState("");
   const [characterCount, setCharacterCount] = useState(
@@ -97,19 +92,22 @@ const TextInputElement = ({
     e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement, Element>
   ) => {
     const { value } = e.target;
-    const isValue = value || props.value;
-    required && !isValue
+    required && !value && !dataValue
       ? setInternalError("Empty input field")
       : setInternalError("");
-    setFocusClassName('');
     props.onBlur && props.onBlur(e);
   };
-  const handleFocus = (
-    e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement, Element>
-  ) => {
-    setFocusClassName(FOCUS_CLASS_NAME);
-    props.onFocus && props.onFocus(e);
-  };
+  let hoverClass;
+  let errorClass = internalError ? "critical" : "";
+  if (inputType === "disabled") {
+    hoverClass = "";
+  } else {
+    if ((typeof inputValue === "string" && inputValue?.length) || 0) {
+      hoverClass = "filled-field";
+    } else {
+      hoverClass = "empty-field";
+    }
+  }
 
   return (
     <Box
@@ -118,9 +116,9 @@ const TextInputElement = ({
         display: "inline-block",
         width: width === 'auto' ? '100%' : ''
       }}
-      className={`navi-input-container ${className}`}
+      className={`navi-text-field-container ${className}`}
     >
-      <InputLabel className="navi-input-label">
+      <InputLabel className="input-label">
         <div
           style={{
             wordBreak: "break-word",
@@ -174,11 +172,12 @@ const TextInputElement = ({
         {CharacterLimitText}
       </InputLabel>
       <TextField
+        disabled={inputType === "disabled"}
         style={{
           minWidth: inputMinWidth,
           maxWidth: width === 'auto' ? '' : inputMaxWidth,
-          // minHeight: inputMinHeight,
-          // maxHeight: inputMaxHeight,
+          minHeight: inputMinHeight,
+          maxHeight: inputMaxHeight,
           width: width === 'auto' ? '100%' : width,
           ...inputProps.style
         }}
@@ -187,32 +186,22 @@ const TextInputElement = ({
           // "data-value": dataValue
         }}
         {...props}
-        onFocus={handleFocus}
-        disabled={inputType === "disabled" || disabled}
         className={`
-          navi-text-input-base
-          navi-base-input
-          navi-${size}
-          ${inputType === "disabled" ? "" : "navi-" + inputType}
-          ${inputType === "disabled" || disabled ? 'navi-disabled' : ''}
-          navi-${(typeof inputValue === "string" && inputValue?.length) ? 'filled-field' : 'empty-field'}
-          ${internalError ? 'navi-critical' : ''}
-          ${focusClassName}
-          ${inputClassName}
-        `.replace(/\n|\s+/g, ' ')}
+          base-input
+          ${size}
+          ${inputType}
+          ${hoverClass}
+          ${errorClass}
+        `}
         onBlur={handleBlur}
         onChange={handleInputChange}
-        InputProps={{
-          ...InputProps,
-          className: `navi-textfield-input-container ${InputProps?.className}`,
-        }}
       ></TextField>
 
       {helperText ? (
-        <InputLabel className="navi-helper-text">{helperText}</InputLabel>
+        <InputLabel className="helper-text">{helperText}</InputLabel>
       ) : null}
       {(errorMessage && inputType === "critical") || internalError ? (
-        <InputLabel className="navi-error-message">
+        <InputLabel className="error-message">
           <div style={{ display: "flex", alignItems: "center" }}>
             <AlertCircle
               size={16}
@@ -225,7 +214,7 @@ const TextInputElement = ({
         </InputLabel>
       ) : null}
       {!!successMessage && inputType === "success" && !internalError ? (
-        <InputLabel className="navi-success-message">
+        <InputLabel className="success-message">
           <div style={{ display: "flex", alignItems: "center" }}>
             <CircleCheck
               size={16}

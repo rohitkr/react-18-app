@@ -1,49 +1,53 @@
 @import "../../tokens/build/scss/variables.scss";
 /* cyrillic-ext */
 
-.navi-input-container {
-
-  .navi-text-input-base {
-    outline: $input-type-default-outline;
-    border-radius: $input-type-root-border-radius;
-  }
-
-  .navi-text-input-base::after {
+.navi-text-field-container {
+  .MuiInput-underline:hover {
     border-bottom: none;
   }
 
-  .navi-textfield-input-container::before {
-    border-bottom: none;
-  }
-
-  .navi-textfield-input-container::before:hover {
-    border-bottom: none;
-  }
-
-  // .MuiInput-underline:hover:not(.Mui-disabled):before
-  .navi-textfield-input-container:hover:not(.Mui-disabled):before {
-    border-bottom: unset;
-  }
-
-  // .MuiInput-underline:after
-  .navi-textfield-input-container:after {
-    border-bottom: none !important;
-  }
-
-  .navi-text-input-base::before {
-    border-bottom: none;
-  }
-
-  .navi-text-input-base:hover:not(.Mui-disabled):before {
+  .MuiInput-underline:hover:not(.Mui-disabled):before {
     border-bottom: none;
   }
 
   // Hide the dashed border bottom in disabled input
-  .navi-text-input-base.navi-disabled:before {
+  .MuiInput-underline.Mui-disabled:before {
     border-bottom: none;
   }
 
-  .navi-input-label {
+  .MuiInput-underline:before {
+    border-bottom: none;
+  }
+
+  .MuiInput-underline:after {
+    border-bottom: none;
+  }
+
+  .MuiAutocomplete-inputRoot[class*="MuiInput-root"] {
+    padding: 0.75rem 1rem;
+  }
+
+  .navi-autocomplete-input {
+    padding: 0;
+    flex-grow: 1;
+    width: 0;
+  }
+
+  .MuiAutocomplete-inputRoot[class*="MuiInput-root"] .MuiAutocomplete-input {
+  }
+
+  .MuiAutocomplete-inputRoot[class*="MuiInput-root"] .MuiAutocomplete-input:first-child {
+  }
+
+
+  .MuiInputBase-root {
+    padding: 0.75rem 1rem 0.75rem 1rem;
+    padding-bottom: 0.75rem;
+    outline: $input-type-default-outline;
+    border-radius: $input-type-root-border-radius;
+  }
+
+  .input-label {
     font-size: $input-label-base-font-size;
     font-family: $input-label-base-font-family;
     line-height: $input-label-base-line-height;
@@ -54,7 +58,7 @@
     color: $input-label-base-color;
   }
 
-  .navi-helper-text {
+  .helper-text {
     margin-top: $input-label-helper-margin-top;
     line-height: $input-label-helper-line-height;
     font-size: $input-label-helper-font-size;
@@ -64,7 +68,7 @@
     word-break: $input-label-helper-word-break;
   }
 
-  .navi-success-message {
+  .success-message {
     margin-top: $input-label-success-margin-top;
     line-height: $input-label-success-line-height;
     font-size: $input-label-success-font-size;
@@ -74,7 +78,7 @@
     word-break: $input-label-success-word-break;
   }
 
-  .navi-error-message {
+  .error-message {
     margin-top: $input-label-error-margin-top;
     line-height: $input-label-error-line-height;
     font-size: $input-label-error-font-size;
@@ -84,7 +88,7 @@
     word-break: $input-label-error-word-break;
   }
 
-  .navi-base-input {
+  .base-input .MuiInputBase-root {
     box-sizing: $input-type-root-box-sizing;
     background-color: $input-type-root-background-color;
     border-radius: $input-type-root-border-radius;
@@ -99,23 +103,19 @@
     }
   }
 
-  .navi-large,
-  .navi-small .navi-textfield-input-container {
+  // Styles to show Active state for Input
+  .base-input .MuiInputBase-root.Mui-focused {
+    outline: $input-type-focus-border;
+
+    &:hover {
+      outline: $input-type-focus-border;
+    }
+  }
+
+  .large {
+    height: unset;
     font-size: $input-size-large-font-size;
     line-height: $input-size-large-line-height;
-    font-family: $input-label-base-font-family;
-    font-style: $input-type-root-font-style;
-    font-weight: $input-type-root-font-weight;
-
-    input {
-      height: unset;
-      padding: unset !important;
-      font-size: $input-size-large-font-size;
-      line-height: $input-size-large-line-height;
-      font-family: $input-label-base-font-family;
-      font-style: $input-type-root-font-style;
-      font-weight: $input-type-root-font-weight;
-    }
 
     ::-webkit-input-placeholder {
       font-family: $input-placeholder-font-family;
@@ -127,58 +127,22 @@
     }
   }
 
-  .navi-large .navi-textfield-input-container {
-    padding: $input-type-root-padding;
-  }
+  .small {
+    height: unset;
+    font-size: $input-size-small-font-size;
+    line-height: $input-size-small-line-height;
 
-  .navi-small .navi-textfield-input-container {
-    padding: 0.375rem 1rem;
-  }
-
-  .navi-empty-field {
-    &:hover {
-      background-color: $input-type-root-background-color;
+    ::-webkit-input-placeholder {
+      font-family: $input-placeholder-font-family;
+      font-style: $input-placeholder-font-style;
+      line-height: $input-placeholder-small-line-height;
+      font-size: $input-placeholder-small-font-size;
+      font-weight: $input-placeholder-font-weight;
+      color: $input-placeholder-color;
     }
   }
 
-  .navi-filled-field {
-    &:hover {
-      background-color: $input-type-hover-background-color;
-    }
-  }
-
-  .navi-success {
-    outline: $input-type-success-outline;
-
-    &:hover {
-      outline: $input-type-success-outline;
-    }
-  }
-
-  .navi-critical {
-    outline: $input-type-error-outline;
-
-    &:hover {
-      outline: $input-type-error-outline;
-    }
-  }
-
-  .navi-read-only {
-    background-color: $input-type-read-only-background-color;
-    color: $input-type-read-only-color;
-    outline: $input-type-read-only-outline;
-  }
-
-  // Styles to show Active state for Input
-  .navi-focused {
-    outline: $input-type-focus-border;
-
-    &:hover {
-      outline: $input-type-focus-border;
-    }
-  }
-
-  .navi-disabled {
+  .disabled .MuiInputBase-root {
     outline: $input-type-disabled-outline;
     background-color: $input-type-disabled-background-color;
     font-family: $input-type-disabled-font-family;
@@ -186,23 +150,22 @@
 
     &:hover {
       outline: $input-type-disabled-outline;
-      background-color: $input-type-disabled-background-color;
     }
   }
-}
 
-// Input style when used for Select component
-.navi-select-input-container {
-  .navi-base-input {
-    padding: 0;
-    padding-right: 16px;
-    outline: $input-type-default-outline;
-    border-radius: $input-type-root-border-radius;
-    // height: unset !important;
+  .empty-field {
+    &:hover {
+      background-color: $input-type-root-background-color;
+    }
   }
 
+  .filled-field {
+    &:hover {
+      background-color: $input-type-hover-background-color;
+    }
+  }
 
-  .navi-success {
+  .success {
     outline: $input-type-success-outline;
 
     &:hover {
@@ -210,7 +173,7 @@
     }
   }
 
-  .navi-critical {
+  .critical .MuiInputBase-root {
     outline: $input-type-error-outline;
 
     &:hover {
@@ -218,38 +181,14 @@
     }
   }
 
-  .navi-read-only {
+  .read-only {
     background-color: $input-type-read-only-background-color;
     color: $input-type-read-only-color;
     outline: $input-type-read-only-outline;
   }
 
-  &.navi-large {
-    padding: 12px 0;
-  }
-
-  &.navi-small {
-    padding: 8px 0;
-  }
-
-  .navi-text-input-input {
-    padding: $input-type-root-select-padding;
-  }
-
-  .navi-text-input-input:focus {
-    background-color: unset;
-  }
-
-  .navi-focused {
-    outline: $input-type-hover-outline;
-
-    &:hover {
-      outline: $input-type-hover-outline;
-    }
-  }
-
   // Styles to show Active state for Input
-  .navi-select-focused {
+  .Mui-focused {
     outline: $input-type-focus-border;
 
     &:hover {
@@ -257,3 +196,62 @@
     }
   }
 }
+
+// Input style when used for Select component
+// .navi-select-input-container {
+//   .base-input {
+//     padding: 0;
+//     outline: none;
+//     outline: $input-type-default-outline;
+//     border-radius: $input-type-root-border-radius;
+//     height: unset !important;
+//   }
+
+//   &.large {
+//     padding: 12px 0;
+//   }
+
+//   &.small {
+//     padding: 8px 0;
+//   }
+
+//   .MuiSelect-root {
+//     padding: $input-type-root-select-padding;
+//   }
+
+//   .MuiSelect-root:focus {
+//     background-color: unset;
+//   }
+
+//   .MuiSelect-select {
+//     overflow-y: auto;
+//     mask-image: linear-gradient(to top, transparent, black),
+//       linear-gradient(to left, transparent 17px, black 17px);
+//     mask-size: 100% 20000px;
+//     mask-position: left bottom;
+//     -webkit-mask-image: linear-gradient(to top, transparent, black),
+//       linear-gradient(to left, transparent 17px, black 17px);
+//     -webkit-mask-size: 100% 20000px;
+//     -webkit-mask-position: left bottom;
+//     transition: mask-position 0.3s, -webkit-mask-position 0.3s;
+//   }
+
+//   .MuiSelect-select:hover {
+//     -webkit-mask-position: left top;
+//   }
+
+//   @keyframes background {
+//     from {
+//       background: pink;
+//     }
+
+//     to {
+//       background: #c0d6ff;
+//     }
+//   }
+
+//   .wrapper {
+//     float: left;
+//     animation: background 5s infinite alternate;
+//   }
+// }

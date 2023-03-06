@@ -6,7 +6,7 @@ import { ArrowLeft, ArrowRight } from "tabler-icons-react";
 import { EmptyStateMenuItemProps } from "./EmptyStateMenuItem.types";
 
 export default {
-  title: "Components/EmptyStateMenuItem",
+  title: "Components/MenuItem/EmptyStateMenuItem",
   component: EmptyStateMenuItem,
   parameters: {
     docs: {

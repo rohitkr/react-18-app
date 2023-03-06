@@ -6,7 +6,7 @@ import { docco } from "react-syntax-highlighter/dist/esm/styles/hljs";
 import Box from "../Box/Box";
 
 export default {
-  title: `Components/DividerMenuItem`,
+  title: `Components/MenuItem/DividerMenuItem`,
   component: DividerMenuItem,
   argTypes: {},
 } as ComponentMeta<typeof DividerMenuItem>;

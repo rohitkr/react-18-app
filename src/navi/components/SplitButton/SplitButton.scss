@@ -1,0 +1,25 @@
+@import "../../tokens/build/scss/variables.scss";
+
+.navi-split-button-container {
+  display: flex;
+  width: max-content;
+
+  .left-split-button {
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+  }
+  .right-split-button {
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+  }
+}
+
+.info-soft {
+  border: $splitbutton-intent-info-soft-border;
+  border-radius: 4px;
+}
+
+.muted-light {
+  border: $splitbutton-intent-muted-light-border;
+  border-radius: 4px;
+}

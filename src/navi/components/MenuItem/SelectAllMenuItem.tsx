@@ -10,7 +10,7 @@ import "./SelectAllMenuItem.scss";
 const SelectAllMenuItem: React.FC<any> = ({
   selectable = true,
   _onMenuItemClick,
-  checked,
+  selected,
   disableHoverStyle,
   size,
   disableItemClick,
@@ -52,7 +52,7 @@ const SelectAllMenuItem: React.FC<any> = ({
     <StyledMenuItem
       {...props}
       disableRipple
-      className={`navi-menu-list-item descriptive-${size} ${checked ? "navi-item-selected" : ""
+      className={`navi-menu-list-item descriptive-${size} ${selected ? "navi-item-selected" : ""
         } `}
       disableGutters
       onClick={handleMenuItemClick}
@@ -71,7 +71,7 @@ const SelectAllMenuItem: React.FC<any> = ({
               <Checkbox
                 label={""}
                 value={"_select_all"}
-                checked={checked}
+                checked={selected}
                 size="small"
               />
             </Box>

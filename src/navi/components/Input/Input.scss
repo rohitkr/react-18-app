@@ -1,210 +1,213 @@
-// @import "../../tokens/build/scss/variables.scss";
-// /* cyrillic-ext */
+@import "../../tokens/build/scss/variables.scss";
+/* cyrillic-ext */
 
-// .navi-input-container {
-//   .MuiInput-underline:hover {
-//     border-bottom: none;
-//   }
+.navi-input-container {
 
-//   .MuiInput-underline:hover:not(.Mui-disabled):before {
-//     border-bottom: none;
-//   }
+  .navi-text-input-base {
+    padding: $input-type-root-padding;
+    outline: $input-type-default-outline;
+    border-radius: $input-type-root-border-radius;
+  }
 
-//   .MuiInput-underline:before {
-//     border-bottom: none;
-//   }
+  .navi-text-input-base::after {
+    border-bottom: none;
+  }
 
-//   .MuiInput-underline:after {
-//     border-bottom: none;
-//   }
+  .navi-text-input-base::before {
+    border-bottom: none;
+  }
 
-//   .MuiInputBase-root {
-//     padding: $input-type-root-padding;
-//     outline: $input-type-default-outline;
-//     border-radius: $input-type-root-border-radius;
-//   }
+  .navi-text-input-base:hover:not(.Mui-disabled):before {
+    border-bottom: none;
+  }
 
-//   // Input style when used for Select component
-//   .navi-select-input-container {
-//     padding: 0;
-//     outline: none;
-//     outline: $input-type-default-outline;
-//     border-radius: $input-type-root-border-radius;
-//     height: unset !important;
+  // Hide the dashed border bottom in disabled input
+  .navi-text-input-base.navi-disabled:before {
+    border-bottom: none;
+  }
 
-//     &.large {
-//       padding: 12px 0;
-//     }
-//     &.small {
-//       padding: 8px 0;
-//     }
-//     .MuiSelect-root {
-//       padding: $input-type-root-select-padding;
-//     }
-//     .MuiSelect-root:focus {
-//       background-color: unset;
-//     }
+  .navi-input-label {
+    font-size: $input-label-base-font-size;
+    font-family: $input-label-base-font-family;
+    line-height: $input-label-base-line-height;
+    justify-content: $input-label-base-justify-content;
+    font-weight: $input-label-base-font-weight;
+    margin-bottom: $input-label-base-margin-bottom;
+    display: $input-label-base-display;
+    color: $input-label-base-color;
+  }
 
-//     .MuiSelect-select {
-//       overflow-y: auto;
-//       mask-image: linear-gradient(to top, transparent, black),
-//         linear-gradient(to left, transparent 17px, black 17px);
-//       mask-size: 100% 20000px;
-//       mask-position: left bottom;
-//       -webkit-mask-image: linear-gradient(to top, transparent, black),
-//         linear-gradient(to left, transparent 17px, black 17px);
-//       -webkit-mask-size: 100% 20000px;
-//       -webkit-mask-position: left bottom;
-//       transition: mask-position 0.3s, -webkit-mask-position 0.3s;
-//     }
+  .navi-helper-text {
+    margin-top: $input-label-helper-margin-top;
+    line-height: $input-label-helper-line-height;
+    font-size: $input-label-helper-font-size;
+    font-family: $input-label-base-font-family;
+    font-weight: $input-label-helper-font-weight;
+    color: $input-label-helper-color;
+    word-break: $input-label-helper-word-break;
+  }
 
-//     .MuiSelect-select:hover {
-//       -webkit-mask-position: left top;
-//     }
+  .navi-success-message {
+    margin-top: $input-label-success-margin-top;
+    line-height: $input-label-success-line-height;
+    font-size: $input-label-success-font-size;
+    font-family: $input-label-base-font-family;
+    font-weight: $input-label-success-font-weight;
+    color: $input-label-success-color;
+    word-break: $input-label-success-word-break;
+  }
 
-//     @keyframes background {
-//       from {
-//         background: pink;
-//       }
-//       to {
-//         background: #c0d6ff;
-//       }
-//     }
+  .navi-error-message {
+    margin-top: $input-label-error-margin-top;
+    line-height: $input-label-error-line-height;
+    font-size: $input-label-error-font-size;
+    font-family: $input-label-base-font-family;
+    font-weight: $input-label-success-font-weight;
+    color: $input-label-error-color;
+    word-break: $input-label-error-word-break;
+  }
 
-//     .wrapper {
-//       float: left;
-//       animation: background 5s infinite alternate;
-//     }
-//   }
+  .navi-base-input {
+    box-sizing: $input-type-root-box-sizing;
+    background-color: $input-type-root-background-color;
+    border-radius: $input-type-root-border-radius;
+    min-width: $input-type-root-min-width;
+    text-overflow: $input-type-root-text-overflow;
+    font-family: $input-label-base-font-family;
+    font-style: $input-type-root-font-style;
+    font-weight: $input-type-root-font-weight;
 
-//   .input-label {
-//     font-size: $input-label-base-font-size;
-//     font-family: $input-label-base-font-family;
-//     line-height: $input-label-base-line-height;
-//     justify-content: $input-label-base-justify-content;
-//     font-weight: $input-label-base-font-weight;
-//     margin-bottom: $input-label-base-margin-bottom;
-//     display: $input-label-base-display;
-//     color: $input-label-base-color;
-//   }
+    &:hover {
+      outline: $input-type-hover-outline;
+    }
+  }
 
-//   .helper-text {
-//     margin-top: $input-label-helper-margin-top;
-//     line-height: $input-label-helper-line-height;
-//     font-size: $input-label-helper-font-size;
-//     font-family: $input-label-base-font-family;
-//     font-weight: $input-label-helper-font-weight;
-//     color: $input-label-helper-color;
-//     word-break: $input-label-helper-word-break;
-//   }
+  .navi-large {
+    height: $input-size-large-height;
+    font-size: $input-size-large-font-size;
+    line-height: $input-size-large-line-height;
 
-//   .success-message {
-//     margin-top: $input-label-success-margin-top;
-//     line-height: $input-label-success-line-height;
-//     font-size: $input-label-success-font-size;
-//     font-family: $input-label-base-font-family;
-//     font-weight: $input-label-success-font-weight;
-//     color: $input-label-success-color;
-//     word-break: $input-label-success-word-break;
-//   }
+    ::-webkit-input-placeholder {
+      font-family: $input-placeholder-font-family;
+      font-style: $input-placeholder-font-style;
+      line-height: $input-placeholder-large-line-height;
+      font-size: $input-placeholder-large-font-size;
+      font-weight: $input-placeholder-font-weight;
+      color: $input-placeholder-color;
+    }
+  }
 
-//   .error-message {
-//     margin-top: $input-label-error-margin-top;
-//     line-height: $input-label-error-line-height;
-//     font-size: $input-label-error-font-size;
-//     font-family: $input-label-base-font-family;
-//     font-weight: $input-label-success-font-weight;
-//     color: $input-label-error-color;
-//     word-break: $input-label-error-word-break;
-//   }
+  .navi-small {
+    height: $input-size-small-height;
+    font-size: $input-size-small-font-size;
+    line-height: $input-size-small-line-height;
 
-//   .base-input {
-//     box-sizing: $input-type-root-box-sizing;
-//     background-color: $input-type-root-background-color;
-//     border-radius: $input-type-root-border-radius;
-//     min-width: $input-type-root-min-width;
-//     text-overflow: $input-type-root-text-overflow;
-//     font-family: $input-label-base-font-family;
-//     font-style: $input-type-root-font-style;
-//     font-weight: $input-type-root-font-weight;
+    ::-webkit-input-placeholder {
+      font-family: $input-placeholder-font-family;
+      font-style: $input-placeholder-font-style;
+      line-height: $input-placeholder-small-line-height;
+      font-size: $input-placeholder-small-font-size;
+      font-weight: $input-placeholder-font-weight;
+      color: $input-placeholder-color;
+    }
+  }
 
-//     &:hover {
-//       outline: $input-type-hover-outline;
-//     }
-//   }
+  .navi-empty-field {
+    &:hover {
+      background-color: $input-type-root-background-color;
+    }
+  }
 
-//   .large {
-//     height: $input-size-large-height;
-//     font-size: $input-size-large-font-size;
-//     line-height: $input-size-large-line-height;
+  .navi-filled-field {
+    &:hover {
+      background-color: $input-type-hover-background-color;
+    }
+  }
 
-//     ::-webkit-input-placeholder {
-//       font-family: $input-placeholder-font-family;
-//       font-style: $input-placeholder-font-style;
-//       line-height: $input-placeholder-large-line-height;
-//       font-size: $input-placeholder-large-font-size;
-//       font-weight: $input-placeholder-font-weight;
-//       color: $input-placeholder-color;
-//     }
-//   }
+  .navi-success {
+    outline: $input-type-success-outline;
 
-//   .small {
-//     height: $input-size-small-height;
-//     font-size: $input-size-small-font-size;
-//     line-height: $input-size-small-line-height;
+    &:hover {
+      outline: $input-type-success-outline;
+    }
+  }
 
-//     ::-webkit-input-placeholder {
-//       font-family: $input-placeholder-font-family;
-//       font-style: $input-placeholder-font-style;
-//       line-height: $input-placeholder-small-line-height;
-//       font-size: $input-placeholder-small-font-size;
-//       font-weight: $input-placeholder-font-weight;
-//       color: $input-placeholder-color;
-//     }
-//   }
+  .navi-critical {
+    outline: $input-type-error-outline;
 
-//   .disabled {
-//     outline: $input-type-disabled-outline;
-//     background-color: $input-type-disabled-background-color;
-//     font-family: $input-type-disabled-font-family;
-//     font-style: $input-type-disabled-font-style;
+    &:hover {
+      outline: $input-type-error-outline;
+    }
+  }
 
-//     &:hover {
-//       outline: $input-type-disabled-outline;
-//     }
-//   }
+  .navi-read-only {
+    background-color: $input-type-read-only-background-color;
+    color: $input-type-read-only-color;
+    outline: $input-type-read-only-outline;
+  }
 
-//   .empty-field {
-//     &:hover {
-//       background-color: $input-type-root-background-color;
-//     }
-//   }
+  // Styles to show Active state for Input
+  .navi-focused {
+    outline: $input-type-focus-border;
 
-//   .filled-field {
-//     &:hover {
-//       background-color: $input-type-hover-background-color;
-//     }
-//   }
+    &:hover {
+      outline: $input-type-focus-border;
+    }
+  }
 
-//   .success {
-//     outline: $input-type-success-outline;
+  .navi-disabled {
+    outline: $input-type-disabled-outline;
+    background-color: $input-type-disabled-background-color;
+    font-family: $input-type-disabled-font-family;
+    font-style: $input-type-disabled-font-style;
 
-//     &:hover {
-//       outline: $input-type-success-outline;
-//     }
-//   }
+    &:hover {
+      outline: $input-type-disabled-outline;
+      background-color: $input-type-disabled-background-color;
+    }
+  }
+}
 
-//   .critical {
-//     outline: $input-type-error-outline;
+// Input style when used for Select component
+.navi-select-input-container {
+  .navi-base-input {
+    padding: 0;
+    outline: none;
+    outline: $input-type-default-outline;
+    border-radius: $input-type-root-border-radius;
+    height: unset !important;
+  }
 
-//     &:hover {
-//       outline: $input-type-error-outline;
-//     }
-//   }
+  &.navi-large {
+    padding: 12px 0;
+  }
 
-//   .read-only {
-//     background-color: $input-type-read-only-background-color;
-//     color: $input-type-read-only-color;
-//     outline: $input-type-read-only-outline;
-//   }
-// }
+  &.navi-small {
+    padding: 8px 0;
+  }
+
+  .navi-text-input-input {
+    padding: $input-type-root-select-padding;
+  }
+
+  .navi-text-input-input:focus {
+    background-color: unset;
+  }
+
+  .navi-focused {
+    outline: $input-type-hover-outline;
+
+    &:hover {
+      outline: $input-type-hover-outline;
+    }
+  }
+
+  // Styles to show Active state for Input
+  .navi-select-focused {
+    outline: $input-type-focus-border;
+
+    &:hover {
+      outline: $input-type-focus-border;
+    }
+  }
+}

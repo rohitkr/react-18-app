@@ -18,7 +18,7 @@ interface MenuItemsMapInterface {
 }
 
 const Menu: React.FC<MenuProps> = ({
-  onClose,
+  handleClose,
   onMenuChange,
   width,
   height,
@@ -28,9 +28,21 @@ const Menu: React.FC<MenuProps> = ({
   showSelectedValue = false,
   children,
   useSelectAll,
+  hideOnSelect,
+  style,
   ...props
 }) => {
   const [open, setOpen] = React.useState(props.open || false);
+  const [hideMenuOnSelect] = React.useState(() => {
+    if (typeof hideOnSelect === "boolean") {
+      return hideOnSelect;
+    } else {
+      if (multiSelect) {
+        return false;
+      }
+      return true;
+    }
+  });
   const [selectedValue, setSelectedValue] = React.useState(
     props.selectedValue || null
   );
@@ -58,7 +70,7 @@ const Menu: React.FC<MenuProps> = ({
         const map = React.Children.toArray(children).reduce(
           (acc: SelectionMapInterface, child) => {
             if (React.isValidElement(child)) {
-              acc[child.props.value] = child.props.checked ? true : false;
+              acc[child.props.value] = child.props.selected ? true : false;
               return acc;
             }
             return acc;
@@ -82,18 +94,18 @@ const Menu: React.FC<MenuProps> = ({
     setOpen(props.open);
   }, [props.open]);
 
-  const handleClose = () => {
-    props.handleClose && props.handleClose();
+  const onHandleClose = (e: React.MouseEvent<Document, MouseEvent>) => {
+    handleClose && handleClose();
   };
 
   function handleListKeyDown(event: React.KeyboardEvent) {
     if (event.key === "Tab") {
       event.preventDefault();
-      props.handleClose && props.handleClose();
+      handleClose && handleClose();
     }
     if (event.key === " ") {
       event.preventDefault();
-      props.handleClose && props.handleClose();
+      handleClose && handleClose();
     }
   }
 
@@ -101,10 +113,10 @@ const Menu: React.FC<MenuProps> = ({
     let updatedSelectionMap: { [key: string]: boolean } = {};
     Object.keys(selectionMap).forEach((key) => {
       if (menuItemsMap[key].disabled) {
-        updatedSelectionMap[key] = menuItemsMap[key].checked ? true : false;
-      } else if ("checked" in menuItemsMap[key]) {
+        updatedSelectionMap[key] = menuItemsMap[key].selected ? true : false;
+      } else if ("selected" in menuItemsMap[key]) {
         updatedSelectionMap[key] =
-          menuItemsMap[key].checked || !selectionMap[key];
+          menuItemsMap[key].selected || !selectionMap[key];
       } else {
         updatedSelectionMap[key] = !allSelected;
       }
@@ -117,6 +129,9 @@ const Menu: React.FC<MenuProps> = ({
     }
     setSelectionMap(updatedSelectionMap);
     onMenuChange && onMenuChange(selectedValues);
+    if (hideMenuOnSelect) {
+      handleClose && handleClose();
+    }
   };
 
   const _onMenuItemClick = React.useCallback(
@@ -127,11 +142,10 @@ const Menu: React.FC<MenuProps> = ({
       if (!multiSelect) {
         onMenuChange && onMenuChange([value]);
         setSelectedValue([value]);
-        handleClose();
-      } else if ("checked" in menuItemsMap[value]) {
+      } else if ("selected" in menuItemsMap[value]) {
         let updatedMap = {
           ...selectionMap,
-          [value]: menuItemsMap[value].checked,
+          [value]: menuItemsMap[value].selected,
         };
         setSelectionMap(updatedMap);
         let selectedValues = [];
@@ -154,6 +168,9 @@ const Menu: React.FC<MenuProps> = ({
         setSelectedValue(selectedValues);
         onMenuChange && onMenuChange(selectedValues);
       }
+      if (hideMenuOnSelect) {
+        handleClose && handleClose();
+      }
     },
     [selectionMap]
   );
@@ -168,17 +185,22 @@ const Menu: React.FC<MenuProps> = ({
     >
       <Paper
         style={{
-          width: width || (props.anchorEl as HTMLAnchorElement)?.offsetWidth,
-          minWidth,
+          margin: "4px",
+          width: width || "auto",
+          minWidth:
+            props.anchorEl?.offsetWidth > minWidth
+              ? `${(props.anchorEl as HTMLAnchorElement)?.offsetWidth}px`
+              : `${minWidth}px`,
           boxShadow:
             "0px 6px 20px rgba(0, 0, 0, 0.14), 0px 4px 12px rgba(0, 0, 0, 0.18)",
-          maxHeight: height ? height : "auto",
+          maxHeight: height ? height : "30rem",
           overflowY: height ? "scroll" : "auto",
+          ...style,
         }}
       >
-        <ClickAwayListener onClickAway={handleClose}>
+        <ClickAwayListener onClickAway={onHandleClose}>
           <MenuList
-            autoFocusItem={true}
+            autoFocusItem={false}
             onKeyDown={handleListKeyDown}
             className="navi-menu-container"
           >
@@ -187,7 +209,7 @@ const Menu: React.FC<MenuProps> = ({
                 key="_select_all"
                 _onMenuItemClick={onSelectAllClick}
                 size={size}
-                checked={allSelected}
+                selected={allSelected}
               />
             ) : null}
             {React.Children.map(children, (child: any) => {
@@ -196,8 +218,8 @@ const Menu: React.FC<MenuProps> = ({
                 _onMenuItemClick,
                 size,
                 selectable: multiSelect ? true : false,
-                checked:
-                  child.props.checked ||
+                selected:
+                  child.props.selected ||
                   selectionMap[child.props.value] ||
                   (showSelectedValue &&
                     selectedValue?.includes(child.props.value)),

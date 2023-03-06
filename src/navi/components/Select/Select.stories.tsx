@@ -12,6 +12,7 @@ import GroupHeadingMenuItem from "../GroupHeadingMenuItem/GroupHeadingMenuItem";
 let trendInsight = [
   {
     title: "Trend insight",
+    value: "1",
     description: "Understand the performance",
     leadingIcon: (
       <svg
@@ -34,6 +35,7 @@ let trendInsight = [
   },
   {
     title: "Funnel Insight",
+    value: "2",
     description: "Understand the journey",
     leadingIcon: (
       <svg
@@ -56,6 +58,7 @@ let trendInsight = [
   },
   {
     title: "Out-of-the-box matrix",
+    value: "3",
     description: "Understand the usage",
     leadingIcon: (
       <svg
@@ -87,6 +90,7 @@ let trendInsight = [
   },
   {
     title: "Description",
+    value: "4",
     description: "Add for better understanding",
     leadingIcon: (
       <svg
@@ -110,6 +114,7 @@ let trendInsight = [
   {
     title: "Story",
     description: "Add to summarise the insights",
+    value: "5",
     leadingIcon: (
       <svg
         width="36"
@@ -174,7 +179,7 @@ const SelectComponent: ComponentStory<typeof Select> = ({ ...args }) => {
       {...args}    >
       {trendInsight &&
         trendInsight.map(
-          ({ title = "", avatar, type, ...val }: SelectDataProps, i) => {
+          ({ title = "", value="", avatar, type, ...val }: SelectDataProps, i) => {
             if (val.groupHeading) {
               return <GroupHeadingMenuItem key={i} title={title} />;
             } else if (val.divider) {
@@ -183,9 +188,9 @@ const SelectComponent: ComponentStory<typeof Select> = ({ ...args }) => {
             return (
               <DescriptiveMenuItem
                 key={i}
-                value={title}
+                value={value}
                 title={title}
-                checked={false}
+                selected={false}
                 selectable={true}
                 {...val}
               />

@@ -7,7 +7,7 @@ import Box from "../Box/Box";
 import { CaretDown, MoodSad } from "tabler-icons-react";
 
 export default {
-  title: `Components/DescriptiveMenuItem`,
+  title: `Components/MenuItem/DescriptiveMenuItem`,
   component: DescriptiveMenuItem,
   argTypes: {},
 } as ComponentMeta<typeof DescriptiveMenuItem>;

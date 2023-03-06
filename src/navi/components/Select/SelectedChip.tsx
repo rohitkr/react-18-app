@@ -6,6 +6,7 @@ import { SelectedChipsProps } from "./Select.types";
 const SelectedChip: React.FC<SelectedChipsProps> = ({
   size,
   value,
+  label,
   onDismiss,
   tagProps,
 }) => {
@@ -13,7 +14,7 @@ const SelectedChip: React.FC<SelectedChipsProps> = ({
     (e: React.MouseEvent, value?: string) => {
       value && onDismiss && onDismiss(e, value);
     },
-    []
+    [onDismiss]
   );
   return (
     <Chip
@@ -23,7 +24,7 @@ const SelectedChip: React.FC<SelectedChipsProps> = ({
       dismissible
       LeadingIcon={<TagIcon size={8} />}
       key={value}
-      label={value}
+      label={label}
       value={value}
       onDismiss={onDismissClick}
       {...tagProps}

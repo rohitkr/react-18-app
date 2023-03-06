@@ -4,7 +4,7 @@
 //
 
 // Do not edit directly
-// Generated on Fri, 17 Feb 2023 10:59:01 GMT
+// Generated on Wed, 08 Feb 2023 11:18:14 GMT
 
 
 import UIKit
@@ -725,6 +725,14 @@ internal struct StyleDictionaryStruct {
     internal static let spacing64 = 4rem
     internal static let spacing72 = 4.5rem
     internal static let spacing8 = .5rem
+    internal static let splitbuttonIntentDefaultColor = UIColor(red: 0.753, green: 0.745, blue: 0.800, alpha: 1)
+    internal static let splitbuttonIntentInfoBoldColor = UIColor(red: 0.051, green: 0.349, blue: 0.671, alpha: 1)
+    internal static let splitbuttonIntentInfoSoftBorder = 1px solid UIColor(red: 0.035, green: 0.459, blue: 0.843, alpha: 1)
+    internal static let splitbuttonIntentInfoSoftColor = UIColor(red: 0.035, green: 0.459, blue: 0.843, alpha: 1)
+    internal static let splitbuttonIntentMutedBoldColor = UIColor(red: 0.169, green: 0.169, blue: 0.251, alpha: 1)
+    internal static let splitbuttonIntentMutedLightBorder = 1px solid UIColor(red: 0.753, green: 0.745, blue: 0.800, alpha: 1)
+    internal static let splitbuttonIntentMutedLightColor = UIColor(red: 0.753, green: 0.745, blue: 0.800, alpha: 1)
+    internal static let splitbuttonIntentPrimeColor = UIColor(red: 0.620, green: 0.255, blue: 0.000, alpha: 1)
     internal static let switchTypeBaseDisabledBorder = none
     internal static let switchTypeBaseDisabledBoxShadow = none
     internal static let switchTypeBaseDisabledColor = UIColor(red: 0.988, green: 0.988, blue: 0.992, alpha: 1)
@@ -997,17 +1005,17 @@ internal struct StyleDictionaryStruct {
     internal static let tagTypeRootLabelLargeLineHeight = 20px
     internal static let tagTypeRootLabelMargin = 0px 4px
     internal static let tagTypeRootLabelSmallFontFamily = Inter
-    internal static let tagTypeRootLabelSmallFontSize = 14px
+    internal static let tagTypeRootLabelSmallFontSize = 12px
     internal static let tagTypeRootLabelSmallFontWeight = 500
-    internal static let tagTypeRootLabelSmallLineHeight = 20px
+    internal static let tagTypeRootLabelSmallLineHeight = 16px
     internal static let tagTypeRootLargeFontSize = 14px
     internal static let tagTypeRootLargeHeight = 20px
     internal static let tagTypeRootLargeLineHeight = 1.25rem
-    internal static let tagTypeRootLargePadding = 4px 4px
-    internal static let tagTypeRootSmallFontSize = 14px
-    internal static let tagTypeRootSmallHeight = 1.25px
-    internal static let tagTypeRootSmallLineHeight = 1.25rem
-    internal static let tagTypeRootSmallPadding = 0
+    internal static let tagTypeRootLargePadding = 8px 8px
+    internal static let tagTypeRootSmallFontSize = 12px
+    internal static let tagTypeRootSmallHeight = 12px
+    internal static let tagTypeRootSmallLineHeight = 1rem
+    internal static let tagTypeRootSmallPadding = 4px 4px
     internal static let textBody01FontFamily = Inter
     internal static let textBody01FontSize = 1.125rem
     internal static let textBody01FontWeight = 400

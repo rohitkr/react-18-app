@@ -1,5 +1,4 @@
 import { TooltipPositionTypes } from "./../Tooltip/Tooltip.types";
-import { InputBaseProps as MuiInputBaseProps } from "@material-ui/core/InputBase";
 import { TextFieldProps } from "@material-ui/core";
 import { CSSProperties, ForwardedRef } from "react";
 
@@ -27,6 +26,5 @@ export interface NaviInputProps
   minHeight?: number;
   maxHeight?: number;
   ref?: ForwardedRef<HTMLInputElement>;
-  inputClassName?: string;
   translate?: string;
 }

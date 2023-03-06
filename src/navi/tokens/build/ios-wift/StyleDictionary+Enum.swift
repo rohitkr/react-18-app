@@ -4,7 +4,7 @@
 //
 
 // Do not edit directly
-// Generated on Fri, 17 Feb 2023 10:59:01 GMT
+// Generated on Wed, 08 Feb 2023 11:18:14 GMT
 
 
 import UIKit
@@ -725,6 +725,14 @@ public enum StyleDictionaryEnum {
     public static let spacing64 = 4rem
     public static let spacing72 = 4.5rem
     public static let spacing8 = .5rem
+    public static let splitbuttonIntentDefaultColor = UIColor(red: 0.753, green: 0.745, blue: 0.800, alpha: 1)
+    public static let splitbuttonIntentInfoBoldColor = UIColor(red: 0.051, green: 0.349, blue: 0.671, alpha: 1)
+    public static let splitbuttonIntentInfoSoftBorder = 1px solid UIColor(red: 0.035, green: 0.459, blue: 0.843, alpha: 1)
+    public static let splitbuttonIntentInfoSoftColor = UIColor(red: 0.035, green: 0.459, blue: 0.843, alpha: 1)
+    public static let splitbuttonIntentMutedBoldColor = UIColor(red: 0.169, green: 0.169, blue: 0.251, alpha: 1)
+    public static let splitbuttonIntentMutedLightBorder = 1px solid UIColor(red: 0.753, green: 0.745, blue: 0.800, alpha: 1)
+    public static let splitbuttonIntentMutedLightColor = UIColor(red: 0.753, green: 0.745, blue: 0.800, alpha: 1)
+    public static let splitbuttonIntentPrimeColor = UIColor(red: 0.620, green: 0.255, blue: 0.000, alpha: 1)
     public static let switchTypeBaseDisabledBorder = none
     public static let switchTypeBaseDisabledBoxShadow = none
     public static let switchTypeBaseDisabledColor = UIColor(red: 0.988, green: 0.988, blue: 0.992, alpha: 1)
@@ -997,17 +1005,17 @@ public enum StyleDictionaryEnum {
     public static let tagTypeRootLabelLargeLineHeight = 20px
     public static let tagTypeRootLabelMargin = 0px 4px
     public static let tagTypeRootLabelSmallFontFamily = Inter
-    public static let tagTypeRootLabelSmallFontSize = 14px
+    public static let tagTypeRootLabelSmallFontSize = 12px
     public static let tagTypeRootLabelSmallFontWeight = 500
-    public static let tagTypeRootLabelSmallLineHeight = 20px
+    public static let tagTypeRootLabelSmallLineHeight = 16px
     public static let tagTypeRootLargeFontSize = 14px
     public static let tagTypeRootLargeHeight = 20px
     public static let tagTypeRootLargeLineHeight = 1.25rem
-    public static let tagTypeRootLargePadding = 4px 4px
-    public static let tagTypeRootSmallFontSize = 14px
-    public static let tagTypeRootSmallHeight = 1.25px
-    public static let tagTypeRootSmallLineHeight = 1.25rem
-    public static let tagTypeRootSmallPadding = 0
+    public static let tagTypeRootLargePadding = 8px 8px
+    public static let tagTypeRootSmallFontSize = 12px
+    public static let tagTypeRootSmallHeight = 12px
+    public static let tagTypeRootSmallLineHeight = 1rem
+    public static let tagTypeRootSmallPadding = 4px 4px
     public static let textBody01FontFamily = Inter
     public static let textBody01FontSize = 1.125rem
     public static let textBody01FontWeight = 400
