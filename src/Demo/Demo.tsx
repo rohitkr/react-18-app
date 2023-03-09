@@ -457,8 +457,8 @@ export default function AutocompleteControlled() {
 
       <div>
         <Input
-        prefixIcon={<Pencil/>}
-        prefixText={"Test"}
+        // prefixIcon={<Pencil/>}
+        // prefixText={"Test"}
         type="default"
         width={"50px"}/>
       </div>

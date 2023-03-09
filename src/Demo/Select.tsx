@@ -208,10 +208,10 @@ export default ({ ...args }) => {
         // multiSelect={true}
         selectAll={true}
         size="large"
-        clearButton={false}
-        width={'140px'}
-        prefixIcon={<Pencil/>}
-        prefixText={"Test"}
+        // clearButton={false}
+        // width={'140px'}
+        // prefixIcon={<Pencil/>}
+        // prefixText={"Test"}
       
         // maxWidth={600}
         // minWidth={600}
@@ -257,7 +257,7 @@ export default ({ ...args }) => {
         onChange={(updatedValue) => {
           // setValue(updatedValue);
         }}
-        width={"auto"}
+        // width={"auto"}
         renderValueAsTag
         tagProps={{
           variant: "neutral",
