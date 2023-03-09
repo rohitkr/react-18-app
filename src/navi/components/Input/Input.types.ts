@@ -19,6 +19,7 @@ export interface NaviInputProps
   helperText?: string;
   errorMessage?: string;
   successMessage?: string;
+  requiredStateError?: string,
   moreInfo?: string;
   tooltipPlacement?: TooltipPositionTypes;
   minWidth?: number;
@@ -27,6 +28,6 @@ export interface NaviInputProps
   maxHeight?: number;
   ref?: ForwardedRef<HTMLInputElement>;
   translate?: string;
-  prefixIcon?: React.ReactNode;
-  prefixText?: React.ReactNode;
+  defaultValue?: string;
+
 }

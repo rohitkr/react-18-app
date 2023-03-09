@@ -160,7 +160,6 @@ const SelectComponent: ComponentStory<typeof Select> = ({ ...args }) => {
       maxWidth={250}
       minWidth={300}
       onChange={(value) => { }}
-      label="Test label for select component"
       inputProps={{
         label: "Single Select",
         errorMessage: "",

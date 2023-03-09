@@ -60,13 +60,10 @@
   }
 }
 
-.navi-select-scroll-container {
-  overflow: auto;
-  visibility: hidden;
+.navi-select-with-scroll:hover {
+  overflow-y: scroll;
 }
 
-.navi-select-scroll-content,
-.navi-select-scroll-container:hover,
-.navi-select-scroll-container:focus {
-  visibility: visible;
+.navi-select-with-scroll {
+  overflow: hidden;
 }

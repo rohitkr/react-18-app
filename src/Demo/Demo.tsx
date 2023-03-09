@@ -460,7 +460,9 @@ export default function AutocompleteControlled() {
         // prefixIcon={<Pencil/>}
         // prefixText={"Test"}
         type="default"
-        width={"50px"}/>
+        placeholder="sample placeholder text"
+        // width={"50px"}
+        />
       </div>
       <div>
         <SelectDemo />

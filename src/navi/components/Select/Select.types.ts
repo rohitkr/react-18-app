@@ -41,16 +41,12 @@ export interface SelectProps
   dataTestId?: string;
   clearTooltipText: string;
   openTooltipText: string;
-  // Input props which can be passed to Select
-  width?: string | number;
+  hideClearButton?: boolean;
   helperText?: string;
   errorMessage?: string;
   successMessage?: string;
   moreInfo?: string;
   label?: string;
-  clearButton?: boolean;
-  prefixIcon?: React.ReactNode;
-  prefixText?: React.ReactNode;
 }
 export interface SelectItemCardProps {
   selectValue?: string[];
@@ -65,6 +61,11 @@ export interface SelectItemCardProps {
   value?: string;
   checked?: boolean;
   disabled?: boolean;
+  _onchange?: (
+    event: React.MouseEvent<{ name?: string; value?: unknown }>,
+    child: string,
+    checked?: boolean
+  ) => void;
 }
 
 export interface SelectedChipsProps {

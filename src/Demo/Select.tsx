@@ -208,6 +208,19 @@ export default ({ ...args }) => {
         // multiSelect={true}
         selectAll={true}
         size="large"
+        required
+        label="Navi select label"
+        placeholder="Select place holder"
+        moreInfo="Select moreInfo"
+        helperText="select helperText string"
+        errorMessage="select errorMessage string"
+        successMessage="select successMessage string"
+        // moreInfo="string"
+        // label="string"
+      
+
+
+
         // clearButton={false}
         // width={'140px'}
         // prefixIcon={<Pencil/>}
@@ -217,7 +230,7 @@ export default ({ ...args }) => {
         // minWidth={600}
         // width={"600px"}
         dataTestId="select-component"
-        label="Simple Navi Select"
+        // label="Simple Navi Select"
         clearTooltipText={"Clear Data"}
         openTooltipText={"Open Menu"}
         // inputProps={{
@@ -257,6 +270,7 @@ export default ({ ...args }) => {
         onChange={(updatedValue) => {
           // setValue(updatedValue);
         }}
+        required
         // width={"auto"}
         renderValueAsTag
         tagProps={{

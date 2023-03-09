@@ -18,7 +18,6 @@ import SelectAllMenuItem from "../MenuItem/SelectAllMenuItem";
 import tokenObj from "../../tokens/build/json/tokens.json";
 
 const FOCUS_CLASS_NAME = 'navi-select-focused';
-const MAX_HEIGHT_DEFAULT = 100;
 
 interface SelectionMapInterface {
   [key: string]: boolean | undefined;
@@ -58,9 +57,7 @@ const Select: React.FC<SelectProps> = ({
   clearTooltipText,
   onChange,
   className = '',
-  clearButton=true,
-  prefixIcon,
-  prefixText,
+  hideClearButton = false,
   ...props
 }) => {
   const [menuItemsMap] = React.useState(() => {
@@ -119,6 +116,10 @@ const Select: React.FC<SelectProps> = ({
     return {};
   });
   const [focusClassName, setFocusClassName] = React.useState("");
+  let showClearButton = !hideClearButton;
+  if (multiSelect) {
+    showClearButton = true;
+  }
   // Used ref as <any> because MUI inputRef for select component is Any
   const inputRef = React.useRef<any>(null);
   const classes = useStyles();
@@ -187,32 +188,30 @@ const Select: React.FC<SelectProps> = ({
   const renderValue = () => {
     if (renderValueAsTag) {
       return (
-        <Box flexWrap="wrap" display="flex" maxHeight={`${props.maxHeight || MAX_HEIGHT_DEFAULT}px`} className="navi-select-scroll-container">
-          <Box flexWrap="wrap" display="flex" className="navi-select-scroll-content">
-            {selectedValue &&
-              selectedValue.map((value: string) => {
-                const label = menuItemsMap[value].title || '';
-                return (
-                  <Box display="flex" margin={`5px 6px`}>
-                    <SelectedChip
-                      size={"large"}
-                      intent="muted"
-                      dismissible
-                      LeadingIcon={<TagIcon size={8} />}
-                      key={value}
-                      label={label}
-                      value={value}
-                      onDismiss={onSelectedChipDismiss}
-                      {...tagProps}
-                      className={`${classes.chip} ${tagProps?.className} navi-prevent-menu-open `}
-                      style={{
-                        ...tagProps?.style,
-                      }}
-                    />
-                  </Box>
-                );
-              })}
-          </Box>
+        <Box flexWrap="wrap" display="flex" maxHeight={`${props.maxHeight}px`} className="navi-select-with-scroll">
+          {selectedValue &&
+            selectedValue.map((value: string) => {
+              const label = menuItemsMap[value].title || '';
+              return (
+                <Box display="flex" margin={`5px 6px`}>
+                  <SelectedChip
+                    size={"large"}
+                    intent="muted"
+                    dismissible
+                    LeadingIcon={<TagIcon size={8} />}
+                    key={value}
+                    label={label}
+                    value={value}
+                    onDismiss={onSelectedChipDismiss}
+                    {...tagProps}
+                    className={`${classes.chip} ${tagProps?.className} navi-prevent-menu-open `}
+                    style={{
+                      ...tagProps?.style,
+                    }}
+                  />
+                </Box>
+              );
+            })}
         </Box>
       );
     } else {
@@ -335,29 +334,24 @@ const Select: React.FC<SelectProps> = ({
           <TextInput
             {...inputProps}
             style={{
-              // padding:
-              //   renderValueAsTag && selectedValue.length ? 0 : inputPadding,
-              // ...inputProps?.style
+              padding:
+                renderValueAsTag && selectedValue.length ? 0 : inputPadding,
+              ...inputProps?.style
             }}
-            prefixIcon={prefixIcon}
-            prefixText={prefixText}
             label={props.label || inputProps?.label}
             placeholder={props.placeholder || inputProps?.placeholder}
             moreInfo={props.moreInfo || inputProps?.moreInfo}
             successMessage={props.successMessage || inputProps?.successMessage}
             helperText={props.helperText || inputProps?.helperText}
-            width={props.width || inputProps?.width}
             minWidth={props.minWidth || inputProps?.minWidth}
             maxWidth={props.maxWidth || inputProps?.maxWidth}
             minHeight={props.minHeight || inputProps?.minHeight}
             maxHeight={props.maxHeight || inputProps?.maxHeight}
-            fullWidth={true}
-
             // navi-select-input-container className is being used to prevent menu to be opened
-            // while clicking on the batch icon
+            // while clicking on the Chip icon
             className={`navi-select-input-container ${inputProps?.className} ${focusClassName}`}
             size={size}
-            inputType={"default"}
+            disabled={props.disabled}
           />
         }
         open={open}
@@ -373,7 +367,7 @@ const Select: React.FC<SelectProps> = ({
             position="start"
             style={{ marginRight: `${tokenObj["spacing-0"]}` }}
           >
-            {clearButton && <IconButton
+            {(showClearButton) && <IconButton
               size="small"
               variant="tertiary"
               intent="muted"
@@ -395,6 +389,7 @@ const Select: React.FC<SelectProps> = ({
                 transform: `${open ? "rotate(180deg)" : "rotate(0deg)"}`,
               }}
               title={openTooltipText}
+              disabled={props.disabled}
               onClick={onMenuOpen}
             >
               {dropdownIcon || <ChevronDown />}

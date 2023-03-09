@@ -8,16 +8,13 @@ import Tooltip from "../Tooltip/Tooltip";
 import { InfoCircle, CircleCheck, AlertCircle } from "tabler-icons-react";
 import tokens from "../../tokens/build/json/tokens.json";
 import "./Input.scss";
-import Typography from "@material-ui/core/Typography/Typography";
-import IconButton from "../SystemIcon/SystemIcon";
 
 const tokenObj: { [key: string]: any } = tokens;
 
-const INPUT_MIN_WIDTH = 100;
-const INPUT_DEFAULT_WIDTH = '280px';
+const INPUT_MIN_WIDTH = 280;
 const INPUT_MAX_WIDTH = 280;
 const INPUT_MIN_HEIGHT = 32;
-const FOCUS_CLASS_NAME = 'navi-focused';
+const FOCUS_CLASS_NAME = "navi-focused";
 
 const TextInputElement = ({
   inputType = "default",
@@ -37,12 +34,11 @@ const TextInputElement = ({
   size = "large",
   inputProps,
   innerRef,
-  width = INPUT_DEFAULT_WIDTH,
-  className = '',
-  inputClassName = '',
-  prefixIcon,
-  prefixText,
+  width,
+  className = "",
+  inputClassName = "",
   disabled,
+  requiredStateError,
   ...props
 }: NaviInputProps) => {
   const inputMinWidth = minWidth
@@ -60,7 +56,9 @@ const TextInputElement = ({
   const inputMaxHeight = maxHeight || "unset";
 
   const [focusClassName, setFocusClassName] = useState("");
-  const [inputValue, setInputValue] = React.useState(props.value || "");
+  const [inputValue, setInputValue] = React.useState(
+    props.defaultValue || props.value || ""
+  );
   const [internalError, setInternalError] = useState("");
   const [characterCount, setCharacterCount] = useState(
     (typeof props.value === "string" && props.value?.length) || 0
@@ -89,9 +87,7 @@ const TextInputElement = ({
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = e.target;
-    setCharacterCount(
-      (typeof value === "string" && value?.length) || 0
-    );
+    setCharacterCount((typeof value === "string" && value?.length) || 0);
     setInputValue(value);
     props.onChange && props.onChange(e);
   };
@@ -101,9 +97,9 @@ const TextInputElement = ({
   ) => {
     const { value } = e.target;
     required && !value
-      ? setInternalError("Empty input field")
+      ? setInternalError(requiredStateError || "Empty input field")
       : setInternalError("");
-    setFocusClassName('');
+    setFocusClassName("");
     props.onBlur && props.onBlur(e);
   };
   const handleFocus = (
@@ -113,13 +109,12 @@ const TextInputElement = ({
     props.onFocus && props.onFocus(e);
   };
 
-  console.log("props.style: ", props.style)
   return (
     <Box
       ref={innerRef}
       style={{
         display: "inline-block",
-        // width: width === 'auto' ? '100%' : width
+        width: width === "auto" ? "100%" : "",
       }}
       className={`navi-input-container ${className}`}
     >
@@ -137,6 +132,7 @@ const TextInputElement = ({
                 style={{
                   display: "inline-block",
                   marginLeft: `${tokenObj["spacing-2"]}`,
+                  color: `${tokenObj["color-critical-400"]}`,
                 }}
               >
                 *
@@ -177,28 +173,19 @@ const TextInputElement = ({
         {CharacterLimitText}
       </InputLabel>
       <Input
-        inputProps={{ ...inputProps, className: `navi-text-input-input ${inputProps.className || ''}` }}
-        startAdornment={(prefixIcon || prefixText) && <Box className="navi-select-leading-icon-container" display="flex">
-          <Box className={`navi-input-prefix-icon ${size}`}>
-            {/* <IconButton title={""} ><AlertCircle /></IconButton> */}
-            {/* <AlertCircle /> */}
-            {prefixIcon}
-          </Box>
-          {prefixText}
-        </Box>}
-        // startAdornment= {
-        //   <AlertCircle />
-        // }
-        {...props}
         style={{
           minWidth: inputMinWidth,
-          maxWidth: width === 'auto' ? '' : inputMaxWidth,
+          maxWidth: width === "auto" ? "" : inputMaxWidth,
           minHeight: inputMinHeight,
           maxHeight: inputMaxHeight,
-          width: width === 'auto' ? '100%' : width,
+          width: width === "auto" ? "100%" : width,
           ...inputProps.style,
-          ...props.style
         }}
+        inputProps={{
+          ...inputProps,
+          className: `navi-text-input-input ${inputProps.className || ""}`,
+        }}
+        {...props}
         onFocus={handleFocus}
         disabled={inputType === "disabled" || disabled}
         className={`
@@ -206,15 +193,20 @@ const TextInputElement = ({
           navi-base-input
           navi-${size}
           ${inputType === "disabled" ? "" : "navi-" + inputType}
-          ${inputType === "disabled" || disabled ? 'navi-disabled' : ''}
-          navi-${(typeof inputValue === "string" && inputValue?.length) ? 'filled-field' : 'empty-field'}
-          ${internalError ? 'navi-critical' : ''}
+          ${inputType === "disabled" || disabled ? "navi-disabled" : ""}
+          navi-${
+            typeof inputValue === "string" && inputValue?.length
+              ? "filled-field"
+              : "empty-field"
+          }
+          ${internalError ? "navi-critical" : ""}
           ${focusClassName}
           ${inputClassName}
-        `.replace(/\n|\s+/g, ' ')}
+        `.replace(/\n|\s+/g, " ")}
         onBlur={handleBlur}
         onChange={handleInputChange}
       ></Input>
+
       {helperText ? (
         <InputLabel className="navi-helper-text">{helperText}</InputLabel>
       ) : null}
