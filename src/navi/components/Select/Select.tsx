@@ -18,6 +18,7 @@ import SelectAllMenuItem from "../MenuItem/SelectAllMenuItem";
 import tokenObj from "../../tokens/build/json/tokens.json";
 
 const FOCUS_CLASS_NAME = 'navi-select-focused';
+const DEFAULT_MAX_HEIGHT = 150;
 
 interface SelectionMapInterface {
   [key: string]: boolean | undefined;
@@ -188,7 +189,7 @@ const Select: React.FC<SelectProps> = ({
   const renderValue = () => {
     if (renderValueAsTag) {
       return (
-        <Box flexWrap="wrap" display="flex" maxHeight={`${props.maxHeight}px`} className="navi-select-with-scroll">
+        <Box flexWrap="wrap" display="flex" maxHeight={`${props.maxHeight || DEFAULT_MAX_HEIGHT}px`} className="navi-select-with-scroll">
           {selectedValue &&
             selectedValue.map((value: string) => {
               const label = menuItemsMap[value].title || '';
@@ -352,6 +353,8 @@ const Select: React.FC<SelectProps> = ({
             className={`navi-select-input-container ${inputProps?.className} ${focusClassName}`}
             size={size}
             disabled={props.disabled}
+            width={props.width || inputProps?.width}
+            fullWidth
           />
         }
         open={open}

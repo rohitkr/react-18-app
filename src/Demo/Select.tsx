@@ -24,7 +24,7 @@ let data = [
     description: "1974",
     trailingIcon: <Pencil />,
     leadingIcon: <Movie />,
-    disabled: true,
+    // disabled: true,
     // checked: true,
   },
   {
@@ -215,26 +215,9 @@ export default ({ ...args }) => {
         helperText="select helperText string"
         errorMessage="select errorMessage string"
         successMessage="select successMessage string"
-        // moreInfo="string"
-        // label="string"
-        // clearButton={false}
-        width={'auto'}
-        // prefixIcon={<Pencil/>}
-        // prefixText={"Test"}
-      
-        // maxWidth={600}
-        // minWidth={600}
-        // width={"600px"}
         dataTestId="select-component"
-        // label="Simple Navi Select"
         clearTooltipText={"Clear Data"}
         openTooltipText={"Open Menu"}
-        // inputProps={{
-        //   startAdornment: <Box className="navi-select-leading-icon-container" display="flex">
-        //     <Box> <Pencil /> </Box>
-        //     <Typography>Test</Typography>
-        //   </Box>
-        // }}
       >
         <DescriptiveMenuItem
           value={"1"}
@@ -256,6 +239,21 @@ export default ({ ...args }) => {
           title={"Four"}
           selectable={true}
         />
+        <DescriptiveMenuItem
+          value={"5"}
+          title={"Five"}
+          selectable={true}
+        />
+        <DescriptiveMenuItem
+          value={"6"}
+          title={"Six"}
+          selectable={true}
+        />
+        <DescriptiveMenuItem
+          value={"7"}
+          title={"Seven"}
+          selectable={true}
+        />
       </Select>
 
       <Select
@@ -267,32 +265,49 @@ export default ({ ...args }) => {
           // setValue(updatedValue);
         }}
         required
+        width={"150px"}
         // width={"auto"}
         renderValueAsTag
         tagProps={{
           variant: "neutral",
         }}
-        // value={value}
-        inputProps={{
-          // className: `aaa-classname`,
-          // label: "MultiSelect Component With Tags",
-          // errorMessage: "Error message",
-          // helperText: "Helper text",
-          // minWidth: 300,
-          // maxWidth: 800,
-          // fullWidth: true,
-          // moreInfo: "More information text",
-          // required: true,
-          // size: "large",
-          // successMessage: "Success message",
-          // tooltipPlacement: "top",
-          // inputType: "default",
-        }}
         clearTooltipText={"Clear Data"}
         openTooltipText={"Open Menu"}
       >
-        {data &&
-          data.map(
+        {data.map(
+            ({ title = "", avatar, type, ...val }: SelectDataProps, i) => {
+              return val.divider ? (
+                <DividerMenuItem />
+              ) : (
+                <DescriptiveMenuItem
+                  key={i}
+                  value={title}
+                  title={title}
+                  selectable={true}
+                  {...val}
+                />
+              );
+            }
+          )}
+      </Select>
+
+      <Select
+        // open={open}
+        multiSelect={true}
+        selectAll={true}
+        size="large"
+        required
+        width={"inherit"}
+        // maxWidth={500}
+        renderValueAsTag
+        tagProps={{
+          variant: "neutral",
+        }}
+        // value={value}
+        clearTooltipText={"Clear Data"}
+        openTooltipText={"Open Menu"}
+      >
+        {data.map(
             ({ title = "", avatar, type, ...val }: SelectDataProps, i) => {
               return val.divider ? (
                 <DividerMenuItem />
@@ -310,7 +325,8 @@ export default ({ ...args }) => {
       </Select>
 
       <MuiSelect
-        value="7"
+        value={[]}
+        multiple
       >
         <MenuItem value="5">Menu Item 5</MenuItem>
         <MenuItem value="6">Menu Item 6</MenuItem>

@@ -12,7 +12,7 @@ import "./Input.scss";
 const tokenObj: { [key: string]: any } = tokens;
 
 const INPUT_MIN_WIDTH = 280;
-const INPUT_MAX_WIDTH = 280;
+const INPUT_MAX_WIDTH = 714;
 const INPUT_MIN_HEIGHT = 32;
 const FOCUS_CLASS_NAME = "navi-focused";
 
@@ -25,35 +25,22 @@ const TextInputElement = ({
   successMessage,
   required,
   moreInfo,
-  minWidth,
-  maxWidth,
-  minHeight,
-  maxHeight,
+  minWidth = INPUT_MIN_WIDTH,
+  maxWidth = INPUT_MAX_WIDTH,
+  minHeight = INPUT_MIN_HEIGHT,
+  maxHeight = "unset",
   tooltipPlacement,
   translate,
   size = "large",
   inputProps,
   innerRef,
-  width,
+  width = '',
   className = "",
   inputClassName = "",
   disabled,
   requiredStateError,
   ...props
 }: NaviInputProps) => {
-  const inputMinWidth = minWidth
-    ? Math.max(minWidth, INPUT_MIN_WIDTH)
-    : INPUT_MIN_WIDTH;
-
-  const inputMaxWidth = maxWidth
-    ? Math.max(maxWidth, INPUT_MAX_WIDTH)
-    : INPUT_MAX_WIDTH;
-
-  const inputMinHeight = minHeight
-    ? Math.max(minHeight, INPUT_MIN_HEIGHT)
-    : INPUT_MIN_HEIGHT;
-
-  const inputMaxHeight = maxHeight || "unset";
 
   const [focusClassName, setFocusClassName] = useState("");
   const [inputValue, setInputValue] = React.useState(
@@ -173,19 +160,20 @@ const TextInputElement = ({
         {CharacterLimitText}
       </InputLabel>
       <Input
-        style={{
-          minWidth: inputMinWidth,
-          maxWidth: width === "auto" ? "" : inputMaxWidth,
-          minHeight: inputMinHeight,
-          maxHeight: inputMaxHeight,
-          width: width === "auto" ? "100%" : width,
-          ...inputProps.style,
-        }}
         inputProps={{
           ...inputProps,
           className: `navi-text-input-input ${inputProps.className || ""}`,
         }}
         {...props}
+        style={{
+          minWidth: minWidth,
+          maxWidth: maxWidth,
+          minHeight: minHeight,
+          maxHeight: maxHeight,
+          width: width === "auto" ? "inherit" : width,
+          ...inputProps.style,
+          ...props.style
+        }}
         onFocus={handleFocus}
         disabled={inputType === "disabled" || disabled}
         className={`

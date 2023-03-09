@@ -30,8 +30,8 @@ export interface SelectProps
   inputProps?: NaviInputProps;
   tagProps?: TagProps;
   dropdownIcon?: React.ReactNode;
-  minWidth?: number;
-  maxWidth?: number;
+  minWidth?: number | string;
+  maxWidth?: number | string;
   minHeight?: number;
   maxHeight?: number;
   value?: string[];
@@ -47,6 +47,7 @@ export interface SelectProps
   successMessage?: string;
   moreInfo?: string;
   label?: string;
+  width?: string | number | 'auto' | 'inherit';
 }
 export interface SelectItemCardProps {
   selectValue?: string[];
