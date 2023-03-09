@@ -355,6 +355,7 @@ const Select: React.FC<SelectProps> = ({
             disabled={props.disabled}
             width={props.width || inputProps?.width}
             fullWidth
+            inputType={props.selectType || inputProps?.inputType}
           />
         }
         open={open}
@@ -380,6 +381,7 @@ const Select: React.FC<SelectProps> = ({
               }}
               title={clearTooltipText}
               onClick={onClearClick}
+              disabled={props.disabled || props.selectType === 'read-only'}
             >
               <X />
             </IconButton>}
@@ -392,7 +394,7 @@ const Select: React.FC<SelectProps> = ({
                 transform: `${open ? "rotate(180deg)" : "rotate(0deg)"}`,
               }}
               title={openTooltipText}
-              disabled={props.disabled}
+              disabled={props.disabled || props.selectType === 'read-only'}
               onClick={onMenuOpen}
             >
               {dropdownIcon || <ChevronDown />}

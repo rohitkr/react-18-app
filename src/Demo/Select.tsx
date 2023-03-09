@@ -22,6 +22,7 @@ let data = [
   {
     title: "The Godfather: Part II",
     description: "1974",
+    selected: true,
     trailingIcon: <Pencil />,
     leadingIcon: <Movie />,
     // disabled: true,
@@ -209,7 +210,9 @@ export default ({ ...args }) => {
         selectAll={true}
         size="large"
         required
-        label="Navi select label"
+        label="Navi select Read only example"
+        defaultValue={"1"}
+        value={["1"]}
         placeholder="Select place holder"
         moreInfo="Select moreInfo"
         helperText="select helperText string"
@@ -218,10 +221,13 @@ export default ({ ...args }) => {
         dataTestId="select-component"
         clearTooltipText={"Clear Data"}
         openTooltipText={"Open Menu"}
+        // selectType="read-only"
+        disabled
       >
         <DescriptiveMenuItem
           value={"1"}
           title={"One"}
+          selected
           selectable={true}
         />
         <DescriptiveMenuItem
@@ -273,6 +279,8 @@ export default ({ ...args }) => {
         }}
         clearTooltipText={"Clear Data"}
         openTooltipText={"Open Menu"}
+        // selectType="read-only"
+        disabled
       >
         {data.map(
             ({ title = "", avatar, type, ...val }: SelectDataProps, i) => {

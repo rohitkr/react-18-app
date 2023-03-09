@@ -8,7 +8,7 @@ export interface NavInputStyles extends CSSProperties {
 
 export interface NaviInputProps
   extends Pick<MuiInputBaseProps, Exclude<keyof MuiInputBaseProps, "translate">> {
-    inputType?: "default" | "disabled" | "success" | "critical" | "read-only";
+  inputType?: "default" | "disabled" | "success" | "critical" | "read-only";
   "data-testid"?: string;
   width?: string | number | 'auto' | 'inherit';
   size?: "large" | "small";
@@ -29,5 +29,4 @@ export interface NaviInputProps
   ref?: ForwardedRef<HTMLInputElement>;
   translate?: string;
   defaultValue?: string;
-
 }

@@ -22,6 +22,7 @@ export interface SelectProps
     MuiSelectProps,
     Exclude<keyof MuiSelectProps, "inputProps" | "onChange">
   > {
+  selectType?: "default" | "success" | "critical" | "read-only";
   open?: boolean;
   size?: "small" | "large";
   multiSelect?: boolean;
