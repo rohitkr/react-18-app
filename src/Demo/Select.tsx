@@ -217,12 +217,8 @@ export default ({ ...args }) => {
         successMessage="select successMessage string"
         // moreInfo="string"
         // label="string"
-      
-
-
-
         // clearButton={false}
-        // width={'140px'}
+        width={'auto'}
         // prefixIcon={<Pencil/>}
         // prefixText={"Test"}
       

@@ -444,12 +444,12 @@ export default function AutocompleteControlled() {
 
   return (
     <div
-      className={classes.root}
       style={{
         textAlign: "left",
-        margin: "auto",
+        margin: "0 50px",
         paddingTop: "50px",
         height: "1500px",
+
       }}
     >
 

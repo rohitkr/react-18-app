@@ -5,7 +5,7 @@ import Demo from './Demo/Demo';
 
 function App() {
   return (
-    <div className="App">
+    <div className="">
       <Demo />
 
       {/* <header className="App-header">
