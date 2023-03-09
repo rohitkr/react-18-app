@@ -8,10 +8,13 @@ import Tooltip from "../Tooltip/Tooltip";
 import { InfoCircle, CircleCheck, AlertCircle } from "tabler-icons-react";
 import tokens from "../../tokens/build/json/tokens.json";
 import "./Input.scss";
+import Typography from "@material-ui/core/Typography/Typography";
+import IconButton from "../SystemIcon/SystemIcon";
 
 const tokenObj: { [key: string]: any } = tokens;
 
-const INPUT_MIN_WIDTH = 280;
+const INPUT_MIN_WIDTH = 100;
+const INPUT_DEFAULT_WIDTH = '280px';
 const INPUT_MAX_WIDTH = 280;
 const INPUT_MIN_HEIGHT = 32;
 const FOCUS_CLASS_NAME = 'navi-focused';
@@ -34,9 +37,11 @@ const TextInputElement = ({
   size = "large",
   inputProps,
   innerRef,
-  width='',
-  className='',
-  inputClassName='',
+  width = INPUT_DEFAULT_WIDTH,
+  className = '',
+  inputClassName = '',
+  prefixIcon,
+  prefixText,
   disabled,
   ...props
 }: NaviInputProps) => {
@@ -108,12 +113,13 @@ const TextInputElement = ({
     props.onFocus && props.onFocus(e);
   };
 
+  console.log("props.style: ", props.style)
   return (
     <Box
       ref={innerRef}
       style={{
         display: "inline-block",
-        width: width === 'auto' ? '100%' : width
+        // width: width === 'auto' ? '100%' : width
       }}
       className={`navi-input-container ${className}`}
     >
@@ -171,16 +177,28 @@ const TextInputElement = ({
         {CharacterLimitText}
       </InputLabel>
       <Input
+        inputProps={{ ...inputProps, className: `navi-text-input-input ${inputProps.className || ''}` }}
+        startAdornment={(prefixIcon || prefixText) && <Box className="navi-select-leading-icon-container" display="flex">
+          <Box className={`navi-input-prefix-icon ${size}`}>
+            {/* <IconButton title={""} ><AlertCircle /></IconButton> */}
+            {/* <AlertCircle /> */}
+            {prefixIcon}
+          </Box>
+          {prefixText}
+        </Box>}
+        // startAdornment= {
+        //   <AlertCircle />
+        // }
+        {...props}
         style={{
           minWidth: inputMinWidth,
           maxWidth: width === 'auto' ? '' : inputMaxWidth,
           minHeight: inputMinHeight,
           maxHeight: inputMaxHeight,
           width: width === 'auto' ? '100%' : width,
-          ...inputProps.style
+          ...inputProps.style,
+          ...props.style
         }}
-        inputProps={{...inputProps, className: `navi-text-input-input ${inputProps.className || ''}`}}
-        {...props}
         onFocus={handleFocus}
         disabled={inputType === "disabled" || disabled}
         className={`
@@ -197,7 +215,6 @@ const TextInputElement = ({
         onBlur={handleBlur}
         onChange={handleInputChange}
       ></Input>
-
       {helperText ? (
         <InputLabel className="navi-helper-text">{helperText}</InputLabel>
       ) : null}

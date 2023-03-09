@@ -48,6 +48,9 @@ export interface SelectProps
   successMessage?: string;
   moreInfo?: string;
   label?: string;
+  clearButton?: boolean;
+  prefixIcon?: React.ReactNode;
+  prefixText?: React.ReactNode;
 }
 export interface SelectItemCardProps {
   selectValue?: string[];

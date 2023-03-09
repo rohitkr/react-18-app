@@ -23,6 +23,7 @@ import Tag from "../navi/components/Tag/Tag";
 import SystemIcon from "../navi/components/SystemIcon/SystemIcon";
 // import Input from './InputIssue/InputIssue';
 import SelectDemo from './Select';
+import { Overview as InputOverview} from '../navi/components/Input/Input.Overview.stories'
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -451,6 +452,16 @@ export default function AutocompleteControlled() {
         height: "1500px",
       }}
     >
+
+      <InputOverview />
+
+      <div>
+        <Input
+        prefixIcon={<Pencil/>}
+        prefixText={"Test"}
+        type="default"
+        width={"50px"}/>
+      </div>
       <div>
         <SelectDemo />
         <br/>

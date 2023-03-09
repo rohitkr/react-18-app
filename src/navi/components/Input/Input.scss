@@ -71,7 +71,7 @@
     box-sizing: $input-type-root-box-sizing;
     background-color: $input-type-root-background-color;
     border-radius: $input-type-root-border-radius;
-    min-width: $input-type-root-min-width;
+    // min-width: $input-type-root-min-width;
     text-overflow: $input-type-root-text-overflow;
     font-family: $input-label-base-font-family;
     font-style: $input-type-root-font-style;
@@ -166,48 +166,117 @@
       background-color: $input-type-disabled-background-color;
     }
   }
+
+  .navi-select-leading-icon-container {
+    padding: 0 0 0 10px;
+    .navi-input-prefix-icon {
+      margin-right: 5px;
+
+      &.large svg {
+        width: 16px;
+      }
+      &.small svg {
+        width: 16px;
+      }
+    }
+  }
+
+  &.navi-select-input-container {
+    .navi-base-input {
+      padding: .75rem 0rem;
+      outline: none;
+      outline: $input-type-default-outline;
+      border-radius: $input-type-root-border-radius;
+      height: unset !important;
+    }
+
+    &.navi-large {
+      padding: 12px 0;
+    }
+
+    &.navi-small {
+      padding: 8px 0;
+    }
+
+    .navi-text-input-input.navi-text-input-input {
+      padding: $input-type-root-select-padding;
+      padding-right: 0;
+    }
+
+    .navi-text-input-input:focus {
+      background-color: unset;
+    }
+
+    .navi-focused {
+      outline: $input-type-hover-outline;
+
+      &:hover {
+        outline: $input-type-hover-outline;
+      }
+    }
+
+    // Styles to show Active state for Input
+    .navi-select-focused {
+      outline: $input-type-focus-border;
+
+      &:hover {
+        outline: $input-type-focus-border;
+      }
+    }
+  }
 }
 
-// Input style when used for Select component
+// Input style when used for Select component 
 .navi-select-input-container {
-  .navi-base-input {
-    padding: 0;
-    outline: none;
-    outline: $input-type-default-outline;
-    border-radius: $input-type-root-border-radius;
-    height: unset !important;
-  }
+  // .navi-text-input-base {
+  //   padding-right: 16px;
+  // }
 
-  &.navi-large {
-    padding: 12px 0;
-  }
+  // .navi-base-input {
+  //   padding: 0;
+  //   outline: none;
+  //   outline: $input-type-default-outline;
+  //   border-radius: $input-type-root-border-radius;
+  //   height: unset !important;
+  // }
 
-  &.navi-small {
-    padding: 8px 0;
-  }
+  // &.navi-large {
+  //   padding: 12px 0;
+  // }
 
-  .navi-text-input-input {
-    padding: $input-type-root-select-padding;
-  }
+  // &.navi-small {
+  //   padding: 8px 0;
+  // }
 
-  .navi-text-input-input:focus {
-    background-color: unset;
-  }
+  // .navi-text-input-input.navi-text-input-input {
+  //   padding: $input-type-root-select-padding;
+  //   padding-right: 0;
+  // }
 
-  .navi-focused {
-    outline: $input-type-hover-outline;
+  // .navi-text-input-input:focus {
+  //   background-color: unset;
+  // }
 
-    &:hover {
-      outline: $input-type-hover-outline;
-    }
-  }
+  // .navi-focused {
+  //   outline: $input-type-hover-outline;
 
-  // Styles to show Active state for Input
-  .navi-select-focused {
-    outline: $input-type-focus-border;
+  //   &:hover {
+  //     outline: $input-type-hover-outline;
+  //   }
+  // }
 
-    &:hover {
-      outline: $input-type-focus-border;
-    }
-  }
+  // // Styles to show Active state for Input
+  // .navi-select-focused {
+  //   outline: $input-type-focus-border;
+
+  //   &:hover {
+  //     outline: $input-type-focus-border;
+  //   }
+  // }
+
+  // .navi-select-leading-icon-container {
+  //   svg {
+  //     width: 16px;
+  //   }
+  // }
 }

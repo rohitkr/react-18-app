@@ -2,7 +2,7 @@ import React from "react";
 import { Box, Tag as Chip, Select, DividerMenuItem, DescriptiveMenuItem, GroupHeadingMenuItem } from "../navi";
 import { Pencil, Movie, Tag as TagIcon } from "tabler-icons-react";
 import { SelectDataProps } from "../navi/components/Select/Select.types";
-import { makeStyles, Theme, createStyles, MenuItem, Select as MuiSelect } from "@material-ui/core";
+import { makeStyles, Theme, createStyles, MenuItem, Select as MuiSelect, Typography } from "@material-ui/core";
 
 
 
@@ -204,17 +204,28 @@ export default ({ ...args }) => {
     <div>
       <Select
         open={false}
-        renderValueAsTag
-        multiSelect={true}
+        // renderValueAsTag
+        // multiSelect={true}
         selectAll={true}
         size="large"
-        maxWidth={600}
-        minWidth={600}
+        clearButton={false}
+        width={'140px'}
+        prefixIcon={<Pencil/>}
+        prefixText={"Test"}
+      
+        // maxWidth={600}
+        // minWidth={600}
         // width={"600px"}
         dataTestId="select-component"
         label="Simple Navi Select"
         clearTooltipText={"Clear Data"}
         openTooltipText={"Open Menu"}
+        // inputProps={{
+        //   startAdornment: <Box className="navi-select-leading-icon-container" display="flex">
+        //     <Box> <Pencil /> </Box>
+        //     <Typography>Test</Typography>
+        //   </Box>
+        // }}
       >
         <DescriptiveMenuItem
           value={"1"}

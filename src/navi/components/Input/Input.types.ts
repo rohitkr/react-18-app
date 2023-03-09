@@ -27,4 +27,6 @@ export interface NaviInputProps
   maxHeight?: number;
   ref?: ForwardedRef<HTMLInputElement>;
   translate?: string;
+  prefixIcon?: React.ReactNode;
+  prefixText?: React.ReactNode;
 }

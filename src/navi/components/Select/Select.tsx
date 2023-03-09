@@ -18,6 +18,7 @@ import SelectAllMenuItem from "../MenuItem/SelectAllMenuItem";
 import tokenObj from "../../tokens/build/json/tokens.json";
 
 const FOCUS_CLASS_NAME = 'navi-select-focused';
+const MAX_HEIGHT_DEFAULT = 100;
 
 interface SelectionMapInterface {
   [key: string]: boolean | undefined;
@@ -57,6 +58,9 @@ const Select: React.FC<SelectProps> = ({
   clearTooltipText,
   onChange,
   className = '',
+  clearButton=true,
+  prefixIcon,
+  prefixText,
   ...props
 }) => {
   const [menuItemsMap] = React.useState(() => {
@@ -183,7 +187,7 @@ const Select: React.FC<SelectProps> = ({
   const renderValue = () => {
     if (renderValueAsTag) {
       return (
-        <Box flexWrap="wrap" display="flex" maxHeight={`${props.maxHeight}px`} className="navi-select-scroll-container">
+        <Box flexWrap="wrap" display="flex" maxHeight={`${props.maxHeight || MAX_HEIGHT_DEFAULT}px`} className="navi-select-scroll-container">
           <Box flexWrap="wrap" display="flex" className="navi-select-scroll-content">
             {selectedValue &&
               selectedValue.map((value: string) => {
@@ -331,10 +335,12 @@ const Select: React.FC<SelectProps> = ({
           <TextInput
             {...inputProps}
             style={{
-              padding:
-                renderValueAsTag && selectedValue.length ? 0 : inputPadding,
-              ...inputProps?.style
+              // padding:
+              //   renderValueAsTag && selectedValue.length ? 0 : inputPadding,
+              // ...inputProps?.style
             }}
+            prefixIcon={prefixIcon}
+            prefixText={prefixText}
             label={props.label || inputProps?.label}
             placeholder={props.placeholder || inputProps?.placeholder}
             moreInfo={props.moreInfo || inputProps?.moreInfo}
@@ -367,7 +373,7 @@ const Select: React.FC<SelectProps> = ({
             position="start"
             style={{ marginRight: `${tokenObj["spacing-0"]}` }}
           >
-            <IconButton
+            {clearButton && <IconButton
               size="small"
               variant="tertiary"
               intent="muted"
@@ -379,7 +385,7 @@ const Select: React.FC<SelectProps> = ({
               onClick={onClearClick}
             >
               <X />
-            </IconButton>
+            </IconButton>}
             <IconButton
               size="small"
               variant="tertiary"
