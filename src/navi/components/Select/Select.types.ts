@@ -49,6 +49,7 @@ export interface SelectProps
   moreInfo?: string;
   label?: string;
   width?: string | number | 'auto' | 'inherit';
+  requiredStateError?: string;
 }
 export interface SelectItemCardProps {
   selectValue?: string[];

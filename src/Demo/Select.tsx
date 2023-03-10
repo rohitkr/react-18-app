@@ -216,18 +216,18 @@ export default ({ ...args }) => {
         placeholder="Select place holder"
         moreInfo="Select moreInfo"
         helperText="select helperText string"
-        errorMessage="select errorMessage string"
+        errorMessage="__ select errorMessage string"
         successMessage="select successMessage string"
         dataTestId="select-component"
         clearTooltipText={"Clear Data"}
         openTooltipText={"Open Menu"}
         // selectType="read-only"
-        disabled
+        // disabled
       >
         <DescriptiveMenuItem
           value={"1"}
           title={"One"}
-          selected
+          // selected
           selectable={true}
         />
         <DescriptiveMenuItem

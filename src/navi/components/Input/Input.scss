@@ -112,6 +112,7 @@
   }
 
   .navi-empty-field {
+    // background-color: $input-type-root-background-color;
     &:hover {
       background-color: $input-type-root-background-color;
     }
@@ -174,10 +175,17 @@
 .navi-select-input-container {
   .navi-base-input {
     padding: 0;
-    outline: none;
     outline: $input-type-default-outline;
     border-radius: $input-type-root-border-radius;
     height: unset !important;
+  }
+
+  .navi-critical {
+    outline: $input-type-error-outline;
+
+    &:hover {
+      outline: $input-type-error-outline;
+    }
   }
 
   .navi-disabled {

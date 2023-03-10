@@ -19,6 +19,8 @@ import tokenObj from "../../tokens/build/json/tokens.json";
 
 const FOCUS_CLASS_NAME = 'navi-select-focused';
 const DEFAULT_MAX_HEIGHT = 150;
+const EMPTY_INPUT_FIELD = "Empty input field";
+const BLANK = "";
 
 interface SelectionMapInterface {
   [key: string]: boolean | undefined;
@@ -59,6 +61,9 @@ const Select: React.FC<SelectProps> = ({
   onChange,
   className = '',
   hideClearButton = false,
+  requiredStateError = EMPTY_INPUT_FIELD,
+  errorMessage,
+  required,
   ...props
 }) => {
   const [menuItemsMap] = React.useState(() => {
@@ -116,7 +121,8 @@ const Select: React.FC<SelectProps> = ({
     }
     return {};
   });
-  const [focusClassName, setFocusClassName] = React.useState("");
+  const [focusClassName, setFocusClassName] = React.useState(BLANK);
+  const [internalError, setInternalError] = React.useState(BLANK);
   let showClearButton = !hideClearButton;
   if (multiSelect) {
     showClearButton = true;
@@ -165,9 +171,11 @@ const Select: React.FC<SelectProps> = ({
     [selectionMap, menuItemsMap]
   );
 
-  const onSelectClose = React.useCallback(() => {
+  const onSelectClose = React.useCallback((e: any) => {
     setOpen(false);
-    setFocusClassName('')
+    setFocusClassName(BLANK);
+    // Check if the value is empty and marked as required show the empty error message
+    required ? setInternalError(requiredStateError) : setInternalError(BLANK);
   }, []);
 
   // This function prevents Menu from opening while clicking on the Chip
@@ -266,6 +274,8 @@ const Select: React.FC<SelectProps> = ({
         }
       });
       onChange && onChange(selectedValueArr);
+      // Clear the internal error when there is no value selected on change
+      selectedValueArr.length && setInternalError(BLANK);
     },
     [selectionMap, allSelected, menuItemsMap, onChange]
   );
@@ -277,12 +287,14 @@ const Select: React.FC<SelectProps> = ({
 
   const onClearClick = () => {
     let updatedMap = { ...selectionMap };
+    let hasPreSelectedValue = false;
     Object.keys(selectionMap).forEach((key) => {
       if ("selected" in menuItemsMap[key] || menuItemsMap[key].disabled) {
         updatedMap = {
           ...updatedMap,
           [String(key)]: menuItemsMap[key].selected,
         };
+        hasPreSelectedValue = true;
       } else {
         updatedMap = {
           ...updatedMap,
@@ -290,6 +302,8 @@ const Select: React.FC<SelectProps> = ({
         };
       }
       setSelectionMap(updatedMap);
+      // On click of clear button set the error message if not value is selected by default
+      (required && !hasPreSelectedValue) && setInternalError(requiredStateError);
     });
 
     const selectedValueArr: string[] = [];
@@ -328,7 +342,7 @@ const Select: React.FC<SelectProps> = ({
         onChange={onSelectChange}
         multiple={multiSelect}
         value={selectedValue}
-        defaultValue=""
+        defaultValue={BLANK}
         inputRef={inputRef}
         data-testid={dataTestId || undefined}
         input={
@@ -336,7 +350,7 @@ const Select: React.FC<SelectProps> = ({
             {...inputProps}
             style={{
               padding:
-                renderValueAsTag && selectedValue.length ? 0 : inputPadding,
+                renderValueAsTag && selectedValue && selectedValue.length ? 0 : inputPadding,
               ...inputProps?.style
             }}
             label={props.label || inputProps?.label}
@@ -355,7 +369,8 @@ const Select: React.FC<SelectProps> = ({
             disabled={props.disabled}
             width={props.width || inputProps?.width}
             fullWidth
-            inputType={props.selectType || inputProps?.inputType}
+            inputType={(internalError ? "critical" : BLANK) || props.selectType || inputProps?.inputType}
+            errorMessage={internalError || errorMessage || inputProps?.errorMessage}
           />
         }
         open={open}
