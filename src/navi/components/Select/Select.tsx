@@ -64,6 +64,7 @@ const Select: React.FC<SelectProps> = ({
   requiredStateError = EMPTY_INPUT_FIELD,
   errorMessage,
   required,
+  placeholder=BLANK,
   ...props
 }) => {
   const [menuItemsMap] = React.useState(() => {
@@ -123,6 +124,7 @@ const Select: React.FC<SelectProps> = ({
   });
   const [focusClassName, setFocusClassName] = React.useState(BLANK);
   const [internalError, setInternalError] = React.useState(BLANK);
+  const [placeholderText, setPlaceholderText] = React.useState<string>(BLANK);
   let showClearButton = !hideClearButton;
   if (multiSelect) {
     showClearButton = true;
@@ -145,6 +147,15 @@ const Select: React.FC<SelectProps> = ({
   React.useEffect(() => {
     setOpen(open);
   }, [open]);
+
+  React.useEffect(() => {
+    console.log(selectedValue);
+    if (selectedValue.length === 0) {
+      setPlaceholderText(placeholder)
+    } else {
+      setPlaceholderText("")
+    }
+  }, [placeholder, selectedValue]);
 
   const onSelectedChipDismiss = React.useCallback(
     (e: React.MouseEvent, value?: string) => {
@@ -195,6 +206,10 @@ const Select: React.FC<SelectProps> = ({
   }, []);
 
   const renderValue = () => {
+    console.log(placeholderText);
+    if (placeholderText) {
+      return <em>{placeholderText}</em>
+    }
     if (renderValueAsTag) {
       return (
         <Box flexWrap="wrap" display="flex" maxHeight={`${props.maxHeight || DEFAULT_MAX_HEIGHT}px`} className="navi-select-with-scroll">
@@ -341,7 +356,7 @@ const Select: React.FC<SelectProps> = ({
         {...props}
         onChange={onSelectChange}
         multiple={multiSelect}
-        value={selectedValue}
+        value={[placeholderText] || selectedValue}
         defaultValue={BLANK}
         inputRef={inputRef}
         data-testid={dataTestId || undefined}
@@ -354,7 +369,7 @@ const Select: React.FC<SelectProps> = ({
               ...inputProps?.style
             }}
             label={props.label || inputProps?.label}
-            placeholder={props.placeholder || inputProps?.placeholder}
+            placeholder={placeholder || inputProps?.placeholder}
             moreInfo={props.moreInfo || inputProps?.moreInfo}
             successMessage={props.successMessage || inputProps?.successMessage}
             helperText={props.helperText || inputProps?.helperText}
