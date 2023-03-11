@@ -448,7 +448,7 @@ export default function AutocompleteControlled() {
         textAlign: "left",
         margin: "0 50px",
         paddingTop: "50px",
-        height: "1500px",
+        height: "4000px",
 
       }}
     >

@@ -1,0 +1,42 @@
+@import "../../tokens/build/scss/variables.scss";
+
+.navi-toggle-button-container {
+  display: inline-flex;
+  border: 1px solid transparent;
+  border-radius: calc(4px + 1px);
+
+  // remove from
+  .navi-toggle-button-container {
+    border-radius: unset;
+  }
+
+  .navi-toggle-button {
+    &--first-button {
+      border-radius: $toggle-button-type-root-border-radius 0 0 $toggle-button-type-root-border-radius;
+    }
+
+    &--button {
+      border-radius: 0;
+    }
+
+    &--last-button {
+      border-radius: 0 $toggle-button-type-root-border-radius $toggle-button-type-root-border-radius 0;
+    }
+  }
+
+  // to here
+
+  &--muted,
+  &--muted-light {
+    border: $toggle-button-type-muted-border;
+  }
+
+  &--info,
+  &--info-light {
+    border: $toggle-button-type-info-border;
+  }
+
+  &--disabled {
+    border: $toggle-button-type-root-disabled;
+  }
+}

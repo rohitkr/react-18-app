@@ -175,8 +175,8 @@ const Select: React.FC<SelectProps> = ({
     setOpen(false);
     setFocusClassName(BLANK);
     // Check if the value is empty and marked as required show the empty error message
-    required ? setInternalError(requiredStateError) : setInternalError(BLANK);
-  }, []);
+    setInternalError((required && !selectedValue.length) ? requiredStateError : BLANK);
+  }, [selectedValue]);
 
   // This function prevents Menu from opening while clicking on the Chip
   const onSelectOpen = React.useCallback((e: React.ChangeEvent<{}>) => {
@@ -334,6 +334,7 @@ const Select: React.FC<SelectProps> = ({
     });
   }, [selectionMap]);
 
+  console.log("internalError: ", internalError);
   return (
     <Box className={`navi-menu-component ${className}`}>
       <MuiSelect
@@ -369,8 +370,9 @@ const Select: React.FC<SelectProps> = ({
             disabled={props.disabled}
             width={props.width || inputProps?.width}
             fullWidth
-            inputType={(internalError ? "critical" : BLANK) || props.selectType || inputProps?.inputType}
+            inputType={(internalError ? "critical" : props.selectType || inputProps?.inputType)}
             errorMessage={internalError || errorMessage || inputProps?.errorMessage}
+            onClickAway={props.onClickAway}
           />
         }
         open={open}

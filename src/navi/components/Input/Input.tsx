@@ -3,6 +3,7 @@ import baseTokens from "../../tokens/build/json/tokens.json";
 import Input from "@material-ui/core/Input";
 import Box from "../Box/Box";
 import InputLabel from "@material-ui/core/InputLabel";
+import ClickAwayListener from '@material-ui/core/ClickAwayListener';
 import { NaviInputProps } from "./Input.types";
 import Tooltip from "../Tooltip/Tooltip";
 import { InfoCircle, CircleCheck, AlertCircle } from "tabler-icons-react";
@@ -97,134 +98,139 @@ const TextInputElement = ({
   };
 
   return (
-    <Box
-      ref={innerRef}
-      style={{
-        display: "inline-block",
-        width: width === "auto" ? "100%" : "",
-      }}
-      className={`navi-input-container ${className}`}
-    >
-      <InputLabel className="navi-input-label">
-        <div
-          style={{
-            wordBreak: "break-word",
-            marginRight: `${tokenObj["spacing-2"]}`,
-          }}
-        >
-          <span>
-            {label}
-            {required && label && (
-              <div
-                style={{
-                  display: "inline-block",
-                  marginLeft: `${tokenObj["spacing-2"]}`,
-                  color: `${tokenObj["color-critical-400"]}`,
-                }}
-              >
-                *
-              </div>
-            )}
-
-            {moreInfo && (
-              <div
-                style={{
-                  display: "inline-block",
-                  marginLeft: `${tokenObj["spacing-2"]}`,
-                  verticalAlign: "middle",
-                }}
-              >
-                <Tooltip
-                  position={tooltipPlacement || "top"}
-                  title={moreInfo}
-                  size="compact"
+    <ClickAwayListener onClickAway={(event: React.MouseEvent<Document, MouseEvent>): void => {
+      setFocusClassName("");
+      props.onClickAway && props.onClickAway(event)
+    }}>
+      <Box
+        ref={innerRef}
+        style={{
+          display: "inline-block",
+          width: width === "auto" ? "100%" : "",
+        }}
+        className={`navi-input-container ${className}`}
+      >
+        <InputLabel className="navi-input-label">
+          <div
+            style={{
+              wordBreak: "break-word",
+              marginRight: `${tokenObj["spacing-2"]}`,
+            }}
+          >
+            <span>
+              {label}
+              {required && label && (
+                <div
                   style={{
-                    paddingTop:
-                      size === "large"
-                        ? `${tokenObj["spacing-4"]}`
-                        : `${tokenObj["spacing-2"]}`,
+                    display: "inline-block",
+                    marginLeft: `${tokenObj["spacing-2"]}`,
+                    color: `${tokenObj["color-critical-400"]}`,
                   }}
                 >
-                  <InfoCircle
-                    fill={baseTokens["color-secondary-500"]}
-                    size={16}
-                    color={`${baseTokens["color-primitive-white"]}`}
-                    strokeWidth={2.5}
-                  />
-                </Tooltip>
-              </div>
-            )}
-          </span>
-        </div>
+                  *
+                </div>
+              )}
 
-        {CharacterLimitText}
-      </InputLabel>
-      <Input
-        inputProps={{
-          ...inputProps,
-          className: `navi-text-input-input ${inputProps.className || ""}`,
-        }}
-        {...props}
-        style={{
-          minWidth: minWidth,
-          maxWidth: maxWidth,
-          minHeight: minHeight,
-          maxHeight: maxHeight,
-          width: width === "auto" ? "inherit" : width,
-          ...inputProps.style,
-          ...props.style
-        }}
-        onFocus={handleFocus}
-        disabled={inputType === "disabled" || disabled}
-        className={`
+              {moreInfo && (
+                <div
+                  style={{
+                    display: "inline-block",
+                    marginLeft: `${tokenObj["spacing-2"]}`,
+                    verticalAlign: "middle",
+                  }}
+                >
+                  <Tooltip
+                    position={tooltipPlacement || "top"}
+                    title={moreInfo}
+                    size="compact"
+                    style={{
+                      paddingTop:
+                        size === "large"
+                          ? `${tokenObj["spacing-4"]}`
+                          : `${tokenObj["spacing-2"]}`,
+                    }}
+                  >
+                    <InfoCircle
+                      fill={baseTokens["color-secondary-500"]}
+                      size={16}
+                      color={`${baseTokens["color-primitive-white"]}`}
+                      strokeWidth={2.5}
+                    />
+                  </Tooltip>
+                </div>
+              )}
+            </span>
+          </div>
+
+          {CharacterLimitText}
+        </InputLabel>
+        <Input
+          inputProps={{
+            ...inputProps,
+            className: `navi-text-input-input ${inputProps.className || ""}`,
+          }}
+          {...props}
+          style={{
+            minWidth: minWidth,
+            maxWidth: maxWidth,
+            minHeight: minHeight,
+            maxHeight: maxHeight,
+            width: width === "auto" ? "inherit" : width,
+            ...inputProps.style,
+            ...props.style
+          }}
+          onFocus={handleFocus}
+          disabled={inputType === "disabled" || disabled}
+          className={`
           navi-text-input-base
           navi-base-input
           navi-${size}
           ${inputType === "disabled" ? "" : "navi-" + inputType}
           ${inputType === "disabled" || disabled ? "navi-disabled" : ""}
-          navi-${
-            typeof inputValue === "string" && inputValue?.length
+          navi-${typeof inputValue === "string" && inputValue?.length
               ? "filled-field"
               : "empty-field"
-          }
+            }
           ${internalError ? "navi-critical" : ""}
           ${focusClassName}
           ${inputClassName}
         `.replace(/\n|\s+/g, " ")}
-        onBlur={handleBlur}
-        onChange={handleInputChange}
-      ></Input>
+          onBlur={handleBlur}
 
-      {helperText ? (
-        <InputLabel className="navi-helper-text">{helperText}</InputLabel>
-      ) : null}
-      {(errorMessage && inputType === "critical") || internalError ? (
-        <InputLabel className="navi-error-message">
-          <div style={{ display: "flex", alignItems: "center" }}>
-            <AlertCircle
-              size={16}
-              strokeWidth={2.5}
-              fill={`${baseTokens["color-critical-500"]}`}
-              color={`${baseTokens["color-primitive-white"]}`}
-            />
-            {internalError || errorMessage}
-          </div>
-        </InputLabel>
-      ) : null}
-      {!!successMessage && inputType === "success" && !internalError ? (
-        <InputLabel className="navi-success-message">
-          <div style={{ display: "flex", alignItems: "center" }}>
-            <CircleCheck
-              size={16}
-              strokeWidth={2.5}
-              fill={`${baseTokens["color-success-500"]}`}
-              color={`${baseTokens["color-primitive-white"]}`}
-            />
-            <div>{successMessage}</div>
-          </div>
-        </InputLabel>
-      ) : null}
-    </Box>
+          onChange={handleInputChange}
+        ></Input>
+
+        {helperText ? (
+          <InputLabel className="navi-helper-text">{helperText}</InputLabel>
+        ) : null}
+        {(errorMessage && inputType === "critical") || internalError ? (
+          <InputLabel className="navi-error-message">
+            <div style={{ display: "flex", alignItems: "center" }}>
+              <AlertCircle
+                size={16}
+                strokeWidth={2.5}
+                fill={`${baseTokens["color-critical-500"]}`}
+                color={`${baseTokens["color-primitive-white"]}`}
+              />
+              {internalError || errorMessage}
+            </div>
+          </InputLabel>
+        ) : null}
+        {!!successMessage && inputType === "success" && !internalError ? (
+          <InputLabel className="navi-success-message">
+            <div style={{ display: "flex", alignItems: "center" }}>
+              <CircleCheck
+                size={16}
+                strokeWidth={2.5}
+                fill={`${baseTokens["color-success-500"]}`}
+                color={`${baseTokens["color-primitive-white"]}`}
+              />
+              <div>{successMessage}</div>
+            </div>
+          </InputLabel>
+        ) : null}
+      </Box>
+    </ClickAwayListener>
   );
 };
 

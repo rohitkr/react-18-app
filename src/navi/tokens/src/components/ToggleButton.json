@@ -1,0 +1,26 @@
+{
+  "toggle-button": {
+    "type": {
+      "root": {
+        "padding": {
+          "value": "4px"
+        },
+        "borderRadius": {
+          "value": "{border.radius.radius-small.value}"
+        },
+        "disabled": {
+          "value": "1px solid {color.secondary.200.value}",
+          "color": "{color.secondary.200.value}"
+        }
+      },
+      "muted": {
+        "border": { "value": "1px solid {color.secondary.300.value}" },
+        "color": { "value": "{color.secondary.300.value}" }
+      },
+      "info": {
+        "border": { "value": "1px solid {color.info.400.value}" },
+        "color": { "value": "{color.info.400.value}" }
+      }
+    }
+  }
+}

@@ -4,7 +4,7 @@
 //
 
 // Do not edit directly
-// Generated on Wed, 08 Feb 2023 11:18:14 GMT
+// Generated on Thu, 09 Mar 2023 10:49:30 GMT
 
 
 import UIKit
@@ -722,6 +722,7 @@ public enum StyleDictionaryEnum {
     public static let spacing4 = .25rem
     public static let spacing40 = 2.5rem
     public static let spacing48 = 3rem
+    public static let spacing6 = .375rem
     public static let spacing64 = 4rem
     public static let spacing72 = 4.5rem
     public static let spacing8 = .5rem
@@ -1156,4 +1157,11 @@ public enum StyleDictionaryEnum {
     public static let textTextInputFieldItalicsFontStyle = italic
     public static let textTextInputFieldItalicsFontWeight = 400
     public static let textTextInputFieldItalicsLineHeight = 1.25rem
+    public static let toggleButtonTypeInfoBorder = 1px solid UIColor(red: 0.035, green: 0.459, blue: 0.843, alpha: 1)
+    public static let toggleButtonTypeInfoColor = UIColor(red: 0.035, green: 0.459, blue: 0.843, alpha: 1)
+    public static let toggleButtonTypeMutedBorder = 1px solid UIColor(red: 0.875, green: 0.867, blue: 0.906, alpha: 1)
+    public static let toggleButtonTypeMutedColor = UIColor(red: 0.875, green: 0.867, blue: 0.906, alpha: 1)
+    public static let toggleButtonTypeRootBorderRadius = 4px
+    public static let toggleButtonTypeRootDisabled = 1px solid UIColor(red: 0.925, green: 0.925, blue: 0.953, alpha: 1)
+    public static let toggleButtonTypeRootPadding = 4px
 }

@@ -50,6 +50,7 @@ export interface SelectProps
   label?: string;
   width?: string | number | 'auto' | 'inherit';
   requiredStateError?: string;
+  onClickAway?: (event: React.MouseEvent<Document>) => void;
 }
 export interface SelectItemCardProps {
   selectValue?: string[];

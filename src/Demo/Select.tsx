@@ -221,6 +221,7 @@ export default ({ ...args }) => {
         dataTestId="select-component"
         clearTooltipText={"Clear Data"}
         openTooltipText={"Open Menu"}
+        // selectType="success"
         // selectType="read-only"
         // disabled
       >

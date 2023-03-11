@@ -112,7 +112,6 @@
   }
 
   .navi-empty-field {
-    // background-color: $input-type-root-background-color;
     &:hover {
       background-color: $input-type-root-background-color;
     }
@@ -126,7 +125,6 @@
 
   .navi-success {
     outline: $input-type-success-outline;
-
     &:hover {
       outline: $input-type-success-outline;
     }
@@ -134,7 +132,6 @@
 
   .navi-critical {
     outline: $input-type-error-outline;
-
     &:hover {
       outline: $input-type-error-outline;
     }
@@ -182,9 +179,15 @@
 
   .navi-critical {
     outline: $input-type-error-outline;
-
     &:hover {
       outline: $input-type-error-outline;
+    }
+  }
+
+  .navi-success {
+    outline: $input-type-success-outline;
+    &:hover {
+      outline: $input-type-success-outline;
     }
   }
 
@@ -210,11 +213,12 @@
     background-color: unset;
   }
 
+  // Styles to show Active state for Select
   .navi-focused {
-    outline: $input-type-hover-outline;
+    outline: $input-type-focus-border;
 
     &:hover {
-      outline: $input-type-hover-outline;
+      outline: $input-type-focus-border;
     }
   }
 

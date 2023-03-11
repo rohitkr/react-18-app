@@ -24,6 +24,7 @@ import Tab from "./components/Tab/Tab";
 import TabPanel from "./components/TabPanel/TabPanel";
 import Tabs from "./components/Tabs/Tabs";
 import Tag from "./components/Tag/Tag";
+import ToggleButton from "./components/ToggleButton/ToggleButton";
 import Tooltip from "./components/Tooltip/Tooltip";
 
 export * from "./Icons/Icons";
@@ -54,5 +55,6 @@ export {
   TabPanel,
   Tabs,
   Tag,
+  ToggleButton,
   Tooltip,
 };

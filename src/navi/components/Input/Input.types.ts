@@ -29,4 +29,5 @@ export interface NaviInputProps
   ref?: ForwardedRef<HTMLInputElement>;
   translate?: string;
   defaultValue?: string;
+  onClickAway?: (event: React.MouseEvent<Document>) => void;
 }
