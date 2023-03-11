@@ -334,7 +334,6 @@ const Select: React.FC<SelectProps> = ({
     });
   }, [selectionMap]);
 
-  console.log("internalError: ", internalError);
   return (
     <Box className={`navi-menu-component ${className}`}>
       <MuiSelect
