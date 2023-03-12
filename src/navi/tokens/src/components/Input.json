@@ -231,7 +231,7 @@
               "value": "400"
           },
           "color": {
-              "value": "{color.secondary.700.value}"
+              "value": "{color.secondary.600.value}"
           },
           "large": {
               "lineHeight": {

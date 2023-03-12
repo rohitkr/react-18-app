@@ -230,4 +230,36 @@
       outline: $input-type-focus-border;
     }
   }
+
+
+  .navi-large {
+    height: $input-size-large-height;
+    font-size: $input-size-large-font-size;
+    line-height: $input-size-large-line-height;
+
+    .navi-select-placeholder {
+      font-family: $input-placeholder-font-family;
+      font-style: $input-placeholder-font-style;
+      line-height: $input-placeholder-large-line-height;
+      font-size: $input-placeholder-large-font-size;
+      font-weight: $input-placeholder-font-weight;
+      color: $input-placeholder-color;
+    }
+  }
+
+  .navi-small {
+    height: $input-size-small-height;
+    font-size: $input-size-small-font-size;
+    line-height: $input-size-small-line-height;
+
+    .navi-select-placeholder {
+      font-family: $input-placeholder-font-family;
+      font-style: $input-placeholder-font-style;
+      line-height: $input-placeholder-small-line-height;
+      font-size: $input-placeholder-small-font-size;
+      font-weight: $input-placeholder-font-weight;
+      color: $input-placeholder-color;
+    }
+  }
+
 }

@@ -22,7 +22,7 @@ let data = [
   {
     title: "The Godfather: Part II",
     description: "1974",
-    selected: true,
+    // selected: true,
     trailingIcon: <Pencil />,
     leadingIcon: <Movie />,
     // disabled: true,

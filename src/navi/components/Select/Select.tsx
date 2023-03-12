@@ -206,9 +206,8 @@ const Select: React.FC<SelectProps> = ({
   }, []);
 
   const renderValue = () => {
-    console.log(placeholderText);
     if (placeholderText) {
-      return <em>{placeholderText}</em>
+      return <Box className={"navi-select-placeholder"}>{placeholderText}</Box>
     }
     if (renderValueAsTag) {
       return (
